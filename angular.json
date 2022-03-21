@@ -118,9 +118,21 @@
               "devServerTarget": "novus-bazhi:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "novus-bazhi"
+  "defaultProject": "novus-bazhi",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
