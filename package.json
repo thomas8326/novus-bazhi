@@ -8,7 +8,7 @@
     "test": "ng test",
     "e2e": "ng e2e",
     "lint": "stylelint src/**/*.scss & eslint src/**/*.ts",
-    "lint:fix": "stylelint src/**/*.scss --fix"
+    "lint:fix": "stylelint src/**/*.scss --fix &  eslint --fix src/**/*.ts"
   },
   "pre-commit": [
     "lint"
@@ -40,11 +40,14 @@
     "@angular/compiler-cli": "~13.3.0",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
-    "@typescript-eslint/eslint-plugin": "5.11.0",
-    "@typescript-eslint/parser": "5.11.0",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
     "codelyzer": "^6.0.0",
-    "eslint": "^8.2.0",
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-typescript": "^16.1.4",
+    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.17",
@@ -60,7 +63,6 @@
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.2.0",
     "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
     "typescript": "~4.6.2"
   }
 }
