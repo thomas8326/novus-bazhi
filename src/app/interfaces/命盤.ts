@@ -4,7 +4,7 @@ import { 天干 } from 'src/app/enums/天干.enum';
 
 export interface 命盤 {
   天干: 天干命盤;
-  地支: 地支命盤;
+  地支?: 地支命盤;
 }
 
 export interface 命盤結果 {
@@ -21,7 +21,6 @@ export interface 天干命盤 {
   本命: 天干[];
   大運: 天干;
   流年: 天干;
-  已合: 天干[][];
 }
 
 export interface 地支命盤 {
@@ -29,5 +28,4 @@ export interface 地支命盤 {
   本命: 地支[];
   大運: 地支;
   流年: 地支;
-  已合: 地支[][];
 }
