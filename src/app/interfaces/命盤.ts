@@ -8,12 +8,12 @@ export interface 命盤 {
 }
 
 export interface 命盤結果 {
-  [命盤結果屬性.時住已合]: boolean;
-  [命盤結果屬性.日住已合]: boolean;
-  [命盤結果屬性.月住已合]: boolean;
-  [命盤結果屬性.年住已合]: boolean;
-  [命盤結果屬性.大運已合]: boolean;
-  [命盤結果屬性.流年已合]: boolean;
+  [命盤結果屬性.時住已作用]: boolean;
+  [命盤結果屬性.日住已作用]: boolean;
+  [命盤結果屬性.月住已作用]: boolean;
+  [命盤結果屬性.年住已作用]: boolean;
+  [命盤結果屬性.大運已作用]: boolean;
+  [命盤結果屬性.流年已作用]: boolean;
 }
 
 export interface 天干命盤 {
