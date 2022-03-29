@@ -9,7 +9,7 @@ import { 地支命盤, 天干命盤 } from 'src/app/interfaces/命盤';
 @Injectable({
   providedIn: 'root',
 })
-export class FortuneTellingService {
+export class 算命服務器 {
   算天干(對象命盤: 天干命盤) {
     this.大運流年相合(對象命盤, true);
     this.本命合(對象命盤, true);

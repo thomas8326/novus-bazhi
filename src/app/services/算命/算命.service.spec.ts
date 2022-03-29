@@ -2,16 +2,16 @@ import { 天干 } from 'src/app/enums/天干.enum';
 import { TestBed } from '@angular/core/testing';
 import { 地支命盤, 天干命盤 } from 'src/app/interfaces/命盤';
 
-import { FortuneTellingService } from './fortune-telling.service';
+import { 算命服務器 } from './算命.service';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 
 describe('FortuneTellingService', () => {
-  let service: FortuneTellingService;
+  let service: 算命服務器;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [FortuneTellingService] });
-    service = TestBed.inject(FortuneTellingService);
+    TestBed.configureTestingModule({ providers: [算命服務器] });
+    service = TestBed.inject(算命服務器);
   });
 
   describe('test with 天干', () => {
