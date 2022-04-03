@@ -1,7 +1,6 @@
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
-import { 大運 } from 'src/app/interfaces/大運';
 
 export interface 命盤 {
   天干: 天干命盤;
@@ -25,10 +24,6 @@ export class 命盤結果 {
 export interface 天干命盤 {
   命盤結果: 命盤結果;
   本命: 天干[];
-  // TODO: remove ? operator
-  目前大運?: 大運;
-  大運列?: 大運[];
-  // TODO: remove these.
   大運: 天干;
   流年: 天干;
 }
