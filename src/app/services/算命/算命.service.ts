@@ -1,13 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  五行互救對照表,
-  五行相刻對照表,
-  五行相生對照表,
-  五行轉換,
-  相合對照表,
-  陰列,
-  陽列,
-} from 'src/app/constants/constants';
+import { 五行互救對照表, 五行相刻對照表, 五行轉換, 相合對照表, 陰列, 陽列 } from 'src/app/constants/constants';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
@@ -152,7 +144,7 @@ export class 算命服務器 {
       let nextPointer = this.是否為天干 && i + 1 === 1 ? i + 2 : i + 1;
 
       do {
-        if (!對象命盤.命盤結果[this.年月日時住轉換(nextPointer)]) {
+        if (!對象命盤.命盤結果[this.年月日時住轉換(i)] && !對象命盤.命盤結果[this.年月日時住轉換(nextPointer)]) {
           break;
         }
         nextPointer++;
@@ -167,14 +159,6 @@ export class 算命服務器 {
 
   private 是否相合(key: 天干 | 地支, value: 天干 | 地支) {
     return 相合對照表.get(key) === value;
-  }
-
-  private 是否相生(作用主體: 天干 | 地支, 被作用目標: 天干 | 地支) {
-    const 不是陰剋陽作用主體 = !this.是否陰作用陽(作用主體, 被作用目標);
-    const 作用主體五行 = 五行轉換(作用主體);
-    const 被作用目標五行 = 五行轉換(被作用目標);
-
-    return 不是陰剋陽作用主體 && 五行相生對照表.get(作用主體五行) === 被作用目標五行;
   }
 
   private 是否相刻(作用主體: 天干 | 地支, 被作用目標: 天干 | 地支) {

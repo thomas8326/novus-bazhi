@@ -6,8 +6,13 @@ import { 算命服務器 } from './算命.service';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 
+import TestCases from './test-cases.json';
+import { 天干測試, 算命測試 } from 'src/app/services/算命/算命測試';
+
 describe('FortuneTellingService', () => {
   let service: 算命服務器;
+
+  const testCases: 算命測試 = JSON.parse(JSON.stringify(TestCases));
 
   beforeEach(() => {
     TestBed.configureTestingModule({ providers: [算命服務器] });
@@ -30,6 +35,35 @@ describe('FortuneTellingService', () => {
         流年,
       };
     }
+
+    function testAmountOfCases(測試: 天干測試) {
+      it(`測試案例 => ${測試.描述}`, () => {
+        const 測試案例 = 創建測試天干命盤(測試.命盤.本命, 測試.命盤.大運, 測試.命盤.流年);
+
+        service.算天干(測試案例);
+
+        expect(測試案例.命盤結果).toEqual(測試.預期);
+      });
+    }
+
+    for (const test of testCases.天干測試) {
+      testAmountOfCases(test);
+    }
+
+    // it('debug', () => {
+    //   const 測試案例 = 創建測試天干命盤([天干.辛, 天干.辛, 天干.丙, 天干.丙], 天干.庚, 天干.癸);
+
+    //   service.算天干(測試案例);
+
+    //   expect(測試案例.命盤結果).toEqual({
+    //     [命盤結果屬性.時住已作用]: true,
+    //     [命盤結果屬性.日住已作用]: false,
+    //     [命盤結果屬性.月住已作用]: true,
+    //     [命盤結果屬性.年住已作用]: true,
+    //     [命盤結果屬性.大運已作用]: true,
+    //     [命盤結果屬性.流年已作用]: true,
+    //   });
+    // });
 
     it('should return correct result when calling function of 算天干 with case 丁庚辛丙 | 丙辛', () => {
       const 測試案例 = 創建測試天干命盤([天干.丁, 天干.庚, 天干.辛, 天干.丙], 天干.丙, 天干.辛);
