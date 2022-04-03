@@ -1,6 +1,6 @@
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
-import { 命盤結果 } from 'src/app/interfaces/命盤';
+import { 命盤作用 } from 'src/app/interfaces/命盤';
 
 export interface 天干測試 {
   描述: string;
@@ -9,7 +9,7 @@ export interface 天干測試 {
     大運: 天干;
     流年: 天干;
   };
-  預期: 命盤結果;
+  預期: 命盤作用;
 }
 
 export interface 地支測試 {
@@ -19,7 +19,7 @@ export interface 地支測試 {
     大運: 地支;
     流年: 地支;
   };
-  預期: 命盤結果;
+  預期: 命盤作用;
 }
 
 export interface 算命測試 {
