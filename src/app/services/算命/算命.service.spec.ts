@@ -2,12 +2,13 @@ import { 天干 } from 'src/app/enums/天干.enum';
 import { TestBed } from '@angular/core/testing';
 import { 命盤結果, 地支命盤, 天干命盤 } from 'src/app/interfaces/命盤';
 
-import { 算命服務器 } from './算命.service';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 
-import TestCases from './test-cases.json';
 import { 天干測試, 算命測試 } from 'src/app/services/算命/算命測試';
+
+import TestCases from './test-cases.json';
+import { 算命服務器 } from './算命.service';
 
 describe('FortuneTellingService', () => {
   let service: 算命服務器;

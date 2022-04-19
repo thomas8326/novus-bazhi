@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { 命盤服務器 } from './命盤.service';
 import { 天干 } from 'src/app/enums/天干.enum';
+
+import { 命盤服務器 } from './命盤.service';
 
 describe('命盤Service', () => {
   let service: 命盤服務器;
