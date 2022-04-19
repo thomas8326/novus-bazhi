@@ -4,8 +4,10 @@
     "es2021": true
   },
   "extends": [
+    "eslint:recommended",
     "plugin:@angular-eslint/recommended",
     "plugin:@angular-eslint/template/process-inline-templates",
+    "plugin:import/recommended",
     "airbnb-typescript/base",
     "prettier"
   ],
@@ -32,6 +34,13 @@
         "style": "kebab-case"
       }
     ],
-    "@angular-eslint/no-empty-lifecycle-method": ["off"]
+    "@angular-eslint/no-empty-lifecycle-method": ["off"],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "sibling", "parent", "index", "object", "type"],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ]
   }
 }
