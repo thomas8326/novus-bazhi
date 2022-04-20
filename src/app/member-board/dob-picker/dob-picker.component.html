@@ -1,0 +1,42 @@
+<mat-form-field appearance="fill" #formField>
+  <mat-label>輸入出生年月日</mat-label>
+  <input
+    matInput
+    appTimePicker
+    [matDatepickerFilter]="lessThanNextYear"
+    [matDatepicker]="picker"
+    [formControl]="date"
+  />
+  <div matSuffix class="btn-group">
+    <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+    <mat-icon class="gray" (click)="isOpen = !isOpen">schedule</mat-icon>
+  </div>
+  <mat-datepicker
+    startView="multi-year"
+    (yearSelected)="chosenYearHandler($event)"
+    (monthSelected)="chosenMonthHandler($event)"
+    #picker
+  ></mat-datepicker>
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayBackdropClass]="'opacity'"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    [cdkConnectedOverlayOrigin]="formField.getConnectedOverlayOrigin()"
+    [cdkConnectedOverlayOpen]="isOpen"
+    (backdropClick)="isOpen = false"
+  >
+    <div class="time-picker-container">
+      <div class="time-selector">
+        <mat-icon (click)="addHour(1)">keyboard_arrow_up</mat-icon>
+        <input [value]="currentHour" (change)="changeHour(hour.value)" #hour />
+        <mat-icon (click)="addHour(-1)">keyboard_arrow_down</mat-icon>
+      </div>
+      <label>:</label>
+      <div class="time-selector">
+        <mat-icon (click)="addMinute(1)">keyboard_arrow_up</mat-icon>
+        <input [value]="currentMinute" (change)="changeMinute(minute.value)" #minute />
+        <mat-icon (click)="addMinute(-1)">keyboard_arrow_down</mat-icon>
+      </div>
+    </div>
+  </ng-template>
+</mat-form-field>

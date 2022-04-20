@@ -7,6 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { MemberBoardComponent } from './member-board.component';
 import { MemberBoardRoutingModule } from './member-board-routing.module';
@@ -26,6 +29,9 @@ import { DobPickerComponent } from './dob-picker/dob-picker.component';
     MatRadioModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    MatIconModule,
+    OverlayModule,
   ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'zh-TW' }],
 })
 export class MemberBoardModule {}
