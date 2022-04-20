@@ -38,9 +38,18 @@
     "import/order": [
       "error",
       {
+        "pathGroups": [
+          {
+            "pattern": "@angular/**",
+            "group": "builtin"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["@angular/**"],
         "groups": ["builtin", "external", "internal", "sibling", "parent", "index", "object", "type"],
-        "newlines-between": "always-and-inside-groups"
+        "newlines-between": "always"
       }
-    ]
+    ],
+    "lines-between-class-members": "off",
+    "@typescript-eslint/lines-between-class-members": ["off"]
   }
 }

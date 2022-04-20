@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import {
   五行互救對照表,
   五行相刻對照表,

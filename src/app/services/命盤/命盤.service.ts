@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { 天干對照表, 地支對照表 } from 'src/app/constants/constants';
 import { 天干 } from 'src/app/enums/天干.enum';
 import { 命盤結果, 天干命盤 } from 'src/app/interfaces/命盤';
