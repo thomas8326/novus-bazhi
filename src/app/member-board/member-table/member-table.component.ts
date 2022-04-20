@@ -8,7 +8,7 @@ const TEST_DATA: Member[] = [
   {
     name: 'Thomas',
     dob: '1994/11/26',
-    gender: 'male',
+    gender: '男',
   },
 ];
 
@@ -24,7 +24,7 @@ export class MemberTableComponent implements OnInit {
 
   readonly selection = new SelectionModel<Member>(true, []);
 
-  readonly displayedColumns: string[] = ['select', 會員欄位.Name, 會員欄位.Gender, 會員欄位.DateOfBirth];
+  readonly displayedColumns: string[] = ['select', 會員欄位.Name, 會員欄位.Gender, 會員欄位.DateOfBirth, 'btnGroup'];
 
   ngOnInit(): void {}
 
