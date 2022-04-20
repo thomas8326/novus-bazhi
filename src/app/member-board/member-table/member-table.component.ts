@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { 會員欄位 } from 'src/app/enums/會員.enum';
 import { Member } from 'src/app/interfaces/會員';
@@ -18,11 +18,11 @@ const TEST_DATA: Member[] = [
   styleUrls: ['./member-table.component.scss'],
 })
 export class MemberTableComponent implements OnInit {
+  @Input() selection = new SelectionModel<Member>(true, []);
+
   readonly member = 會員欄位;
 
   readonly testData = new MatTableDataSource<Member>(TEST_DATA);
-
-  readonly selection = new SelectionModel<Member>(true, []);
 
   readonly displayedColumns: string[] = ['select', 會員欄位.Name, 會員欄位.Gender, 會員欄位.DateOfBirth, 'btnGroup'];
 

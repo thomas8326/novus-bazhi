@@ -36,9 +36,7 @@
   <ng-container matColumnDef="btnGroup">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let row">
-      <button>button1</button>
-      <button>button1</button>
-      <button>button1</button>
+      <app-member-control-panel [showAddBtn]="false"></app-member-control-panel>
     </td>
   </ng-container>
 

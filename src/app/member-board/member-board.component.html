@@ -1,2 +1,2 @@
-<app-member-control-panel></app-member-control-panel>
-<app-member-table></app-member-table>
+<app-member-control-panel [showAddBtn]="!selection.hasValue()"></app-member-control-panel>
+<app-member-table [selection]="selection"></app-member-table>
