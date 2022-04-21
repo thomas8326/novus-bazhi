@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, ElementRef, forwardRef, OnInit, ViewChild } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as _moment from 'moment';
 import { default as _rollupMoment, Moment } from 'moment';
 
@@ -19,14 +20,24 @@ export const MY_FORMATS = {
   },
 };
 
+export const VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => DobPickerComponent),
+  multi: true,
+};
+
+@UntilDestroy()
 @Component({
   selector: 'app-dob-picker',
   templateUrl: './dob-picker.component.html',
-  providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }],
+  providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }, VALUE_ACCESSOR],
   styleUrls: ['./dob-picker.component.scss'],
 })
-export class DobPickerComponent implements OnInit {
+export class DobPickerComponent implements OnInit, ControlValueAccessor {
   @ViewChild('formField') formField!: ElementRef;
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onChange = (_date?: any) => {};
 
   lessThanNextYear = (d: Moment | null): boolean => {
     const current = moment();
@@ -39,7 +50,22 @@ export class DobPickerComponent implements OnInit {
 
   date = new FormControl(moment());
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.date.valueChanges.pipe(untilDestroyed(this)).subscribe((value) => {
+      this.onChange(value);
+      console.log(value);
+    });
+  }
+
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  registerOnTouched() {
+    // Do nothing
+  }
+
+  writeValue() {}
 
   get currentHour() {
     return this.date.value.hour();
@@ -53,6 +79,7 @@ export class DobPickerComponent implements OnInit {
     const ctrlValue = this.date.value;
     ctrlValue.year(normalizedYear.year());
     this.date.setValue(ctrlValue);
+    this.onChange(this.date.value);
   }
 
   chosenMonthHandler(normalizedMonth: Moment) {

@@ -53,7 +53,7 @@ export class MemberTableComponent implements OnInit {
     const newMember: Member = {
       name: this.name.value,
       gender: this.gender.value,
-      dob: new Date().toISOString(),
+      dob: this.date.value,
     };
     const newList = [...this.testData.data, newMember];
     this.testData.data = newList;
