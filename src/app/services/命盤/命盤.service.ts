@@ -1,43 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import { 天干對照表, 地支對照表 } from 'src/app/constants/constants';
-import { 天干 } from 'src/app/enums/天干.enum';
-import { 命盤結果, 天干命盤 } from 'src/app/interfaces/命盤';
+import { 命盤, 命盤結果, 地支命盤, 天干命盤 } from 'src/app/interfaces/命盤';
 import { Lunar } from 'lunar-typescript';
 import { 大運 } from 'src/app/interfaces/大運';
-import { 地支 } from 'src/app/enums/地支.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class 命盤服務器 {
-  private 基礎命盤: { 天干本命: 天干[]; 地支本命: 地支[]; 大運列: 大運[] } = {
-    天干本命: [],
-    地支本命: [],
-    大運列: [],
-  };
-
-  取得基礎命盤() {
-    return this.基礎命盤;
-  }
-
-  尋找天干命盤(year: number): 天干命盤 {
-    const 大運列 = this.基礎命盤.大運列;
-
-    const 目前大運 = 大運列.find(
-      (data, index) => data.年 <= year && (year < 大運列[index + 1].年 || !大運列[index + 1]),
-    );
-
-    const 目前流年 = 目前大運?.流年.find((data) => data.年 === year);
-
-    return {
-      命盤結果: new 命盤結果(),
-      本命: this.基礎命盤.天干本命,
-      大運: 目前大運!.天干,
-      流年: 目前流年!.天干,
-    };
-  }
-
   創建基礎命盤(solar: Date, isMale?: boolean) {
     const lunar = Lunar.fromDate(solar);
     const 天干本命 = [
@@ -60,10 +31,43 @@ export class 命盤服務器 {
       .getDaYun()
       .map((dayun) => new 大運(dayun));
 
-    this.基礎命盤 = {
+    return {
       天干本命,
       地支本命,
       大運列,
     };
+  }
+
+  生成天干地支命盤(solar: Date, isMale?: boolean) {
+    const 基礎命盤 = this.創建基礎命盤(solar, isMale);
+    const 大運列 = 基礎命盤.大運列;
+
+    const 結果命盤: 命盤 = { 天干: [], 地支: [] };
+
+    for (const 大運值 of 大運列) {
+      let 暫存天干: 天干命盤[] = [];
+      let 暫存地支: 地支命盤[] = [];
+      for (const 流年值 of 大運值.流年) {
+        暫存天干.push({
+          year: 流年值.年,
+          命盤結果: new 命盤結果(),
+          本命: 基礎命盤.天干本命,
+          大運: 大運值.天干,
+          流年: 流年值.天干,
+        });
+
+        暫存地支.push({
+          year: 流年值.年,
+          命盤結果: new 命盤結果(),
+          本命: 基礎命盤.地支本命,
+          大運: 大運值.地支,
+          流年: 流年值.地支,
+        });
+      }
+      結果命盤.天干 = 結果命盤.天干.concat(暫存天干);
+      結果命盤.地支 = 結果命盤.地支.concat(暫存地支);
+    }
+
+    return 結果命盤;
   }
 }

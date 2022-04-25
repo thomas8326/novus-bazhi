@@ -14,9 +14,9 @@ describe('命盤Service', () => {
 
   describe('test with 天干', () => {
     it('測試命盤結果 with case 1994/11/26 05:12', () => {
-      service.創建基礎命盤(new Date('1994/11/26 05:13'), true);
+      const 命盤 = service.創建基礎命盤(new Date('1994/11/26 05:13'), true);
 
-      expect(service.取得基礎命盤().天干本命).toEqual([天干.辛, 天干.丙, 天干.乙, 天干.甲]);
+      expect(命盤.天干本命).toEqual([天干.辛, 天干.丙, 天干.乙, 天干.甲]);
     });
 
     // TODO: Other testing.

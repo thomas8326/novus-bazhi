@@ -3,6 +3,7 @@ export enum 會員欄位 {
   Name = 'name',
   Gender = 'gender',
   DateOfBirth = 'dob',
+  Horoscope = 'horoscope',
 }
 
 export enum 性別 {

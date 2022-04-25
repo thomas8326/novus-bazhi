@@ -5,8 +5,8 @@ import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
 
 export interface 命盤 {
-  天干: 天干命盤;
-  地支?: 地支命盤;
+  天干: 天干命盤[];
+  地支: 地支命盤[];
 }
 
 export interface 命盤作用 {
@@ -155,6 +155,7 @@ export interface 五行陣列 {
 }
 
 export interface 天干命盤 {
+  year: number;
   命盤結果: 命盤結果;
   本命: 天干[];
   大運: 天干;
@@ -162,6 +163,7 @@ export interface 天干命盤 {
 }
 
 export interface 地支命盤 {
+  year: number;
   命盤結果: 命盤結果;
   本命: 地支[];
   大運: 地支;

@@ -134,6 +134,7 @@ export class 算命服務器 {
 
     const 陰流通陣列 = this.先生後剋(陰, false);
 
+    // 五行結果: [水生木] 陰流通: [土]的情況時應該要反過來把陰流通加到五行結果中
     if (陰.length === 1) {
       const findResult = 五行結果表.find((結果) => 結果.五行 === 陰流通陣列[0].五行);
       if (findResult) {
