@@ -14,13 +14,27 @@ import { 五行 } from 'src/app/enums/五行.enum';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
-import { 五行結果, 地支命盤, 天干命盤 } from 'src/app/interfaces/命盤';
+import { 五行結果, 命盤, 地支命盤, 天干命盤 } from 'src/app/interfaces/命盤';
 
 @Injectable({
   providedIn: 'root',
 })
 export class 算命服務器 {
   private 是否為天干: boolean = false;
+
+  算命(目標命盤: 命盤) {
+    for (const 天干算命 of 目標命盤.天干) {
+      if (天干算命.大運) {
+        this.算天干(天干算命);
+      }
+    }
+
+    for (const 地支算命 of 目標命盤.地支) {
+      if (地支算命.大運) {
+        this.算地支(地支算命);
+      }
+    }
+  }
 
   算天干(對象命盤: 天干命盤) {
     this.是否為天干 = true;
@@ -37,7 +51,7 @@ export class 算命服務器 {
     this.本命合(對象命盤);
     this.本命與大運流年合或剋(對象命盤);
     this.本命合(對象命盤);
-    // this.命盤分析結果(對象命盤);
+    this.命盤分析結果(對象命盤);
   }
 
   //'辛', '戊', '壬', '丙' "壬" 戊
@@ -51,22 +65,6 @@ export class 算命服務器 {
 
     const 流通陣列 = this.五行結果流通(批陽結果, 陰);
     對象命盤.命盤結果.再流通(流通陣列);
-    console.log('');
-    // const 被剋天干地支 = 陽流通陣列.find((value) => value.生剋 === '剋')?.陽陣[0];
-
-    // if (被剋天干地支) {
-    //   const index = 陽.indexOf(被剋天干地支);
-    //   陽.splice(index, 1);
-    // }
-
-    // const 陰流通陣列 = this.批陽先生後剋(陽, 陰);
-    // 對象命盤.命盤結果.新增五行流通結果(陰流通陣列);
-
-    // const 陰流通陣列 = this.test2(陽流通陣列, 陰);
-    // const 陽五行陣列 = this.劃分五行(陽);
-    // const 陽流通陣列 = this.先生後剋(陽五行陣列);
-    // const 陰流通陣列 = this.陰先生後剋(陽流通陣列, 陰);
-    // 對象命盤.命盤結果.新增五行流通結果(陰流通陣列);
   }
 
   private 先生後剋(天干地支: (天干 | 地支)[], 是否為陽 = true) {
@@ -128,11 +126,46 @@ export class 算命服務器 {
     return result;
   }
 
+  // TODO: Refactor
   private 五行結果流通(五行結果表: 五行結果[], 陰: (天干 | 地支)[]) {
-    const 陰流通陣列 = this.先生後剋(陰, false);
-
     if (!陰.length) {
       return 五行結果表;
+    }
+
+    const 陰流通陣列 = this.先生後剋(陰, false);
+
+    if (陰.length === 1) {
+      const findResult = 五行結果表.find((結果) => 結果.五行 === 陰流通陣列[0].五行);
+      if (findResult) {
+        findResult.陰陣.push(...陰流通陣列[0].陽陣);
+        findResult.陰陣.push(...陰流通陣列[0].陰陣);
+      } else {
+        for (let i = 0; i < 五行結果表.length; i++) {
+          if (五行相生對照表.get(陰流通陣列[0].五行) === 五行結果表[i].五行) {
+            五行結果表[i].生剋 = '生';
+            五行結果表.splice(i, 0, 陰流通陣列[0]);
+            return 五行結果表;
+          }
+          if (五行相生對照表.get(五行結果表[i].五行) === 陰流通陣列[0].五行) {
+            陰流通陣列[0].生剋 = '生';
+            五行結果表.splice(i + 1, 0, 陰流通陣列[0]);
+            return 五行結果表;
+          }
+        }
+
+        for (let i = 0; i < 五行結果表.length; i++) {
+          if (五行相刻對照表.get(陰流通陣列[0].五行) === 五行結果表[i].五行) {
+            五行結果表[i].生剋 = '剋';
+            五行結果表.splice(i, 0, 陰流通陣列[0]);
+            return 五行結果表;
+          }
+          if (五行相刻對照表.get(五行結果表[i].五行) === 陰流通陣列[0].五行) {
+            陰流通陣列[0].生剋 = '剋';
+            五行結果表.splice(i + 1, 0, 陰流通陣列[0]);
+            return 五行結果表;
+          }
+        }
+      }
     }
 
     let 結果索引 = 0;
@@ -177,7 +210,7 @@ export class 算命服務器 {
     }
 
     if (五行結果表.length > 1) {
-      throw new Error(`這裡有特殊狀況！剩餘結果表: ${五行結果表.toString()} 結果: ${陰流通陣列}`);
+      throw new Error(`這裡有特殊狀況！剩餘結果表: ${五行結果表.join()} 結果: ${陰流通陣列.join()}`);
     }
 
     if (五行結果表.length === 1) {
