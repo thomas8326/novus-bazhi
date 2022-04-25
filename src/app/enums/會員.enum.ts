@@ -1,5 +1,5 @@
 export enum 會員欄位 {
-  UID = 'uid',
+  ID = 'id',
   Name = 'name',
   Gender = 'gender',
   DateOfBirth = 'dob',

@@ -42,6 +42,7 @@ export class MemberTableComponent implements OnInit {
   readonly testData = new MatTableDataSource<Member>(TEST_DATA);
   readonly displayedColumns: string[] = ['select', 會員欄位.Name, 會員欄位.Gender, 會員欄位.DateOfBirth, 'btnGroup'];
 
+  members: Member[] = [];
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,
@@ -49,7 +50,9 @@ export class MemberTableComponent implements OnInit {
     private readonly 命盤服務: 命盤服務器,
     private readonly 算命服務: 算命服務器,
     private readonly memberService: MemberService,
-  ) {}
+  ) {
+    this.memberService.get().subscribe((members) => (this.members = members));
+  }
 
   ngOnInit(): void {}
 
@@ -90,14 +93,14 @@ export class MemberTableComponent implements OnInit {
 
   onUpdateMember() {
     this.testData.data = this.testData.data.map((member) =>
-      member.uid === this.memberForm.value.uid ? this.memberForm.value : member,
+      member.id === this.memberForm.value.uid ? this.memberForm.value : member,
     );
     this.isEditingStatus = false;
   }
 
   onDeleteMember(target: Member) {
     // TODO Dialog
-    this.testData.data = this.testData.data.filter((member) => member.uid !== target.uid);
+    this.testData.data = this.testData.data.filter((member) => member.id !== target.id);
   }
 
   onEditMember(target: Member) {
@@ -113,6 +116,6 @@ export class MemberTableComponent implements OnInit {
   }
 
   onRedirect(target: Member) {
-    this.router.navigate([`horoscope/${target.uid}`], { relativeTo: this.activatedRoute });
+    this.router.navigate([`horoscope/${target.id}`], { relativeTo: this.activatedRoute });
   }
 }

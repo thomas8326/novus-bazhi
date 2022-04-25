@@ -1,1 +1,1 @@
-<p>member-horoscope works!</p>
+<div *ngIf="member$ | async as member">{{ member.name }}</div>
