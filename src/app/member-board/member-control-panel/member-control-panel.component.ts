@@ -8,11 +8,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class MemberControlPanelComponent implements OnInit {
   @Input() showAddBtn = false;
   @Input() showEditBtn = true;
+  @Input() showRedirectBtn = false;
 
   @Output() add = new EventEmitter<void>();
   @Output() edit = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
   @Output() export = new EventEmitter<void>();
+  @Output() redirect = new EventEmitter<void>();
 
   ngOnInit(): void {}
 
@@ -27,5 +29,8 @@ export class MemberControlPanelComponent implements OnInit {
   }
   onExport() {
     this.export.emit();
+  }
+  onRedirectTo() {
+    this.redirect.emit();
   }
 }

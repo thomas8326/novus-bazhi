@@ -2,6 +2,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { 性別, 會員欄位 } from 'src/app/enums/會員.enum';
 import { Member } from 'src/app/interfaces/會員';
@@ -43,7 +44,11 @@ export class MemberTableComponent implements OnInit {
   readonly testData = new MatTableDataSource<Member>(TEST_DATA);
   readonly displayedColumns: string[] = ['select', 會員欄位.Name, 會員欄位.Gender, 會員欄位.DateOfBirth, 'btnGroup'];
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {}
 
@@ -100,5 +105,9 @@ export class MemberTableComponent implements OnInit {
     this.isAddingStatus = false;
     this.isEditingStatus = false;
     this.isAddingStatusChange.emit(false);
+  }
+
+  onRedirect(target: Member) {
+    this.router.navigate([`horoscope/${target.uid}`], { relativeTo: this.activatedRoute });
   }
 }

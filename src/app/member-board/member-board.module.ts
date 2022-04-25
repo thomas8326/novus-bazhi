@@ -16,9 +16,10 @@ import { MemberBoardRoutingModule } from './member-board-routing.module';
 import { MemberTableComponent } from './member-table/member-table.component';
 import { MemberControlPanelComponent } from './member-control-panel/member-control-panel.component';
 import { DobPickerComponent } from './dob-picker/dob-picker.component';
+import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.component';
 
 @NgModule({
-  declarations: [MemberBoardComponent, MemberTableComponent, MemberControlPanelComponent, DobPickerComponent],
+  declarations: [MemberBoardComponent, MemberTableComponent, MemberControlPanelComponent, DobPickerComponent, MemberHoroscopeComponent],
   imports: [
     CommonModule,
     MemberBoardRoutingModule,

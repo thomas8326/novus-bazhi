@@ -55,6 +55,8 @@
       <td mat-cell *matCellDef="let row">
         <app-member-control-panel
           [showAddBtn]="false"
+          [showRedirectBtn]="true"
+          (redirect)="onRedirect(row)"
           (edit)="onEditMember(row)"
           (delete)="onDeleteMember(row)"
         ></app-member-control-panel>
