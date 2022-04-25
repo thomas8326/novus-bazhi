@@ -10,6 +10,7 @@ import { Member } from 'src/app/interfaces/會員';
 })
 export class MemberBoardComponent implements OnInit {
   readonly selection = new SelectionModel<Member>(true, []);
+  isAddingStatus = false;
 
   ngOnInit(): void {}
 }

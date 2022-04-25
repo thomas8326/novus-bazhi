@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-member-control-panel',
@@ -7,6 +7,25 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MemberControlPanelComponent implements OnInit {
   @Input() showAddBtn = false;
+  @Input() showEditBtn = true;
+
+  @Output() add = new EventEmitter<void>();
+  @Output() edit = new EventEmitter<void>();
+  @Output() delete = new EventEmitter<void>();
+  @Output() export = new EventEmitter<void>();
 
   ngOnInit(): void {}
+
+  onAdd() {
+    this.add.emit();
+  }
+  onEdit() {
+    this.edit.emit();
+  }
+  onDelete() {
+    this.delete.emit();
+  }
+  onExport() {
+    this.export.emit();
+  }
 }

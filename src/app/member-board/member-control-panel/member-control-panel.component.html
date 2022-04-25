@@ -1,6 +1,6 @@
 <div>
-  <button *ngIf="showAddBtn">Add</button>
-  <button *ngIf="!showAddBtn">Edit</button>
-  <button *ngIf="!showAddBtn">Delete</button>
-  <button *ngIf="!showAddBtn">Export</button>
+  <button *ngIf="showAddBtn" (click)="onAdd()">Add</button>
+  <button *ngIf="!showAddBtn && showEditBtn" (click)="onEdit()">Edit</button>
+  <button *ngIf="!showAddBtn" (click)="onDelete()">Delete</button>
+  <button *ngIf="!showAddBtn" (click)="onExport()">Export</button>
 </div>

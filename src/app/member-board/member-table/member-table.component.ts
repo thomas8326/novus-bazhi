@@ -1,15 +1,20 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { 性別, 會員欄位 } from 'src/app/enums/會員.enum';
 import { Member } from 'src/app/interfaces/會員';
+import * as _moment from 'moment';
+import { default as _rollupMoment } from 'moment';
+
+const moment = _rollupMoment || _moment;
 
 const TEST_DATA: Member[] = [
   {
+    uid: 'test',
     name: 'Thomas',
-    dob: '1994/11/26',
+    dob: '1994/11/26 05:30',
     gender: 性別.Male,
   },
 ];
@@ -21,15 +26,24 @@ const TEST_DATA: Member[] = [
 })
 export class MemberTableComponent implements OnInit {
   @Input() selection = new SelectionModel<Member>(true, []);
+  @Input() isAddingStatus = false;
+  @Output() isAddingStatusChange = new EventEmitter<boolean>();
 
-  name = new FormControl('');
-  date = new FormControl('');
-  gender = new FormControl('');
+  isEditingStatus = false;
+
+  memberForm = this.fb.group({
+    uid: [''],
+    name: ['', Validators.required],
+    dob: [moment(), Validators.required],
+    gender: ['', Validators.required],
+  });
 
   readonly member = 會員欄位;
   readonly memberGender = 性別;
   readonly testData = new MatTableDataSource<Member>(TEST_DATA);
   readonly displayedColumns: string[] = ['select', 會員欄位.Name, 會員欄位.Gender, 會員欄位.DateOfBirth, 'btnGroup'];
+
+  constructor(private readonly fb: FormBuilder) {}
 
   ngOnInit(): void {}
 
@@ -49,13 +63,42 @@ export class MemberTableComponent implements OnInit {
     }
   }
 
+  onAddNextMember() {
+    if (this.memberForm.valid) {
+      const newMember = new Member(this.memberForm.value);
+      const newList = [...this.testData.data, newMember];
+      this.testData.data = newList;
+      this.memberForm.reset();
+    }
+  }
+
   onAddMember() {
-    const newMember: Member = {
-      name: this.name.value,
-      gender: this.gender.value,
-      dob: this.date.value,
-    };
-    const newList = [...this.testData.data, newMember];
-    this.testData.data = newList;
+    this.onAddNextMember();
+    this.isAddingStatus = false;
+    this.isAddingStatusChange.emit(false);
+  }
+
+  onUpdateMember() {
+    this.testData.data = this.testData.data.map((member) =>
+      member.uid === this.memberForm.value.uid ? this.memberForm.value : member,
+    );
+    this.isEditingStatus = false;
+  }
+
+  onDeleteMember(target: Member) {
+    // TODO Dialog
+    this.testData.data = this.testData.data.filter((member) => member.uid !== target.uid);
+  }
+
+  onEditMember(target: Member) {
+    this.isEditingStatus = true;
+    this.memberForm.setValue(target);
+  }
+
+  onCancel() {
+    this.memberForm.reset();
+    this.isAddingStatus = false;
+    this.isEditingStatus = false;
+    this.isAddingStatusChange.emit(false);
   }
 }
