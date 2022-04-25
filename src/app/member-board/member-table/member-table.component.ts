@@ -10,11 +10,14 @@ import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
 import { 算命服務器 } from 'src/app/services/算命/算命.service';
+import { MemberService } from 'src/app/services/member/member.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 const moment = _rollupMoment || _moment;
 
 const TEST_DATA: Member[] = [new Member({ name: 'Thomas', dob: '1994/11/26 05:30', gender: 性別.Male })];
 
+@UntilDestroy()
 @Component({
   selector: 'app-member-table',
   templateUrl: './member-table.component.html',
@@ -45,6 +48,7 @@ export class MemberTableComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly 命盤服務: 命盤服務器,
     private readonly 算命服務: 算命服務器,
+    private readonly memberService: MemberService,
   ) {}
 
   ngOnInit(): void {}
@@ -71,7 +75,7 @@ export class MemberTableComponent implements OnInit {
       const 天干地支命盤 = this.命盤服務.生成天干地支命盤(newMember.getDobDate(), newMember.isMale());
       this.算命服務.算命(天干地支命盤);
       newMember.setHoroscope(天干地支命盤);
-      console.log(newMember);
+      this.memberService.create(newMember).pipe(untilDestroyed(this)).subscribe();
       const newList = [...this.testData.data, newMember];
       this.testData.data = newList;
       this.memberForm.reset();
