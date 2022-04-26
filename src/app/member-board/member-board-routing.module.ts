@@ -7,10 +7,12 @@ import { MemberHoroscopeComponent } from 'src/app/member-board/member-horoscope/
 const routes: Routes = [
   {
     path: '',
+    data: { title: '新增會員' },
     component: MemberBoardComponent,
   },
   {
     path: 'horoscope/:id',
+    data: { title: '算命結果' },
     component: MemberHoroscopeComponent,
   },
 ];

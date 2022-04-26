@@ -1,3 +1,7 @@
+<header>
+  <button mat-button (click)="onBack()"><mat-icon>arrow_back</mat-icon></button>
+  <h1>{{ title }}</h1>
+</header>
 <main>
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="onMainActivated(outlet.activatedRouteData)" #outlet="outlet"></router-outlet>
 </main>
