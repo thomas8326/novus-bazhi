@@ -51,4 +51,17 @@ export class BaseApiService {
     };
     return this.http.patch<T>(`${this.endPoint}/${url}`, body, options);
   }
+
+  delete(url: string, params?: HttpParams) {
+    const responseType: 'arraybuffer' | 'blob' | 'json' | 'text' = 'text';
+    const option = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: params,
+      responseType,
+    };
+
+    return this.http.delete(`${this.endPoint}/${url}`, option);
+  }
 }

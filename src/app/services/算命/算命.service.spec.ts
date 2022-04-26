@@ -22,10 +22,11 @@ describe('FortuneTellingService', () => {
   describe('test with 天干', () => {
     function 創建測試天干命盤(本命: 天干[], 大運: 天干, 流年: 天干): 天干命盤 {
       return {
-        命盤結果: new 命盤結果(),
-        本命,
-        大運,
-        流年,
+        year: 2022,
+        horoscopeResult: new 命盤結果(),
+        myFateSet: 本命,
+        bigFortune: 大運,
+        yearFortune: 流年,
       };
     }
 
@@ -35,7 +36,7 @@ describe('FortuneTellingService', () => {
 
         service.算天干(測試案例);
 
-        expect(測試案例.命盤結果.作用).toEqual(測試.預期);
+        expect(測試案例.horoscopeResult.reaction).toEqual(測試.預期);
       });
     }
 
@@ -49,7 +50,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,
@@ -64,7 +65,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: false,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,
@@ -79,7 +80,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,
@@ -94,7 +95,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: false,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,
@@ -109,7 +110,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: false,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -124,7 +125,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -139,7 +140,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,
@@ -154,7 +155,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: false,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -169,7 +170,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -184,7 +185,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,
@@ -199,7 +200,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: false,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -214,7 +215,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -229,7 +230,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,
@@ -244,7 +245,7 @@ describe('FortuneTellingService', () => {
 
       service.算天干(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,
@@ -258,10 +259,11 @@ describe('FortuneTellingService', () => {
   describe('test with 地支', () => {
     function 創建測試地支命盤(本命: 地支[], 大運: 地支, 流年: 地支): 地支命盤 {
       return {
-        命盤結果: new 命盤結果(),
-        本命,
-        大運,
-        流年,
+        year: 2022,
+        horoscopeResult: new 命盤結果(),
+        myFateSet: 本命,
+        bigFortune: 大運,
+        yearFortune: 流年,
       };
     }
 
@@ -270,7 +272,7 @@ describe('FortuneTellingService', () => {
 
       service.算地支(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: false,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -285,7 +287,7 @@ describe('FortuneTellingService', () => {
 
       service.算地支(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -300,7 +302,7 @@ describe('FortuneTellingService', () => {
 
       service.算地支(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: false,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -313,7 +315,7 @@ describe('FortuneTellingService', () => {
     it('should return correct result when calling function of 算地支 with case 子寅寅申 | 巳子', () => {
       const 測試案例 = 創建測試地支命盤([地支.子, 地支.寅, 地支.寅, 地支.申], 地支.巳, 地支.子);
       service.算地支(測試案例);
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: false,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: false,
@@ -328,7 +330,7 @@ describe('FortuneTellingService', () => {
 
       service.算地支(測試案例);
 
-      expect(測試案例.命盤結果.作用).toEqual({
+      expect(測試案例.horoscopeResult.reaction).toEqual({
         [命盤結果屬性.時住已作用]: true,
         [命盤結果屬性.日住已作用]: false,
         [命盤結果屬性.月住已作用]: true,

@@ -1,0 +1,4887 @@
+{
+  "members": [
+    {
+      "id": "927f90da-23b8-4d2e-818f-ad12b5fa7b30",
+      "name": "施",
+      "dob": "1994-11-25T21:34:06.473Z",
+      "gender": "男",
+      "horoscope": {
+        "天干": [
+          {
+            "year": 1994,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "yearFortune": "甲"
+          },
+          {
+            "year": 1995,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "yearFortune": "乙"
+          },
+          {
+            "year": 1996,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "yearFortune": "丙"
+          },
+          {
+            "year": 1997,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "yearFortune": "丁"
+          },
+          {
+            "year": 1998,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 1999,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "[陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2000,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2001,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2002,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2003,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2004,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲,甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2005,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2006,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2007,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丙",
+            "yearFortune": "丁"
+          },
+          {
+            "year": 2008,
+            "horoscopeResult": {
+              "scores": [
+                "剋土",
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 2009,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "",
+              "yinYanScore": "[陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2010,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2011,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛,辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2012,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2013,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2014,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲,甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2015,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙,乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2016,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2017,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁,丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "丁",
+            "yearFortune": "丁"
+          },
+          {
+            "year": 2018,
+            "horoscopeResult": {
+              "scores": [
+                "剋土",
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊,戊] (五行: 土)",
+              "yinYanScore": " <生>=> [陰: 辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 2019,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 戊] (五行: 土)",
+              "yinYanScore": "[陽: 戊] (五行: 土) <生>=> [陰: 辛] (五行: 金) <剋>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2020,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2021,
+            "horoscopeResult": {
+              "scores": [
+                "剋土",
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2022,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2023,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2024,
+            "horoscopeResult": {
+              "scores": [
+                "流年剋大運 => 剋土",
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2025,
+            "horoscopeResult": {
+              "scores": [
+                "剋土",
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2026,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2027,
+            "horoscopeResult": {
+              "scores": [
+                "剋土",
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "戊",
+            "yearFortune": "丁"
+          },
+          {
+            "year": 2028,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 戊] (五行: 土)",
+              "yinYanScore": "[陽: 戊] (五行: 土) <生>=> [陰: 辛] (五行: 金) <剋>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 2029,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2030,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2031,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2032,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2033,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2034,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2035,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2036,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "[陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2037,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "",
+              "yinYanScore": "[陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "己",
+            "yearFortune": "丁"
+          },
+          {
+            "year": 2038,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 2039,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2040,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2041,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2042,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2043,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2044,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲,甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2045,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2046,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2047,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "庚",
+            "yearFortune": "丁"
+          },
+          {
+            "year": 2048,
+            "horoscopeResult": {
+              "scores": [
+                "剋土",
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 2049,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2050,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2051,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛,辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2052,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2053,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2054,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陽: 甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2055,
+            "horoscopeResult": {
+              "scores": [
+                "大運剋流年 => 剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2056,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2057,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛,辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "辛",
+            "yearFortune": "丁"
+          },
+          {
+            "year": 2058,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木) <剋>=> [陽: 戊] (五行: 土)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 2059,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2060,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2061,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2062,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬,壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬,壬] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2063,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] [陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2064,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2065,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2066,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2067,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "壬",
+            "yearFortune": "丁"
+          },
+          {
+            "year": 2068,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 2069,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2070,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2071,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2072,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] [陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2073,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸,癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2074,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2075,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2076,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2077,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "癸",
+            "yearFortune": "丁"
+          },
+          {
+            "year": 2078,
+            "horoscopeResult": {
+              "scores": [
+                "大運剋流年 => 剋土",
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "戊"
+          },
+          {
+            "year": 2079,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "己"
+          },
+          {
+            "year": 2080,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲,甲] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "庚"
+          },
+          {
+            "year": 2081,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛,辛] (五行: 金) <剋>=> [陽: 甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "辛"
+          },
+          {
+            "year": 2082,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 壬] (五行: 水) <生>=> [陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陽: 壬] (五行: 水) <生>=> [陽: 甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "壬"
+          },
+          {
+            "year": 2083,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <生>=> [陰: 癸] (五行: 水) <生>=> [陽: 甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "癸"
+          },
+          {
+            "year": 2084,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲,甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲,甲,甲] [陰: 乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "甲"
+          },
+          {
+            "year": 2085,
+            "horoscopeResult": {
+              "scores": [
+                "剋木"
+              ],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陰: 辛] (五行: 金) <剋>=> [陽: 甲,甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "乙"
+          },
+          {
+            "year": 2086,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲,甲] [陰: 乙,乙] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "丙"
+          },
+          {
+            "year": 2087,
+            "horoscopeResult": {
+              "scores": [
+                "剋金"
+              ],
+              "yanScore": "[陽: 甲,甲] (五行: 木)",
+              "yinYanScore": "[陽: 甲,甲] [陰: 乙] (五行: 木) <生>=> [陰: 丁] (五行: 火) <剋>=> [陰: 辛] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "辛",
+              "丙",
+              "乙",
+              "甲"
+            ],
+            "bigFortune": "甲",
+            "yearFortune": "丁"
+          }
+        ],
+        "地支": [
+          {
+            "year": 1994,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "yearFortune": "戌"
+          },
+          {
+            "year": 1995,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "yearFortune": "亥"
+          },
+          {
+            "year": 1996,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "yearFortune": "子"
+          },
+          {
+            "year": 1997,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "yearFortune": "丑"
+          },
+          {
+            "year": 1998,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <剋>=> [陽: 子] (五行: 水)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "寅"
+          },
+          {
+            "year": 1999,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土) <剋>=> [陽: 子] (五行: 水)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "卯"
+          },
+          {
+            "year": 2000,
+            "horoscopeResult": {
+              "scores": [
+                "流年剋大運 => 剋水"
+              ],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "辰"
+          },
+          {
+            "year": 2001,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <剋>=> [陽: 子] [陰: 亥] (五行: 水)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "巳"
+          },
+          {
+            "year": 2002,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水"
+              ],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土) <剋>=> [陽: 子] [陰: 亥] (五行: 水)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "午"
+          },
+          {
+            "year": 2003,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水",
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <剋>=> [陽: 子] [陰: 亥] (五行: 水)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "未"
+          },
+          {
+            "year": 2004,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陽: 子] (五行: 水)",
+              "yinYanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陽: 子] [陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "申"
+          },
+          {
+            "year": 2005,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 戌] (五行: 土) <剋>=> [陽: 子] (五行: 水)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": true,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "酉"
+          },
+          {
+            "year": 2006,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土) <剋>=> [陽: 子] (五行: 水)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "戌"
+          },
+          {
+            "year": 2007,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <剋>=> [陽: 子] [陰: 亥,亥] (五行: 水)",
+              "yinYanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陰: 卯] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "子",
+            "yearFortune": "亥"
+          },
+          {
+            "year": 2008,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "子"
+          },
+          {
+            "year": 2009,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 丑,丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "丑"
+          },
+          {
+            "year": 2010,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "寅"
+          },
+          {
+            "year": 2011,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰] [陰: 丑] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "卯"
+          },
+          {
+            "year": 2012,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] [陰: 丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "辰"
+          },
+          {
+            "year": 2013,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] [陰: 丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "巳"
+          },
+          {
+            "year": 2014,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,戌] [陰: 丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "午"
+          },
+          {
+            "year": 2015,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 丑,未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "未"
+          },
+          {
+            "year": 2016,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 申] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "申"
+          },
+          {
+            "year": 2017,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 戌] [陰: 丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": true,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "丑",
+            "yearFortune": "酉"
+          },
+          {
+            "year": 2018,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "戌"
+          },
+          {
+            "year": 2019,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "亥"
+          },
+          {
+            "year": 2020,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <剋>=> [陽: 子] (五行: 水)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "子"
+          },
+          {
+            "year": 2021,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "丑"
+          },
+          {
+            "year": 2022,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "寅"
+          },
+          {
+            "year": 2023,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "卯"
+          },
+          {
+            "year": 2024,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "辰"
+          },
+          {
+            "year": 2025,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "巳"
+          },
+          {
+            "year": 2026,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "午"
+          },
+          {
+            "year": 2027,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "寅",
+            "yearFortune": "未"
+          },
+          {
+            "year": 2028,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "申"
+          },
+          {
+            "year": 2029,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "",
+              "yinYanScore": "[陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": true,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "酉"
+          },
+          {
+            "year": 2030,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "戌"
+          },
+          {
+            "year": 2031,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <剋>=> [陰: 亥,亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "亥"
+          },
+          {
+            "year": 2032,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土) <剋>=> [陽: 子] (五行: 水)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "子"
+          },
+          {
+            "year": 2033,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰] [陰: 丑] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "丑"
+          },
+          {
+            "year": 2034,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "寅"
+          },
+          {
+            "year": 2035,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "卯"
+          },
+          {
+            "year": 2036,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰,辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰,辰] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "辰"
+          },
+          {
+            "year": 2037,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陽: 辰] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": false,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "卯",
+            "yearFortune": "巳"
+          },
+          {
+            "year": 2038,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "午"
+          },
+          {
+            "year": 2039,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "未"
+          },
+          {
+            "year": 2040,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陽: 辰,辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "申"
+          },
+          {
+            "year": 2041,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": true,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "酉"
+          },
+          {
+            "year": 2042,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰,辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰,辰] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "戌"
+          },
+          {
+            "year": 2043,
+            "horoscopeResult": {
+              "scores": [
+                "大運剋流年 => 剋水"
+              ],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "亥"
+          },
+          {
+            "year": 2044,
+            "horoscopeResult": {
+              "scores": [
+                "大運剋流年 => 剋水"
+              ],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "子"
+          },
+          {
+            "year": 2045,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] [陰: 丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "丑"
+          },
+          {
+            "year": 2046,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "寅"
+          },
+          {
+            "year": 2047,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰,辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰,辰] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "辰",
+            "yearFortune": "卯"
+          },
+          {
+            "year": 2048,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "辰"
+          },
+          {
+            "year": 2049,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陰: 巳,巳] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "巳"
+          },
+          {
+            "year": 2050,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "午"
+          },
+          {
+            "year": 2051,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "未"
+          },
+          {
+            "year": 2052,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "申"
+          },
+          {
+            "year": 2053,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": true,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "酉"
+          },
+          {
+            "year": 2054,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陽: 辰] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "戌"
+          },
+          {
+            "year": 2055,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥,亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "亥"
+          },
+          {
+            "year": 2056,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <剋>=> [陽: 子] [陰: 亥] (五行: 水)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "子"
+          },
+          {
+            "year": 2057,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] [陰: 丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "巳",
+            "yearFortune": "丑"
+          },
+          {
+            "year": 2058,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "寅"
+          },
+          {
+            "year": 2059,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陽: 辰] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "卯"
+          },
+          {
+            "year": 2060,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "辰"
+          },
+          {
+            "year": 2061,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "巳"
+          },
+          {
+            "year": 2062,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午,午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午,午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "午"
+          },
+          {
+            "year": 2063,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "未"
+          },
+          {
+            "year": 2064,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "申"
+          },
+          {
+            "year": 2065,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": true,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "酉"
+          },
+          {
+            "year": 2066,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陽: 辰] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "戌"
+          },
+          {
+            "year": 2067,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥,亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "午",
+            "yearFortune": "亥"
+          },
+          {
+            "year": 2068,
+            "horoscopeResult": {
+              "scores": [
+                "剋水",
+                "剋水",
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <剋>=> [陽: 子] [陰: 亥] (五行: 水)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "子"
+          },
+          {
+            "year": 2069,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 未,丑] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "丑"
+          },
+          {
+            "year": 2070,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "寅"
+          },
+          {
+            "year": 2071,
+            "horoscopeResult": {
+              "scores": [
+                "剋水"
+              ],
+              "yanScore": "[陽: 辰] (五行: 土)",
+              "yinYanScore": "[陽: 辰] [陰: 未] (五行: 土) <剋>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "卯"
+          },
+          {
+            "year": 2072,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,辰,戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "辰"
+          },
+          {
+            "year": 2073,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陰: 巳] (五行: 火) <生>=> [陽: 辰,戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "巳"
+          },
+          {
+            "year": 2074,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "午"
+          },
+          {
+            "year": 2075,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] [陰: 未,未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "未"
+          },
+          {
+            "year": 2076,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 申] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "申"
+          },
+          {
+            "year": 2077,
+            "horoscopeResult": {
+              "scores": [
+                "剋土"
+              ],
+              "yanScore": "[陽: 戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 戌] [陰: 未] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": true,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "未",
+            "yearFortune": "酉"
+          },
+          {
+            "year": 2078,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "戌"
+          },
+          {
+            "year": 2079,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陰: 亥,亥] (五行: 水) <生>=> [陰: 卯] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "亥"
+          },
+          {
+            "year": 2080,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陽: 子] (五行: 水)",
+              "yinYanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陽: 子] [陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "子"
+          },
+          {
+            "year": 2081,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 申] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "丑"
+          },
+          {
+            "year": 2082,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陰: 卯] (五行: 木) <生>=> [陽: 申] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": true,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "寅"
+          },
+          {
+            "year": 2083,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陽: 辰] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陰: 亥] (五行: 水)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": true,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": true,
+                "流年已作用": true,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "卯"
+          },
+          {
+            "year": 2084,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陽: 辰,辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金) <生>=> [陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "辰"
+          },
+          {
+            "year": 2085,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <剋>=> [陽: 辰,戌] (五行: 土)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": true,
+                "大運已作用": true
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "巳"
+          },
+          {
+            "year": 2086,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 午] (五行: 火) <生>=> [陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "午"
+          },
+          {
+            "year": 2087,
+            "horoscopeResult": {
+              "scores": [],
+              "yanScore": "[陽: 辰,戌] (五行: 土) <生>=> [陽: 申] (五行: 金)",
+              "yinYanScore": "[陰: 亥] (五行: 水) <生>=> [陰: 卯] (五行: 木) <生>=> [陽: 申] (五行: 金)",
+              "chineseDayRestriction": false,
+              "reaction": {
+                "時住已作用": false,
+                "日住已作用": false,
+                "月住已作用": false,
+                "年住已作用": false,
+                "流年已作用": false,
+                "大運已作用": false
+              }
+            },
+            "myFateSet": [
+              "卯",
+              "辰",
+              "亥",
+              "戌"
+            ],
+            "bigFortune": "申",
+            "yearFortune": "未"
+          }
+        ]
+      }
+    }
+  ]
+}

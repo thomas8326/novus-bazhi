@@ -1,8 +1,8 @@
 <div class="container" *ngIf="member">
   <div class="panel-header">
-    <mat-icon>keyboard_arrow_left</mat-icon>
+    <mat-icon (click)="onAddYear(-1)">keyboard_arrow_left</mat-icon>
     <div>{{ member.name }}</div>
-    <mat-icon>keyboard_arrow_right</mat-icon>
+    <mat-icon (click)="onAddYear(1)">keyboard_arrow_right</mat-icon>
   </div>
   <div class="panel-content">
     <table>
@@ -18,25 +18,67 @@
       </thead>
       <tbody>
         <tr *ngIf="currentGan">
-          <td>{{ currentGan['本命'][1] }}</td>
-          <td>{{ currentGan['本命'][2] }}</td>
-          <td>{{ currentGan['本命'][3] }}</td>
-          <td>{{ currentGan['大運'] }}</td>
-          <td>{{ currentGan['流年'] }}</td>
+          <td>{{ currentGan.myFateSet[0] }}</td>
+          <td>{{ currentGan.myFateSet[1] }}</td>
+          <td>{{ currentGan.myFateSet[2] }}</td>
+          <td>{{ currentGan.myFateSet[3] }}</td>
+          <td>{{ currentGan.bigFortune }}</td>
+          <td>{{ currentGan.yearFortune }}</td>
         </tr>
         <tr *ngIf="currentZhi">
-          <td>{{ currentZhi['本命'][0] }}</td>
-          <td>{{ currentZhi['本命'][1] }}</td>
-          <td>{{ currentZhi['本命'][2] }}</td>
-          <td>{{ currentZhi['本命'][3] }}</td>
-          <td>{{ currentZhi['大運'] }}</td>
-          <td>{{ currentZhi['流年'] }}</td>
+          <td>{{ currentZhi.myFateSet[0] }}</td>
+          <td>{{ currentZhi.myFateSet[1] }}</td>
+          <td>{{ currentZhi.myFateSet[2] }}</td>
+          <td>{{ currentZhi.myFateSet[3] }}</td>
+          <td>{{ currentZhi.bigFortune }}</td>
+          <td>{{ currentZhi.yearFortune }}</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <!-- <td *ngIf="currentGan" colspan="3">{{ currentGan.year }} {{currentGan.本命}}</td>
-          <td colspan="3">{{ currentGan['本命'][1] }}</td> -->
+          <td *ngIf="currentGan" colspan="3">
+            <div class="result-board">
+              <div class="score-board">
+                <span>天干受剋: </span>
+                <ul *ngIf="currentGan.horoscopeResult.scores.length; else none">
+                  <li *ngFor="let score of currentGan.horoscopeResult.scores">{{ score }}</li>
+                </ul>
+                <ng-template #none>
+                  <span>無</span>
+                </ng-template>
+              </div>
+              <div class="yinyan-board">
+                <div
+                  >天干陽流通: <br />
+                  {{ currentGan.horoscopeResult.yanScore }}</div
+                >
+                <div>天干陰陽流通: <br />{{ currentGan.horoscopeResult.yinYanScore }}</div>
+              </div>
+            </div>
+          </td>
+          <td *ngIf="currentZhi" colspan="3">
+            <div class="result-board">
+              <div class="score-board">
+                <span>地支受剋: </span>
+                <ul *ngIf="currentZhi.horoscopeResult.scores.length; else none">
+                  <li *ngFor="let score of currentZhi.horoscopeResult.scores">{{ score }}</li>
+                </ul>
+                <ng-template #none>
+                  <span>無</span>
+                </ng-template>
+              </div>
+              <div class="yinyan-board">
+                <div
+                  >地支陽流通: <br />
+                  {{ currentZhi.horoscopeResult.yanScore }}</div
+                >
+                <div
+                  >地支陰陽流通: <br />
+                  {{ currentZhi.horoscopeResult.yinYanScore }}</div
+                >
+              </div>
+            </div>
+          </td>
         </tr>
       </tfoot>
     </table>

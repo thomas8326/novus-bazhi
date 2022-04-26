@@ -20,10 +20,41 @@
 
 table {
   width: 100%;
+  height: 1px;
+  table-layout: fixed;
   border-collapse: collapse;
 }
 
 th,
 td {
+  text-align: center;
   border: 1px solid black;
+}
+
+.result-board {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-align: start;
+
+  .score-board {
+    flex: 1;
+    padding: 10px;
+
+    .no-result,
+    ul {
+      margin: 0;
+      padding-left: 40px;
+      list-style: decimal;
+    }
+  }
+
+  .yinyan-board {
+    flex: 110px;
+    max-height: 110px;
+    font-size: 10px;
+    background: #e2e0e0;
+    border-top: 1px solid;;
+  }
 }

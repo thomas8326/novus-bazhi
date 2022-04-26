@@ -24,20 +24,18 @@ export interface 命盤作用 {
 }
 
 export class 命盤結果 {
-  作用: 命盤作用;
+  reaction: 命盤作用;
 
-  評分: string[] = [];
+  scores: string[] = [];
 
-  剋五行: string[] = [];
+  yanScore: string = '';
 
-  批陽: 五行結果[] = [];
+  yinYanScore: string = '';
 
-  流通: 五行結果[] = [];
-
-  日柱受剋: boolean = false;
+  chineseDayRestriction: boolean = false;
 
   constructor() {
-    this.作用 = {
+    this.reaction = {
       時住已作用: false,
       日住已作用: false,
       月住已作用: false,
@@ -49,28 +47,29 @@ export class 命盤結果 {
 
   新增大運流年相剋評分(被剋對象: 天干 | 地支, 大運剋流年: boolean) {
     const 大運流年五行 = 五行轉換(被剋對象);
-    this.剋五行.push(大運流年五行);
-    this.評分.push(`${大運剋流年 ? '大運剋流年' : '流年剋大運'} => 剋${大運流年五行}`);
+    this.scores.push(`${大運剋流年 ? '大運剋流年' : '流年剋大運'} => 剋${大運流年五行}`);
   }
 
   新增日柱受剋() {
-    this.評分.push(`日主受剋`);
-    this.日柱受剋 = true;
+    this.scores.push(`日主受剋`);
+    this.chineseDayRestriction = true;
   }
 
   先批陽(五行結果: 五行結果[]) {
-    this.批陽 = 五行結果;
-    return this.批陽批陰先生後剋(五行結果);
+    const { 新五行結果, 評分結果 } = this.批陽批陰先生後剋(五行結果);
+    this.yanScore = 評分結果;
+    return 新五行結果;
   }
 
   再流通(五行結果: 五行結果[]) {
-    this.流通 = 五行結果;
-    return this.批陽批陰先生後剋(五行結果);
+    const { 新五行結果, 評分結果 } = this.批陽批陰先生後剋(五行結果);
+    this.yinYanScore = 評分結果;
+    return 新五行結果;
   }
 
-  private 批陽批陰先生後剋(五行結果: 五行結果[]) {
+  private 批陽批陰先生後剋(五行結果: 五行結果[]): { 新五行結果: 五行結果[]; 評分結果: string } {
     if (!五行結果.length) {
-      return [];
+      return { 新五行結果: [], 評分結果: '' };
     }
 
     let 評分結果 = '';
@@ -88,13 +87,13 @@ export class 命盤結果 {
       const text = 文字轉換(current);
 
       if (current.生剋 === '生') {
-        評分結果 = i === 0 ? text : `${評分結果} <生>=> ${text}`;
+        評分結果 = i === 0 ? text : `${評分結果} 生 ${text}`;
       }
     }
     const lastIndex = 新五行結果.length - 1;
 
     if (新五行結果.length >= 2 && 新五行結果[lastIndex].生剋 === '剋') {
-      評分結果 = `${評分結果} <剋>=> ${文字轉換(新五行結果[lastIndex])}`;
+      評分結果 = `${評分結果} 剋 ${文字轉換(新五行結果[lastIndex])}`;
 
       let 陽剋人力量 = 新五行結果[lastIndex - 1].陽陣.length;
       let 陰剋人力量 = 新五行結果[lastIndex - 1].陰陣.length;
@@ -102,7 +101,7 @@ export class 命盤結果 {
       let 陰被剋力量 = 新五行結果[lastIndex].陰陣.length;
 
       while (陽剋人力量 > 0 && 陽被剋力量 + 陰被剋力量 > 0) {
-        this.剋五行.push(新五行結果[lastIndex].五行);
+        this.scores.push(`剋${新五行結果[lastIndex].五行}`);
         陽剋人力量--;
         if (陽被剋力量 > 0) {
           陽被剋力量--;
@@ -112,7 +111,7 @@ export class 命盤結果 {
       }
 
       while (陰剋人力量 > 0 && 陰被剋力量 > 0) {
-        this.剋五行.push(新五行結果[lastIndex].五行);
+        this.scores.push(`剋${新五行結果[lastIndex].五行}`);
         陰剋人力量--;
         陰被剋力量--;
       }
@@ -133,9 +132,7 @@ export class 命盤結果 {
       }
     }
 
-    this.評分.push(評分結果);
-
-    return 新五行結果;
+    return { 新五行結果, 評分結果 };
   }
 }
 
@@ -156,16 +153,16 @@ export interface 五行陣列 {
 
 export interface 天干命盤 {
   year: number;
-  命盤結果: 命盤結果;
-  本命: 天干[];
-  大運: 天干;
-  流年: 天干;
+  horoscopeResult: 命盤結果;
+  myFateSet: 天干[];
+  bigFortune: 天干;
+  yearFortune: 天干;
 }
 
 export interface 地支命盤 {
   year: number;
-  命盤結果: 命盤結果;
-  本命: 地支[];
-  大運: 地支;
-  流年: 地支;
+  horoscopeResult: 命盤結果;
+  myFateSet: 地支[];
+  bigFortune: 地支;
+  yearFortune: 地支;
 }

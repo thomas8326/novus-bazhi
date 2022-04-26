@@ -50,18 +50,18 @@ export class 命盤服務器 {
       for (const 流年值 of 大運值.流年) {
         暫存天干.push({
           year: 流年值.年,
-          命盤結果: new 命盤結果(),
-          本命: 基礎命盤.天干本命,
-          大運: 大運值.天干,
-          流年: 流年值.天干,
+          horoscopeResult: new 命盤結果(),
+          myFateSet: 基礎命盤.天干本命,
+          bigFortune: 大運值.天干,
+          yearFortune: 流年值.天干,
         });
 
         暫存地支.push({
           year: 流年值.年,
-          命盤結果: new 命盤結果(),
-          本命: 基礎命盤.地支本命,
-          大運: 大運值.地支,
-          流年: 流年值.地支,
+          horoscopeResult: new 命盤結果(),
+          myFateSet: 基礎命盤.地支本命,
+          bigFortune: 大運值.地支,
+          yearFortune: 流年值.地支,
         });
       }
       結果命盤.天干 = 結果命盤.天干.concat(暫存天干);

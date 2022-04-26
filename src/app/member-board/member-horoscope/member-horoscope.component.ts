@@ -5,6 +5,7 @@ import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
 import { switchMap } from 'rxjs/operators';
 import { 天干命盤, 地支命盤 } from 'src/app/interfaces/命盤';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-member-horoscope',
@@ -14,6 +15,7 @@ import { 天干命盤, 地支命盤 } from 'src/app/interfaces/命盤';
 export class MemberHoroscopeComponent implements OnInit {
   member: Member | null = null;
   currentYear: number = new Date().getFullYear();
+  yearChangeSubject = new Subject();
   currentGan?: 天干命盤;
   currentZhi?: 地支命盤;
 
@@ -26,6 +28,12 @@ export class MemberHoroscopeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onAddYear(value: number) {
+    this.currentYear = this.currentYear + value;
+    this.updateCurrentGan();
+    this.updateCurrentZhi();
+  }
 
   updateCurrentGan() {
     this.currentGan = this.member?.horoscope.天干.find((干) => 干.year === this.currentYear);

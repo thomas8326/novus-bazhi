@@ -24,13 +24,13 @@ export class 算命服務器 {
 
   算命(目標命盤: 命盤) {
     for (const 天干算命 of 目標命盤.天干) {
-      if (天干算命.大運) {
+      if (天干算命.bigFortune) {
         this.算天干(天干算命);
       }
     }
 
     for (const 地支算命 of 目標命盤.地支) {
-      if (地支算命.大運) {
+      if (地支算命.bigFortune) {
         this.算地支(地支算命);
       }
     }
@@ -61,10 +61,10 @@ export class 算命服務器 {
     const 陽流通陣列 = this.先生後剋(陽);
     const 陽流通陣列補陰 = this.當生陽大於剋陽時補陰(陽流通陣列, 陰);
 
-    const 批陽結果 = 對象命盤.命盤結果.先批陽(陽流通陣列補陰.陽結果);
+    const 批陽結果 = 對象命盤.horoscopeResult.先批陽(陽流通陣列補陰.陽結果);
 
     const 流通陣列 = this.五行結果流通(批陽結果, 陰);
-    對象命盤.命盤結果.再流通(流通陣列);
+    對象命盤.horoscopeResult.再流通(流通陣列);
   }
 
   private 先生後剋(天干地支: (天干 | 地支)[], 是否為陽 = true) {
@@ -285,17 +285,17 @@ export class 算命服務器 {
       }
     };
 
-    if (!對象命盤.命盤結果.作用.大運已作用) 新增陰陽(對象命盤.大運);
-    if (!對象命盤.命盤結果.作用.流年已作用) 新增陰陽(對象命盤.流年);
+    if (!對象命盤.horoscopeResult.reaction.大運已作用) 新增陰陽(對象命盤.bigFortune);
+    if (!對象命盤.horoscopeResult.reaction.流年已作用) 新增陰陽(對象命盤.yearFortune);
 
-    for (let i = 0; i < 對象命盤.本命.length; i++) {
+    for (let i = 0; i < 對象命盤.myFateSet.length; i++) {
       if (this.是否為天干 && i === 1) {
         // 日住不作用
         continue;
       }
 
-      if (!對象命盤.命盤結果.作用[this.年月日時住轉換(i)]) {
-        新增陰陽(對象命盤.本命[i]);
+      if (!對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)]) {
+        新增陰陽(對象命盤.myFateSet[i]);
       }
     }
 
@@ -303,23 +303,23 @@ export class 算命服務器 {
   }
 
   private 大運流年相合(對象命盤: 天干命盤 | 地支命盤) {
-    if (this.是否相合(對象命盤.大運, 對象命盤.流年)) {
-      對象命盤.命盤結果.作用.大運已作用 = true;
-      對象命盤.命盤結果.作用.流年已作用 = true;
-      this.大運流年消相同本命(對象命盤, 對象命盤.大運, 對象命盤.流年);
+    if (this.是否相合(對象命盤.bigFortune, 對象命盤.yearFortune)) {
+      對象命盤.horoscopeResult.reaction.大運已作用 = true;
+      對象命盤.horoscopeResult.reaction.流年已作用 = true;
+      this.大運流年消相同本命(對象命盤, 對象命盤.bigFortune, 對象命盤.yearFortune);
     }
   }
 
   private 流年剋大運(對象命盤: 天干命盤 | 地支命盤) {
-    return !對象命盤.命盤結果.作用.流年已作用 && this.是否相刻(對象命盤.流年, 對象命盤.大運);
+    return !對象命盤.horoscopeResult.reaction.流年已作用 && this.是否相刻(對象命盤.yearFortune, 對象命盤.bigFortune);
   }
 
   private 大運剋流年(對象命盤: 天干命盤 | 地支命盤) {
-    return !對象命盤.命盤結果.作用.大運已作用 && this.是否相刻(對象命盤.大運, 對象命盤.流年);
+    return !對象命盤.horoscopeResult.reaction.大運已作用 && this.是否相刻(對象命盤.bigFortune, 對象命盤.yearFortune);
   }
 
   private 大運流年相剋找人救(對象命盤: 天干命盤 | 地支命盤) {
-    for (let i = 0; i < 對象命盤.本命.length; i++) {
+    for (let i = 0; i < 對象命盤.myFateSet.length; i++) {
       if (this.是否為天干 && i === 1) {
         // 日住不作用
         continue;
@@ -327,16 +327,16 @@ export class 算命服務器 {
 
       // 救流年
       if (
-        !對象命盤.命盤結果.作用[this.年月日時住轉換(i)] &&
-        this.是否能救(對象命盤.本命[i], 對象命盤.大運, 對象命盤.流年)
+        !對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)] &&
+        this.是否能救(對象命盤.myFateSet[i], 對象命盤.bigFortune, 對象命盤.yearFortune)
       ) {
         return true;
       }
 
       // 救大運
       if (
-        !對象命盤.命盤結果.作用[this.年月日時住轉換(i)] &&
-        this.是否能救(對象命盤.本命[i], 對象命盤.流年, 對象命盤.大運)
+        !對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)] &&
+        this.是否能救(對象命盤.myFateSet[i], 對象命盤.yearFortune, 對象命盤.bigFortune)
       ) {
         return true;
       }
@@ -345,14 +345,14 @@ export class 算命服務器 {
   }
 
   private 大運流年消相同本命(對象命盤: 天干命盤 | 地支命盤, 消失目標1: 天干 | 地支, 消失目標2?: 天干 | 地支) {
-    for (let i = 0; i < 對象命盤.本命.length; i++) {
+    for (let i = 0; i < 對象命盤.myFateSet.length; i++) {
       if (this.是否為天干 && i === 1) {
         // 日住不作用
         continue;
       }
 
-      if (對象命盤.本命[i] === 消失目標1 || 對象命盤.本命[i] === 消失目標2) {
-        對象命盤.命盤結果.作用[this.年月日時住轉換(i)] = true;
+      if (對象命盤.myFateSet[i] === 消失目標1 || 對象命盤.myFateSet[i] === 消失目標2) {
+        對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)] = true;
       }
     }
   }
@@ -362,32 +362,32 @@ export class 算命服務器 {
     let 消相同本命: 天干 | 地支 | null = null;
     let 本命已與大運流年相合 = false;
 
-    for (let i = 0; i < 對象命盤.本命.length; i++) {
+    for (let i = 0; i < 對象命盤.myFateSet.length; i++) {
       if (this.是否為天干 && i === 1) {
         // 日住不作用
         continue;
       }
 
       const 大運本命未先合 = () =>
-        !(對象命盤.命盤結果.作用.大運已作用 || 對象命盤.命盤結果.作用[this.年月日時住轉換(i)]);
+        !(對象命盤.horoscopeResult.reaction.大運已作用 || 對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)]);
       const 流年本命未先合 = () =>
-        !(對象命盤.命盤結果.作用.流年已作用 || 對象命盤.命盤結果.作用[this.年月日時住轉換(i)]);
+        !(對象命盤.horoscopeResult.reaction.流年已作用 || 對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)]);
 
-      const 大運本命相合 = 大運本命未先合() && this.是否相合(對象命盤.本命[i], 對象命盤.大運);
-      const 流年本命相合 = 流年本命未先合() && this.是否相合(對象命盤.本命[i], 對象命盤.流年);
+      const 大運本命相合 = 大運本命未先合() && this.是否相合(對象命盤.myFateSet[i], 對象命盤.bigFortune);
+      const 流年本命相合 = 流年本命未先合() && this.是否相合(對象命盤.myFateSet[i], 對象命盤.yearFortune);
 
       if (大運本命相合) {
         準備解合物件 = this.年月日時住轉換(i);
-        消相同本命 = 對象命盤.大運;
-        對象命盤.命盤結果.作用[準備解合物件] = true;
-        對象命盤.命盤結果.作用.大運已作用 = true;
+        消相同本命 = 對象命盤.bigFortune;
+        對象命盤.horoscopeResult.reaction[準備解合物件] = true;
+        對象命盤.horoscopeResult.reaction.大運已作用 = true;
         本命已與大運流年相合 = true;
       }
 
       if (流年本命相合) {
-        消相同本命 = 對象命盤.流年;
-        對象命盤.命盤結果.作用[this.年月日時住轉換(i)] = true;
-        對象命盤.命盤結果.作用.流年已作用 = true;
+        消相同本命 = 對象命盤.yearFortune;
+        對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)] = true;
+        對象命盤.horoscopeResult.reaction.流年已作用 = true;
         本命已與大運流年相合 = true;
       }
     }
@@ -401,19 +401,19 @@ export class 算命服務器 {
       }
 
       if (大運剋流年) {
-        對象命盤.命盤結果.作用.大運已作用 = false;
-        對象命盤.命盤結果.作用.流年已作用 = true;
+        對象命盤.horoscopeResult.reaction.大運已作用 = false;
+        對象命盤.horoscopeResult.reaction.流年已作用 = true;
       }
 
       if (流年剋大運) {
-        if (準備解合物件) 對象命盤.命盤結果.作用[準備解合物件] = false; // 解合
-        對象命盤.命盤結果.作用.大運已作用 = true;
-        對象命盤.命盤結果.作用.流年已作用 = false;
+        if (準備解合物件) 對象命盤.horoscopeResult.reaction[準備解合物件] = false; // 解合
+        對象命盤.horoscopeResult.reaction.大運已作用 = true;
+        對象命盤.horoscopeResult.reaction.流年已作用 = false;
       }
 
-      const 被剋對象 = 大運剋流年 ? 對象命盤.流年 : 對象命盤.大運;
+      const 被剋對象 = 大運剋流年 ? 對象命盤.yearFortune : 對象命盤.bigFortune;
 
-      對象命盤.命盤結果.新增大運流年相剋評分(被剋對象, 大運剋流年);
+      對象命盤.horoscopeResult.新增大運流年相剋評分(被剋對象, 大運剋流年);
       this.大運流年消相同本命(對象命盤, 被剋對象);
     } else {
       this.大運流年消相同本命(對象命盤, 消相同本命!);
@@ -421,7 +421,7 @@ export class 算命服務器 {
   }
 
   private 本命合(對象命盤: 天干命盤 | 地支命盤) {
-    for (let i = 0; i < 對象命盤.本命.length - 1; i++) {
+    for (let i = 0; i < 對象命盤.myFateSet.length - 1; i++) {
       if (this.是否為天干 && i === 1) {
         // 日住不作用
         continue;
@@ -431,17 +431,17 @@ export class 算命服務器 {
 
       do {
         if (
-          !對象命盤.命盤結果.作用[this.年月日時住轉換(i)] &&
-          !對象命盤.命盤結果.作用[this.年月日時住轉換(nextPointer)]
+          !對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)] &&
+          !對象命盤.horoscopeResult.reaction[this.年月日時住轉換(nextPointer)]
         ) {
           break;
         }
         nextPointer++;
-      } while (nextPointer < 對象命盤.本命.length);
+      } while (nextPointer < 對象命盤.myFateSet.length);
 
-      if (this.是否相合(對象命盤.本命[i], 對象命盤.本命[nextPointer])) {
-        對象命盤.命盤結果.作用[this.年月日時住轉換(i)] = true;
-        對象命盤.命盤結果.作用[this.年月日時住轉換(nextPointer)] = true;
+      if (this.是否相合(對象命盤.myFateSet[i], 對象命盤.myFateSet[nextPointer])) {
+        對象命盤.horoscopeResult.reaction[this.年月日時住轉換(i)] = true;
+        對象命盤.horoscopeResult.reaction[this.年月日時住轉換(nextPointer)] = true;
       }
     }
   }
