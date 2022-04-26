@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Observable } from 'rxjs/internal/Observable';
 import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
-import { of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { 天干命盤, 地支命盤 } from 'src/app/interfaces/命盤';
 
 @Component({
   selector: 'app-member-horoscope',
@@ -12,11 +12,26 @@ import { of } from 'rxjs';
   styleUrls: ['./member-horoscope.component.scss'],
 })
 export class MemberHoroscopeComponent implements OnInit {
-  member$: Observable<Member | null> = of(null);
+  member: Member | null = null;
+  currentYear: number = new Date().getFullYear();
+  currentGan?: 天干命盤;
+  currentZhi?: 地支命盤;
 
   constructor(private readonly activatedRoute: ActivatedRoute, private readonly memberService: MemberService) {
-    this.activatedRoute.params.subscribe(({ id }) => (this.member$ = this.memberService.getMember(id)));
+    this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
+      this.member = member;
+      this.updateCurrentGan();
+      this.updateCurrentZhi();
+    });
   }
 
   ngOnInit(): void {}
+
+  updateCurrentGan() {
+    this.currentGan = this.member?.horoscope.天干.find((干) => 干.year === this.currentYear);
+  }
+
+  updateCurrentZhi() {
+    this.currentZhi = this.member?.horoscope.地支.find((支) => 支.year === this.currentYear);
+  }
 }

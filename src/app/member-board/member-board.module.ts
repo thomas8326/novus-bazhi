@@ -19,7 +19,13 @@ import { DobPickerComponent } from './dob-picker/dob-picker.component';
 import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.component';
 
 @NgModule({
-  declarations: [MemberBoardComponent, MemberTableComponent, MemberControlPanelComponent, DobPickerComponent, MemberHoroscopeComponent],
+  declarations: [
+    MemberBoardComponent,
+    MemberTableComponent,
+    MemberControlPanelComponent,
+    DobPickerComponent,
+    MemberHoroscopeComponent,
+  ],
   imports: [
     CommonModule,
     MemberBoardRoutingModule,

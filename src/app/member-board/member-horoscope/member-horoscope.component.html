@@ -1,1 +1,44 @@
-<div *ngIf="member$ | async as member">{{ member.name }}</div>
+<div class="container" *ngIf="member">
+  <div class="panel-header">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    <div>{{ member.name }}</div>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </div>
+  <div class="panel-content">
+    <table>
+      <thead>
+        <tr>
+          <th>時</th>
+          <th>日</th>
+          <th>月</th>
+          <th>年</th>
+          <th>大運</th>
+          <th>流年</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="currentGan">
+          <td>{{ currentGan['本命'][1] }}</td>
+          <td>{{ currentGan['本命'][2] }}</td>
+          <td>{{ currentGan['本命'][3] }}</td>
+          <td>{{ currentGan['大運'] }}</td>
+          <td>{{ currentGan['流年'] }}</td>
+        </tr>
+        <tr *ngIf="currentZhi">
+          <td>{{ currentZhi['本命'][0] }}</td>
+          <td>{{ currentZhi['本命'][1] }}</td>
+          <td>{{ currentZhi['本命'][2] }}</td>
+          <td>{{ currentZhi['本命'][3] }}</td>
+          <td>{{ currentZhi['大運'] }}</td>
+          <td>{{ currentZhi['流年'] }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <!-- <td *ngIf="currentGan" colspan="3">{{ currentGan.year }} {{currentGan.本命}}</td>
+          <td colspan="3">{{ currentGan['本命'][1] }}</td> -->
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
