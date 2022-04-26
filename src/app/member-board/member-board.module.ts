@@ -10,6 +10,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatButtonModule } from '@angular/material/button';
 
 import { DirectivesModule } from 'src/app/directives/directives.module';
 
@@ -41,6 +42,7 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
     MatIconModule,
     OverlayModule,
     DirectivesModule,
+    MatButtonModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'zh-TW' }],
 })

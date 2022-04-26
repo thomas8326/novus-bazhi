@@ -16,13 +16,16 @@ export class MemberHoroscopeComponent implements OnInit {
   member: Member | null = null;
   currentYear: number = new Date().getFullYear();
   yearChangeSubject = new Subject();
+  minYear: number = 1900;
+  maxYear: number = 3000;
   currentGan?: 天干命盤;
   currentZhi?: 地支命盤;
 
   constructor(private readonly activatedRoute: ActivatedRoute, private readonly memberService: MemberService) {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       this.member = member;
-      console.log(this.member);
+      this.minYear = new Date(member.dob).getFullYear();
+      this.maxYear = this.minYear + member.horoscope.天干.length - 1;
       this.updateCurrentGan();
       this.updateCurrentZhi();
     });
@@ -42,5 +45,21 @@ export class MemberHoroscopeComponent implements OnInit {
 
   updateCurrentZhi() {
     this.currentZhi = this.member?.horoscope.地支.find((支) => 支.year === this.currentYear);
+  }
+
+  updateYear(value: string) {
+    const numberValue = Number(value);
+    if (isNaN(numberValue)) {
+      // NaN Handle
+      return;
+    }
+
+    if (this.minYear <= numberValue && numberValue <= this.maxYear) {
+      this.currentYear = numberValue;
+      this.updateCurrentGan();
+      this.updateCurrentZhi();
+    } else {
+      // TODO: Error Handle.
+    }
   }
 }

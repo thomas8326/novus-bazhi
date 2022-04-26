@@ -1,8 +1,15 @@
 <div class="container" *ngIf="member">
   <div class="panel-header">
-    <mat-icon (click)="onAddYear(-1)">keyboard_arrow_left</mat-icon>
-    <div class="title">{{ member.name }}{{ currentYear }}</div>
-    <mat-icon (click)="onAddYear(1)">keyboard_arrow_right</mat-icon>
+    <button mat-button (click)="onAddYear(-1)" [disabled]="currentYear <= minYear">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <div class="title">
+      {{ member.name }}
+      <input class="input-year" [value]="currentYear" (change)="updateYear(input.value)" #input />
+    </div>
+    <button mat-button (click)="onAddYear(1)" [disabled]="currentYear >= maxYear">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
   </div>
   <div class="panel-content">
     <table>
