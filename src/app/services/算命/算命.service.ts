@@ -403,12 +403,14 @@ export class 算命服務器 {
       if (大運剋流年) {
         對象命盤.horoscopeResult.reaction.大運已作用 = false;
         對象命盤.horoscopeResult.reaction.流年已作用 = true;
+        對象命盤.horoscopeResult.reaction.流年被剋 = true;
       }
 
       if (流年剋大運) {
         if (準備解合物件) 對象命盤.horoscopeResult.reaction[準備解合物件] = false; // 解合
         對象命盤.horoscopeResult.reaction.大運已作用 = true;
         對象命盤.horoscopeResult.reaction.流年已作用 = false;
+        對象命盤.horoscopeResult.reaction.大運被剋 = true;
       }
 
       const 被剋對象 = 大運剋流年 ? 對象命盤.yearFortune : 對象命盤.bigFortune;

@@ -22,6 +22,7 @@ export class MemberHoroscopeComponent implements OnInit {
   constructor(private readonly activatedRoute: ActivatedRoute, private readonly memberService: MemberService) {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       this.member = member;
+      console.log(this.member);
       this.updateCurrentGan();
       this.updateCurrentZhi();
     });

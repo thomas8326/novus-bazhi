@@ -11,6 +11,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
 
+import { DirectivesModule } from 'src/app/directives/directives.module';
+
 import { MemberBoardComponent } from './member-board.component';
 import { MemberBoardRoutingModule } from './member-board-routing.module';
 import { MemberTableComponent } from './member-table/member-table.component';
@@ -38,6 +40,7 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
     MatMomentDateModule,
     MatIconModule,
     OverlayModule,
+    DirectivesModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'zh-TW' }],
 })
