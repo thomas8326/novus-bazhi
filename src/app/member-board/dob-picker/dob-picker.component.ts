@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  forwardRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, forwardRef, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
@@ -42,7 +34,7 @@ export const VALUE_ACCESSOR: any = {
   styleUrls: ['./dob-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DobPickerComponent implements AfterViewInit, OnInit, ControlValueAccessor {
+export class DobPickerComponent implements OnInit, ControlValueAccessor {
   @ViewChild('formField') formField!: ElementRef;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -60,11 +52,7 @@ export class DobPickerComponent implements AfterViewInit, OnInit, ControlValueAc
   date = new FormControl('');
 
   ngOnInit(): void {
-    this.date.valueChanges.pipe(untilDestroyed(this)).subscribe((value) => this.onChange(value));
-  }
-
-  ngAfterViewInit() {
-    // this.onChange(this.date.value);
+    this.date.valueChanges.pipe(untilDestroyed(this)).subscribe((value: Moment) => this.onChange(value));
   }
 
   registerOnChange(fn: any) {
@@ -76,9 +64,7 @@ export class DobPickerComponent implements AfterViewInit, OnInit, ControlValueAc
   }
 
   writeValue(time: string) {
-    console.log('date', this.date.value);
-    console.log('time ', time);
-    this.date.setValue(moment(time, ['YYYY/MM/DD HH:mm']));
+    this.date.setValue(moment.locale(time, ['YYYY/MM/DD HH:mm']));
   }
 
   get currentHour() {

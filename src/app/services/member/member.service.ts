@@ -21,6 +21,10 @@ export class MemberService {
     return this.apiService.get<Member[]>(API_PATH).pipe(map((result) => result));
   }
 
+  replace(body: Member) {
+    return this.apiService.patch<Member>(`${API_PATH}/${body.id}`, body).pipe(map((result) => result));
+  }
+
   getMember(id: string): Observable<Member> {
     return this.apiService.get<Member>(`${API_PATH}/${id}`).pipe(map((result) => result));
   }

@@ -32,7 +32,7 @@
             <td [class.combination]="reaction['年住已作用']">{{ currentGan.myFateSet[3] }}</td>
             <td [class.combination]="reaction['大運已作用'] && !reaction['大運被剋']">
               <mat-icon class="restriction" *ngIf="reaction['大運被剋']">close</mat-icon>
-              {{ currentGan.bigFortune }}
+              {{ currentGan.bigFortune ? currentGan.bigFortune : '未起運' }}
             </td>
             <td [class.combination]="reaction['流年已作用'] && !reaction['流年被剋']">
               <mat-icon class="restriction" *ngIf="reaction['流年被剋']">close</mat-icon>
@@ -48,7 +48,7 @@
             <td [class.combination]="reaction['年住已作用']">{{ currentZhi.myFateSet[3] }}</td>
             <td [class.combination]="reaction['大運已作用'] && !reaction['大運被剋']">
               <mat-icon class="restriction" *ngIf="reaction['大運被剋']">close</mat-icon>
-              {{ currentZhi.bigFortune }}
+              {{ currentZhi.bigFortune ? currentZhi.bigFortune : '未起運' }}
             </td>
             <td [class.combination]="reaction['流年已作用'] && !reaction['流年被剋']">
               <mat-icon class="restriction" *ngIf="reaction['流年被剋']">close</mat-icon>
@@ -71,10 +71,10 @@
                 </ng-template>
               </div>
               <div class="yinyan-board">
-                <div
-                  >天干陽流通: <br />
-                  {{ currentGan.horoscopeResult.yanScore }}</div
-                >
+                <div>
+                  天干陽流通: <br />
+                  {{ currentGan.horoscopeResult.yanScore }}
+                </div>
                 <div>天干陰陽流通: <br />{{ currentGan.horoscopeResult.yinYanScore }}</div>
               </div>
             </div>
@@ -91,14 +91,14 @@
                 </ng-template>
               </div>
               <div class="yinyan-board">
-                <div
-                  >地支陽流通: <br />
-                  {{ currentZhi.horoscopeResult.yanScore }}</div
-                >
-                <div
-                  >地支陰陽流通: <br />
-                  {{ currentZhi.horoscopeResult.yinYanScore }}</div
-                >
+                <div>
+                  地支陽流通: <br />
+                  {{ currentZhi.horoscopeResult.yanScore }}
+                </div>
+                <div>
+                  地支陰陽流通: <br />
+                  {{ currentZhi.horoscopeResult.yinYanScore }}
+                </div>
               </div>
             </div>
           </td>
