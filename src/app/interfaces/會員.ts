@@ -7,14 +7,14 @@ export class Member {
   [會員欄位.Name]: string;
   [會員欄位.DateOfBirth]: string;
   [會員欄位.Gender]: 性別;
-  [會員欄位.Horoscope]: 命盤;
+  [會員欄位.Horoscope]: 命盤[];
 
   constructor(data: { id?: string; name: string; dob: string; gender: 性別 }) {
     this.id = data.id || uuidv4();
     this.name = data.name;
     this.dob = data.dob;
     this.gender = data.gender;
-    this.horoscope = { 天干: [], 地支: [] };
+    this.horoscope = [];
   }
 
   isMale(): boolean {
@@ -25,7 +25,7 @@ export class Member {
     return new Date(this.dob);
   }
 
-  setHoroscope(data: 命盤) {
+  setHoroscope(data: 命盤[]) {
     this.horoscope = data;
   }
 }

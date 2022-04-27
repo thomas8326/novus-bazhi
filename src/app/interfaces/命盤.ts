@@ -1,12 +1,32 @@
 import { 五行轉換 } from 'src/app/constants/constants';
 import { 五行 } from 'src/app/enums/五行.enum';
+import { 流月 } from 'src/app/interfaces/流年';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
 
-export interface 命盤 {
-  天干: 天干命盤[];
-  地支: 地支命盤[];
+export class 命盤 {
+  year: number;
+  myFateSet: { gan: 天干[]; zhi: 地支[] };
+  horoscopeResult: { gan: 命盤結果; zhi: 命盤結果 };
+  bigFortune: { gan: 天干; zhi: 地支 };
+  yearFortune: { gan: 天干; zhi: 地支 };
+  monthFortune: 流月[];
+
+  constructor(
+    year: number,
+    myFateSet: { gan: 天干[]; zhi: 地支[] },
+    bigFortune: { gan: 天干; zhi: 地支 },
+    yearFortune: { gan: 天干; zhi: 地支 },
+    monthFortune: 流月[],
+  ) {
+    this.year = year;
+    this.myFateSet = myFateSet;
+    this.bigFortune = bigFortune;
+    this.yearFortune = yearFortune;
+    this.monthFortune = monthFortune;
+    this.horoscopeResult = { gan: new 命盤結果(), zhi: new 命盤結果() };
+  }
 }
 
 export interface 命盤作用 {
@@ -161,6 +181,7 @@ export interface 天干命盤 {
   myFateSet: 天干[];
   bigFortune: 天干;
   yearFortune: 天干;
+  liuYue: 流月[];
 }
 
 export interface 地支命盤 {
@@ -169,4 +190,5 @@ export interface 地支命盤 {
   myFateSet: 地支[];
   bigFortune: 地支;
   yearFortune: 地支;
+  liuYue: 流月[];
 }

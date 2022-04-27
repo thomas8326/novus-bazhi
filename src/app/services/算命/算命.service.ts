@@ -22,16 +22,28 @@ import { 五行結果, 命盤, 地支命盤, 天干命盤 } from 'src/app/interf
 export class 算命服務器 {
   private 是否為天干: boolean = false;
 
-  算命(目標命盤: 命盤) {
-    for (const 天干算命 of 目標命盤.天干) {
-      if (天干算命.bigFortune) {
-        this.算天干(天干算命);
-      }
-    }
-
-    for (const 地支算命 of 目標命盤.地支) {
-      if (地支算命.bigFortune) {
-        this.算地支(地支算命);
+  算命(目標命盤: 命盤[]) {
+    for (const 算命 of 目標命盤) {
+      // 未起運無大運
+      if (算命.bigFortune.gan) {
+        const 暫存天干命盤 = {
+          year: 算命.year,
+          horoscopeResult: 算命.horoscopeResult.gan,
+          myFateSet: 算命.myFateSet.gan,
+          bigFortune: 算命.bigFortune.gan,
+          yearFortune: 算命.yearFortune.gan,
+          liuYue: 算命.monthFortune,
+        };
+        const 暫存地支命盤 = {
+          year: 算命.year,
+          horoscopeResult: 算命.horoscopeResult.zhi,
+          myFateSet: 算命.myFateSet.zhi,
+          bigFortune: 算命.bigFortune.zhi,
+          yearFortune: 算命.yearFortune.zhi,
+          liuYue: 算命.monthFortune,
+        };
+        this.算天干(暫存天干命盤);
+        this.算地支(暫存地支命盤);
       }
     }
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { 天干對照表, 地支對照表 } from 'src/app/constants/constants';
-import { 命盤, 命盤結果, 地支命盤, 天干命盤 } from 'src/app/interfaces/命盤';
+import { 命盤 } from 'src/app/interfaces/命盤';
 import { Lunar } from 'lunar-typescript';
 import { 大運 } from 'src/app/interfaces/大運';
 
@@ -42,30 +42,16 @@ export class 命盤服務器 {
     const 基礎命盤 = this.創建基礎命盤(solar, isMale);
     const 大運列 = 基礎命盤.大運列;
 
-    const 結果命盤: 命盤 = { 天干: [], 地支: [] };
+    const 結果命盤: 命盤[] = [];
 
     for (const 大運值 of 大運列) {
-      let 暫存天干: 天干命盤[] = [];
-      let 暫存地支: 地支命盤[] = [];
       for (const 流年值 of 大運值.流年) {
-        暫存天干.push({
-          year: 流年值.年,
-          horoscopeResult: new 命盤結果(),
-          myFateSet: 基礎命盤.天干本命,
-          bigFortune: 大運值.天干,
-          yearFortune: 流年值.天干,
-        });
-
-        暫存地支.push({
-          year: 流年值.年,
-          horoscopeResult: new 命盤結果(),
-          myFateSet: 基礎命盤.地支本命,
-          bigFortune: 大運值.地支,
-          yearFortune: 流年值.地支,
-        });
+        const myFateSet = { gan: 基礎命盤.天干本命, zhi: 基礎命盤.地支本命 };
+        const bigFortune = { gan: 大運值.天干, zhi: 大運值.地支 };
+        const yearFortune = { gan: 流年值.天干, zhi: 流年值.地支 };
+        const 新命盤 = new 命盤(流年值.年, myFateSet, bigFortune, yearFortune, 流年值.流月);
+        結果命盤.push(新命盤);
       }
-      結果命盤.天干 = 結果命盤.天干.concat(暫存天干);
-      結果命盤.地支 = 結果命盤.地支.concat(暫存地支);
     }
 
     return 結果命盤;
