@@ -16,18 +16,18 @@ export class 流年 {
     this.年 = liuNian.getYear();
     this.天干 = 天干對照表.get(liuNian.getGanZhi().charAt(0))!;
     this.地支 = 地支對照表.get(liuNian.getGanZhi().charAt(1))!;
-    this.流月 = liuNian.getLiuYue().map(liuYue => new 流月(liuYue));
+    this.流月 = liuNian.getLiuYue().map((liuYue) => new 流月(liuYue));
   }
 }
 
 export class 流月 {
-  月: string;
-  天干: 天干;
-  地支: 地支;
+  month: string;
+  gan: 天干;
+  zhi: 地支;
 
   constructor(liuYue: LiuYue) {
-    this.月 = liuYue.getMonthInChinese();
-    this.天干 = 天干對照表.get(liuYue.getGanZhi().charAt(0))!;
-    this.地支 = 地支對照表.get(liuYue.getGanZhi().charAt(1))!;
+    this.month = liuYue.getMonthInChinese();
+    this.gan = 天干對照表.get(liuYue.getGanZhi().charAt(0))!;
+    this.zhi = 地支對照表.get(liuYue.getGanZhi().charAt(1))!;
   }
 }

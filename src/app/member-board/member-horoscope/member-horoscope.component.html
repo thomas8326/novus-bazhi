@@ -23,48 +23,48 @@
           <th>流年</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngIf="currentGan">
-          <ng-container *ngVar="currentGan.horoscopeResult.reaction as reaction">
-            <td [class.combination]="reaction['時住已作用']">{{ currentGan.myFateSet[0] }}</td>
-            <td [class.combination]="reaction['日住已作用']">{{ currentGan.myFateSet[1] }}</td>
-            <td [class.combination]="reaction['月住已作用']">{{ currentGan.myFateSet[2] }}</td>
-            <td [class.combination]="reaction['年住已作用']">{{ currentGan.myFateSet[3] }}</td>
+      <tbody *ngIf="currentHoroscope">
+        <tr>
+          <ng-container *ngVar="currentHoroscope.horoscopeResult.gan.reaction as reaction">
+            <td [class.combination]="reaction['時住已作用']">{{ currentHoroscope.myFateSet.gan[0] }}</td>
+            <td [class.combination]="reaction['日住已作用']">{{ currentHoroscope.myFateSet.gan[1] }}</td>
+            <td [class.combination]="reaction['月住已作用']">{{ currentHoroscope.myFateSet.gan[2] }}</td>
+            <td [class.combination]="reaction['年住已作用']">{{ currentHoroscope.myFateSet.gan[3] }}</td>
             <td [class.combination]="reaction['大運已作用'] && !reaction['大運被剋']">
               <mat-icon class="restriction" *ngIf="reaction['大運被剋']">close</mat-icon>
-              {{ currentGan.bigFortune ? currentGan.bigFortune : '未起運' }}
+              {{ currentHoroscope.bigFortune.gan ? currentHoroscope.bigFortune.gan : '未起運' }}
             </td>
             <td [class.combination]="reaction['流年已作用'] && !reaction['流年被剋']">
               <mat-icon class="restriction" *ngIf="reaction['流年被剋']">close</mat-icon>
-              {{ currentGan.yearFortune }}
+              {{ currentHoroscope.yearFortune.gan }}
             </td>
           </ng-container>
         </tr>
-        <tr *ngIf="currentZhi">
-          <ng-container *ngVar="currentZhi.horoscopeResult.reaction as reaction">
-            <td [class.combination]="reaction['時住已作用']">{{ currentZhi.myFateSet[0] }}</td>
-            <td [class.combination]="reaction['日住已作用']">{{ currentZhi.myFateSet[1] }}</td>
-            <td [class.combination]="reaction['月住已作用']">{{ currentZhi.myFateSet[2] }}</td>
-            <td [class.combination]="reaction['年住已作用']">{{ currentZhi.myFateSet[3] }}</td>
+        <tr>
+          <ng-container *ngVar="currentHoroscope.horoscopeResult.zhi.reaction as reaction">
+            <td [class.combination]="reaction['時住已作用']">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
+            <td [class.combination]="reaction['日住已作用']">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
+            <td [class.combination]="reaction['月住已作用']">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
+            <td [class.combination]="reaction['年住已作用']">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
             <td [class.combination]="reaction['大運已作用'] && !reaction['大運被剋']">
               <mat-icon class="restriction" *ngIf="reaction['大運被剋']">close</mat-icon>
-              {{ currentZhi.bigFortune ? currentZhi.bigFortune : '未起運' }}
+              {{ currentHoroscope.bigFortune.zhi ? currentHoroscope.bigFortune.zhi : '未起運' }}
             </td>
             <td [class.combination]="reaction['流年已作用'] && !reaction['流年被剋']">
               <mat-icon class="restriction" *ngIf="reaction['流年被剋']">close</mat-icon>
-              {{ currentZhi.yearFortune }}
+              {{ currentHoroscope.yearFortune.zhi }}
             </td>
           </ng-container>
         </tr>
       </tbody>
-      <tfoot>
+      <tfoot *ngIf="currentHoroscope">
         <tr>
-          <td *ngIf="currentGan" colspan="3">
+          <td colspan="3">
             <div class="result-board">
               <div class="score-board">
                 <span>天干受剋: </span>
-                <ul *ngIf="currentGan.horoscopeResult.scores.length; else none">
-                  <li *ngFor="let score of currentGan.horoscopeResult.scores">{{ score }}</li>
+                <ul *ngIf="currentHoroscope.horoscopeResult.gan.scores.length; else none">
+                  <li *ngFor="let score of currentHoroscope.horoscopeResult.gan.scores">{{ score }}</li>
                 </ul>
                 <ng-template #none>
                   <span>無</span>
@@ -73,18 +73,18 @@
               <div class="yinyan-board">
                 <div>
                   天干陽流通: <br />
-                  {{ currentGan.horoscopeResult.yanScore }}
+                  {{ currentHoroscope.horoscopeResult.gan.yanScore }}
                 </div>
-                <div>天干陰陽流通: <br />{{ currentGan.horoscopeResult.yinYanScore }}</div>
+                <div>天干陰陽流通: <br />{{ currentHoroscope.horoscopeResult.gan.yinYanScore }}</div>
               </div>
             </div>
           </td>
-          <td *ngIf="currentZhi" colspan="3">
+          <td colspan="3">
             <div class="result-board">
               <div class="score-board">
                 <span>地支受剋: </span>
-                <ul *ngIf="currentZhi.horoscopeResult.scores.length; else none">
-                  <li *ngFor="let score of currentZhi.horoscopeResult.scores">{{ score }}</li>
+                <ul *ngIf="currentHoroscope.horoscopeResult.zhi.scores.length; else none">
+                  <li *ngFor="let score of currentHoroscope.horoscopeResult.zhi.scores">{{ score }}</li>
                 </ul>
                 <ng-template #none>
                   <span>無</span>
@@ -93,17 +93,80 @@
               <div class="yinyan-board">
                 <div>
                   地支陽流通: <br />
-                  {{ currentZhi.horoscopeResult.yanScore }}
+                  {{ currentHoroscope.horoscopeResult.zhi.yanScore }}
                 </div>
                 <div>
                   地支陰陽流通: <br />
-                  {{ currentZhi.horoscopeResult.yinYanScore }}
+                  {{ currentHoroscope.horoscopeResult.zhi.yinYanScore }}
                 </div>
               </div>
             </div>
           </td>
         </tr>
       </tfoot>
+    </table>
+  </div>
+  <div class="panel-liuyue">
+    <table>
+      <thead>
+        <tr>
+          <th>月份</th>
+          <th>時</th>
+          <th>日</th>
+          <th>月</th>
+          <th>年</th>
+          <th>大運</th>
+          <th>流年</th>
+          <th>流月</th>
+          <th>評分</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="currentHoroscope">
+        <ng-container *ngFor="let liuYue of currentHoroscope.monthFortune; let last = last">
+          <tr>
+            <ng-container *ngVar="currentHoroscope.horoscopeResult.gan.reaction as reaction">
+              <td rowspan="2">{{ liuYue.month }}</td>
+              <td [class.combination]="reaction['時住已作用']">{{ currentHoroscope.myFateSet.gan[0] }}</td>
+              <td [class.combination]="reaction['日住已作用']">{{ currentHoroscope.myFateSet.gan[1] }}</td>
+              <td [class.combination]="reaction['月住已作用']">{{ currentHoroscope.myFateSet.gan[2] }}</td>
+              <td [class.combination]="reaction['年住已作用']">{{ currentHoroscope.myFateSet.gan[3] }}</td>
+              <td [class.combination]="reaction['大運已作用'] && !reaction['大運被剋']">
+                <mat-icon class="restriction" *ngIf="reaction['大運被剋']">close</mat-icon>
+                {{ currentHoroscope.bigFortune.gan ? currentHoroscope.bigFortune.gan : '未起運' }}
+              </td>
+              <td [class.combination]="reaction['流年已作用'] && !reaction['流年被剋']">
+                <mat-icon class="restriction" *ngIf="reaction['流年被剋']">close</mat-icon>
+                {{ currentHoroscope.yearFortune.gan }}
+              </td>
+              <td>
+                {{ liuYue.gan }}
+              </td>
+            </ng-container>
+          </tr>
+          <tr>
+            <ng-container *ngVar="currentHoroscope.horoscopeResult.zhi.reaction as reaction">
+              <td [class.combination]="reaction['時住已作用']">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
+              <td [class.combination]="reaction['日住已作用']">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
+              <td [class.combination]="reaction['月住已作用']">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
+              <td [class.combination]="reaction['年住已作用']">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
+              <td [class.combination]="reaction['大運已作用'] && !reaction['大運被剋']">
+                <mat-icon class="restriction" *ngIf="reaction['大運被剋']">close</mat-icon>
+                {{ currentHoroscope.bigFortune.zhi ? currentHoroscope.bigFortune.zhi : '未起運' }}
+              </td>
+              <td [class.combination]="reaction['流年已作用'] && !reaction['流年被剋']">
+                <mat-icon class="restriction" *ngIf="reaction['流年被剋']">close</mat-icon>
+                {{ currentHoroscope.yearFortune.zhi }}
+              </td>
+              <td>
+                {{ liuYue.zhi }}
+              </td>
+            </ng-container>
+          </tr>
+          <tr *ngIf="!last" class="margin-element">
+            <td colspan="9"></td>
+          </tr>
+        </ng-container>
+      </tbody>
     </table>
   </div>
 </div>
