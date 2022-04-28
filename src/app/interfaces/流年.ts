@@ -2,6 +2,7 @@ import { LiuNian, LiuYue } from 'lunar-typescript';
 import { 地支對照表, 天干對照表 } from 'src/app/constants/constants';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
+import { 命盤結果 } from 'src/app/interfaces/命盤';
 
 export class 流年 {
   年: number;
@@ -24,10 +25,12 @@ export class 流月 {
   month: string;
   gan: 天干;
   zhi: 地支;
+  result: 命盤結果;
 
   constructor(liuYue: LiuYue) {
     this.month = liuYue.getMonthInChinese();
     this.gan = 天干對照表.get(liuYue.getGanZhi().charAt(0))!;
     this.zhi = 地支對照表.get(liuYue.getGanZhi().charAt(1))!;
+    this.result = new 命盤結果();
   }
 }

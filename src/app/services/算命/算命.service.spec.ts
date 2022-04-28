@@ -27,6 +27,7 @@ describe('FortuneTellingService', () => {
         myFateSet: 本命,
         bigFortune: 大運,
         yearFortune: 流年,
+        liuYue: [],
       };
     }
 
@@ -264,6 +265,7 @@ describe('FortuneTellingService', () => {
         myFateSet: 本命,
         bigFortune: 大運,
         yearFortune: 流年,
+        liuYue: [],
       };
     }
 

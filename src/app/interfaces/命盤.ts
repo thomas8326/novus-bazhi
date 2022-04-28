@@ -45,6 +45,10 @@ export interface 命盤作用 {
   [命盤結果屬性.流年已作用]: boolean;
 
   [命盤結果屬性.流年被剋]?: boolean;
+
+  [命盤結果屬性.流月已作用]?: boolean;
+
+  [命盤結果屬性.流月被剋]?: boolean;
 }
 
 export class 命盤結果 {
