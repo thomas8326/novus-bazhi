@@ -45,21 +45,25 @@ describe('FortuneTellingService', () => {
       testAmountOfCases(test);
     }
 
-    //壬戊辛壬| 丙丙
-    it('debug', () => {
-      const 測試案例 = 創建測試天干命盤([天干.辛, 天干.戊, 天干.壬, 天干.丙], 天干.壬, 天干.戊);
+    // //壬戊辛壬| 丙丙
+    // it('debug', () => {
+    //   const 測試案例 = 創建測試天干命盤([天干.辛, 天干.戊, 天干.壬, 天干.丙], 天干.壬, 天干.戊);
 
-      service.算天干(測試案例);
+    //   service.算天干(測試案例);
 
-      expect(測試案例.horoscopeResult.reaction).toEqual({
-        [命盤結果屬性.時住已作用]: true,
-        [命盤結果屬性.日住已作用]: false,
-        [命盤結果屬性.月住已作用]: true,
-        [命盤結果屬性.年住已作用]: true,
-        [命盤結果屬性.大運已作用]: true,
-        [命盤結果屬性.流年已作用]: true,
-      });
-    });
+    //   expect(測試案例.horoscopeResult.reaction).toEqual({
+    //     [命盤結果屬性.時住已作用]: true,
+    //     [命盤結果屬性.日住已作用]: false,
+    //     [命盤結果屬性.月住已作用]: true,
+    //     [命盤結果屬性.年住已作用]: true,
+    //     [命盤結果屬性.大運已作用]: true,
+    //     [命盤結果屬性.流年已作用]: true,
+    //     [命盤結果屬性.流月已作用]: false,
+    //     [命盤結果屬性.大運被剋]: false,
+    //     [命盤結果屬性.流年被剋]: false,
+    //     [命盤結果屬性.流月被剋]: false,
+    //   });
+    // });
 
     it('should return correct result when calling function of 算天干 with case 丁庚辛丙 | 丙辛', () => {
       const 測試案例 = 創建測試天干命盤([天干.丁, 天干.庚, 天干.辛, 天干.丙], 天干.丙, 天干.辛);
@@ -73,6 +77,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: true,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -88,6 +96,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: false,
         [命盤結果屬性.流年已作用]: true,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -103,6 +115,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: false,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -118,6 +134,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: true,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -133,6 +153,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -148,6 +172,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -163,6 +191,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -178,6 +210,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: false,
         [命盤結果屬性.流年已作用]: true,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: true,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -193,6 +229,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: true,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -208,6 +248,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: true,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -223,6 +267,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: false,
         [命盤結果屬性.流年已作用]: true,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -238,6 +286,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: false,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: true,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -253,6 +305,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: false,
         [命盤結果屬性.大運已作用]: false,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
   });
@@ -281,6 +337,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: false,
         [命盤結果屬性.大運已作用]: false,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -296,6 +356,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: false,
         [命盤結果屬性.大運已作用]: false,
         [命盤結果屬性.流年已作用]: true,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -311,6 +375,10 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: false,
         [命盤結果屬性.大運已作用]: false,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
@@ -324,23 +392,31 @@ describe('FortuneTellingService', () => {
         [命盤結果屬性.年住已作用]: true,
         [命盤結果屬性.大運已作用]: true,
         [命盤結果屬性.流年已作用]: false,
+        [命盤結果屬性.流月已作用]: false,
+        [命盤結果屬性.大運被剋]: false,
+        [命盤結果屬性.流年被剋]: false,
+        [命盤結果屬性.流月被剋]: false,
       });
     });
 
-    it('debug', () => {
-      const 測試案例 = 創建測試地支命盤([地支.寅, 地支.戌, 地支.丑, 地支.未], 地支.巳, 地支.寅);
+    // it('debug', () => {
+    //   const 測試案例 = 創建測試地支命盤([地支.寅, 地支.戌, 地支.丑, 地支.未], 地支.巳, 地支.寅);
 
-      service.算地支(測試案例);
+    //   service.算地支(測試案例);
 
-      expect(測試案例.horoscopeResult.reaction).toEqual({
-        [命盤結果屬性.時住已作用]: true,
-        [命盤結果屬性.日住已作用]: false,
-        [命盤結果屬性.月住已作用]: true,
-        [命盤結果屬性.年住已作用]: true,
-        [命盤結果屬性.大運已作用]: true,
-        [命盤結果屬性.流年已作用]: true,
-      });
-    });
+    //   expect(測試案例.horoscopeResult.reaction).toEqual({
+    //     [命盤結果屬性.時住已作用]: true,
+    //     [命盤結果屬性.日住已作用]: false,
+    //     [命盤結果屬性.月住已作用]: true,
+    //     [命盤結果屬性.年住已作用]: true,
+    //     [命盤結果屬性.大運已作用]: true,
+    //     [命盤結果屬性.流年已作用]: true,
+    //     [命盤結果屬性.流月已作用]: false,
+    //     [命盤結果屬性.大運被剋]: false,
+    //     [命盤結果屬性.流年被剋]: false,
+    //     [命盤結果屬性.流月被剋]: false,
+    //   });
+    // });
 
     it('戍|寅丑', () => {});
   });

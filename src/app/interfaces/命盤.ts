@@ -70,6 +70,10 @@ export class 命盤結果 {
       年住已作用: false,
       流年已作用: false,
       大運已作用: false,
+      流月已作用: false,
+      大運被剋: false,
+      流年被剋: false,
+      流月被剋: false,
     };
   }
 
