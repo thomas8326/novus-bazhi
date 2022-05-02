@@ -25,12 +25,14 @@ export class 流月 {
   month: string;
   gan: 天干;
   zhi: 地支;
-  result: 命盤結果;
+  ganResult: 命盤結果;
+  zhiResult: 命盤結果;
 
   constructor(liuYue: LiuYue) {
     this.month = liuYue.getMonthInChinese();
     this.gan = 天干對照表.get(liuYue.getGanZhi().charAt(0))!;
     this.zhi = 地支對照表.get(liuYue.getGanZhi().charAt(1))!;
-    this.result = new 命盤結果();
+    this.ganResult = new 命盤結果(true);
+    this.zhiResult = new 命盤結果(false);
   }
 }
