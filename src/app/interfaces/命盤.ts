@@ -1,4 +1,4 @@
-import { 五行轉換 } from 'src/app/constants/constants';
+import { 五行相刻對照表, 五行轉換 } from 'src/app/constants/constants';
 import { 五行 } from 'src/app/enums/五行.enum';
 import { 流月 } from 'src/app/interfaces/流年';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
@@ -25,7 +25,7 @@ export class 命盤 {
     this.bigFortune = bigFortune;
     this.yearFortune = yearFortune;
     this.monthFortune = monthFortune;
-    this.horoscopeResult = { gan: new 命盤結果(), zhi: new 命盤結果() };
+    this.horoscopeResult = { gan: new 命盤結果(true), zhi: new 命盤結果(false) };
   }
 }
 
@@ -62,7 +62,9 @@ export class 命盤結果 {
 
   chineseDayRestriction: boolean = false;
 
-  constructor() {
+  private 是否為天干: boolean;
+
+  constructor(是否為天干 = false) {
     this.reaction = {
       時住已作用: false,
       日住已作用: false,
@@ -75,6 +77,7 @@ export class 命盤結果 {
       流年被剋: false,
       流月被剋: false,
     };
+    this.是否為天干 = 是否為天干;
   }
 
   新增大運流年相剋評分(被剋對象: 天干 | 地支, 大運剋流年: boolean) {
@@ -82,9 +85,26 @@ export class 命盤結果 {
     this.scores.push(`${大運剋流年 ? '大運剋流年' : '流年剋大運'} => 剋${大運流年五行}`);
   }
 
-  新增日柱受剋() {
-    this.scores.push(`日主受剋`);
-    this.chineseDayRestriction = true;
+  計算日柱受剋(日柱: 天干 | 地支, 五行結果: 五行結果[]) {
+    if (!五行結果.length) {
+      return;
+    }
+
+    const lastElement = 五行結果[五行結果.length - 1];
+
+    // 地支: 只要流通後的結果有剋到地支日柱就算日主受剋
+    if (!this.是否為天干) {
+      const 地支受剋 = this.scores.filter((score) => score === `剋${五行轉換(日柱)}`);
+      if (地支受剋.length > 0) {
+        this.scores.push(`地支日主受剋`);
+      }
+      return;
+    }
+
+    if (this.是否為天干 && 五行相刻對照表.get(lastElement.五行) === 五行轉換(日柱)) {
+      this.scores.push(`天干日主受剋`);
+      return;
+    }
   }
 
   先批陽(五行結果: 五行結果[]) {

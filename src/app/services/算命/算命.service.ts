@@ -100,7 +100,8 @@ export class 算命服務器 {
       const { 已作用集 } = this.大運流年流月與本命作用(horoscopeResult, myFateSet, { bigFortune, yearFortune });
       this.本命互相合(horoscopeResult, myFateSet, 已作用集);
     }
-    this.流通(horoscopeResult, myFateSet, bigFortune, yearFortune);
+    const 五行流通結果 = this.流通(horoscopeResult, myFateSet, bigFortune, yearFortune);
+    horoscopeResult.計算日柱受剋(myFateSet[1], 五行流通結果);
   }
 
   //'辛', '戊', '壬', '丙' "壬" 戊
@@ -111,14 +112,13 @@ export class 算命服務器 {
     yearFortune: 天干 | 地支,
   ) {
     const { 陽, 陰 } = this.先分陰陽(horoscopeResult, myFateSet, bigFortune, yearFortune);
-    // const 陽流通陣列 = this.test(陽);
     const 陽流通陣列 = this.先生後剋(陽);
     const 陽流通陣列補陰 = this.當生陽大於剋陽時補陰(陽流通陣列, 陰);
 
     const 批陽結果 = horoscopeResult.先批陽(陽流通陣列補陰.陽結果);
 
     const 流通陣列 = this.五行結果流通(批陽結果, 陰);
-    horoscopeResult.再流通(流通陣列);
+    return horoscopeResult.再流通(流通陣列);
   }
 
   private 大運流年流月與本命作用(
