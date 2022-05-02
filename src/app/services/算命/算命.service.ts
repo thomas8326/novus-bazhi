@@ -132,8 +132,11 @@ export class 算命服務器 {
     let 大運已作用 = result.reaction.大運已作用;
     let 流年已作用 = result.reaction.流年已作用;
     let 流月已作用 = result.reaction.流月已作用;
-
     const 已作用集 = new Set<天干 | 地支>();
+
+    if (!Object.keys(data).length) {
+      return { 大運已作用, 流年已作用, 流月已作用, 已作用集 };
+    }
 
     // 剩餘本命與大運流年流月作用
     for (let i = 0; i < myFateSet.length; i++) {
@@ -207,8 +210,9 @@ export class 算命服務器 {
   private 計算流月(對象命盤: 天干命盤 | 地支命盤) {
     const { bigFortune, yearFortune, myFateSet } = 對象命盤;
     for (let liuYue of 對象命盤.liuYue) {
-      this.計算流月天干地支(liuYue.ganResult, myFateSet, bigFortune, yearFortune, liuYue.gan);
-      this.計算流月天干地支(liuYue.zhiResult, myFateSet, bigFortune, yearFortune, liuYue.zhi);
+      const liuYueGanZhi = this.是否為天干 ? liuYue.gan : liuYue.zhi;
+      const liuYueGanZhiResult = this.是否為天干 ? liuYue.ganResult : liuYue.zhiResult;
+      this.計算流月天干地支(liuYueGanZhiResult, myFateSet, bigFortune, yearFortune, liuYueGanZhi);
     }
   }
 
@@ -225,52 +229,65 @@ export class 算命服務器 {
       return;
     }
 
-    const 流年流月合 = this.流年流月相合(result, yearFortune, liuYueGanZhi);
-    const 大運流年合 = this.大運流年相合(result, yearFortune, bigFortune);
-    // 斷氣 流月大運本命相合 | 流年流月相合 大運+本命 | 大運流年相合 流月+本命
-    if (this.是否斷氣 || 流年流月合 || 大運流年合) {
-      const data = () => {
-        if (this.是否斷氣) {
-          result.reaction.流年斷氣 = true;
-          return { bigFortune, liuYue: liuYueGanZhi };
-        }
-        if (大運流年合) {
-          return { liuYue: liuYueGanZhi };
-        }
-        return { bigFortune, yearFortune };
-      };
+    const 流月五行 = 五行轉換(liuYueGanZhi);
+    const 流年五行 = 五行轉換(yearFortune);
+
+    // 斷氣 => 流月大運本命相合
+    // 流年流月相合 & 流月剋流年 => 大運+本命
+    // 大運流年相合 => 流月+本命
+    const createData = () => {
+      const 流年流月合 = this.流年流月相合(result, yearFortune, liuYueGanZhi);
+      const 大運流年合 = this.大運流年相合(result, yearFortune, bigFortune);
+      const 流月剋流年 = 五行相刻對照表.get(流月五行) === 流年五行;
+      if (this.是否斷氣) {
+        result.reaction.流年斷氣 = true;
+        return { bigFortune, liuYue: liuYueGanZhi };
+      }
+      if (大運流年合) {
+        this.大運流年流月消相同本命(result, myFateSet, bigFortune, yearFortune);
+        return { liuYue: liuYueGanZhi };
+      }
+      if (流年流月合) {
+        this.大運流年流月消相同本命(result, myFateSet, yearFortune, liuYueGanZhi);
+        return { bigFortune };
+      }
+      if (流月剋流年) {
+        result.reaction.流年已作用 = true;
+        result.reaction.流年被剋 = true;
+        result.新增流年流月相剋評分(yearFortune, false);
+        this.是否斷氣 = this.是否為天干; // 只有天干會斷氣
+        return { bigFortune };
+      }
+
+      return null;
+    };
+    const data = createData();
+
+    if (data) {
       this.本命互相合(result, myFateSet);
-      const { 已作用集 } = this.大運流年流月與本命作用(result, myFateSet, data());
+      const { 已作用集 } = this.大運流年流月與本命作用(result, myFateSet, data);
       this.本命互相合(result, myFateSet, 已作用集);
       const 五行流通結果 = this.流通(result, myFateSet, bigFortune, yearFortune);
       result.計算日柱受剋(myFateSet[1], 五行流通結果);
       return;
     }
 
-    const 流月五行 = 五行轉換(yearFortune);
-    const 流年五行 = 五行轉換(liuYueGanZhi);
-
-    // 流年剋流月
+    // 流年剋流月，剩下流通不變
     if (五行相刻對照表.get(流年五行) === 流月五行) {
+      result.reaction.流月被剋 = true;
+      result.reaction.流月已作用 = true;
       result.新增流年流月相剋評分(liuYueGanZhi, true);
-      return;
-    }
-
-    // 流月剋流年 -> 斷氣
-    if (五行相刻對照表.get(流月五行) === 流年五行) {
-      result.新增流年流月相剋評分(liuYueGanZhi, false);
-      this.是否斷氣 = true;
       return;
     }
   }
 
   private 先生後剋(天干地支: (天干 | 地支)[], 是否為陽 = true) {
     const 五行結果表: 五行結果[] = [
-      { 五行: 五行.金, 生剋: '生', 陽陣: [], 陰陣: [] },
-      { 五行: 五行.水, 生剋: '生', 陽陣: [], 陰陣: [] },
-      { 五行: 五行.木, 生剋: '生', 陽陣: [], 陰陣: [] },
-      { 五行: 五行.火, 生剋: '生', 陽陣: [], 陰陣: [] },
-      { 五行: 五行.土, 生剋: '生', 陽陣: [], 陰陣: [] },
+      { 五行: 五行.金, 生剋: '生', 陽陣: [], 陰陣: [], power: 0 },
+      { 五行: 五行.水, 生剋: '生', 陽陣: [], 陰陣: [], power: 0 },
+      { 五行: 五行.木, 生剋: '生', 陽陣: [], 陰陣: [], power: 0 },
+      { 五行: 五行.火, 生剋: '生', 陽陣: [], 陰陣: [], power: 0 },
+      { 五行: 五行.土, 生剋: '生', 陽陣: [], 陰陣: [], power: 0 },
     ];
 
     五行結果表.forEach((value) => {
@@ -284,6 +301,7 @@ export class 算命服務器 {
       } else {
         value.陰陣 = value.陰陣.concat(結果);
       }
+      value.power++;
     });
 
     let result: 五行結果[] = [];
@@ -330,52 +348,21 @@ export class 算命服務器 {
     }
 
     const 陰流通陣列 = this.先生後剋(陰, false);
-
-    // 五行結果: [水生木] 陰流通: [土]的情況時應該要反過來把陰流通加到五行結果中
-    if (陰.length === 1) {
-      const findResult = 五行結果表.find((結果) => 結果.五行 === 陰流通陣列[0].五行);
-      if (findResult) {
-        findResult.陰陣.push(...陰流通陣列[0].陽陣);
-        findResult.陰陣.push(...陰流通陣列[0].陰陣);
-      } else {
-        for (let i = 0; i < 五行結果表.length; i++) {
-          if (五行相生對照表.get(陰流通陣列[0].五行) === 五行結果表[i].五行) {
-            五行結果表[i].生剋 = '生';
-            五行結果表.splice(i, 0, 陰流通陣列[0]);
-            return 五行結果表;
-          }
-          if (五行相生對照表.get(五行結果表[i].五行) === 陰流通陣列[0].五行) {
-            陰流通陣列[0].生剋 = '生';
-            五行結果表.splice(i + 1, 0, 陰流通陣列[0]);
-            return 五行結果表;
-          }
-        }
-
-        for (let i = 0; i < 五行結果表.length; i++) {
-          if (五行相刻對照表.get(陰流通陣列[0].五行) === 五行結果表[i].五行) {
-            五行結果表[i].生剋 = '剋';
-            五行結果表.splice(i, 0, 陰流通陣列[0]);
-            return 五行結果表;
-          }
-          if (五行相刻對照表.get(五行結果表[i].五行) === 陰流通陣列[0].五行) {
-            陰流通陣列[0].生剋 = '剋';
-            五行結果表.splice(i + 1, 0, 陰流通陣列[0]);
-            return 五行結果表;
-          }
-        }
-      }
-    }
+    const data =
+      五行結果表.length > 陰流通陣列.length
+        ? { primary: 五行結果表, secondary: 陰流通陣列 }
+        : { primary: 陰流通陣列, secondary: 五行結果表 };
 
     let 結果索引 = 0;
     let retry = 1;
-    while (五行結果表.length !== 0 && retry <= 3) {
-      if (結果索引 >= 五行結果表.length) {
+    while (data.secondary.length !== 0 && retry <= 3) {
+      if (結果索引 >= data.secondary.length) {
         結果索引 = 0;
         retry++;
       }
 
-      const currentValue = 五行結果表[結果索引];
-      const findResult = 陰流通陣列.find((結果) => 結果.五行 === currentValue.五行);
+      const currentValue = data.secondary[結果索引];
+      const findResult = data.primary.find((結果) => 結果.五行 === currentValue.五行);
       let 有相生 = false;
 
       if (findResult) {
@@ -383,16 +370,16 @@ export class 算命服務器 {
         findResult.陰陣.push(...currentValue.陰陣);
         有相生 = true;
       } else {
-        for (let i = 陰流通陣列.length - 1; i >= 0; i--) {
-          if (五行相生對照表.get(currentValue.五行) === 陰流通陣列[i].五行) {
-            陰流通陣列[i].生剋 = '生';
-            陰流通陣列.splice(i, 0, currentValue);
+        for (let i = data.primary.length - 1; i >= 0; i--) {
+          if (五行相生對照表.get(currentValue.五行) === data.primary[i].五行) {
+            data.primary[i].生剋 = '生';
+            data.primary.splice(i, 0, currentValue);
             有相生 = true;
             break;
           }
-          if (五行相生對照表.get(陰流通陣列[i].五行) === currentValue.五行) {
+          if (五行相生對照表.get(data.primary[i].五行) === currentValue.五行) {
             currentValue.生剋 = '生';
-            陰流通陣列.splice(i + 1, 0, currentValue);
+            data.primary.splice(i + 1, 0, currentValue);
             有相生 = true;
             break;
           }
@@ -400,32 +387,32 @@ export class 算命服務器 {
       }
 
       if (有相生) {
-        五行結果表.splice(結果索引, 1);
+        data.secondary.splice(結果索引, 1);
         結果索引 = 0;
       } else {
         結果索引++;
       }
     }
 
-    if (五行結果表.length > 1) {
-      throw new Error(`這裡有特殊狀況！剩餘結果表: ${五行結果表.join()} 結果: ${陰流通陣列.join()}`);
+    if (data.secondary.length > 1) {
+      throw new Error(`這裡有特殊狀況！剩餘結果表: ${data.secondary.join()} 結果: ${data.primary.join()}`);
     }
 
-    if (五行結果表.length === 1) {
-      const 剩餘五行結果 = 五行結果表[五行結果表.length - 1];
-      if (五行相刻對照表.get(陰流通陣列[陰流通陣列.length - 1].五行) === 剩餘五行結果.五行) {
+    if (data.secondary.length === 1) {
+      const 剩餘五行結果 = data.secondary[data.secondary.length - 1];
+      if (五行相刻對照表.get(data.primary[data.primary.length - 1].五行) === 剩餘五行結果.五行) {
         剩餘五行結果.生剋 = '剋';
-        陰流通陣列.push(剩餘五行結果);
-        return 陰流通陣列;
+        data.primary.push(剩餘五行結果);
+        return data.primary;
       }
-      if (五行相刻對照表.get(剩餘五行結果.五行) === 陰流通陣列[陰流通陣列.length - 1].五行) {
-        陰流通陣列.unshift(剩餘五行結果);
-        陰流通陣列[陰流通陣列.length - 1].生剋 = '剋';
-        return 陰流通陣列;
+      if (五行相刻對照表.get(剩餘五行結果.五行) === data.primary[data.primary.length - 1].五行) {
+        data.primary.unshift(剩餘五行結果);
+        data.primary[data.primary.length - 1].生剋 = '剋';
+        return data.primary;
       }
     }
 
-    return 陰流通陣列;
+    return data.primary;
   }
 
   private 當生陽大於剋陽時補陰(陽結果: 五行結果[], 陰: (天干 | 地支)[]) {
@@ -448,6 +435,21 @@ export class 算命服務器 {
     }
 
     return { 陽結果, 陰 };
+  }
+
+  private 陽剋陰(陽結果: 五行結果[], 陰: (天干 | 地支)[]) {
+    const lastElement = 陽結果[陽結果.length - 1];
+
+    if (lastElement.power > 0 && lastElement.生剋 === '生') {
+      const 最後元素相剋五行 = 五行相刻對照表.get(lastElement.五行);
+      const 五行陰結果: 五行結果 = { 五行: 最後元素相剋五行!, 生剋: '生', 陽陣: [], 陰陣: [], power: 0 };
+      for (let i = 0; i < 陰.length; i++) {
+        if (lastElement.power <= 五行陰結果.power && 五行相刻對照表.get(lastElement.五行) === 五行轉換(陰[i])) {
+          五行陰結果.陰陣.push(陰[i]);
+          五行陰結果.power++;
+        }
+      }
+    }
   }
 
   五行是否會被剋(結果: 五行結果[], index: number) {
@@ -515,7 +517,7 @@ export class 算命服務器 {
   }
 
   private 流年流月相合(result: 命盤結果, yearFortune: 天干 | 地支, liuYueGanZhi: 天干 | 地支) {
-    if (liuYueGanZhi && this.是否相合(yearFortune, liuYueGanZhi)) {
+    if (this.是否相合(yearFortune, liuYueGanZhi)) {
       result.reaction.流年已作用 = true;
       result.reaction.流月已作用 = true;
       return true;
