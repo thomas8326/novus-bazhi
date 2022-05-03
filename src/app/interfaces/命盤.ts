@@ -125,6 +125,8 @@ export class 命盤結果 {
 
     let 評分結果 = '';
     const 新五行結果: 五行結果[] = JSON.parse(JSON.stringify(五行結果));
+    const lastIndex = 新五行結果.length - 1;
+    const 剋五行結果: string[] = [];
 
     const 文字轉換 = (current: 五行結果) => {
       const 陽陣文字 = `${current.陽陣.length ? `[陽: ${current.陽陣.join(',')}] ` : ''}`;
@@ -141,7 +143,6 @@ export class 命盤結果 {
         評分結果 = i === 0 ? text : `${評分結果} 生 ${text}`;
       }
     }
-    const lastIndex = 新五行結果.length - 1;
 
     if (新五行結果.length >= 2 && 新五行結果[lastIndex].生剋 === '剋') {
       評分結果 = `${評分結果} 剋 ${文字轉換(新五行結果[lastIndex])}`;
@@ -160,7 +161,7 @@ export class 命盤結果 {
       };
 
       while (陽剋人力量 > 0 && 陽被剋力量 + 陰被剋力量 > 0) {
-        this.scores.push(`剋${新五行結果[lastIndex].五行}`);
+        剋五行結果.push(`剋${新五行結果[lastIndex].五行}`);
         陽剋人力量--;
         if (陽被剋力量 > 0) {
           陽被剋減一();
@@ -170,7 +171,7 @@ export class 命盤結果 {
       }
 
       while (陰剋人力量 > 0 && 陰被剋力量 > 0) {
-        this.scores.push(`剋${新五行結果[lastIndex].五行}`);
+        剋五行結果.push(`剋${新五行結果[lastIndex].五行}`);
         陰剋人力量--;
         陰被剋力量--;
         陰被剋減一();
@@ -184,7 +185,26 @@ export class 命盤結果 {
       }
     }
 
+    剋五行結果.length && this.scores.push(this.剋五行轉換器(剋五行結果));
+
     return { 新五行結果, 評分結果 };
+  }
+
+  private 剋五行轉換器(target: string[]) {
+    const length = target.length;
+
+    switch (length) {
+      case 1:
+        return `${target[0]}`;
+      case 2:
+        return `雙${target[0]}`;
+      case 3:
+        return `參${target[0]}`;
+      case 4:
+        return `肆${target[0]}`;
+      default:
+        return `${target[0]}`;
+    }
   }
 }
 
