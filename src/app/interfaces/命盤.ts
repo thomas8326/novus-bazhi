@@ -29,6 +29,7 @@ export class 命盤 {
   }
 }
 
+// TODO: 要細分一下已作用是什麼意思，是只有合生剋才算已作用還是說已作用是合走的意思
 export interface 命盤作用 {
   [命盤結果屬性.時住已作用]: boolean;
   [命盤結果屬性.日住已作用]: boolean;
@@ -83,24 +84,24 @@ export class 命盤結果 {
     this.scores.push(`${流年剋流月 ? '流年剋流月' : '流月剋流年'} => 剋${流年流月五行}`);
   }
 
-  計算日柱受剋(日柱: 天干 | 地支, 五行結果: 五行結果[]) {
-    if (!五行結果.length) {
+  計算日柱受剋(日柱: 天干 | 地支, 五行結果?: 五行結果[]) {
+    // 地支: 只要流通後的結果有剋到地支日柱就算日主受剋
+    if (!this.是否為天干) {
+      const 地支受剋 = this.scores.filter((score) => score.includes(`剋${五行轉換(日柱)}`));
+      if (地支受剋.length > 0) {
+        this.scores.push(`日主受剋`);
+      }
+      return;
+    }
+
+    if (!五行結果 || !五行結果.length) {
       return;
     }
 
     const lastElement = 五行結果[五行結果.length - 1];
 
-    // 地支: 只要流通後的結果有剋到地支日柱就算日主受剋
-    if (!this.是否為天干) {
-      const 地支受剋 = this.scores.filter((score) => score === `剋${五行轉換(日柱)}`);
-      if (地支受剋.length > 0) {
-        this.scores.push(`地支日主受剋`);
-      }
-      return;
-    }
-
     if (this.是否為天干 && 五行相刻對照表.get(lastElement.五行) === 五行轉換(日柱)) {
-      this.scores.push(`天干日主受剋`);
+      this.scores.push(`日主受剋`);
       return;
     }
   }
@@ -145,18 +146,26 @@ export class 命盤結果 {
     if (新五行結果.length >= 2 && 新五行結果[lastIndex].生剋 === '剋') {
       評分結果 = `${評分結果} 剋 ${文字轉換(新五行結果[lastIndex])}`;
 
-      let 陽剋人力量 = 新五行結果[lastIndex - 1].陽陣.length;
-      let 陰剋人力量 = 新五行結果[lastIndex - 1].陰陣.length;
-      let 陽被剋力量 = 新五行結果[lastIndex].陽陣.length;
-      let 陰被剋力量 = 新五行結果[lastIndex].陰陣.length;
+      let 陽剋人力量 = 新五行結果[lastIndex - 1].陽力;
+      let 陰剋人力量 = 新五行結果[lastIndex - 1].陰力;
+      let 陽被剋力量 = 新五行結果[lastIndex].陽力;
+      let 陰被剋力量 = 新五行結果[lastIndex].陰力;
+      const 陽被剋減一 = () => {
+        陽被剋力量--;
+        新五行結果[lastIndex].陽陣.shift();
+      };
+      const 陰被剋減一 = () => {
+        陰被剋力量--;
+        新五行結果[lastIndex].陰陣.shift();
+      };
 
       while (陽剋人力量 > 0 && 陽被剋力量 + 陰被剋力量 > 0) {
         this.scores.push(`剋${新五行結果[lastIndex].五行}`);
         陽剋人力量--;
         if (陽被剋力量 > 0) {
-          陽被剋力量--;
+          陽被剋減一();
         } else {
-          陰被剋力量--;
+          陰被剋減一();
         }
       }
 
@@ -164,6 +173,7 @@ export class 命盤結果 {
         this.scores.push(`剋${新五行結果[lastIndex].五行}`);
         陰剋人力量--;
         陰被剋力量--;
+        陰被剋減一();
       }
 
       const 被剋總和力量 = 陽被剋力量 + 陰被剋力量;
@@ -171,14 +181,6 @@ export class 命盤結果 {
       // 直接拿掉被剋的結果
       if (被剋總和力量 === 0) {
         新五行結果.splice(新五行結果.length - 1, 1);
-      } else if (陽被剋力量 > 0 && 陽剋人力量 === 0) {
-        // 拿掉陽陣列中的一個值
-        const 新五行陽陣 = 新五行結果[lastIndex].陽陣;
-        新五行陽陣.splice(新五行陽陣.length - 1, 1);
-      } else if (陰被剋力量 > 0 && 陰剋人力量 === 0) {
-        // 拿掉陰陣列中的一個值
-        const 新五行陰陣 = 新五行結果[lastIndex].陰陣;
-        新五行陰陣.splice(新五行陰陣.length - 1, 1);
       }
     }
 
@@ -191,6 +193,8 @@ export interface 五行結果 {
   生剋: '生' | '剋';
   陽陣: (天干 | 地支)[];
   陰陣: (天干 | 地支)[];
+  陽力: number;
+  陰力: number;
 }
 
 export interface 五行陣列 {
