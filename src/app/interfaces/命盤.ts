@@ -126,7 +126,7 @@ export class 命盤結果 {
     let 評分結果 = '';
     const 新五行結果: 五行結果[] = JSON.parse(JSON.stringify(五行結果));
     const lastIndex = 新五行結果.length - 1;
-    const 剋五行結果: string[] = [];
+    let 剋五行結果 = '';
 
     const 文字轉換 = (current: 五行結果) => {
       const 陽陣文字 = `${current.陽陣.length ? `[陽: ${current.陽陣.join(',')}] ` : ''}`;
@@ -151,18 +151,29 @@ export class 命盤結果 {
       let 陰剋人力量 = 新五行結果[lastIndex - 1].陰力;
       let 陽被剋力量 = 新五行結果[lastIndex].陽力;
       let 陰被剋力量 = 新五行結果[lastIndex].陰力;
+      const 陽剋人減一 = () => {
+        陽剋人力量--;
+        新五行結果[lastIndex - 1].陽力--;
+      };
+      const 陰剋人減一 = () => {
+        陰剋人力量--;
+        新五行結果[lastIndex - 1].陰力--;
+      };
       const 陽被剋減一 = () => {
         陽被剋力量--;
+        新五行結果[lastIndex].陽力--;
         新五行結果[lastIndex].陽陣.shift();
       };
       const 陰被剋減一 = () => {
         陰被剋力量--;
+        新五行結果[lastIndex].陰力--;
         新五行結果[lastIndex].陰陣.shift();
       };
 
       while (陽剋人力量 > 0 && 陽被剋力量 + 陰被剋力量 > 0) {
-        剋五行結果.push(`剋${新五行結果[lastIndex].五行}`);
-        陽剋人力量--;
+        this.scores.push(`剋${新五行結果[lastIndex].五行}`);
+        剋五行結果 = `剋${新五行結果[lastIndex].五行}`;
+        陽剋人減一();
         if (陽被剋力量 > 0) {
           陽被剋減一();
         } else {
@@ -171,9 +182,9 @@ export class 命盤結果 {
       }
 
       while (陰剋人力量 > 0 && 陰被剋力量 > 0) {
-        剋五行結果.push(`剋${新五行結果[lastIndex].五行}`);
-        陰剋人力量--;
-        陰被剋力量--;
+        this.scores.push(`剋${新五行結果[lastIndex].五行}`);
+        剋五行結果 = `剋${新五行結果[lastIndex].五行}`;
+        陰剋人減一();
         陰被剋減一();
       }
 
@@ -185,9 +196,26 @@ export class 命盤結果 {
       }
     }
 
-    剋五行結果.length && this.scores.push(this.剋五行轉換器(剋五行結果));
+    this.updateScores(剋五行結果);
 
     return { 新五行結果, 評分結果 };
+  }
+
+  private updateScores(剋五行結果: string) {
+    if (!剋五行結果) {
+      return;
+    }
+
+    const noneChanged: string[] = [];
+    const changed: string[] = [];
+    for (let i = 0; i < this.scores.length; i++) {
+      if (this.scores[i] === 剋五行結果) {
+        changed.push(this.scores[i]);
+      } else {
+        noneChanged.push(this.scores[i]);
+      }
+    }
+    this.scores = [this.剋五行轉換器(changed), ...noneChanged];
   }
 
   private 剋五行轉換器(target: string[]) {

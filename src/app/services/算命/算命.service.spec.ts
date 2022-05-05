@@ -49,6 +49,7 @@ describe('FortuneTellingService', () => {
         service.算天干(測試案例);
 
         expect(測試案例.horoscopeResult.reaction).toEqual(測試.預期);
+        expect(測試案例.horoscopeResult.scores.sort()).toEqual(測試.評分.sort());
       });
     }
 
@@ -59,7 +60,7 @@ describe('FortuneTellingService', () => {
         service.算地支(測試案例);
 
         expect(測試案例.horoscopeResult.reaction).toEqual(測試.預期);
-        expect(測試案例.horoscopeResult.scores).toEqual(測試.評分);
+        expect(測試案例.horoscopeResult.scores.sort()).toEqual(測試.評分.sort());
       });
     }
 
