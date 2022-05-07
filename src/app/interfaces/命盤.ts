@@ -1,4 +1,4 @@
-import { 五行相刻對照表, 五行轉換 } from 'src/app/constants/constants';
+import { 五行相刻對照表, 五行相生對照表, 五行轉換, 陰列 } from 'src/app/constants/constants';
 import { 五行 } from 'src/app/enums/五行.enum';
 import { 流月 } from 'src/app/interfaces/流年';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
@@ -55,6 +55,10 @@ export class 命盤結果 {
 
   chineseDayRestriction: boolean = false;
 
+  private 陽流通: 五行結果[] = [];
+
+  private 陰陽流通: 五行結果[] = [];
+
   private 是否為天干: boolean;
 
   constructor(是否為天干 = false) {
@@ -84,37 +88,38 @@ export class 命盤結果 {
     this.scores.push(`${流年剋流月 ? '流年剋流月' : '流月剋流年'} => 剋${流年流月五行}`);
   }
 
-  計算日柱受剋(日柱: 天干 | 地支, 五行結果?: 五行結果[]) {
+  計算日柱受剋(天干日柱: 天干 | null) {
+    if (!天干日柱) {
+      return;
+    }
+
+    const 天干日柱五行 = 五行轉換(天干日柱);
+
     // 地支: 只要流通後的結果有剋到地支日柱就算日主受剋
     if (!this.是否為天干) {
-      const 地支受剋 = this.scores.filter((score) => score.includes(`剋${五行轉換(日柱)}`));
+      const 地支受剋 = this.scores.filter((score) => score.includes(`剋${天干日柱五行}`));
       if (地支受剋.length > 0) {
         this.scores.push(`日主受剋`);
       }
       return;
     }
 
-    if (!五行結果 || !五行結果.length) {
-      return;
-    }
-
-    const lastElement = 五行結果[五行結果.length - 1];
-
-    if (this.是否為天干 && 五行相刻對照表.get(lastElement.五行) === 五行轉換(日柱)) {
+    if (this.是否為天干 && this.計算天干日主受剋(天干日柱)) {
       this.scores.push(`日主受剋`);
-      return;
     }
   }
 
   先批陽(五行結果: 五行結果[]) {
     const { 新五行結果, 評分結果 } = this.批陽批陰先生後剋(五行結果);
     this.yanScore = 評分結果;
+    this.陽流通 = JSON.parse(JSON.stringify(新五行結果));
     return 新五行結果;
   }
 
   再流通(五行結果: 五行結果[]) {
     const { 新五行結果, 評分結果 } = this.批陽批陰先生後剋(五行結果);
     this.yinYanScore = 評分結果;
+    this.陰陽流通 = JSON.parse(JSON.stringify(新五行結果));
     return 新五行結果;
   }
 
@@ -234,6 +239,71 @@ export class 命盤結果 {
         return `${target[0]}`;
     }
   }
+
+  private 計算天干日主受剋(天干日柱: 天干 | 地支) {
+    if (!this.陽流通?.length) {
+      return false;
+    }
+
+    let 是否日主受剋 = false;
+
+    const 天干日柱五行 = 五行轉換(天干日柱);
+    const 最後元素 = this.陽流通[this.陽流通.length - 1];
+    const 存在相同陽元素 = this.陽流通.find((value) => value.五行 === 天干日柱五行);
+    const 與最前陽元素相生 = 五行相生對照表.get(天干日柱五行) === this.陽流通[0].五行;
+    const 與最後陽元素相剋 = 五行相刻對照表.get(this.陽流通[this.陽流通.length - 1].五行) === 天干日柱五行;
+
+    if (!存在相同陽元素 && !與最前陽元素相生 && 與最後陽元素相剋) {
+      是否日主受剋 = 最後元素.陽力 > 0;
+    }
+
+    if (!this.陰陽流通?.length) {
+      return false;
+    }
+
+    const 陰陽最後元素 = this.陰陽流通[this.陰陽流通.length - 1];
+    const 存在相同陰陽元素 = this.陰陽流通.find((value) => value.五行 === 天干日柱五行);
+    const 與最前陰陽元素相生 = 五行相生對照表.get(天干日柱五行) === this.陰陽流通[0].五行;
+    const 與最後陰陽元素相剋 = 五行相刻對照表.get(陰陽最後元素.五行) === 天干日柱五行;
+
+    if (!存在相同陰陽元素 && !與最前陰陽元素相生 && 與最後陰陽元素相剋) {
+      是否日主受剋 = 陰陽最後元素.陽力 > 0 || (陰陽最後元素.陰力 > 0 && 陰列.includes(天干日柱));
+    }
+
+    return 是否日主受剋;
+  }
+
+  // if (五行相生對照表.get(天干日柱五行) === 五行結果[0].五行) {
+  //   return false;
+  // }
+
+  // if (五行結果.find((value) => value.五行 === 天干日柱五行)) {
+  //   return false;
+  // }
+
+  // if (lastElement.生剋 === '剋' && lastElement.五行 === 天干日柱五行) {
+  //   const 生陽力 = 五行結果[五行結果.length - 2].陽力;
+  //   const 生陰力 = 五行結果[五行結果.length - 2].陰力;
+  //   const 天干日柱為陰 = 陰列.includes(天干日柱);
+  //   return 生陽力 > 0 || (生陰力 > 0 && 天干日柱為陰);
+  // }
+
+  // for (let i = 0; i < 五行結果.length; i++) {
+  //   const next = i + 1;
+  //   if (五行相刻對照表.get(五行結果[i].五行) === 天干日柱五行 && next < 五行結果.length) {
+  //     const 當前為陽 = !!五行結果[i].陽力;
+  //     const 下一個為陰 = !五行結果[next].陽力 && !!五行結果[next].陰力;
+  //     return 當前為陽 && 下一個為陰;
+  //   }
+  // }
+
+  // if (五行相刻對照表.get(lastElement.五行) === 天干日柱五行) {
+  //   const 天干日柱為陰 = 陰列.includes(天干日柱);
+  //   return lastElement.陽力 > 0 || (lastElement.陰力 && 天干日柱為陰);
+  // }
+
+  //     return false;
+  //   }
 }
 
 export interface 五行結果 {

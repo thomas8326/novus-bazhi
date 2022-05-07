@@ -21,6 +21,7 @@ import { 五行結果, 命盤, 命盤結果, 地支命盤, 天干命盤 } from '
 })
 export class 算命服務器 {
   private 是否為天干: boolean = false;
+  private 天干日柱: 天干 | null = null;
   private 是否斷氣 = false;
 
   算命(目標命盤: 命盤[]) {
@@ -43,6 +44,7 @@ export class 算命服務器 {
           yearFortune: 算命.yearFortune.zhi,
           liuYue: 算命.monthFortune,
         };
+        this.天干日柱 = 暫存天干命盤.myFateSet[1];
         this.算天干(暫存天干命盤);
         this.算地支(暫存地支命盤);
       }
@@ -78,6 +80,7 @@ export class 算命服務器 {
       if (!大運已作用 && !流年已作用 && !救流年) {
         horoscopeResult.reaction.流年已作用 = true;
         horoscopeResult.reaction.流年被剋 = true;
+        horoscopeResult.新增大運流年相剋評分(yearFortune, true);
         this.大運流年流月消相同本命(horoscopeResult, myFateSet, { yearFortune });
       }
     } else if (this.流年剋大運(horoscopeResult, bigFortune, yearFortune)) {
@@ -94,6 +97,7 @@ export class 算命服務器 {
       if (!大運已作用 && !流年已作用 && !救大運) {
         horoscopeResult.reaction.大運已作用 = true;
         horoscopeResult.reaction.大運被剋 = true;
+        horoscopeResult.新增大運流年相剋評分(bigFortune, false);
         this.大運流年流月消相同本命(horoscopeResult, myFateSet, { bigFortune });
       }
     } else {
@@ -101,8 +105,8 @@ export class 算命服務器 {
       const { 已作用集 } = this.大運流年流月與本命作用(horoscopeResult, myFateSet, { bigFortune, yearFortune });
       this.本命互相合(horoscopeResult, myFateSet, 已作用集);
     }
-    const 五行流通結果 = this.流通(horoscopeResult, myFateSet, bigFortune, yearFortune);
-    horoscopeResult.計算日柱受剋(myFateSet[1], 五行流通結果);
+    this.流通(horoscopeResult, myFateSet, bigFortune, yearFortune);
+    horoscopeResult.計算日柱受剋(this.天干日柱);
     this.計算流月(對象命盤);
   }
 
@@ -265,8 +269,8 @@ export class 算命服務器 {
       this.本命互相合(result, myFateSet);
       const { 已作用集 } = this.大運流年流月與本命作用(result, myFateSet, data.大運流年流月);
       this.本命互相合(result, myFateSet, 已作用集);
-      const 五行流通結果 = this.流通(result, myFateSet, bigFortune, yearFortune);
-      result.計算日柱受剋(myFateSet[1], 五行流通結果);
+      this.流通(result, myFateSet, bigFortune, yearFortune);
+      result.計算日柱受剋(this.天干日柱);
       return;
     }
 
@@ -276,7 +280,7 @@ export class 算命服務器 {
       result.reaction.流月被剋 = true;
       result.reaction.流月已作用 = true;
       result.新增流年流月相剋評分(liuYueGanZhi, true);
-      result.計算日柱受剋(myFateSet[1]);
+      result.計算日柱受剋(this.天干日柱);
       return;
     }
   }
