@@ -49,7 +49,8 @@ export class 命盤服務器 {
         const myFateSet = { gan: 基礎命盤.天干本命, zhi: 基礎命盤.地支本命 };
         const bigFortune = { gan: 大運值.天干, zhi: 大運值.地支 };
         const yearFortune = { gan: 流年值.天干, zhi: 流年值.地支 };
-        const 新命盤 = new 命盤(流年值.年, myFateSet, bigFortune, yearFortune, 流年值.流月);
+        const data = { year: 流年值.年, myFateSet, bigFortune, yearFortune, monthFortune: 流年值.流月 };
+        const 新命盤 = new 命盤(data);
         結果命盤.push(新命盤);
       }
     }

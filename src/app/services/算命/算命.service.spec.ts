@@ -21,14 +21,13 @@ describe('FortuneTellingService', () => {
 
   function 創建測試命盤(測試命盤: 命盤測試): 命盤 {
     const 測試案例 = 測試命盤.命盤;
-    return {
+    return new 命盤({
       year: 2022,
       myFateSet: { gan: 測試案例.天干.本命, zhi: 測試案例.地支.本命 },
-      horoscopeResult: { gan: new 命盤結果(true), zhi: new 命盤結果(false) },
       bigFortune: { gan: 測試案例.天干.大運, zhi: 測試案例.地支.大運 },
       yearFortune: { gan: 測試案例.天干.流年, zhi: 測試案例.地支.流年 },
       monthFortune: [],
-    };
+    });
   }
 
   describe('test with test cases', () => {
@@ -44,8 +43,8 @@ describe('FortuneTellingService', () => {
 
         expect(測試案例.horoscopeResult.gan.reaction).toEqual(測試.預期.天干);
         expect(測試案例.horoscopeResult.zhi.reaction).toEqual(測試.預期.地支);
-        expect(測試案例.horoscopeResult.gan.scores.sort()).toEqual(測試.評分.天干.sort());
-        expect(測試案例.horoscopeResult.zhi.scores.sort()).toEqual(測試.評分.地支.sort());
+        expect(測試案例.horoscopeResult.gan.scores.map((data) => data.value).sort()).toEqual(測試.評分.天干.sort());
+        expect(測試案例.horoscopeResult.zhi.scores.map((data) => data.value).sort()).toEqual(測試.評分.地支.sort());
       });
     }
 

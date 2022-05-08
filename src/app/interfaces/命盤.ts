@@ -12,20 +12,41 @@ export class 命盤 {
   bigFortune: { gan: 天干; zhi: 地支 };
   yearFortune: { gan: 天干; zhi: 地支 };
   monthFortune: 流月[];
+  劫數對照表: BadProperty;
 
-  constructor(
-    year: number,
-    myFateSet: { gan: 天干[]; zhi: 地支[] },
-    bigFortune: { gan: 天干; zhi: 地支 },
-    yearFortune: { gan: 天干; zhi: 地支 },
-    monthFortune: 流月[],
-  ) {
-    this.year = year;
-    this.myFateSet = myFateSet;
-    this.bigFortune = bigFortune;
-    this.yearFortune = yearFortune;
-    this.monthFortune = monthFortune;
+  constructor(data: {
+    year: number;
+    myFateSet: { gan: 天干[]; zhi: 地支[] };
+    bigFortune: { gan: 天干; zhi: 地支 };
+    yearFortune: { gan: 天干; zhi: 地支 };
+    monthFortune: 流月[];
+  }) {
+    this.year = data.year;
+    this.myFateSet = data.myFateSet;
+    this.bigFortune = data.bigFortune;
+    this.yearFortune = data.yearFortune;
+    this.monthFortune = data.monthFortune;
     this.horoscopeResult = { gan: new 命盤結果(true), zhi: new 命盤結果(false) };
+    this.劫數對照表 = this.創造劫數對照表(data.myFateSet.gan[1]);
+  }
+
+  private 創造劫數對照表(天干日柱: 天干 | 地支) {
+    const badPropertyMapping: BadProperty = {
+      [五行.金]: '',
+      [五行.木]: '',
+      [五行.水]: '',
+      [五行.火]: '',
+      [五行.土]: '',
+    };
+    const 劫數陣列 = ['比劫', '食傷', '財', '官', '印'];
+    let 天干日柱五行 = 五行轉換(天干日柱);
+    badPropertyMapping[天干日柱五行] = 劫數陣列[0];
+
+    for (let i = 1; i < 劫數陣列.length; i++) {
+      天干日柱五行 = 五行相生對照表.get(天干日柱五行)!;
+      badPropertyMapping[天干日柱五行] = 劫數陣列[i];
+    }
+    return badPropertyMapping;
   }
 }
 
@@ -47,7 +68,7 @@ export interface 命盤作用 {
 export class 命盤結果 {
   reaction: 命盤作用;
 
-  scores: string[] = [];
+  scores: { value: string; property?: 五行 }[] = [];
 
   yanScore: string = '';
 
@@ -80,12 +101,18 @@ export class 命盤結果 {
 
   新增大運流年相剋評分(被剋對象: 天干 | 地支, 大運剋流年: boolean) {
     const 大運流年五行 = 五行轉換(被剋對象);
-    this.scores.push(`${大運剋流年 ? '大運剋流年' : '流年剋大運'} => 剋${大運流年五行}`);
+    this.scores.push({
+      value: `${大運剋流年 ? '大運剋流年' : '流年剋大運'} => 剋${大運流年五行}`,
+      property: 大運流年五行,
+    });
   }
 
   新增流年流月相剋評分(被剋對象: 天干 | 地支, 流年剋流月: boolean) {
     const 流年流月五行 = 五行轉換(被剋對象);
-    this.scores.push(`${流年剋流月 ? '流年剋流月' : '流月剋流年'} => 剋${流年流月五行}`);
+    this.scores.push({
+      value: `${流年剋流月 ? '流年剋流月' : '流月剋流年'} => 剋${流年流月五行}`,
+      property: 流年流月五行,
+    });
   }
 
   計算日柱受剋(天干日柱: 天干 | null) {
@@ -97,15 +124,15 @@ export class 命盤結果 {
 
     // 地支: 只要流通後的結果有剋到地支日柱就算日主受剋
     if (!this.是否為天干) {
-      const 地支受剋 = this.scores.filter((score) => score.includes(`剋${天干日柱五行}`));
+      const 地支受剋 = this.scores.filter((score) => score.value.includes(`剋${天干日柱五行}`));
       if (地支受剋.length > 0) {
-        this.scores.push(`日主受剋`);
+        this.scores.push({ value: `日主受剋` });
       }
       return;
     }
 
     if (this.是否為天干 && this.計算天干日主受剋(天干日柱)) {
-      this.scores.push(`日主受剋`);
+      this.scores.push({ value: `日主受剋` });
     }
   }
 
@@ -176,7 +203,8 @@ export class 命盤結果 {
       };
 
       while (陽剋人力量 > 0 && 陽被剋力量 + 陰被剋力量 > 0) {
-        this.scores.push(`剋${新五行結果[lastIndex].五行}`);
+        const 剋五行 = 新五行結果[lastIndex].五行;
+        this.scores.push({ value: `剋${剋五行}`, property: 剋五行 });
         剋五行結果 = `剋${新五行結果[lastIndex].五行}`;
         陽剋人減一();
         if (陽被剋力量 > 0) {
@@ -187,7 +215,8 @@ export class 命盤結果 {
       }
 
       while (陰剋人力量 > 0 && 陰被剋力量 > 0) {
-        this.scores.push(`剋${新五行結果[lastIndex].五行}`);
+        const 剋五行 = 新五行結果[lastIndex].五行;
+        this.scores.push({ value: `剋${剋五行}`, property: 剋五行 });
         剋五行結果 = `剋${新五行結果[lastIndex].五行}`;
         陰剋人減一();
         陰被剋減一();
@@ -211,10 +240,10 @@ export class 命盤結果 {
       return;
     }
 
-    const noneChanged: string[] = [];
-    const changed: string[] = [];
+    const noneChanged: { value: string; property?: 五行 }[] = [];
+    const changed: { value: string; property?: 五行 }[] = [];
     for (let i = 0; i < this.scores.length; i++) {
-      if (this.scores[i] === 剋五行結果) {
+      if (this.scores[i].value === 剋五行結果) {
         changed.push(this.scores[i]);
       } else {
         noneChanged.push(this.scores[i]);
@@ -223,20 +252,20 @@ export class 命盤結果 {
     this.scores = [this.剋五行轉換器(changed), ...noneChanged];
   }
 
-  private 剋五行轉換器(target: string[]) {
+  private 剋五行轉換器(target: { value: string; property?: 五行 }[]) {
     const length = target.length;
 
     switch (length) {
       case 1:
-        return `${target[0]}`;
+        return { value: target[0].value, property: target[0].property };
       case 2:
-        return `雙${target[0]}`;
+        return { value: `雙${target[0].value}`, property: target[0].property };
       case 3:
-        return `參${target[0]}`;
+        return { value: `參${target[0].value}`, property: target[0].property };
       case 4:
-        return `肆${target[0]}`;
+        return { value: `肆${target[0].value}`, property: target[0].property };
       default:
-        return `${target[0]}`;
+        return { value: target[0].value, property: target[0].property };
     }
   }
 
@@ -272,38 +301,6 @@ export class 命盤結果 {
 
     return 是否日主受剋;
   }
-
-  // if (五行相生對照表.get(天干日柱五行) === 五行結果[0].五行) {
-  //   return false;
-  // }
-
-  // if (五行結果.find((value) => value.五行 === 天干日柱五行)) {
-  //   return false;
-  // }
-
-  // if (lastElement.生剋 === '剋' && lastElement.五行 === 天干日柱五行) {
-  //   const 生陽力 = 五行結果[五行結果.length - 2].陽力;
-  //   const 生陰力 = 五行結果[五行結果.length - 2].陰力;
-  //   const 天干日柱為陰 = 陰列.includes(天干日柱);
-  //   return 生陽力 > 0 || (生陰力 > 0 && 天干日柱為陰);
-  // }
-
-  // for (let i = 0; i < 五行結果.length; i++) {
-  //   const next = i + 1;
-  //   if (五行相刻對照表.get(五行結果[i].五行) === 天干日柱五行 && next < 五行結果.length) {
-  //     const 當前為陽 = !!五行結果[i].陽力;
-  //     const 下一個為陰 = !五行結果[next].陽力 && !!五行結果[next].陰力;
-  //     return 當前為陽 && 下一個為陰;
-  //   }
-  // }
-
-  // if (五行相刻對照表.get(lastElement.五行) === 天干日柱五行) {
-  //   const 天干日柱為陰 = 陰列.includes(天干日柱);
-  //   return lastElement.陽力 > 0 || (lastElement.陰力 && 天干日柱為陰);
-  // }
-
-  //     return false;
-  //   }
 }
 
 export interface 五行結果 {
@@ -339,4 +336,12 @@ export interface 地支命盤 {
   bigFortune: 地支;
   yearFortune: 地支;
   liuYue: 流月[];
+}
+
+export interface BadProperty {
+  [五行.金]: string;
+  [五行.木]: string;
+  [五行.水]: string;
+  [五行.火]: string;
+  [五行.土]: string;
 }

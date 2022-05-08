@@ -64,7 +64,9 @@
               <div class="score-board">
                 <span>天干受剋: </span>
                 <ul *ngIf="currentHoroscope.horoscopeResult.gan.scores.length; else none">
-                  <li *ngFor="let score of currentHoroscope.horoscopeResult.gan.scores">{{ score }}</li>
+                  <li *ngFor="let score of currentHoroscope.horoscopeResult.gan.scores">
+                    {{ score.value }}({{ badProperty(score.property) }})
+                  </li>
                 </ul>
                 <ng-template #none>
                   <span>無</span>
@@ -84,7 +86,9 @@
               <div class="score-board">
                 <span>地支受剋: </span>
                 <ul *ngIf="currentHoroscope.horoscopeResult.zhi.scores.length; else none">
-                  <li *ngFor="let score of currentHoroscope.horoscopeResult.zhi.scores">{{ score }}</li>
+                  <li *ngFor="let score of currentHoroscope.horoscopeResult.zhi.scores">
+                    {{ score.value }}{{ badProperty(score.property) }}
+                  </li>
                 </ul>
                 <ng-template #none>
                   <span>無</span>
@@ -151,7 +155,7 @@
                 <mat-icon class="restriction" *ngIf="reaction['流月被剋']">close</mat-icon>
                 {{ liuYue.gan }}
               </td>
-              <td>{{ liuYue.ganResult.scores.join(',') }}</td>
+              <td>{{ convertLiuYueScores(liuYue.ganResult.scores) }}</td>
             </ng-container>
           </tr>
           <tr>
@@ -181,7 +185,7 @@
                 <mat-icon class="restriction" *ngIf="reaction['流月被剋']">close</mat-icon>
                 {{ liuYue.zhi }}
               </td>
-              <td>{{ liuYue.zhiResult.scores.join(', ') }}</td>
+              <td>{{ convertLiuYueScores(liuYue.zhiResult.scores) }}</td>
             </ng-container>
           </tr>
           <tr *ngIf="!last" class="margin-element">

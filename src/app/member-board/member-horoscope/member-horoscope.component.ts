@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { 五行 } from 'src/app/enums/五行.enum';
 import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
 import { switchMap } from 'rxjs/operators';
@@ -54,5 +55,23 @@ export class MemberHoroscopeComponent implements OnInit {
     } else {
       // TODO: Error Handle.
     }
+  }
+
+  badProperty(目標五行?: 五行) {
+    if (!this.currentHoroscope?.劫數對照表) {
+      return '';
+    }
+
+    console.log(this.currentHoroscope.劫數對照表);
+
+    return 目標五行 ? `(破${this.currentHoroscope.劫數對照表[目標五行]})` : '';
+  }
+
+  convertLiuYueScores(data: { value: string; property?: 五行 }[]) {
+    if (!this.currentHoroscope?.劫數對照表) {
+      return '';
+    }
+
+    return data.map((score) => `${score.value} ${this.badProperty(score.property)}`).join(', ');
   }
 }
