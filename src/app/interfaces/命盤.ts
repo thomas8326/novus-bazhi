@@ -163,7 +163,7 @@ export class 命盤結果 {
     const 文字轉換 = (current: 五行結果) => {
       const 陽陣文字 = `${current.陽陣.length ? `[陽: ${current.陽陣.join(',')}] ` : ''}`;
       const 陰陣文字 = `${current.陰陣.length ? `[陰: ${current.陰陣.join(',')}] ` : ''}`;
-      const 五行文字 = `(五行: ${current.五行})`;
+      const 五行文字 = `(${current.五行})`;
       return `${陽陣文字}${陰陣文字}${五行文字}`;
     };
 

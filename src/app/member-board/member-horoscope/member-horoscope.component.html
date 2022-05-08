@@ -75,9 +75,9 @@
               <div class="yinyan-board">
                 <div>
                   天干陽流通: <br />
-                  {{ currentHoroscope.horoscopeResult.gan.yanScore }}
+                  {{ currentHoroscope.horoscopeResult.gan.yanScore || '無' }}
                 </div>
-                <div>天干陰陽流通: <br />{{ currentHoroscope.horoscopeResult.gan.yinYanScore }}</div>
+                <div>天干陰陽流通: <br />{{ currentHoroscope.horoscopeResult.gan.yinYanScore || '無' }}</div>
               </div>
             </div>
           </td>
@@ -97,11 +97,11 @@
               <div class="yinyan-board">
                 <div>
                   地支陽流通: <br />
-                  {{ currentHoroscope.horoscopeResult.zhi.yanScore }}
+                  {{ currentHoroscope.horoscopeResult.zhi.yanScore || '無' }}
                 </div>
                 <div>
                   地支陰陽流通: <br />
-                  {{ currentHoroscope.horoscopeResult.zhi.yinYanScore }}
+                  {{ currentHoroscope.horoscopeResult.zhi.yinYanScore || '無' }}
                 </div>
               </div>
             </div>
