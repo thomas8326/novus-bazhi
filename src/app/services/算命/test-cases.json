@@ -16,30 +16,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": true,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": true, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -63,30 +55,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": true,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -110,30 +94,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -157,30 +133,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": true,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -204,30 +172,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": true,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": true,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": true, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -251,30 +211,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": true,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -298,30 +250,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -345,30 +289,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -392,30 +328,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -439,30 +367,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -486,30 +406,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -533,30 +445,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -580,30 +484,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -627,30 +523,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -674,30 +562,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": true,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": true,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": true, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": true, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -721,30 +601,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": true,
-          "日住已作用": true,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": true, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -768,30 +640,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -815,30 +679,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": true,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": true,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": true, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": true, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": true,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": true, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -862,30 +718,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -909,30 +757,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -956,30 +796,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": true,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -1003,30 +835,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": true,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": true, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -1050,30 +874,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": true,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": true,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": true, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": true, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {
@@ -1097,30 +913,22 @@
       },
       "預期": {
         "天干": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": true,
-          "大運已作用": true,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": true, "anti": false, "cut": false },
+          "bigFortune": { "match": true, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         },
         "地支": {
-          "時住已作用": false,
-          "日住已作用": false,
-          "月住已作用": false,
-          "年住已作用": false,
-          "大運已作用": false,
-          "流年已作用": false,
-          "流月已作用": false,
-          "大運被剋": false,
-          "流年被剋": false,
-          "流年斷氣": false,
-          "流月被剋": false
+          "time": { "match": false, "anti": false, "cut": false },
+          "day": { "match": false, "anti": false, "cut": false },
+          "month": { "match": false, "anti": false, "cut": false },
+          "year": { "match": false, "anti": false, "cut": false },
+          "bigFortune": { "match": false, "anti": false, "cut": false },
+          "yearFortune": { "match": false, "anti": false, "cut": false },
+          "monthFortune": { "match": false, "anti": false, "cut": false }
         }
       },
       "評分": {

@@ -50,19 +50,35 @@ export class 命盤 {
   }
 }
 
-// TODO: 要細分一下已作用是什麼意思，是只有合生剋才算已作用還是說已作用是合走的意思
-export interface 命盤作用 {
-  [命盤結果屬性.時住已作用]: boolean;
-  [命盤結果屬性.日住已作用]: boolean;
-  [命盤結果屬性.月住已作用]: boolean;
-  [命盤結果屬性.年住已作用]: boolean;
-  [命盤結果屬性.大運已作用]: boolean;
-  [命盤結果屬性.大運被剋]?: boolean;
-  [命盤結果屬性.流年已作用]: boolean;
-  [命盤結果屬性.流年被剋]?: boolean;
-  [命盤結果屬性.流年斷氣]?: boolean;
-  [命盤結果屬性.流月已作用]?: boolean;
-  [命盤結果屬性.流月被剋]?: boolean;
+export interface 已作用 {
+  match: boolean;
+  anti: boolean;
+  cut: boolean;
+}
+
+export class 命盤作用 {
+  [命盤結果屬性.time]: 已作用;
+  [命盤結果屬性.day]: 已作用;
+  [命盤結果屬性.month]: 已作用;
+  [命盤結果屬性.year]: 已作用;
+  [命盤結果屬性.bigFortune]: 已作用;
+  [命盤結果屬性.yearFortune]: 已作用;
+  [命盤結果屬性.monthFortune]: 已作用;
+
+  constructor() {
+    const init: 已作用 = {
+      match: false,
+      anti: false,
+      cut: false,
+    };
+    this.time = JSON.parse(JSON.stringify(init));
+    this.day = JSON.parse(JSON.stringify(init));
+    this.month = JSON.parse(JSON.stringify(init));
+    this.year = JSON.parse(JSON.stringify(init));
+    this.bigFortune = JSON.parse(JSON.stringify(init));
+    this.yearFortune = JSON.parse(JSON.stringify(init));
+    this.monthFortune = JSON.parse(JSON.stringify(init));
+  }
 }
 
 export class 命盤結果 {
@@ -83,19 +99,7 @@ export class 命盤結果 {
   private 是否為天干: boolean;
 
   constructor(是否為天干 = false) {
-    this.reaction = {
-      時住已作用: false,
-      日住已作用: false,
-      月住已作用: false,
-      年住已作用: false,
-      流年已作用: false,
-      大運已作用: false,
-      流月已作用: false,
-      大運被剋: false,
-      流年被剋: false,
-      流年斷氣: false,
-      流月被剋: false,
-    };
+    this.reaction = new 命盤作用();
     this.是否為天干 = 是否為天干;
   }
 

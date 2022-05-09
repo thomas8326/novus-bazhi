@@ -14,7 +14,7 @@ import { 五行 } from 'src/app/enums/五行.enum';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
-import { 五行結果, 命盤, 命盤結果, 地支命盤, 天干命盤 } from 'src/app/interfaces/命盤';
+import { 五行結果, 命盤, 命盤結果, 地支命盤, 天干命盤, 已作用 } from 'src/app/interfaces/命盤';
 
 @Injectable({
   providedIn: 'root',
@@ -78,10 +78,9 @@ export class 算命服務器 {
       this.本命互相合(horoscopeResult, myFateSet, 已作用集);
 
       if (!大運已作用 && !流年已作用 && !救流年) {
-        horoscopeResult.reaction.流年已作用 = true;
-        horoscopeResult.reaction.流年被剋 = true;
+        horoscopeResult.reaction.yearFortune.anti = true;
         horoscopeResult.新增大運流年相剋評分(yearFortune, true);
-        this.大運流年流月消相同本命(horoscopeResult, myFateSet, { yearFortune });
+        this.大運流年流月消相同本命(horoscopeResult, myFateSet, { yearFortune }, true);
       }
     } else if (this.流年剋大運(horoscopeResult, bigFortune, yearFortune)) {
       this.本命互相合(horoscopeResult, myFateSet);
@@ -95,10 +94,9 @@ export class 算命服務器 {
       this.本命互相合(horoscopeResult, myFateSet, 已作用集);
 
       if (!大運已作用 && !流年已作用 && !救大運) {
-        horoscopeResult.reaction.大運已作用 = true;
-        horoscopeResult.reaction.大運被剋 = true;
+        horoscopeResult.reaction.bigFortune.anti = true;
         horoscopeResult.新增大運流年相剋評分(bigFortune, false);
-        this.大運流年流月消相同本命(horoscopeResult, myFateSet, { bigFortune });
+        this.大運流年流月消相同本命(horoscopeResult, myFateSet, { bigFortune }, true);
       }
     } else {
       this.本命互相合(horoscopeResult, myFateSet);
@@ -128,15 +126,16 @@ export class 算命服務器 {
     return horoscopeResult.再流通(流通陣列);
   }
 
+  // TODO: update return name
   private 大運流年流月與本命作用(
     result: 命盤結果,
     myFateSet: (天干 | 地支)[],
     data: { bigFortune?: 天干 | 地支; yearFortune?: 天干 | 地支; liuYue?: 天干 | 地支 },
     canHelp = { bigFortune: true, yearFortune: true },
   ) {
-    let 大運已作用 = result.reaction.大運已作用;
-    let 流年已作用 = result.reaction.流年已作用;
-    let 流月已作用 = result.reaction.流月已作用;
+    let 大運已作用 = this.是否已作用(result.reaction.bigFortune);
+    let 流年已作用 = this.是否已作用(result.reaction.yearFortune);
+    let 流月已作用 = this.是否已作用(result.reaction.monthFortune);
     const 已作用集 = new Set<天干 | 地支>();
 
     if (!Object.keys(data).length) {
@@ -145,31 +144,31 @@ export class 算命服務器 {
 
     // 剩餘本命與大運流年流月作用
     for (let i = 0; i < myFateSet.length; i++) {
-      const 本命已作用 = result.reaction[this.年月日時住轉換(i)];
+      const 本命已合 = this.是否已作用(result.reaction[this.年月日時住轉換(i)]);
 
-      if (this.是否為天干日住(i) || 本命已作用) {
+      if (this.是否為天干日住(i) || 本命已合) {
         continue;
       }
 
       const 大運本命可以合 = !大運已作用 && this.是否相合(myFateSet[i], data.bigFortune);
       if (canHelp?.bigFortune && data.bigFortune && 大運本命可以合) {
-        result.reaction[this.年月日時住轉換(i)] = true;
-        result.reaction.大運已作用 = true;
+        result.reaction[this.年月日時住轉換(i)].match = true;
+        result.reaction.bigFortune.match = true;
         已作用集.add(data.bigFortune);
         大運已作用 = true;
       }
 
       const 流年本命可以合 = !流年已作用 && this.是否相合(myFateSet[i], data.yearFortune);
       if (canHelp?.yearFortune && data.yearFortune && 流年本命可以合) {
-        result.reaction[this.年月日時住轉換(i)] = true;
-        result.reaction.流年已作用 = true;
+        result.reaction[this.年月日時住轉換(i)].match = true;
+        result.reaction.yearFortune.match = true;
         已作用集.add(data.yearFortune);
         流年已作用 = true;
       }
 
       if (data.liuYue && !流月已作用 && this.是否相合(myFateSet[i], data.liuYue)) {
-        result.reaction[this.年月日時住轉換(i)] = true;
-        result.reaction.流月已作用 = true;
+        result.reaction[this.年月日時住轉換(i)].match = true;
+        result.reaction.monthFortune.match = true;
         已作用集.add(data.liuYue);
         流月已作用 = true;
       }
@@ -183,14 +182,14 @@ export class 算命服務器 {
 
     // 本命互相作用
     for (let i = 0; i < myFateSet.length; i++) {
-      const 當前已作用 = result.reaction[this.年月日時住轉換(i)];
+      const 當前已作用 = this.是否已作用(result.reaction[this.年月日時住轉換(i)]);
 
       if (this.是否為天干日住(i) || 當前已作用) {
         continue;
       }
 
       if (已作用集?.has(myFateSet[i])) {
-        result.reaction[this.年月日時住轉換(i)] = true;
+        result.reaction[this.年月日時住轉換(i)].match = true;
         continue;
       }
 
@@ -200,10 +199,10 @@ export class 算命服務器 {
       }
 
       const prevIndex = prevIndexStack[prevIndexStack.length - 1];
-      const 前一個還沒作用 = !result.reaction[this.年月日時住轉換(prevIndex)];
+      const 前一個還沒作用 = !this.是否已作用(result.reaction[this.年月日時住轉換(prevIndex)]);
       if (前一個還沒作用 && this.是否相合(myFateSet[i], myFateSet[prevIndex])) {
-        result.reaction[this.年月日時住轉換(i)] = true;
-        result.reaction[this.年月日時住轉換(prevIndex)] = true;
+        result.reaction[this.年月日時住轉換(i)].match = true;
+        result.reaction[this.年月日時住轉換(prevIndex)].match = true;
         prevIndexStack.pop();
       } else {
         prevIndexStack.push(i);
@@ -241,10 +240,9 @@ export class 算命服務器 {
     const createData = () => {
       const 流年流月合 = this.流年流月相合(result, yearFortune, liuYueGanZhi);
       const 大運流年合 = this.大運流年相合(result, yearFortune, bigFortune);
-      const 流月剋流年 = this.流年剋流月(result, liuYueGanZhi, yearFortune);
+      const 流月剋流年 = this.流月剋流年(result, liuYueGanZhi, yearFortune);
       if (this.是否斷氣) {
-        result.reaction.流年已作用 = true;
-        result.reaction.流年斷氣 = true;
+        result.reaction.yearFortune.cut = true;
         return { 大運流年流月: { bigFortune, liuYue: liuYueGanZhi }, 被消: {} };
       }
       if (大運流年合) {
@@ -254,8 +252,7 @@ export class 算命服務器 {
         return { 大運流年流月: { bigFortune }, 被消: { yearFortune, liuYue: liuYueGanZhi } };
       }
       if (流月剋流年) {
-        result.reaction.流年已作用 = true;
-        result.reaction.流年被剋 = true;
+        result.reaction.yearFortune.anti = true;
         result.新增流年流月相剋評分(yearFortune, false);
         this.是否斷氣 = this.是否為天干; // 只有天干會斷氣
         return { 大運流年流月: { bigFortune }, 被消: { yearFortune } };
@@ -278,8 +275,7 @@ export class 算命服務器 {
     // 流年剋流月，剩下流通不變
     if (this.流年剋流月(result, yearFortune, liuYueGanZhi)) {
       this.大運流年流月消相同本命(result, myFateSet, { liuYue: liuYueGanZhi });
-      result.reaction.流月被剋 = true;
-      result.reaction.流月已作用 = true;
+      result.reaction.monthFortune.anti = true;
       result.新增流年流月相剋評分(liuYueGanZhi, true);
       result.計算日柱受剋(this.天干日柱);
       return;
@@ -499,8 +495,9 @@ export class 算命服務器 {
       }
     };
 
-    if (!horoscopeResult.reaction.大運已作用) 新增陰陽(bigFortune);
-    if (!horoscopeResult.reaction.流年已作用 && !horoscopeResult.reaction.流年斷氣) 新增陰陽(yearFortune);
+    if (!this.是否已作用(horoscopeResult.reaction.bigFortune)) 新增陰陽(bigFortune);
+    // if (!horoscopeResult.reaction.yearFortune.合 && !horoscopeResult.reaction.yearFortune.) 新增陰陽(yearFortune);
+    if (!this.是否已作用(horoscopeResult.reaction.yearFortune)) 新增陰陽(yearFortune);
 
     for (let i = 0; i < myFateSet.length; i++) {
       if (this.是否為天干 && i === 1) {
@@ -508,7 +505,7 @@ export class 算命服務器 {
         continue;
       }
 
-      if (!horoscopeResult.reaction[this.年月日時住轉換(i)]) {
+      if (!this.是否已作用(horoscopeResult.reaction[this.年月日時住轉換(i)])) {
         新增陰陽(myFateSet[i]);
       }
     }
@@ -518,8 +515,8 @@ export class 算命服務器 {
 
   private 大運流年相合(result: 命盤結果, yearFortune: 天干 | 地支, bigFortune: 天干 | 地支): boolean {
     if (bigFortune && this.是否相合(bigFortune, yearFortune)) {
-      result.reaction.大運已作用 = true;
-      result.reaction.流年已作用 = true;
+      result.reaction.bigFortune.match = true;
+      result.reaction.yearFortune.match = true;
       return true;
     }
 
@@ -528,27 +525,27 @@ export class 算命服務器 {
 
   private 流年流月相合(result: 命盤結果, yearFortune: 天干 | 地支, liuYueGanZhi: 天干 | 地支) {
     if (this.是否相合(yearFortune, liuYueGanZhi)) {
-      result.reaction.流年已作用 = true;
-      result.reaction.流月已作用 = true;
+      result.reaction.yearFortune.match = true;
+      result.reaction.monthFortune.match = true;
       return true;
     }
     return false;
   }
 
   private 流年剋大運(horoscopeResult: 命盤結果, bigFortune: 天干 | 地支, yearFortune: 天干 | 地支) {
-    return !horoscopeResult.reaction.大運已作用 && this.是否相刻(yearFortune, bigFortune);
+    return !horoscopeResult.reaction.bigFortune.anti && this.是否相刻(yearFortune, bigFortune);
   }
 
   private 大運剋流年(horoscopeResult: 命盤結果, bigFortune: 天干 | 地支, yearFortune: 天干 | 地支) {
-    return !horoscopeResult.reaction.流年已作用 && this.是否相刻(bigFortune, yearFortune);
+    return !horoscopeResult.reaction.yearFortune.anti && this.是否相刻(bigFortune, yearFortune);
   }
 
   private 流年剋流月(horoscopeResult: 命盤結果, yearFortune: 天干 | 地支, liuYue: 天干 | 地支) {
-    return !horoscopeResult.reaction.流月已作用 && this.是否相刻(yearFortune, liuYue);
+    return !horoscopeResult.reaction.monthFortune.anti && this.是否相刻(yearFortune, liuYue);
   }
 
   private 流月剋流年(horoscopeResult: 命盤結果, liuYue: 天干 | 地支, yearFortune: 天干 | 地支) {
-    return !horoscopeResult.reaction.流年已作用 && this.是否相刻(liuYue, yearFortune);
+    return !horoscopeResult.reaction.yearFortune.anti && this.是否相刻(liuYue, yearFortune);
   }
 
   private 大運流年相剋找人救(
@@ -558,8 +555,8 @@ export class 算命服務器 {
     yearFortune: 天干 | 地支,
   ) {
     for (let i = 0; i < myFateSet.length; i++) {
-      const 已作用 = horoscopeResult.reaction[this.年月日時住轉換(i)];
-      if ((this.是否為天干 && i === 1) || 已作用) {
+      const 元素已作用 = this.是否已作用(horoscopeResult.reaction[this.年月日時住轉換(i)]);
+      if (this.是否為天干日住(i) || 元素已作用) {
         continue;
       }
 
@@ -580,15 +577,20 @@ export class 算命服務器 {
     result: 命盤結果,
     myFateSet: (天干 | 地支)[],
     data: { bigFortune?: 天干 | 地支; yearFortune?: 天干 | 地支; liuYue?: 天干 | 地支 },
+    是否消剋 = false,
   ) {
     for (let i = 0; i < myFateSet.length; i++) {
-      if (this.是否為天干 && i === 1) {
+      if (this.是否為天干日住(i) || this.是否已作用(result.reaction[this.年月日時住轉換(i)])) {
         // 日住不作用
         continue;
       }
 
       if (myFateSet[i] === data.bigFortune || myFateSet[i] === data.yearFortune || myFateSet[i] === data.liuYue) {
-        result.reaction[this.年月日時住轉換(i)] = true;
+        if (是否消剋) {
+          result.reaction[this.年月日時住轉換(i)].anti = true;
+        } else {
+          result.reaction[this.年月日時住轉換(i)].match = true;
+        }
       }
     }
   }
@@ -626,13 +628,13 @@ export class 算命服務器 {
   private 年月日時住轉換(i: number) {
     switch (i) {
       case 0:
-        return 命盤結果屬性.時住已作用;
+        return 命盤結果屬性.time;
       case 1:
-        return 命盤結果屬性.日住已作用;
+        return 命盤結果屬性.day;
       case 2:
-        return 命盤結果屬性.月住已作用;
+        return 命盤結果屬性.month;
       case 3:
-        return 命盤結果屬性.年住已作用;
+        return 命盤結果屬性.year;
       default:
         throw new Error('輸入錯誤的值');
     }
@@ -644,5 +646,9 @@ export class 算命服務器 {
 
   private 是否陰作用陽(目標: 天干 | 地支, 被剋: 天干 | 地支) {
     return 陰列.find((陰屬性) => 目標 === 陰屬性) && 陽列.find((陽屬性) => 被剋 === 陽屬性);
+  }
+
+  private 是否已作用(作用: 已作用) {
+    return 作用.match || 作用.anti;
   }
 }
