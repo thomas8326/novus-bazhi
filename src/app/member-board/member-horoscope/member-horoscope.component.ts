@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { 五行 } from 'src/app/enums/五行.enum';
@@ -7,6 +7,7 @@ import { MemberService } from 'src/app/services/member/member.service';
 import { switchMap } from 'rxjs/operators';
 import { 命盤 } from 'src/app/interfaces/命盤';
 import { Subject } from 'rxjs';
+import { ExportPdfService } from 'src/app/services/export-pdf/export-pdf.service';
 
 @Component({
   selector: 'app-member-horoscope',
@@ -14,6 +15,8 @@ import { Subject } from 'rxjs';
   styleUrls: ['./member-horoscope.component.scss'],
 })
 export class MemberHoroscopeComponent implements OnInit {
+  @ViewChild('pdfTemp') pdfTemplate?: ElementRef;
+
   member: Member | null = null;
   currentYear: number = new Date().getFullYear();
   yearChangeSubject = new Subject();
@@ -21,10 +24,13 @@ export class MemberHoroscopeComponent implements OnInit {
   maxYear: number = 3000;
   currentHoroscope?: 命盤;
 
-  constructor(private readonly activatedRoute: ActivatedRoute, private readonly memberService: MemberService) {
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly memberService: MemberService,
+    private readonly exportPdfService: ExportPdfService,
+  ) {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       this.member = member;
-      console.log(this.member);
       this.minYear = new Date(member.dob).getFullYear();
       this.maxYear = this.minYear + member.horoscope.length - 1;
       this.updateHoroscope();
@@ -62,8 +68,6 @@ export class MemberHoroscopeComponent implements OnInit {
       return '';
     }
 
-    console.log(this.currentHoroscope.劫數對照表);
-
     return 目標五行 ? `(破${this.currentHoroscope.劫數對照表[目標五行]})` : '';
   }
 
@@ -73,5 +77,13 @@ export class MemberHoroscopeComponent implements OnInit {
     }
 
     return data.map((score) => `${score.value} ${this.badProperty(score.property)}`).join(', ');
+  }
+
+  onExportPDF() {
+    if (!this.pdfTemplate || !this.member) {
+      return;
+    }
+
+    this.exportPdfService.exportPdf(this.member?.name, this.currentYear, this.pdfTemplate.nativeElement);
   }
 }
