@@ -67,7 +67,7 @@
                   <span>天干受剋: </span>
                   <ul *ngIf="currentHoroscope.horoscopeResult.gan.scores.length; else none">
                     <li *ngFor="let score of currentHoroscope.horoscopeResult.gan.scores">
-                      {{ score.value }}({{ badProperty(score.property) }})
+                      {{ score.value }}{{ badProperty(score.property) }}
                     </li>
                   </ul>
                   <ng-template #none>

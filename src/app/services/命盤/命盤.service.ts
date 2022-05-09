@@ -57,4 +57,24 @@ export class 命盤服務器 {
 
     return 結果命盤;
   }
+
+  生成特定天干地支命盤(solar: Date, year: number, isMale?: boolean): 命盤 | null {
+    const 基礎命盤 = this.創建基礎命盤(solar, isMale);
+    const 大運列 = 基礎命盤.大運列;
+
+    for (const 大運值 of 大運列) {
+      for (const 流年值 of 大運值.流年) {
+        if (year === 流年值.年) {
+          const myFateSet = { gan: 基礎命盤.天干本命, zhi: 基礎命盤.地支本命 };
+          const bigFortune = { gan: 大運值.天干, zhi: 大運值.地支 };
+          const yearFortune = { gan: 流年值.天干, zhi: 流年值.地支 };
+          const data = { year: 流年值.年, myFateSet, bigFortune, yearFortune, monthFortune: 流年值.流月 };
+          const 新命盤 = new 命盤(data);
+          return 新命盤;
+        }
+      }
+    }
+
+    return null;
+  }
 }
