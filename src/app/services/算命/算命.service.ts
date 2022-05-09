@@ -214,6 +214,7 @@ export class 算命服務器 {
 
   private 計算流月(對象命盤: 天干命盤 | 地支命盤) {
     const { bigFortune, yearFortune, myFateSet } = 對象命盤;
+    this.是否斷氣 = false;
     for (let liuYue of 對象命盤.liuYue) {
       const liuYueGanZhi = this.是否為天干 ? liuYue.gan : liuYue.zhi;
       const liuYueGanZhiResult = this.是否為天干 ? liuYue.ganResult : liuYue.zhiResult;
