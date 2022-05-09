@@ -1,7 +1,7 @@
 <div>
   <button *ngIf="showAddBtn" (click)="onAdd()">新增</button>
   <button *ngIf="!showAddBtn && showEditBtn" (click)="onEdit()">編輯</button>
-  <button *ngIf="showRedirectBtn" (click)="onRedirectTo()">命盤分析</button>
   <button *ngIf="!showAddBtn" (click)="onDelete()">刪除</button>
-  <button *ngIf="!showAddBtn" (click)="onExport()">匯出PDF</button>
+  <button *ngIf="showRedirectBtn" (click)="onRedirectTo()">命盤分析</button>
+  <button *ngIf="!showAddBtn && showExport" (click)="onExport()">匯出PDF</button>
 </div>
