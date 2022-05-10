@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'member-board',
-    loadChildren: () => import('./member-board/member-board.module').then((m) => m.MemberBoardModule),
+    loadChildren: () => import('./modules/member-board/member-board.module').then((m) => m.MemberBoardModule),
   },
 ];
 
