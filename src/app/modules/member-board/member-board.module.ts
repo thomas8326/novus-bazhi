@@ -13,6 +13,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatButtonModule } from '@angular/material/button';
 
 import { DirectivesModule } from 'src/app/directives/directives.module';
+import { DialogTemplateModule } from 'src/app/modules/dialog-template/dialog-template.module';
 
 import { MemberBoardComponent } from './member-board.component';
 import { MemberBoardRoutingModule } from './member-board-routing.module';
@@ -43,6 +44,7 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
     OverlayModule,
     DirectivesModule,
     MatButtonModule,
+    DialogTemplateModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'zh-TW' }],
 })

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+import { OpenDialogService } from 'src/app/modules/dialog-template/open-dialog.service';
+
 @Component({
   selector: 'app-member-control-panel',
   templateUrl: './member-control-panel.component.html',
@@ -17,6 +19,8 @@ export class MemberControlPanelComponent implements OnInit {
   @Output() export = new EventEmitter<void>();
   @Output() redirect = new EventEmitter<void>();
 
+  constructor(private readonly openDialogService: OpenDialogService) {}
+
   ngOnInit(): void {}
 
   onAdd() {
@@ -26,7 +30,8 @@ export class MemberControlPanelComponent implements OnInit {
     this.edit.emit();
   }
   onDelete() {
-    this.delete.emit();
+    const callback = () => this.delete.emit();
+    this.openDialogService.openDeletedPrompt('a', callback);
   }
   onExport() {
     this.export.emit();

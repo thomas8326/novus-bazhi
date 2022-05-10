@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MemberBoardComponent } from 'src/app/member-board/member-board.component';
-import { MemberHoroscopeComponent } from 'src/app/member-board/member-horoscope/member-horoscope.component';
+import { MemberBoardComponent } from './member-board.component';
+import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.component';
 
 const routes: Routes = [
   {

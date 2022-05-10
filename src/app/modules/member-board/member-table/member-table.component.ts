@@ -90,7 +90,6 @@ export class MemberTableComponent implements OnInit {
   }
 
   onDeleteMember(target: Member) {
-    // TODO Dialog
     this.members = this.members.filter((member) => member.id !== target.id);
     this.memberService.delete(target.id).pipe(take(1)).subscribe();
   }
