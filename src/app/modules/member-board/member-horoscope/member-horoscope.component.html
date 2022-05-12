@@ -1,11 +1,14 @@
-<div class="container drag-boundary" *ngIf="member">
+<div class="container drag-boundary" *ngIf="member" #container>
   <button
     mat-fab
     cdkDrag
+    #cdkDrag="cdkDrag"
     cdkDragBoundary=".drag-boundary"
     class="export-pdf"
     (click)="onExportPDF()"
+    [cdkDragFreeDragPosition]="pdfButtonPoint"
     (cdkDragStarted)="onCdkDragStart()"
+    (cdkDragEnded)="onCkdDragDropped($event, container, exportBtn._elementRef)"
     #exportBtn
   >
     <mat-icon *ngIf="!exporting">picture_as_pdf</mat-icon>

@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CdkDragEnd, Point } from '@angular/cdk/drag-drop';
 
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { 五行 } from 'src/app/enums/五行.enum';
@@ -32,6 +33,7 @@ export class MemberHoroscopeComponent implements OnInit {
 
   isDragging = false;
 
+  pdfButtonPoint: Point = { x: 0, y: 0 };
   exporting = false;
 
   constructor(
@@ -40,6 +42,7 @@ export class MemberHoroscopeComponent implements OnInit {
     private readonly exportPdfService: ExportPdfService,
     private readonly 命盤服務: 命盤服務器,
     private readonly 算命服務: 算命服務器,
+    private readonly renderer2: Renderer2,
   ) {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       this.member = new Member(member);
@@ -103,6 +106,21 @@ export class MemberHoroscopeComponent implements OnInit {
 
   onCdkDragStart() {
     this.isDragging = true;
+  }
+
+  onCkdDragDropped(button: CdkDragEnd<any>, container: HTMLDivElement, matButton: ElementRef) {
+    const buttonDropX = button.dropPoint.x;
+    const buttonDropY = button.distance.y;
+    const containerWidth = container.clientWidth;
+
+    if (buttonDropX > containerWidth / 2) {
+      this.pdfButtonPoint = { x: 0, y: this.pdfButtonPoint.y + buttonDropY };
+    } else {
+      this.pdfButtonPoint = {
+        x: -containerWidth + matButton.nativeElement.clientWidth,
+        y: this.pdfButtonPoint.y + buttonDropY,
+      };
+    }
   }
 
   private 命盤分析() {
