@@ -1,58 +1,72 @@
 <form [formGroup]="memberForm" class="component-container">
-  <table [dataSource]="members" mat-table class="mat-elevation-z8">
+  <mat-table [dataSource]="members" class="mat-elevation-z8">
     <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
+      <mat-header-cell *matHeaderCellDef>
         <mat-checkbox
           (change)="$event ? masterToggle() : null"
           [checked]="selection.hasValue() && isAllSelected()"
           [indeterminate]="selection.hasValue() && !isAllSelected()"
         >
         </mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row">
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
         <mat-checkbox
           (click)="$event.stopPropagation()"
           (change)="$event ? selection.toggle(row) : null"
           [checked]="selection.isSelected(row)"
         >
         </mat-checkbox>
-      </td>
-      <td mat-footer-cell *matFooterCellDef></td>
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="member.Name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
-      <td mat-footer-cell *matFooterCellDef>
+      <mat-header-cell *matHeaderCellDef>姓名</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef class="footer-cell">
         <mat-form-field appearance="fill">
           <mat-label>會員姓名</mat-label>
           <input matInput formControlName="name" />
         </mat-form-field>
-      </td>
+      </mat-footer-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="member.Gender">
-      <th mat-header-cell *matHeaderCellDef>Gender</th>
-      <td mat-cell *matCellDef="let element"> {{ element.gender }} </td>
-      <td mat-footer-cell *matFooterCellDef>
-        <mat-radio-group aria-label="Select an option" formControlName="gender">
+      <mat-header-cell *matHeaderCellDef>性別</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{ element.gender }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef class="footer-cell">
+        <mat-radio-group class="gender" aria-label="Select an option" formControlName="gender">
           <mat-radio-button [value]="memberGender.Male">男</mat-radio-button>
           <mat-radio-button [value]="memberGender.Female">女</mat-radio-button>
-        </mat-radio-group></td
-      >
+        </mat-radio-group>
+      </mat-footer-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="member.DateOfBirth">
-      <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
-      <td mat-cell *matCellDef="let element"> {{ element.dob | date: 'yyyy/MM/dd HH:mm' }} </td>
-      <td mat-footer-cell *matFooterCellDef>
+      <mat-header-cell *matHeaderCellDef>出生日期</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.dob | date: 'yyyy/MM/dd HH:mm' }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef class="footer-cell">
         <app-dob-picker formControlName="dob"></app-dob-picker>
-      </td>
+      </mat-footer-cell>
+    </ng-container>
+
+    <ng-container [matColumnDef]="member.Completed">
+      <mat-header-cell *matHeaderCellDef>已完成</mat-header-cell>
+      <mat-cell *matCellDef="let element"><mat-checkbox></mat-checkbox></mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+
+    <ng-container [matColumnDef]="member.Comment">
+      <mat-header-cell *matHeaderCellDef>備註</mat-header-cell>
+      <mat-cell *matCellDef="let element"> <div>test</div> </mat-cell>
+      <mat-footer-cell *matFooterCellDef class="footer-cell">
+        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      </mat-footer-cell>
     </ng-container>
 
     <ng-container matColumnDef="btnGroup">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let row">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
         <app-member-control-panel
           [showAddBtn]="false"
           [showRedirectBtn]="true"
@@ -60,18 +74,45 @@
           (edit)="onEditMember(row)"
           (delete)="onDeleteMember(row)"
         ></app-member-control-panel>
-      </td>
-      <td mat-footer-cell *matFooterCellDef>
-        <button *ngIf="isEditingStatus" (click)="onUpdateMember()" [disabled]="memberForm.invalid">更新</button>
-        <button *ngIf="isAddingStatus" (click)="onAddMember()" [disabled]="memberForm.invalid">新增</button>
-        <button *ngIf="isAddingStatus" (click)="onAddNextMember()" [disabled]="memberForm.invalid">新增下一筆</button>
-        <button (click)="onCancel()">取消</button>
-      </td>
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef>
+        <button
+          mat-flat-button
+          color="primary"
+          *ngIf="isEditingStatus"
+          (click)="onUpdateMember()"
+          [disabled]="memberForm.invalid"
+        >
+          更新
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          *ngIf="isAddingStatus"
+          (click)="onAddMember()"
+          [disabled]="memberForm.invalid"
+        >
+          新增
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          *ngIf="isAddingStatus"
+          (click)="onAddNextMember()"
+          [disabled]="memberForm.invalid"
+        >
+          新增下一筆
+        </button>
+        <button mat-button (click)="onCancel()">取消</button>
+      </mat-footer-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></tr>
-    <tr [hidden]="!isAddingStatus && !isEditingStatus" mat-footer-row *matFooterRowDef="displayedColumns; sticky: true">
-    </tr>
-  </table>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></mat-row>
+    <mat-footer-row
+      [class.hide]="!isAddingStatus && !isEditingStatus"
+      *matFooterRowDef="displayedColumns; sticky: true"
+    >
+    </mat-footer-row>
+  </mat-table>
 </form>

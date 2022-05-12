@@ -4,3 +4,43 @@ table {
 
 .component-container {
 }
+
+// TODO: move to general
+mat-form-field {
+  padding-top: 1.34375em;
+}
+
+.gender {
+  display: flex;
+  flex-direction: column;
+
+  .mat-radio-button {
+    margin: 5px 0;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+mat-table {
+  mat-footer-cell,
+  mat-header-cell,
+  mat-cell {
+    justify-content: center;
+  }
+
+  .mat-column-select {
+    flex: 0 0 60px;
+  }
+
+  .mat-column-gender,
+  .mat-column-completed {
+    flex: 0 0 80px;
+  }
+
+  .mat-column-btnGroup {
+    flex: 0 0 20%;
+    justify-content: flex-end;
+  }
+}

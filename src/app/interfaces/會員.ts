@@ -6,6 +6,8 @@ export class Member {
   [會員欄位.Name]: string;
   [會員欄位.DateOfBirth]: string;
   [會員欄位.Gender]: 性別;
+  [會員欄位.Completed]: boolean;
+  [會員欄位.Comment]: string;
 
   constructor(data: { id?: string; name: string; dob: string; gender: 性別 }) {
     this.id = data.id || uuidv4();

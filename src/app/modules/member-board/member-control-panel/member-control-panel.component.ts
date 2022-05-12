@@ -12,6 +12,7 @@ export class MemberControlPanelComponent implements OnInit {
   @Input() showEditBtn = true;
   @Input() showRedirectBtn = false;
   @Input() showExport = false;
+  @Input() showDeleteBtn = true;
 
   @Output() add = new EventEmitter<void>();
   @Output() edit = new EventEmitter<void>();

@@ -31,11 +31,21 @@ export class MemberTableComponent implements OnInit {
     name: ['', Validators.required],
     dob: [moment(), Validators.required],
     gender: ['', Validators.required],
+    comment: [''],
+    completed: [''],
   });
 
   readonly member = 會員欄位;
   readonly memberGender = 性別;
-  readonly displayedColumns: string[] = ['select', 會員欄位.Name, 會員欄位.Gender, 會員欄位.DateOfBirth, 'btnGroup'];
+  readonly displayedColumns: string[] = [
+    'select',
+    會員欄位.Name,
+    會員欄位.Gender,
+    會員欄位.DateOfBirth,
+    會員欄位.Completed,
+    會員欄位.Comment,
+    'btnGroup',
+  ];
 
   members: Member[] = [];
   constructor(
