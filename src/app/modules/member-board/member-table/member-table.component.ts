@@ -32,13 +32,12 @@ export class MemberTableComponent implements OnInit {
     dob: [moment(), Validators.required],
     gender: ['', Validators.required],
     comment: [''],
-    completed: [''],
+    completed: [false],
   });
 
   readonly member = 會員欄位;
   readonly memberGender = 性別;
   readonly displayedColumns: string[] = [
-    'select',
     會員欄位.Name,
     會員欄位.Gender,
     會員欄位.DateOfBirth,
@@ -94,7 +93,7 @@ export class MemberTableComponent implements OnInit {
     if (this.memberForm.valid) {
       const updatedMember = new Member(this.memberForm.value);
       this.members = this.members.map((member) => (member.id === updatedMember.id ? updatedMember : member));
-      this.memberService.replace(updatedMember).pipe(take(1)).subscribe();
+      this.memberService.replace(updatedMember.id, updatedMember).pipe(take(1)).subscribe();
       this.isEditingStatus = false;
     }
   }
@@ -118,5 +117,13 @@ export class MemberTableComponent implements OnInit {
 
   onRedirect(target: Member) {
     this.router.navigate([`horoscope/${target.id}`], { relativeTo: this.activatedRoute });
+  }
+
+  onCheckCompleted(id: string, isChecked: boolean) {
+    this.memberService.replace(id, { completed: isChecked }).pipe(take(1)).subscribe();
+  }
+
+  onUpdateComment(id: string, text: string) {
+    this.memberService.replace(id, { comment: text }).pipe(take(1)).subscribe();
   }
 }

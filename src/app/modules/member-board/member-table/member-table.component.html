@@ -1,6 +1,7 @@
 <form [formGroup]="memberForm" class="component-container">
   <mat-table [dataSource]="members" class="mat-elevation-z8">
-    <ng-container matColumnDef="select">
+    <!-- TODO: 批量選取刪除 -->
+    <!-- <ng-container matColumnDef="select">
       <mat-header-cell *matHeaderCellDef>
         <mat-checkbox
           (change)="$event ? masterToggle() : null"
@@ -18,7 +19,7 @@
         </mat-checkbox>
       </mat-cell>
       <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container [matColumnDef]="member.Name">
       <mat-header-cell *matHeaderCellDef>姓名</mat-header-cell>
@@ -52,15 +53,18 @@
 
     <ng-container [matColumnDef]="member.Completed">
       <mat-header-cell *matHeaderCellDef>已完成</mat-header-cell>
-      <mat-cell *matCellDef="let element"><mat-checkbox></mat-checkbox></mat-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.completed" (change)="onCheckCompleted(element.id, $event.checked)">
+        </mat-checkbox>
+      </mat-cell>
       <mat-footer-cell *matFooterCellDef></mat-footer-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="member.Comment">
       <mat-header-cell *matHeaderCellDef>備註</mat-header-cell>
-      <mat-cell *matCellDef="let element"> <div>test</div> </mat-cell>
-      <mat-footer-cell *matFooterCellDef class="footer-cell">
-        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      <mat-cell *matCellDef="let element"> <p [innerText]="element.comment"></p> </mat-cell>
+      <mat-footer-cell *matFooterCellDef="let element" class="footer-cell">
+        <textarea matInput formControlName="comment"></textarea>
       </mat-footer-cell>
     </ng-container>
 

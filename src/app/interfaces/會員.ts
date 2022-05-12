@@ -9,11 +9,13 @@ export class Member {
   [會員欄位.Completed]: boolean;
   [會員欄位.Comment]: string;
 
-  constructor(data: { id?: string; name: string; dob: string; gender: 性別 }) {
+  constructor(data: { id?: string; name: string; dob: string; gender: 性別; comment: string }) {
     this.id = data.id || uuidv4();
     this.name = data.name;
     this.dob = data.dob;
     this.gender = data.gender;
+    this.completed = false;
+    this.comment = data.comment;
   }
 
   isMale(): boolean {
