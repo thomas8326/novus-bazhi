@@ -15,6 +15,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { DirectivesModule } from 'src/app/directives/directives.module';
 import { DialogTemplateModule } from 'src/app/modules/dialog-template/dialog-template.module';
+import { ShardComponentsModule } from 'src/app/shard-components/shard-components.module';
 
 import { MemberBoardComponent } from './member-board.component';
 import { MemberBoardRoutingModule } from './member-board-routing.module';
@@ -47,6 +48,7 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
     MatButtonModule,
     DialogTemplateModule,
     DragDropModule,
+    ShardComponentsModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'zh-TW' }],
 })

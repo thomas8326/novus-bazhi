@@ -1,13 +1,14 @@
 .spinner {
-  width: 70px;
+  width: 45px;
   text-align: center;
 }
 
 .spinner > div {
   display: inline-block;
-  width: 18px;
-  height: 18px;
-  background-color: #277fd3;
+  width: 10px;
+  height: 10px;
+  margin: 0 2px;
+  background-color: white;
   border-radius: 100%;
   animation: sk-bounceDelay 1.4s infinite ease-in-out both;
 }

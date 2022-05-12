@@ -5,7 +5,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Subject } from 'rxjs';
 
-enum ExportStatus {
+export enum ExportStatus {
   Init = 'init',
   Start = 'start',
   InProgress = 'inProgress',

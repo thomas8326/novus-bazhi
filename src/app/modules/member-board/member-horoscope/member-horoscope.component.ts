@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { untilDestroyed } from '@ngneat/until-destroy';
+import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { 五行 } from 'src/app/enums/五行.enum';
 import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
@@ -14,6 +14,7 @@ import { 算命服務器 } from 'src/app/services/算命/算命.service';
 
 const MAX_DISTANCE = 93;
 
+@UntilDestroy()
 @Component({
   selector: 'app-member-horoscope',
   templateUrl: './member-horoscope.component.html',

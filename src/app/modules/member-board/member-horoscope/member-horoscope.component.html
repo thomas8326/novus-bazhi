@@ -8,7 +8,8 @@
     (cdkDragStarted)="onCdkDragStart()"
     #exportBtn
   >
-    <mat-icon>picture_as_pdf</mat-icon>
+    <mat-icon *ngIf="!exporting">picture_as_pdf</mat-icon>
+    <app-loading *ngIf="exporting"></app-loading>
   </button>
   <div class="container" #pdfTemp>
     <div class="panel-header">
