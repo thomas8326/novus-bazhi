@@ -1,5 +1,15 @@
-<div class="container" *ngIf="member">
-  <button class="export-pdf" (click)="onExportPDF()">Export</button>
+<div class="container drag-boundary" *ngIf="member">
+  <button
+    mat-fab
+    cdkDrag
+    cdkDragBoundary=".drag-boundary"
+    class="export-pdf"
+    (click)="onExportPDF()"
+    (cdkDragStarted)="onCdkDragStart()"
+    #exportBtn
+  >
+    <mat-icon>picture_as_pdf</mat-icon>
+  </button>
   <div class="container" #pdfTemp>
     <div class="panel-header">
       <button mat-button (click)="onAddYear(-1)" [disabled]="currentYear <= minYear">

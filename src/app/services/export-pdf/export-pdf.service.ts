@@ -1,13 +1,25 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/internal/Observable';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Subject } from 'rxjs';
+
+enum ExportStatus {
+  Init = 'init',
+  Start = 'start',
+  InProgress = 'inProgress',
+  Completed = 'completed',
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExportPdfService {
+  private exportStatus = new Subject<ExportStatus>();
+
   exportPdf(member: string, year: number, element: HTMLElement): void {
+    this.exportStatus.next(ExportStatus.InProgress);
     const pdfFileName = `${member}-${year}命盤運勢`;
     html2canvas(element).then((canvas) => {
       const image = canvas.toDataURL('image/png');
@@ -28,6 +40,11 @@ export class ExportPdfService {
 
       PDF.addImage(image, 'JPEG', marginX, marginY, canvasWidth, canvasHeight);
       PDF.save(`${pdfFileName}.pdf`);
+      this.exportStatus.next(ExportStatus.Completed);
     });
+  }
+
+  getExportStatus(): Observable<ExportStatus> {
+    return this.exportStatus;
   }
 }

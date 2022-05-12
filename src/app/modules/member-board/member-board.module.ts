@@ -11,6 +11,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatButtonModule } from '@angular/material/button';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { DirectivesModule } from 'src/app/directives/directives.module';
 import { DialogTemplateModule } from 'src/app/modules/dialog-template/dialog-template.module';
@@ -45,6 +46,7 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
     DirectivesModule,
     MatButtonModule,
     DialogTemplateModule,
+    DragDropModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'zh-TW' }],
 })

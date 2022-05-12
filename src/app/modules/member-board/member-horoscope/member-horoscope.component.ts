@@ -1,13 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { untilDestroyed } from '@ngneat/until-destroy';
 import { 五行 } from 'src/app/enums/五行.enum';
 import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
 import { switchMap } from 'rxjs/operators';
 import { 命盤 } from 'src/app/interfaces/命盤';
 import { Subject } from 'rxjs';
-import { ExportPdfService } from 'src/app/services/export-pdf/export-pdf.service';
+import { ExportPdfService, ExportStatus } from 'src/app/services/export-pdf/export-pdf.service';
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
 import { 算命服務器 } from 'src/app/services/算命/算命.service';
 
@@ -28,6 +29,10 @@ export class MemberHoroscopeComponent implements OnInit {
   maxYear: number = 3000;
   currentHoroscope: 命盤 | null = null;
 
+  isDragging = false;
+
+  exporting = false;
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly memberService: MemberService,
@@ -41,6 +46,11 @@ export class MemberHoroscopeComponent implements OnInit {
       this.maxYear = this.minYear + MAX_DISTANCE - 1;
       this.命盤分析();
     });
+
+    this.exportPdfService
+      .getExportStatus()
+      .pipe(untilDestroyed(this))
+      .subscribe((status) => (this.exporting = status === ExportStatus.InProgress));
   }
 
   ngOnInit(): void {}
@@ -82,11 +92,16 @@ export class MemberHoroscopeComponent implements OnInit {
   }
 
   onExportPDF() {
-    if (!this.pdfTemplate || !this.member) {
+    if (!this.pdfTemplate || !this.member || this.isDragging) {
+      this.isDragging = false;
       return;
     }
 
     this.exportPdfService.exportPdf(this.member?.name, this.currentYear, this.pdfTemplate.nativeElement);
+  }
+
+  onCdkDragStart() {
+    this.isDragging = true;
   }
 
   private 命盤分析() {
