@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatButtonModule } from '@angular/material/button';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSortModule } from '@angular/material/sort';
 
 import { DirectivesModule } from 'src/app/directives/directives.module';
 import { DialogTemplateModule } from 'src/app/modules/dialog-template/dialog-template.module';
@@ -49,7 +50,8 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
     DialogTemplateModule,
     DragDropModule,
     ShardComponentsModule,
+    MatSortModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'zh-TW' }],
 })
-export class MemberBoardModule {}
+export class MemberBoardModule { }

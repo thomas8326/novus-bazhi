@@ -1,5 +1,5 @@
 <form [formGroup]="memberForm" class="component-container">
-  <mat-table [dataSource]="members" class="mat-elevation-z8">
+  <mat-table matSort [dataSource]="memberDataSource" class="mat-elevation-z8 novus-scroll-bar">
     <!-- TODO: 批量選取刪除 -->
     <!-- <ng-container matColumnDef="select">
       <mat-header-cell *matHeaderCellDef>
@@ -44,7 +44,7 @@
     </ng-container>
 
     <ng-container [matColumnDef]="member.DateOfBirth">
-      <mat-header-cell *matHeaderCellDef>出生日期</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>出生日期</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.dob | date: 'yyyy/MM/dd HH:mm' }} </mat-cell>
       <mat-footer-cell *matFooterCellDef class="footer-cell">
         <app-dob-picker formControlName="dob"></app-dob-picker>
@@ -52,7 +52,7 @@
     </ng-container>
 
     <ng-container [matColumnDef]="member.Completed">
-      <mat-header-cell *matHeaderCellDef>已完成</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>已完成</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-checkbox [checked]="element.completed" (change)="onCheckCompleted(element.id, $event.checked)">
         </mat-checkbox>
@@ -113,7 +113,7 @@
       </mat-footer-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     <mat-footer-row
       [class.hide]="!isAddingStatus && !isEditingStatus"

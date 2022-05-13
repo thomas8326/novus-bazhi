@@ -1,7 +1,9 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { 性別, 會員欄位 } from 'src/app/enums/會員.enum';
 import { Member } from 'src/app/interfaces/會員';
@@ -23,6 +25,18 @@ export class MemberTableComponent implements OnInit {
   @Input() selection = new SelectionModel<Member>(true, []);
   @Input() isAddingStatus = false;
   @Output() isAddingStatusChange = new EventEmitter<boolean>();
+
+  @ViewChild(MatSort, { static: false })
+  set sort(value: MatSort) {
+    console.log(value);
+    if (this.memberDataSource) {
+      this.memberDataSource.sort = value;
+      this.memberDataSource.sortData(this.memberDataSource.data, this.memberDataSource.sort);
+    }
+  }
+
+  @ViewChild(MatSort, { static: false }) MatSort: MatSort | null = null;
+  memberDataSource = new MatTableDataSource<Member>();
 
   isEditingStatus = false;
 
@@ -46,22 +60,26 @@ export class MemberTableComponent implements OnInit {
     'btnGroup',
   ];
 
-  members: Member[] = [];
+  // members: Member[] = [];
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
     private readonly memberService: MemberService,
   ) {
-    this.memberService.get().subscribe((members) => (this.members = members));
+
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.memberService.get().subscribe((members) => {
+      this.memberDataSource.data = members.sort(this.compareCreateTime);
+    });
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.members.length;
+    const numRows = this.memberDataSource.data.length;
     return numSelected == numRows;
   }
 
@@ -70,7 +88,7 @@ export class MemberTableComponent implements OnInit {
     if (this.isAllSelected()) {
       this.selection.clear();
     } else {
-      this.members.forEach((row) => this.selection.select(row));
+      this.memberDataSource.data.forEach((row) => this.selection.select(row));
     }
   }
 
@@ -78,7 +96,8 @@ export class MemberTableComponent implements OnInit {
     if (this.memberForm.valid) {
       const newMember = new Member(this.memberForm.value);
       this.memberService.create(newMember).pipe(take(1)).subscribe();
-      this.members = [...this.members, newMember];
+      this.memberDataSource.data = [newMember].concat(this.memberDataSource.data);
+      console.log(newMember);
       this.memberForm.reset();
     }
   }
@@ -92,14 +111,14 @@ export class MemberTableComponent implements OnInit {
   onUpdateMember() {
     if (this.memberForm.valid) {
       const updatedMember = new Member(this.memberForm.value);
-      this.members = this.members.map((member) => (member.id === updatedMember.id ? updatedMember : member));
+      this.memberDataSource.data = this.memberDataSource.data.map((member) => (member.id === updatedMember.id ? updatedMember : member));
       this.memberService.replace(updatedMember.id, updatedMember).pipe(take(1)).subscribe();
       this.isEditingStatus = false;
     }
   }
 
   onDeleteMember(target: Member) {
-    this.members = this.members.filter((member) => member.id !== target.id);
+    this.memberDataSource.data = this.memberDataSource.data.filter((member) => member.id !== target.id);
     this.memberService.delete(target.id).pipe(take(1)).subscribe();
   }
 
@@ -126,4 +145,11 @@ export class MemberTableComponent implements OnInit {
   onUpdateComment(id: string, text: string) {
     this.memberService.replace(id, { comment: text }).pipe(take(1)).subscribe();
   }
+
+  private compareCreateTime(m1: Member, m2: Member) {
+    const m1CreateTime = m1.createTime;
+    const m2CreateTime = m2.createTime;
+
+    return m1CreateTime > m2CreateTime && !m1.completed ? -1 : 1
+  };
 }
