@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CdkDragEnd, Point } from '@angular/cdk/drag-drop';
 
@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 import { ExportPdfService, ExportStatus } from 'src/app/services/export-pdf/export-pdf.service';
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
 import { 算命服務器 } from 'src/app/services/算命/算命.service';
+import { ErrorMsg, SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 const MAX_DISTANCE = 93;
 
@@ -42,7 +43,7 @@ export class MemberHoroscopeComponent implements OnInit {
     private readonly exportPdfService: ExportPdfService,
     private readonly 命盤服務: 命盤服務器,
     private readonly 算命服務: 算命服務器,
-    private readonly renderer2: Renderer2,
+    private readonly snackBarService: SnackbarService,
   ) {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       this.member = new Member(member);
@@ -57,7 +58,7 @@ export class MemberHoroscopeComponent implements OnInit {
       .subscribe((status) => (this.exporting = status === ExportStatus.InProgress));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onAddYear(value: number) {
     this.currentYear = this.currentYear + value;
@@ -67,7 +68,7 @@ export class MemberHoroscopeComponent implements OnInit {
   updateYear(value: string) {
     const numberValue = Number(value);
     if (isNaN(numberValue)) {
-      // NaN Handle
+      this.snackBarService.showWarning(ErrorMsg.InputNumber);
       return;
     }
 
@@ -75,7 +76,7 @@ export class MemberHoroscopeComponent implements OnInit {
       this.currentYear = numberValue;
       this.命盤分析();
     } else {
-      // TODO: Error Handle.
+      this.snackBarService.showWarning(`請輸入${this.minYear}到${this.maxYear}之間的數字`);
     }
   }
 
