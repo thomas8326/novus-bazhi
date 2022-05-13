@@ -135,4 +135,6 @@ tr:not(.margin-line) {
   background-color: #3693f4;
   border-radius: 50%;
   cursor: pointer;
+  transition-property: transform;
+  transition-timing-function: ease-out;
 }
