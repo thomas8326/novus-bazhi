@@ -49,6 +49,7 @@ export class MemberTableComponent implements OnInit {
   memberForm = this.fb.group({
     id: [''],
     name: ['', Validators.required],
+    phone: ['', Validators.required],
     dob: [moment(), Validators.required],
     gender: ['', Validators.required],
     comment: [''],
@@ -59,7 +60,7 @@ export class MemberTableComponent implements OnInit {
   readonly memberGender = 性別;
   readonly displayedColumns: string[] = [
     會員欄位.Name,
-    // 會員欄位.Phone,
+    會員欄位.Phone,
     會員欄位.Gender,
     會員欄位.DateOfBirth,
     會員欄位.Completed,

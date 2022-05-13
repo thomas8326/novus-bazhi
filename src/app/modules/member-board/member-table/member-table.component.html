@@ -32,6 +32,17 @@
       </mat-footer-cell>
     </ng-container>
 
+    <ng-container [matColumnDef]="member.Phone">
+      <mat-header-cell *matHeaderCellDef>電話</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.phone }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef class="footer-cell">
+        <mat-form-field appearance="fill">
+          <mat-label>會員電話</mat-label>
+          <input matInput formControlName="phone" />
+        </mat-form-field>
+      </mat-footer-cell>
+    </ng-container>
+
     <ng-container [matColumnDef]="member.Gender">
       <mat-header-cell *matHeaderCellDef>性別</mat-header-cell>
       <mat-cell mat-cell *matCellDef="let element"> {{ element.gender }} </mat-cell>
@@ -62,7 +73,9 @@
 
     <ng-container [matColumnDef]="member.Comment">
       <mat-header-cell *matHeaderCellDef>備註</mat-header-cell>
-      <mat-cell *matCellDef="let element"> <div class="comment novus-scroll-bar" [innerText]="element.comment"></div> </mat-cell>
+      <mat-cell *matCellDef="let element">
+        <div class="comment novus-scroll-bar" [innerText]="element.comment"></div>
+      </mat-cell>
       <mat-footer-cell *matFooterCellDef="let element" class="footer-cell">
         <mat-form-field class="insert-comment" appearance="fill">
           <textarea matInput formControlName="comment"></textarea>

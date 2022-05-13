@@ -5,15 +5,17 @@ import { v4 as uuidv4 } from 'uuid';
 export class Member {
   [會員欄位.ID]: string;
   [會員欄位.Name]: string;
+  [會員欄位.Phone]: string;
   [會員欄位.DateOfBirth]: string;
   [會員欄位.Gender]: 性別;
   [會員欄位.Completed]: boolean;
   [會員欄位.Comment]: string;
   [會員欄位.CreateTime]: string;
 
-  constructor(data: { id?: string; name: string; dob: string | Moment; gender: 性別; comment: string }) {
+  constructor(data: { id?: string; name: string; dob: string | Moment; gender: 性別; comment: string; phone: string }) {
     this.id = data.id || uuidv4();
     this.name = data.name;
+    this.phone = data.phone;
     this.dob = this.convertISOString(data.dob);
     this.gender = data.gender;
     this.completed = false;

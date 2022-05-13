@@ -6,7 +6,8 @@ export enum 會員欄位 {
   Horoscope = 'horoscope',
   Completed = 'completed',
   Comment = 'comment',
-  CreateTime = 'createTime'
+  CreateTime = 'createTime',
+  Phone = 'phone',
 }
 
 export enum 性別 {
