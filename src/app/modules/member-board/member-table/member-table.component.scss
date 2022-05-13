@@ -1,10 +1,3 @@
-table {
-  width: 100%;
-}
-
-.component-container {
-}
-
 // TODO: move to general
 mat-form-field {
   padding-top: 1.34375em;
@@ -36,7 +29,8 @@ mat-form-field {
 }
 
 mat-table {
-  height: 80vh;
+  width: 100%;
+  max-height: 80vh;
   overflow: auto;
 
   mat-footer-cell,
@@ -77,4 +71,13 @@ mat-table {
     height: 100%;
     max-height: 100px;
   }
+}
+
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
+  font-weight: 700;
 }

@@ -6,8 +6,8 @@
     (add)="isAddingStatus = true"
   ></app-member-control-panel>
   <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="onFilter(input.value)" placeholder="Ex. ium" #input />
+    <mat-label>搜尋</mat-label>
+    <input matInput (keyup)="onFilter(input.value)" placeholder="請輸入要查找字串" #input />
   </mat-form-field>
 </div>
 <app-member-table
