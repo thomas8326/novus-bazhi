@@ -11,6 +11,11 @@ import { Member } from 'src/app/interfaces/會員';
 export class MemberBoardComponent implements OnInit {
   readonly selection = new SelectionModel<Member>(true, []);
   isAddingStatus = false;
+  searchText: string = '';
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  onFilter(value: string) {
+    this.searchText = value;
+  }
 }

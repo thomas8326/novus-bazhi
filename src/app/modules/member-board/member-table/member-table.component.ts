@@ -24,6 +24,12 @@ const moment = _rollupMoment || _moment;
 export class MemberTableComponent implements OnInit {
   @Input() selection = new SelectionModel<Member>(true, []);
   @Input() isAddingStatus = false;
+  @Input('searchText')
+  set setSearchText(value: string) {
+    if (this.memberDataSource) {
+      this.memberDataSource.filter = value;
+    }
+  }
   @Output() isAddingStatusChange = new EventEmitter<boolean>();
 
   @ViewChild(MatSort, { static: false })
@@ -53,6 +59,7 @@ export class MemberTableComponent implements OnInit {
   readonly memberGender = 性別;
   readonly displayedColumns: string[] = [
     會員欄位.Name,
+    // 會員欄位.Phone,
     會員欄位.Gender,
     會員欄位.DateOfBirth,
     會員欄位.Completed,
@@ -60,7 +67,6 @@ export class MemberTableComponent implements OnInit {
     'btnGroup',
   ];
 
-  // members: Member[] = [];
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,

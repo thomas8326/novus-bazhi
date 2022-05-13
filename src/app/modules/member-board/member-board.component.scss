@@ -1,3 +1,12 @@
 app-member-control-panel {
   margin: 10px 0;
 }
+
+.control-panel {
+  display: flex;
+  align-items: center;
+
+  * + * {
+    margin-left: 15px;
+  }
+}

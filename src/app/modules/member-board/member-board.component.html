@@ -1,7 +1,17 @@
-<app-member-control-panel
-  [showAddBtn]="!selection.hasValue()"
-  [showEditBtn]="false"
-  [showDeleteBtn]="false"
-  (add)="isAddingStatus = true"
-></app-member-control-panel>
-<app-member-table [selection]="selection" [(isAddingStatus)]="isAddingStatus"></app-member-table>
+<div class="control-panel">
+  <app-member-control-panel
+    [showAddBtn]="!selection.hasValue()"
+    [showEditBtn]="false"
+    [showDeleteBtn]="false"
+    (add)="isAddingStatus = true"
+  ></app-member-control-panel>
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="onFilter(input.value)" placeholder="Ex. ium" #input />
+  </mat-form-field>
+</div>
+<app-member-table
+  [selection]="selection"
+  [(isAddingStatus)]="isAddingStatus"
+  [searchText]="searchText"
+></app-member-table>
