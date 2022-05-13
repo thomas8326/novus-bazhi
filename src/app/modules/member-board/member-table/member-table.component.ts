@@ -23,7 +23,16 @@ const moment = _rollupMoment || _moment;
 })
 export class MemberTableComponent implements OnInit {
   @Input() selection = new SelectionModel<Member>(true, []);
-  @Input() isAddingStatus = false;
+  @Input('isAddingStatus')
+  set setIsAddingStatus(value: boolean) {
+    if (value) {
+      this.memberForm.reset();
+      this.memberForm.patchValue({ dob: moment() });
+      this.isEditingStatus = false;
+    }
+
+    this.isAddingStatus = value;
+  }
   @Input('searchText')
   set setSearchText(value: string) {
     if (this.memberDataSource) {
@@ -34,17 +43,17 @@ export class MemberTableComponent implements OnInit {
 
   @ViewChild(MatSort, { static: false })
   set sort(value: MatSort) {
-    console.log(value);
     if (this.memberDataSource) {
       this.memberDataSource.sort = value;
       this.memberDataSource.sortData(this.memberDataSource.data, this.memberDataSource.sort);
     }
   }
 
+  isAddingStatus = false;
+  isEditingStatus = false;
+
   @ViewChild(MatSort, { static: false }) MatSort: MatSort | null = null;
   memberDataSource = new MatTableDataSource<Member>();
-
-  isEditingStatus = false;
 
   memberForm = this.fb.group({
     id: [''],
@@ -104,7 +113,6 @@ export class MemberTableComponent implements OnInit {
       const newMember = new Member(this.memberForm.value);
       this.memberService.create(newMember).pipe(take(1)).subscribe();
       this.memberDataSource.data = [newMember].concat(this.memberDataSource.data);
-      console.log(newMember);
       this.memberForm.reset();
     }
   }
@@ -130,15 +138,16 @@ export class MemberTableComponent implements OnInit {
   }
 
   onEditMember(target: Member) {
+    this.setAddStatus(false);
     this.isEditingStatus = true;
     this.memberForm.patchValue(target);
   }
 
   onCancel() {
-    this.memberForm.reset();
-    this.isAddingStatus = false;
+    this.setAddStatus(false);
     this.isEditingStatus = false;
-    this.isAddingStatusChange.emit(false);
+    this.memberForm.reset();
+    this.memberForm.patchValue({ dob: moment() });
   }
 
   onRedirect(target: Member) {
@@ -159,4 +168,9 @@ export class MemberTableComponent implements OnInit {
 
     return m1CreateTime > m2CreateTime && !m1.completed ? -1 : 1
   };
+
+  private setAddStatus(status: boolean) {
+    this.isAddingStatus = status;
+    this.isAddingStatusChange.emit(status);
+  }
 }

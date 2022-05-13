@@ -9,6 +9,7 @@ import { OpenDialogService } from 'src/app/modules/dialog-template/open-dialog.s
 })
 export class MemberControlPanelComponent implements OnInit {
   @Input() showAddBtn = false;
+  @Input() disableAddBtn = false;
   @Input() showEditBtn = true;
   @Input() showRedirectBtn = false;
   @Input() showExport = false;
@@ -20,9 +21,9 @@ export class MemberControlPanelComponent implements OnInit {
   @Output() export = new EventEmitter<void>();
   @Output() redirect = new EventEmitter<void>();
 
-  constructor(private readonly openDialogService: OpenDialogService) {}
+  constructor(private readonly openDialogService: OpenDialogService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onAdd() {
     this.add.emit();
