@@ -7,7 +7,7 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
 const routes: Routes = [
   {
     path: '',
-    data: { title: '新增會員' },
+    data: { title: '新增會員', isMainPage: true },
     component: MemberBoardComponent,
   },
   {
@@ -21,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MemberBoardRoutingModule {}
+export class MemberBoardRoutingModule { }

@@ -9,11 +9,13 @@ import { Location } from '@angular/common';
 })
 export class AppComponent {
   title = '';
+  isMainPage = false;
 
-  constructor(private readonly location: Location) {}
+  constructor(private readonly location: Location) { }
 
   onMainActivated(activateRoute: Data) {
     this.title = activateRoute.title;
+    this.isMainPage = activateRoute.isMainPage;
   }
 
   onBack() {

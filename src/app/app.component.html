@@ -1,5 +1,5 @@
 <header>
-  <button mat-button (click)="onBack()"><mat-icon>arrow_back</mat-icon></button>
+  <button *ngIf="!isMainPage" mat-button (click)="onBack()"><mat-icon>arrow_back</mat-icon></button>
   <h1>{{ title }}</h1>
 </header>
 <main>
