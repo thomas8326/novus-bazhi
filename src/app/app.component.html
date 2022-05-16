@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="!isLoginPage">
   <button *ngIf="!isMainPage" mat-button (click)="onBack()"><mat-icon>arrow_back</mat-icon></button>
   <h1>{{ title }}</h1>
 </header>

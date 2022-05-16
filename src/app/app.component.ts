@@ -10,12 +10,14 @@ import { Location } from '@angular/common';
 export class AppComponent {
   title = '';
   isMainPage = false;
+  isLoginPage = false;
 
   constructor(private readonly location: Location) { }
 
   onMainActivated(activateRoute: Data) {
     this.title = activateRoute.title;
     this.isMainPage = activateRoute.isMainPage;
+    this.isLoginPage = activateRoute.isLoginPage;
   }
 
   onBack() {
