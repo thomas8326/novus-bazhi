@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  .novus-logo {
+    flex: 1;
+    height: 100%;
+    background-color: #d7eaf1;
+  }
+
+  .login {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 260px;
+      margin: 12px;
+      padding: 10px;
+      border: 1px solid rgb(218, 218, 218);
+      box-shadow: rgb(218 218 218) 1px 1px 2px 0, rgb(218 218 218) -1px -1px 2px 0;
+    }
+  }
+}

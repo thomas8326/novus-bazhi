@@ -1,7 +1,16 @@
-main {
+main:not(.full-screen) {
   height: auto;
   margin: 0 15px;
   padding: 20px 0;
+}
+
+main.full-screen {
+  width: 100%;
+  height: 100%;
+}
+
+.logout {
+  transform: rotate(180deg);
 }
 
 header {

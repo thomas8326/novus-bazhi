@@ -1,1 +1,9 @@
-<p>login works!</p>
+<div class="container">
+  <div class="novus-logo"></div>
+  <div class="login">
+    <div class="panel">
+      <button mat-button (click)="onLogin()">使用Google帳號登入</button>
+      <small *ngIf="isError">{{ LoginError }}</small>
+    </div>
+  </div>
+</div>
