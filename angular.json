@@ -127,6 +127,16 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "novus-bazhi:build:production",
+            "firebaseProject": "novus-bazhi",
+            "firebaseHostingSite": "novus-bazhi"
+          }
         }
       }
     }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "novus-bazhi": {
+      "hosting": {
+        "novus-bazhi": [
+          "novus-bazhi"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "novus-bazhi"
+  }
+}
