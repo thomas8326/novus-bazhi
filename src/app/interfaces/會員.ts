@@ -19,7 +19,7 @@ export class Member {
     this.dob = this.convertISOString(data.dob);
     this.gender = data.gender;
     this.completed = false;
-    this.comment = data.comment;
+    this.comment = data.comment || '';
     this.createTime = new Date().toISOString();
   }
 

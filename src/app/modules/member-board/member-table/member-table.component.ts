@@ -11,8 +11,6 @@ import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { MemberService } from 'src/app/services/member/member.service';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { take } from 'rxjs/operators';
-
 const moment = _rollupMoment || _moment;
 
 @UntilDestroy()
@@ -111,7 +109,7 @@ export class MemberTableComponent implements OnInit {
   onAddNextMember() {
     if (this.memberForm.valid) {
       const newMember = new Member(this.memberForm.value);
-      this.memberService.create(newMember).pipe(take(1)).subscribe();
+      this.memberService.create(newMember);
       this.memberDataSource.data = [newMember].concat(this.memberDataSource.data);
       this.memberForm.reset();
     }
@@ -127,14 +125,14 @@ export class MemberTableComponent implements OnInit {
     if (this.memberForm.valid) {
       const updatedMember = new Member(this.memberForm.value);
       this.memberDataSource.data = this.memberDataSource.data.map((member) => (member.id === updatedMember.id ? updatedMember : member));
-      this.memberService.replace(updatedMember.id, updatedMember).pipe(take(1)).subscribe();
+      this.memberService.replace(updatedMember.id, updatedMember);
       this.isEditingStatus = false;
     }
   }
 
   onDeleteMember(target: Member) {
     this.memberDataSource.data = this.memberDataSource.data.filter((member) => member.id !== target.id);
-    this.memberService.delete(target.id).pipe(take(1)).subscribe();
+    this.memberService.delete(target.id);
   }
 
   onEditMember(target: Member) {
@@ -155,11 +153,11 @@ export class MemberTableComponent implements OnInit {
   }
 
   onCheckCompleted(id: string, isChecked: boolean) {
-    this.memberService.replace(id, { completed: isChecked }).pipe(take(1)).subscribe();
+    this.memberService.replace(id, { completed: isChecked });
   }
 
   onUpdateComment(id: string, text: string) {
-    this.memberService.replace(id, { comment: text }).pipe(take(1)).subscribe();
+    this.memberService.replace(id, { comment: text });
   }
 
   private compareCreateTime(m1: Member, m2: Member) {

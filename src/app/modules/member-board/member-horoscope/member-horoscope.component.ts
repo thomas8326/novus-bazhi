@@ -46,10 +46,12 @@ export class MemberHoroscopeComponent implements OnInit {
     private readonly snackBarService: SnackbarService,
   ) {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
-      this.member = new Member(member);
-      this.minYear = this.member.getDobDate().getFullYear();
-      this.maxYear = this.minYear + MAX_DISTANCE - 1;
-      this.命盤分析();
+      if (member) {
+        this.member = new Member(member);
+        this.minYear = this.member.getDobDate().getFullYear();
+        this.maxYear = this.minYear + MAX_DISTANCE - 1;
+        this.命盤分析();
+      }
     });
 
     this.exportPdfService
