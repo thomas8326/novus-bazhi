@@ -1,28 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
-import firebase from 'firebase/compat/app';
+import { Observable } from 'rxjs/internal/Observable';
+import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  readonly LoginError = '你尚未有權限能夠登入，請通知管理員。';
-  isError = false;
+  isClicked = false;
+  email = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required]);
+  errorMsg$: Observable<string>;
 
-  constructor(private readonly auth: AngularFireAuth, private readonly router: Router) {
-
+  constructor(readonly authService: AuthService) {
+    this.errorMsg$ = this.authService.getErrorMsg$();
   }
 
   onLogin() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(() => this.router.navigate(['member-board'])).catch(() => this.isError = true);
-  }
-
-  ngOnInit(): void {
+    if (this.email.valid && this.password.valid) {
+      this.authService.onSignIn(this.email.value, this.password.value);
+    }
   }
 
 }

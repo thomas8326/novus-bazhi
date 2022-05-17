@@ -1,7 +1,8 @@
-import { Data, Router } from '@angular/router';
+import { Data } from '@angular/router';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+
+import { AuthService } from './modules/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
   isMainPage = false;
   isLoginPage = false;
 
-  constructor(private readonly location: Location, private readonly auth: AngularFireAuth, private readonly router: Router) { }
+  constructor(private readonly location: Location, private readonly authService: AuthService) { }
 
   onMainActivated(activateRoute: Data) {
     this.isRendered = true;
@@ -28,6 +29,6 @@ export class AppComponent {
   }
 
   onLogout() {
-    this.auth.signOut().then(() => this.router.navigate(['userLogin']));
+    this.authService.onSignOut();
   }
 }

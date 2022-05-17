@@ -2,8 +2,18 @@
   <div class="novus-logo"></div>
   <div class="login">
     <div class="panel">
-      <button mat-button (click)="onLogin()">使用Google帳號登入</button>
-      <small *ngIf="isError">{{ LoginError }}</small>
+      <mat-form-field [hideRequiredMarker]="true">
+        <mat-label>帳號</mat-label>
+        <input matInput [formControl]="email"/>
+        <mat-error *ngIf="email.hasError('required')">請輸入帳號</mat-error>
+      </mat-form-field>
+      <mat-form-field [hideRequiredMarker]="true">
+        <mat-label>密碼</mat-label>
+        <input matInput type="password" [formControl]="password"/>
+        <mat-error *ngIf="password.hasError('required')">請輸入密碼</mat-error>
+      </mat-form-field>
+      <small class="warning">{{ errorMsg$ | async }}</small>
+      <button mat-button (click)="onLogin()">登入</button>
     </div>
   </div>
 </div>
