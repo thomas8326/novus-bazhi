@@ -189,3 +189,28 @@ tr:not(.margin-line) {
   top: 0;
   left: 0;
 }
+
+.result-hint {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  padding: 0 5px;
+  overflow: unset;
+  line-height: inherit;
+  white-space: inherit;
+  cursor: pointer;
+}
+
+.menu-template {
+  padding: 8px;
+}

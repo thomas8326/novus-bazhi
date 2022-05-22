@@ -175,7 +175,17 @@
                   {{ currentHoroscope.yearFortune.gan }}
                 </td>
                 <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)"> {{ liuYue.gan }} </td>
-                <td><div [innerText]="convertLiuYueScores(liuYue.ganResult.scores)"></div></td>
+                <td>
+                  <div class="menu-item" mat-menu-item [matMenuTriggerFor]="menu">
+                    <mat-menu #menu="matMenu">
+                      <ng-container
+                        [ngTemplateOutlet]="yinYanResult"
+                        [ngTemplateOutletContext]="{ result: liuYue.ganResult }"
+                      ></ng-container>
+                    </mat-menu>
+                    <div [innerText]="convertLiuYueScores(liuYue.ganResult.scores)"></div>
+                  </div>
+                </td>
               </ng-container>
             </tr>
             <tr>
@@ -193,7 +203,17 @@
                 <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)">
                   {{ liuYue.zhi }}
                 </td>
-                <td><div [innerText]="convertLiuYueScores(liuYue.zhiResult.scores)"></div></td>
+                <td>
+                  <div class="menu-item" mat-menu-item [matMenuTriggerFor]="menu">
+                    <mat-menu #menu="matMenu">
+                      <ng-container
+                        [ngTemplateOutlet]="yinYanResult"
+                        [ngTemplateOutletContext]="{ result: liuYue.zhiResult }"
+                      ></ng-container>
+                    </mat-menu>
+                    <div [innerText]="convertLiuYueScores(liuYue.zhiResult.scores)"></div>
+                  </div>
+                </td>
               </ng-container>
             </tr>
             <tr *ngIf="!last" class="margin-line">
@@ -205,3 +225,10 @@
     </div>
   </div>
 </div>
+
+<ng-template let-result="result" #yinYanResult>
+  <div class="menu-template">
+    <div>陽流通: <br />{{ result.yanScore || '無' }}</div>
+    <div>陰陽流通: <br />{{ result.yinYanScore || '無' }}</div>
+  </div>
+</ng-template>
