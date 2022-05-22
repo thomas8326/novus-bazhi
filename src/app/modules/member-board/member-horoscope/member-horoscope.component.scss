@@ -151,17 +151,17 @@ tr:not(.margin-line) {
   transition-property: transform;
 }
 
-.palette {
+.side-info {
   position: absolute;
   bottom: 0;
   left: 0;
 
-  .color-row {
+  .side-row {
     display: flex;
     align-items: center;
   }
 
-  .color-text {
+  .side-text {
     flex: 0 0 40px;
   }
 
@@ -182,4 +182,10 @@ tr:not(.margin-line) {
       background-color: var(--anti-color);
     }
   }
+}
+
+.bad-property-map {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -28,17 +28,25 @@
       </button>
     </div>
     <div class="panel-content">
-      <div class="palette">
-        <div class="color-row">
-          <div class="color-text">合</div>
+      <div class="side-info">
+        <ng-container *ngVar="currentHoroscope?.badPropertyMapping as mapping">
+          <div class="side-row"><div class="side-text">金</div> {{ mapping['金'] }}</div>
+          <div class="side-row"><div class="side-text">木</div> {{ mapping['木'] }}</div>
+          <div class="side-row"><div class="side-text">水</div> {{ mapping['水'] }}</div>
+          <div class="side-row"><div class="side-text">火</div> {{ mapping['火'] }}</div>
+          <div class="side-row"><div class="side-text">土</div> {{ mapping['土'] }}</div>
+        </ng-container>
+        <hr />
+        <div class="side-row">
+          <div class="side-text">合</div>
           <div class="color-strip match"></div>
         </div>
-        <div class="color-row">
-          <div class="color-text">刻</div>
+        <div class="side-row">
+          <div class="side-text">刻</div>
           <div class="color-strip anti"></div>
         </div>
-        <div class="color-row">
-          <div class="color-text">斷氣</div>
+        <div class="side-row">
+          <div class="side-text">斷氣</div>
           <div class="color-strip cut"></div>
         </div>
       </div>
@@ -167,7 +175,7 @@
                   {{ currentHoroscope.yearFortune.gan }}
                 </td>
                 <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)"> {{ liuYue.gan }} </td>
-                <td>{{ convertLiuYueScores(liuYue.ganResult.scores) }}</td>
+                <td><div [innerText]="convertLiuYueScores(liuYue.ganResult.scores)"></div></td>
               </ng-container>
             </tr>
             <tr>
@@ -185,7 +193,7 @@
                 <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)">
                   {{ liuYue.zhi }}
                 </td>
-                <td>{{ convertLiuYueScores(liuYue.zhiResult.scores) }}</td>
+                <td><div [innerText]="convertLiuYueScores(liuYue.zhiResult.scores)"></div></td>
               </ng-container>
             </tr>
             <tr *ngIf="!last" class="margin-line">

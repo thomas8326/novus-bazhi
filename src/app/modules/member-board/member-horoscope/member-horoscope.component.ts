@@ -83,19 +83,19 @@ export class MemberHoroscopeComponent implements OnInit {
   }
 
   badProperty(目標五行?: 五行) {
-    if (!this.currentHoroscope?.劫數對照表) {
+    if (!this.currentHoroscope?.badPropertyMapping) {
       return '';
     }
 
-    return 目標五行 ? `(破${this.currentHoroscope.劫數對照表[目標五行]})` : '';
+    return 目標五行 ? `(破${this.currentHoroscope.badPropertyMapping[目標五行]})` : '';
   }
 
   convertLiuYueScores(data: { value: string; property?: 五行 }[]) {
-    if (!this.currentHoroscope?.劫數對照表) {
+    if (!this.currentHoroscope?.badPropertyMapping) {
       return '';
     }
 
-    return data.map((score) => `${score.value} ${this.badProperty(score.property)}`).join(', ');
+    return data.map((score) => `${score.value} ${this.badProperty(score.property)}`).join('\n');
   }
 
   onExportPDF() {

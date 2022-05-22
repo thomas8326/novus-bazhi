@@ -12,7 +12,7 @@ export class 命盤 {
   bigFortune: { gan: 天干; zhi: 地支 };
   yearFortune: { gan: 天干; zhi: 地支 };
   monthFortune: 流月[];
-  劫數對照表: BadProperty;
+  badPropertyMapping: BadProperty;
 
   constructor(data: {
     year: number;
@@ -27,7 +27,7 @@ export class 命盤 {
     this.yearFortune = data.yearFortune;
     this.monthFortune = data.monthFortune;
     this.horoscopeResult = { gan: new 命盤結果(true), zhi: new 命盤結果(false) };
-    this.劫數對照表 = this.創造劫數對照表(data.myFateSet.gan[1]);
+    this.badPropertyMapping = this.創造劫數對照表(data.myFateSet.gan[1]);
   }
 
   private 創造劫數對照表(天干日柱: 天干 | 地支) {
