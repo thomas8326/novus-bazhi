@@ -42,32 +42,28 @@
         <tbody *ngIf="currentHoroscope">
           <tr>
             <ng-container *ngVar="currentHoroscope.horoscopeResult.gan.reaction as reaction">
-              <td [class.combination]="reaction.time.match">{{ currentHoroscope.myFateSet.gan[0] }}</td>
-              <td [class.combination]="reaction.day.match">{{ currentHoroscope.myFateSet.gan[1] }}</td>
-              <td [class.combination]="reaction.month.match">{{ currentHoroscope.myFateSet.gan[2] }}</td>
-              <td [class.combination]="reaction.year.match">{{ currentHoroscope.myFateSet.gan[3] }}</td>
-              <td [class.combination]="reaction.bigFortune.match">
-                <mat-icon class="restriction" *ngIf="reaction.bigFortune.anti">close</mat-icon>
+              <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.gan[0] }}</td>
+              <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.gan[1] }}</td>
+              <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.gan[2] }}</td>
+              <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.gan[3] }}</td>
+              <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
                 {{ currentHoroscope.bigFortune.gan ? currentHoroscope.bigFortune.gan : '未起運' }}
               </td>
-              <td [class.combination]="reaction.yearFortune.match">
-                <mat-icon class="restriction" *ngIf="reaction.bigFortune.anti">close</mat-icon>
+              <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
                 {{ currentHoroscope.yearFortune.gan }}
               </td>
             </ng-container>
           </tr>
           <tr>
             <ng-container *ngVar="currentHoroscope.horoscopeResult.zhi.reaction as reaction">
-              <td [class.combination]="reaction.time.match">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
-              <td [class.combination]="reaction.day.match">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
-              <td [class.combination]="reaction.month.match">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
-              <td [class.combination]="reaction.year.match">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
-              <td [class.combination]="reaction.bigFortune.match">
-                <mat-icon class="restriction" *ngIf="reaction.bigFortune.anti">close</mat-icon>
+              <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
+              <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
+              <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
+              <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
+              <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
                 {{ currentHoroscope.bigFortune.zhi ? currentHoroscope.bigFortune.zhi : '未起運' }}
               </td>
-              <td [class.combination]="reaction.yearFortune.match">
-                <mat-icon class="restriction" *ngIf="reaction.bigFortune.anti">close</mat-icon>
+              <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
                 {{ currentHoroscope.yearFortune.zhi }}
               </td>
             </ng-container>
@@ -146,59 +142,33 @@
             <tr>
               <ng-container *ngVar="liuYue.ganResult.reaction as reaction">
                 <td rowspan="2">{{ liuYue.month }}</td>
-                <td [class.combination]="reaction.time.match">{{ currentHoroscope.myFateSet.gan[0] }}</td>
-                <td [class.combination]="reaction.day.match">{{ currentHoroscope.myFateSet.gan[1] }}</td>
-                <td [class.combination]="reaction.month.match">{{ currentHoroscope.myFateSet.gan[2] }}</td>
-                <td [class.combination]="reaction.year.match">{{ currentHoroscope.myFateSet.gan[3] }}</td>
-                <td [class.combination]="reaction.bigFortune.match">
-                  <mat-icon class="restriction" *ngIf="reaction.bigFortune.anti">close</mat-icon>
+                <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.gan[0] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.gan[1] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.gan[2] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.gan[3] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
                   {{ currentHoroscope.bigFortune.gan ? currentHoroscope.bigFortune.gan : '未起運' }}
                 </td>
-                <td
-                  [ngClass]="{
-                    combination: reaction.yearFortune.match,
-                    interruption: reaction.yearFortune.cut
-                  }"
-                >
-                  <mat-icon class="restriction" *ngIf="reaction.yearFortune.anti">close</mat-icon>
+                <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
                   {{ currentHoroscope.yearFortune.gan }}
                 </td>
-                <td
-                  [ngClass]="{
-                    combination: reaction.monthFortune.match
-                  }"
-                >
-                  <mat-icon class="restriction" *ngIf="reaction.monthFortune.anti">close</mat-icon>
-                  {{ liuYue.gan }}
-                </td>
+                <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)"> {{ liuYue.gan }} </td>
                 <td>{{ convertLiuYueScores(liuYue.ganResult.scores) }}</td>
               </ng-container>
             </tr>
             <tr>
               <ng-container *ngVar="liuYue.zhiResult.reaction as reaction">
-                <td [class.combination]="reaction.time.match">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
-                <td [class.combination]="reaction.day.match">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
-                <td [class.combination]="reaction.month.match">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
-                <td [class.combination]="reaction.year.match">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
-                <td [class.combination]="reaction.bigFortune.match">
-                  <mat-icon class="restriction" *ngIf="reaction.bigFortune.anti">close</mat-icon>
+                <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
                   {{ currentHoroscope.bigFortune.zhi ? currentHoroscope.bigFortune.zhi : '未起運' }}
                 </td>
-                <td
-                  [ngClass]="{
-                    combination: reaction.yearFortune.match,
-                    interruption: reaction.yearFortune.cut
-                  }"
-                >
-                  <mat-icon class="restriction" *ngIf="reaction.yearFortune.anti">close</mat-icon>
+                <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
                   {{ currentHoroscope.yearFortune.zhi }}
                 </td>
-                <td
-                  [ngClass]="{
-                    combination: reaction.monthFortune.match
-                  }"
-                >
-                  <mat-icon class="restriction" *ngIf="reaction.monthFortune.anti">close</mat-icon>
+                <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)">
                   {{ liuYue.zhi }}
                 </td>
                 <td>{{ convertLiuYueScores(liuYue.zhiResult.scores) }}</td>

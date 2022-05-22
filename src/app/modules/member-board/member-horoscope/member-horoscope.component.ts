@@ -7,7 +7,7 @@ import { 五行 } from 'src/app/enums/五行.enum';
 import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
 import { switchMap } from 'rxjs/operators';
-import { 命盤 } from 'src/app/interfaces/命盤';
+import { 命盤, 已作用 } from 'src/app/interfaces/命盤';
 import { Subject } from 'rxjs';
 import { ExportPdfService, ExportStatus } from 'src/app/services/export-pdf/export-pdf.service';
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
@@ -123,6 +123,14 @@ export class MemberHoroscopeComponent implements OnInit {
         x: -containerWidth + matButton.nativeElement.clientWidth,
         y: this.pdfButtonPoint.y + buttonDropY,
       };
+    }
+  }
+
+  getGanZhiResultClass(result: 已作用) {
+    return {
+      'combination': result.match,
+      'restriction': result.anti,
+      'interruption': result.cut
     }
   }
 
