@@ -27,8 +27,16 @@
 }
 
 .panel-content {
-  width: 70vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 100%;
+
+  .main-table {
+    width: 70vw;
+  }
 }
 
 .panel-liuyue {
@@ -114,7 +122,7 @@ tr:not(.margin-line) {
     justify-content: center;
     width: 100%;
     height: 100%;
-    color: red;
+    color: var(--anti-color);
     font-size: 36px;
     opacity: 0.5;
     content: 'X';
@@ -122,11 +130,11 @@ tr:not(.margin-line) {
 }
 
 .combination {
-  background-color: #cdcccc;;
+  background-color: var(--match-color);
 }
 
 .interruption {
-  background-color: #2027fe;;
+  background-color: var(--cut-color);
 }
 
 .export-pdf {
@@ -141,4 +149,37 @@ tr:not(.margin-line) {
   cursor: pointer;
   transition-timing-function: ease-out;
   transition-property: transform;
+}
+
+.palette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  .color-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .color-text {
+    flex: 0 0 40px;
+  }
+
+  .color-strip {
+    width: 60px;
+    height: 8px;
+    border: 1px solid black;
+
+    &.match {
+      background-color: var(--match-color);
+    }
+
+    &.cut {
+      background-color: var(--cut-color);
+    }
+
+    &.anti {
+      background-color: var(--anti-color);
+    }
+  }
 }
