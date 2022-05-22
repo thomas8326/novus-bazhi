@@ -38,7 +38,7 @@ export class DobPickerComponent implements OnInit, ControlValueAccessor {
   @ViewChild('formField') formField!: ElementRef;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onChange = (_date?: any) => {};
+  onChange = (_date?: any) => { };
 
   lessThanNextYear = (d: Moment | null): boolean => {
     const current = moment();
@@ -61,6 +61,10 @@ export class DobPickerComponent implements OnInit, ControlValueAccessor {
 
   registerOnTouched() {
     // Do nothing
+  }
+
+  onChangeValue(value: string) {
+    this.date.setValue(moment(new Date(value.replace('.', ':'))));
   }
 
   writeValue(time: string) {

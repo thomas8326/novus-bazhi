@@ -2,11 +2,13 @@
   <mat-label>輸入出生年月日</mat-label>
   <input
     matInput
-    appTimePicker
     [matDatepickerFilter]="lessThanNextYear"
     [matDatepicker]="picker"
+    (change)="onChangeValue(inputDate.value)"
     [formControl]="date"
+    #inputDate
   />
+  <mat-hint>YYYY/MM/DD HH:mm 或 HH.mm</mat-hint>
   <div matSuffix class="btn-group">
     <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
     <mat-icon class="gray" (click)="isOpen = !isOpen">schedule</mat-icon>
