@@ -228,6 +228,7 @@ export class 算命服務器 {
     yearFortune: 天干 | 地支,
     liuYueGanZhi: 天干 | 地支,
   ) {
+    let 消刻 = false;
     // 當流月流年相同時，斷氣結束並且無作用返回
     if (this.是否斷氣 && yearFortune === liuYueGanZhi) {
       this.是否斷氣 = false;
@@ -255,6 +256,7 @@ export class 算命服務器 {
         result.reaction.yearFortune.anti = true;
         result.新增流年流月相剋評分(yearFortune, false);
         this.是否斷氣 = this.是否為天干; // 只有天干會斷氣
+        消刻 = true;
         return { 大運流年流月: { bigFortune }, 被消: { yearFortune } };
       }
 
@@ -263,7 +265,7 @@ export class 算命服務器 {
     const data = createData();
 
     if (data) {
-      this.大運流年流月消相同本命(result, myFateSet, data.被消);
+      this.大運流年流月消相同本命(result, myFateSet, data.被消, 消刻);
       this.本命互相合(result, myFateSet);
       const { 已作用集 } = this.大運流年流月與本命作用(result, myFateSet, data.大運流年流月);
       this.本命互相合(result, myFateSet, 已作用集);
@@ -274,7 +276,8 @@ export class 算命服務器 {
 
     // 流年剋流月，剩下流通不變
     if (this.流年剋流月(result, yearFortune, liuYueGanZhi)) {
-      this.大運流年流月消相同本命(result, myFateSet, { liuYue: liuYueGanZhi });
+      消刻 = true;
+      this.大運流年流月消相同本命(result, myFateSet, { liuYue: liuYueGanZhi }, 消刻);
       result.reaction.monthFortune.anti = true;
       result.新增流年流月相剋評分(liuYueGanZhi, true);
       result.計算日柱受剋(this.天干日柱);
