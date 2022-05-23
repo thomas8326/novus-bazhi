@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard";
+import { redirectUnauthorizedTo, redirectLoggedInTo } from "@angular/fire/compat/auth-guard";
 
 import { Subject, Observable } from 'rxjs';
 
@@ -14,6 +14,7 @@ const LOGOUT_PATH = 'userLogin';
 export class AuthService {
 
   static redirectUnauthorizedToLogin = () => redirectUnauthorizedTo([LOGOUT_PATH]);
+  static redirectLoggedIn = () => redirectLoggedInTo([LOGIN_PATH]);
 
   private readonly LOGIN_ERROR = '你尚未有權限能夠登入，請通知管理員。';
   private readonly errorState = new Subject<string>();

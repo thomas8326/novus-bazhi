@@ -9,6 +9,7 @@ import { provideFirebaseApp, initializeApp, getApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { PERSISTENCE } from '@angular/fire/compat/auth';
 
 import { environment } from 'src/environments/environment';
 
@@ -29,7 +30,7 @@ import { AppComponent } from './app.component';
     MatButtonModule,
     MatSnackBarModule
   ],
-  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }, { provide: PERSISTENCE, useValue: 'local' },],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
