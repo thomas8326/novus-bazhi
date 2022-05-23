@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRoutingModule } from 'src/app/modules/auth/auth-routing.module';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 
 import { LoginComponent } from './login/login.component';
 
@@ -17,7 +18,8 @@ import { LoginComponent } from './login/login.component';
     AuthRoutingModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DirectivesModule
   ]
 })
 export class AuthModuleModule { }

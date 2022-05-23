@@ -19,8 +19,6 @@ export class AuthService {
   private readonly LOGIN_ERROR = '你尚未有權限能夠登入，請通知管理員。';
   private readonly errorState = new Subject<string>();
 
-  private isLoginFail = false;
-
   constructor(private readonly router: Router, private readonly auth: AngularFireAuth) { }
 
   onSignIn(email: string, password: string) {
@@ -37,8 +35,7 @@ export class AuthService {
     return this.errorState;
   }
 
-  private setErrorMsg(msg: string): string {
+  setErrorMsg(msg: string) {
     this.errorState.next(msg);
-    return this.isLoginFail ? this.LOGIN_ERROR : '';
   }
 }
