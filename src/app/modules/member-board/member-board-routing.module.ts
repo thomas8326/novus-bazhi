@@ -7,7 +7,7 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
 const routes: Routes = [
   {
     path: '',
-    data: { title: '新增會員', isMainPage: true },
+    data: { title: '新增會員資料', isMainPage: true },
     component: MemberBoardComponent,
   },
   {
