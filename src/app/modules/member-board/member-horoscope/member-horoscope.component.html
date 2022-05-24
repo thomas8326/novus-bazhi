@@ -29,13 +29,9 @@
     </div>
     <div class="panel-content">
       <div class="side-info">
-        <ng-container *ngVar="currentHoroscope?.badPropertyMapping as mapping">
-          <div class="side-row"><div class="side-text">金</div> {{ mapping['金'] }}</div>
-          <div class="side-row"><div class="side-text">木</div> {{ mapping['木'] }}</div>
-          <div class="side-row"><div class="side-text">水</div> {{ mapping['水'] }}</div>
-          <div class="side-row"><div class="side-text">火</div> {{ mapping['火'] }}</div>
-          <div class="side-row"><div class="side-text">土</div> {{ mapping['土'] }}</div>
-        </ng-container>
+        <div *ngFor="let property of currentHoroscope?.badPropertyList" class="side-row">
+          <div class="side-text">{{ property.key }}</div> {{ property.badProperty }}
+        </div>
         <hr />
         <div class="side-row">
           <div class="side-text">合</div>
