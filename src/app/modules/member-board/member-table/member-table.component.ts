@@ -56,7 +56,7 @@ export class MemberTableComponent implements OnInit {
   memberForm = this.fb.group({
     id: [''],
     name: ['', Validators.required],
-    phone: ['', Validators.required],
+    phone: [''],
     dob: [moment(), Validators.required],
     gender: ['', Validators.required],
     comment: [''],
