@@ -57,6 +57,7 @@
             <th>日</th>
             <th>月</th>
             <th>年</th>
+            <th class="no-border"></th>
             <th>大運</th>
             <th>流年</th>
           </tr>
@@ -68,6 +69,7 @@
               <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.gan[1] }}</td>
               <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.gan[2] }}</td>
               <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.gan[3] }}</td>
+              <td class="no-border"></td>
               <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
                 {{ currentHoroscope.bigFortune.gan ? currentHoroscope.bigFortune.gan : '未起運' }}
               </td>
@@ -82,6 +84,7 @@
               <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
               <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
               <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
+              <td class="no-border"></td>
               <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
                 {{ currentHoroscope.bigFortune.zhi ? currentHoroscope.bigFortune.zhi : '未起運' }}
               </td>
@@ -90,6 +93,7 @@
               </td>
             </ng-container>
           </tr>
+          <tr class="margin-line"><td colspan="7"></td></tr>
         </tbody>
         <tfoot *ngIf="currentHoroscope">
           <tr>
@@ -115,7 +119,7 @@
                 </div>
               </div>
             </td>
-            <td colspan="3">
+            <td colspan="4">
               <div class="result-board">
                 <div class="score-board">
                   <span>地支受剋: </span>
