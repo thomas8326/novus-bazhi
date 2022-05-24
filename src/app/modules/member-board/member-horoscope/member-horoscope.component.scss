@@ -218,4 +218,6 @@ tr:not(.margin-line) {
 .no-border {
   width: 1px;
   border: 0;
+  border-right: 1px solid;
+  border-left: 1px solid;
 }
