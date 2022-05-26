@@ -109,9 +109,11 @@
                 <div class="yinyan-board">
                   <div>
                     天干陽流通: <br />
-                    {{ currentHoroscope.horoscopeResult.gan.yanScore || '無' }}
+                    {{ getYanScoreChanged(currentHoroscope.horoscopeResult.gan) | async }}
                   </div>
-                  <div>天干陰陽流通: <br />{{ currentHoroscope.horoscopeResult.gan.yinYanScore || '無' }}</div>
+                  <div>
+                    天干陰陽流通: <br />{{ getYinYanScoreChanged(currentHoroscope.horoscopeResult.gan) | async }}
+                  </div>
                 </div>
               </div>
             </td>
@@ -131,11 +133,11 @@
                 <div class="yinyan-board">
                   <div>
                     地支陽流通: <br />
-                    {{ currentHoroscope.horoscopeResult.zhi.yanScore || '無' }}
+                    {{ getYanScoreChanged(currentHoroscope.horoscopeResult.zhi) | async }}
                   </div>
                   <div>
                     地支陰陽流通: <br />
-                    {{ currentHoroscope.horoscopeResult.zhi.yinYanScore || '無' }}
+                    {{ getYinYanScoreChanged(currentHoroscope.horoscopeResult.zhi) | async }}
                   </div>
                 </div>
               </div>
@@ -228,7 +230,7 @@
 
 <ng-template let-result="result" #yinYanResult>
   <div class="menu-template">
-    <div>陽流通: <br />{{ result.yanScore || '無' }}</div>
-    <div>陰陽流通: <br />{{ result.yinYanScore || '無' }}</div>
+    <div>陽流通: <br />{{ getYanScoreChanged(result) | async }}</div>
+    <div>陰陽流通: <br />{{ getYinYanScoreChanged(result) | async }}</div>
   </div>
 </ng-template>

@@ -5,6 +5,8 @@ import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
 
+const REGEX = /\s\([金木水火土]\)/g;
+
 export class 命盤 {
   year: number;
   myFateSet: { gan: 天干[]; zhi: 地支[] };
@@ -95,8 +97,10 @@ export class 命盤結果 {
   scores: { value: string; property?: 五行 }[] = [];
 
   yanScore: string = '';
+  noHintYanScore: string = '';
 
   yinYanScore: string = '';
+  noHintYinYanScore: string = '';
 
   chineseDayRestriction: boolean = false;
 
@@ -109,6 +113,10 @@ export class 命盤結果 {
   constructor(是否為天干 = false) {
     this.reaction = new 命盤作用();
     this.是否為天干 = 是否為天干;
+  }
+
+  getYinYanNoHintScore(score: string) {
+    return score.replace(REGEX, '');
   }
 
   新增大運流年相剋評分(被剋對象: 天干 | 地支, 大運剋流年: boolean) {
@@ -151,6 +159,7 @@ export class 命盤結果 {
   先批陽(五行結果: 五行結果[]) {
     const { 新五行結果, 評分結果 } = this.批陽批陰先生後剋(五行結果);
     this.yanScore = 評分結果;
+    this.noHintYanScore = this.getYinYanNoHintScore(評分結果);
     this.陽流通 = JSON.parse(JSON.stringify(新五行結果));
     return 新五行結果;
   }
@@ -158,6 +167,7 @@ export class 命盤結果 {
   再流通(五行結果: 五行結果[]) {
     const { 新五行結果, 評分結果 } = this.批陽批陰先生後剋(五行結果);
     this.yinYanScore = 評分結果;
+    this.noHintYinYanScore = this.getYinYanNoHintScore(評分結果);
     this.陰陽流通 = JSON.parse(JSON.stringify(新五行結果));
     return 新五行結果;
   }
@@ -312,6 +322,10 @@ export class 命盤結果 {
     }
 
     return 是否日主受剋;
+  }
+
+  private addScores(score: { value: string; property?: 五行 }) {
+    this.scores.push(score);
   }
 }
 

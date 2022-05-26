@@ -6,14 +6,15 @@ import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { 五行 } from 'src/app/enums/五行.enum';
 import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
-import { switchMap } from 'rxjs/operators';
-import { 命盤, 已作用 } from 'src/app/interfaces/命盤';
+import { map, switchMap } from 'rxjs/operators';
+import { 命盤, 命盤結果, 已作用 } from 'src/app/interfaces/命盤';
 import { Subject } from 'rxjs';
 import { ExportPdfService, ExportStatus } from 'src/app/services/export-pdf/export-pdf.service';
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
 import { 算命服務器 } from 'src/app/services/算命/算命.service';
 import { ErrorMsg, SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { 五行轉換 } from 'src/app/constants/constants';
+import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 
 const MAX_DISTANCE = 93;
 
@@ -38,6 +39,8 @@ export class MemberHoroscopeComponent implements OnInit {
   pdfButtonPoint: Point = { x: 0, y: 0 };
   exporting = false;
 
+  hasWuXinHint = true;
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly memberService: MemberService,
@@ -45,6 +48,7 @@ export class MemberHoroscopeComponent implements OnInit {
     private readonly 命盤服務: 命盤服務器,
     private readonly 算命服務: 算命服務器,
     private readonly snackBarService: SnackbarService,
+    private readonly localStorageService: LocalStorageService,
   ) {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       if (member) {
@@ -59,9 +63,19 @@ export class MemberHoroscopeComponent implements OnInit {
       .getExportStatus()
       .pipe(untilDestroyed(this))
       .subscribe((status) => (this.exporting = status === ExportStatus.InProgress));
+
+    this.hasWuXinHint = this.localStorageService.getHasWuXinHint();
   }
 
   ngOnInit(): void { }
+
+  getYanScoreChanged(result: 命盤結果) {
+    return this.localStorageService.getLocalStorageChanged$().pipe(map(() => (this.localStorageService.getHasWuXinHint() ? result.yanScore : result.noHintYanScore) || '無'));
+  }
+
+  getYinYanScoreChanged(result: 命盤結果) {
+    return this.localStorageService.getLocalStorageChanged$().pipe(map(() => (this.localStorageService.getHasWuXinHint() ? result.yinYanScore : result.noHintYinYanScore) || '無'));
+  }
 
   onAddYear(value: number) {
     this.currentYear = this.currentYear + value;

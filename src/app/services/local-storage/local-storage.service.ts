@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { BehaviorSubject, Observable } from 'rxjs';
+
 export enum StorageField {
   WuXinHint = 'wuXinHint'
 }
@@ -9,8 +11,18 @@ export enum StorageField {
 })
 export class LocalStorageService {
 
+  private localStorageChanged = new BehaviorSubject<void | null>(null);
+
   init() {
     this.checkAndSetValue(StorageField.WuXinHint, true);
+  }
+
+  getLocalStorageChanged$(): Observable<void | null> {
+    return this.localStorageChanged;
+  }
+
+  getHasWuXinHint(): boolean {
+    return this.get(StorageField.WuXinHint) === 'true';
   }
 
   get(key: StorageField) {
@@ -18,6 +30,7 @@ export class LocalStorageService {
   }
 
   set(key: StorageField, value: any) {
+    this.localStorageChanged.next();
     localStorage.setItem(key, value);
   }
 
