@@ -121,7 +121,7 @@
                   <span>地支受剋: </span>
                   <ul *ngIf="currentHoroscope.horoscopeResult.zhi.scores.length; else none">
                     <li *ngFor="let score of currentHoroscope.horoscopeResult.zhi.scores">
-                      {{ score.value }}{{ badProperty(score.property) }}
+                      {{ score.value }}{{ badProperty(score.property, true) }}
                     </li>
                   </ul>
                   <ng-template #none>
@@ -211,7 +211,7 @@
                         [ngTemplateOutletContext]="{ result: liuYue.zhiResult }"
                       ></ng-container>
                     </mat-menu>
-                    <div [innerText]="convertLiuYueScores(liuYue.zhiResult.scores)"></div>
+                    <div [innerText]="convertLiuYueScores(liuYue.zhiResult.scores, true)"></div>
                   </div>
                 </td>
               </ng-container>
