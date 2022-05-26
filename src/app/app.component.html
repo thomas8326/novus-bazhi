@@ -5,7 +5,7 @@
       <h1>NOVUS 晶礦人生</h1>
     </div>
     <div class="user">
-      <button mat-icon-button><mat-icon>settings</mat-icon></button>
+      <button mat-icon-button (click)="onOpenSetting()"><mat-icon>settings</mat-icon></button>
       <div *ngIf="userInfo$ | async as user">{{ user.email }}</div>
       <div class="vertical-line"></div>
       <button class="logout" mat-stroked-button (click)="onLogout()">登出</button>

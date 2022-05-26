@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>設定</h2>
+<mat-dialog-content>
+  <div class="setting-row">
+    <span class="row-text">五行提示</span>
+    <mat-slide-toggle
+      (change)="onSlideWuXin(toggle.checked)"
+      [checked]="getWuXinHintValue()"
+      #toggle
+    ></mat-slide-toggle>
+  </div>
+</mat-dialog-content>

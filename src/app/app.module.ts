@@ -12,6 +12,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
 
 import { environment } from 'src/environments/environment';
+import { DialogTemplateModule } from 'src/app/modules/dialog-template/dialog-template.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +29,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    DialogTemplateModule
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }, { provide: PERSISTENCE, useValue: 'local' },],
   bootstrap: [AppComponent],
