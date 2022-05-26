@@ -1,6 +1,9 @@
 import { Data } from '@angular/router';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { UserInfo } from '@angular/fire/auth';
+
+import { Observable } from 'rxjs';
 
 import { AuthService } from './modules/auth/auth.service';
 
@@ -12,10 +15,14 @@ import { AuthService } from './modules/auth/auth.service';
 export class AppComponent {
   title = '';
   isRendered = false;
-  isMainPage = false;
+  isMainPage = true;
   isLoginPage = false;
 
-  constructor(private readonly location: Location, private readonly authService: AuthService) { }
+  userInfo$: Observable<UserInfo | null>;
+
+  constructor(private readonly location: Location, private readonly authService: AuthService) {
+    this.userInfo$ = this.authService.getLoginUserName$();
+  }
 
   onMainActivated(activateRoute: Data) {
     this.isRendered = true;

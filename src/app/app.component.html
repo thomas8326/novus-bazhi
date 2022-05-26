@@ -1,8 +1,23 @@
-<header *ngIf="!isLoginPage && isRendered">
-  <button class="logout" *ngIf="isMainPage" mat-button (click)="onLogout()"><mat-icon>logout</mat-icon></button>
-  <button *ngIf="!isMainPage" mat-button (click)="onBack()"><mat-icon>arrow_back</mat-icon></button>
+<header class="main-header" *ngIf="!isLoginPage && isRendered">
+  <div class="header-container">
+    <div class="logo">
+      <div class="novus-logo"></div>
+      <h1>NOVUS 晶礦人生</h1>
+    </div>
+    <div class="user">
+      <button mat-icon-button><mat-icon>settings</mat-icon></button>
+      <div *ngIf="userInfo$ | async as user">{{ user.email }}</div>
+      <div class="vertical-line"></div>
+      <button class="logout" mat-stroked-button (click)="onLogout()">登出</button>
+    </div>
+  </div>
+</header>
+
+<header class="page-header">
+  <button *ngIf="!isMainPage" mat-button (click)="onBack()"><mat-icon>keyboard_arrow_left</mat-icon></button>
   <h1>{{ title }}</h1>
 </header>
+
 <main [class.full-screen]="isLoginPage">
   <router-outlet (activate)="onMainActivated(outlet.activatedRouteData)" #outlet="outlet"></router-outlet>
 </main>
