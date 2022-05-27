@@ -443,6 +443,11 @@ export class 算命服務器 {
     if (lastElement.生剋 === '生') {
       const 最後元素相剋五行 = 五行相刻對照表.get(lastElement.五行);
       const 五行陰結果: 五行結果 = { 五行: 最後元素相剋五行!, 生剋: '剋', 陽陣: [], 陽力: 0, 陰陣: [], 陰力: 0 };
+
+      if (陽結果.find(value => value.五行 === 五行陰結果.五行)) {
+        return { 陽結果, 新陰: 陰 };
+      }
+
       for (let i = 0; i < 陰.length; i++) {
         if (最後元素相剋五行 === 五行轉換(陰[i]) && lastElement.陽力 > 五行陰結果.陰力) {
           五行陰結果.陰陣.push(陰[i]);
