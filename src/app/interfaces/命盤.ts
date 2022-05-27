@@ -5,7 +5,7 @@ import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
 
-const REGEX = /\s\([金木水火土]\)/g;
+const REGEX = /([陽陰]:\s)|\s\([金木水火土]\)/g;
 
 export class 命盤 {
   year: number;
