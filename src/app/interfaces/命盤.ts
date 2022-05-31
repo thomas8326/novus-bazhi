@@ -16,7 +16,7 @@ export class 命盤 {
   monthFortune: 流月[];
   badPropertyMapping: BadProperty;
   mainGanFate: 天干;
-  badPropertyList: { key: 五行, badProperty: string }[] = [];
+  badPropertyList: { key: string, badProperty: string }[] = [];
 
   constructor(data: {
     year: number;
@@ -94,7 +94,7 @@ export class 命盤作用 {
 export class 命盤結果 {
   reaction: 命盤作用;
 
-  scores: { value: string; property?: 五行 }[] = [];
+  scores: string[] = [];
 
   yanScore: string = '';
   noHintYanScore: string = '';
@@ -103,6 +103,15 @@ export class 命盤結果 {
   noHintYinYanScore: string = '';
 
   chineseDayRestriction: boolean = false;
+
+  antiWuHinCount: { [key: 五行 | string]: number } = {
+    ['日主受剋']: 0,
+    [五行.金]: 0,
+    [五行.木]: 0,
+    [五行.水]: 0,
+    [五行.火]: 0,
+    [五行.土]: 0,
+  }
 
   private 陽流通: 五行結果[] = [];
 
@@ -121,18 +130,14 @@ export class 命盤結果 {
 
   新增大運流年相剋評分(被剋對象: 天干 | 地支, 大運剋流年: boolean) {
     const 大運流年五行 = 五行轉換(被剋對象);
-    this.scores.push({
-      value: `${大運剋流年 ? '大運剋流年' : '流年剋大運'} => 剋${大運流年五行}`,
-      property: 大運流年五行,
-    });
+    this.scores.push(大運剋流年 ? '大運剋流年' : '流年剋大運');
+    this.antiWuHinCount[大運流年五行]++;
   }
 
   新增流年流月相剋評分(被剋對象: 天干 | 地支, 流年剋流月: boolean) {
     const 流年流月五行 = 五行轉換(被剋對象);
-    this.scores.push({
-      value: `${流年剋流月 ? '流年剋流月' : '流月剋流年'} => 剋${流年流月五行}`,
-      property: 流年流月五行,
-    });
+    this.scores.push(流年剋流月 ? '流年剋流月' : '流月剋流年');
+    this.antiWuHinCount[流年流月五行]++;
   }
 
   計算日柱受剋(天干日柱: 天干 | null) {
@@ -144,15 +149,12 @@ export class 命盤結果 {
 
     // 地支: 只要流通後的結果有剋到地支日柱就算日主受剋
     if (!this.是否為天干) {
-      const 地支受剋 = this.scores.filter((score) => score.value.includes(`剋${天干日柱五行}`));
-      if (地支受剋.length > 0) {
-        this.scores.push({ value: `日主受剋` });
-      }
+      this.antiWuHinCount['日主受剋'] = this.antiWuHinCount[天干日柱五行];
       return;
     }
 
     if (this.是否為天干 && this.計算天干日主受剋(天干日柱)) {
-      this.scores.push({ value: `日主受剋` });
+      this.antiWuHinCount['日主受剋']++;
     }
   }
 
@@ -172,6 +174,45 @@ export class 命盤結果 {
     return 新五行結果;
   }
 
+  計算最後評分分數(mapping: BadProperty | null, mainGanFate: 天干 | null, liuYueResult?: { [key: string]: number }) {
+    if (!mapping || !mainGanFate) {
+      throw new Error('天干日主為空');
+    }
+
+    const pushScore = (key: string, value: number, extraText = '') => {
+      if (key === '日主受剋') {
+        this.scores.push(`${extraText}日主受剋`);
+      } else {
+        const antiText = this.剋五行轉換器(key, value); // 雙剋土..etc
+        const badPropertyText = this.badProperty(key as 五行, mapping, mainGanFate, extraText);
+        this.scores.push(`${antiText}${badPropertyText}`);
+      }
+    }
+
+    for (const [key, value] of Object.entries(this.antiWuHinCount)) {
+      if (liuYueResult) {
+        if (liuYueResult[key] > 0 && value === 0) {
+          pushScore(key, value, '無');
+          continue;
+        }
+
+        if (liuYueResult[key] > value && value > 0) {
+          pushScore(key, value, '減輕');
+          continue;
+        }
+
+        if (liuYueResult[key] < value && liuYueResult[key] > 0) {
+          pushScore(key, value, '加重');
+          continue;
+        }
+      }
+
+      if (value > 0) {
+        pushScore(key, value);
+      }
+    }
+  }
+
   private 批陽批陰先生後剋(五行結果: 五行結果[]): { 新五行結果: 五行結果[]; 評分結果: string } {
     if (!五行結果.length) {
       return { 新五行結果: [], 評分結果: '' };
@@ -180,7 +221,6 @@ export class 命盤結果 {
     let 評分結果 = '';
     const 新五行結果: 五行結果[] = JSON.parse(JSON.stringify(五行結果));
     const lastIndex = 新五行結果.length - 1;
-    let 剋五行結果 = '';
 
     const 文字轉換 = (current: 五行結果) => {
       const 陽陣文字 = `${current.陽陣.length ? `[陽: ${current.陽陣.join(',')}] ` : ''}`;
@@ -226,8 +266,7 @@ export class 命盤結果 {
 
       while (陽剋人力量 > 0 && 陽被剋力量 + 陰被剋力量 > 0) {
         const 剋五行 = 新五行結果[lastIndex].五行;
-        this.scores.push({ value: `剋${剋五行}`, property: 剋五行 });
-        剋五行結果 = `剋${新五行結果[lastIndex].五行}`;
+        this.antiWuHinCount[剋五行]++;
         陽剋人減一();
         if (陽被剋力量 > 0) {
           陽被剋減一();
@@ -238,8 +277,7 @@ export class 命盤結果 {
 
       while (陰剋人力量 > 0 && 陰被剋力量 > 0) {
         const 剋五行 = 新五行結果[lastIndex].五行;
-        this.scores.push({ value: `剋${剋五行}`, property: 剋五行 });
-        剋五行結果 = `剋${新五行結果[lastIndex].五行}`;
+        this.antiWuHinCount[剋五行]++;
         陰剋人減一();
         陰被剋減一();
       }
@@ -252,42 +290,26 @@ export class 命盤結果 {
       }
     }
 
-    this.updateScores(剋五行結果);
+    // this.updateScores(剋五行結果);
 
     return { 新五行結果, 評分結果 };
   }
 
-  private updateScores(剋五行結果: string) {
-    if (!剋五行結果) {
-      return;
-    }
 
-    const noneChanged: { value: string; property?: 五行 }[] = [];
-    const changed: { value: string; property?: 五行 }[] = [];
-    for (let i = 0; i < this.scores.length; i++) {
-      if (this.scores[i].value === 剋五行結果) {
-        changed.push(this.scores[i]);
-      } else {
-        noneChanged.push(this.scores[i]);
-      }
-    }
-    this.scores = [this.剋五行轉換器(changed), ...noneChanged];
-  }
-
-  private 剋五行轉換器(target: { value: string; property?: 五行 }[]) {
-    const length = target.length;
-
-    switch (length) {
+  private 剋五行轉換器(key: string, value: number) {
+    switch (value) {
       case 1:
-        return { value: target[0].value, property: target[0].property };
+        return `剋${key} `;
       case 2:
-        return { value: `雙${target[0].value}`, property: target[0].property };
+        return `雙剋${key} `;
       case 3:
-        return { value: `參${target[0].value}`, property: target[0].property };
+        return `參剋${key} `;
       case 4:
-        return { value: `肆${target[0].value}`, property: target[0].property };
+        return `肆剋${key} `;
+      case 5:
+        return `五剋${key} `;
       default:
-        return { value: target[0].value, property: target[0].property };
+        return '';
     }
   }
 
@@ -324,8 +346,12 @@ export class 命盤結果 {
     return 是否日主受剋;
   }
 
-  private addScores(score: { value: string; property?: 五行 }) {
-    this.scores.push(score);
+  private badProperty(目標五行: 五行, mapping: BadProperty, 天干日主: 天干, extraText = '') {
+    if ((!this.是否為天干 && 目標五行 === 五行轉換(天干日主))) {
+      return '';
+    }
+
+    return 目標五行 ? `(${extraText}破${mapping[目標五行]})` : '';
   }
 }
 

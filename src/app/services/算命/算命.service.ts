@@ -14,7 +14,7 @@ import { 五行 } from 'src/app/enums/五行.enum';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
-import { 五行結果, 命盤, 命盤結果, 地支命盤, 天干命盤, 已作用 } from 'src/app/interfaces/命盤';
+import { BadProperty, 五行結果, 命盤, 命盤結果, 地支命盤, 天干命盤, 已作用 } from 'src/app/interfaces/命盤';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,7 @@ import { 五行結果, 命盤, 命盤結果, 地支命盤, 天干命盤, 已作�
 export class 算命服務器 {
   private 是否為天干: boolean = false;
   private 天干日柱: 天干 | null = null;
+  private badPropertyMapping: BadProperty | null = null;
   private 是否斷氣 = false;
 
   算命(目標命盤: 命盤[]) {
@@ -44,7 +45,8 @@ export class 算命服務器 {
           yearFortune: 算命.yearFortune.zhi,
           liuYue: 算命.monthFortune,
         };
-        this.天干日柱 = 暫存天干命盤.myFateSet[1];
+        this.badPropertyMapping = 算命.badPropertyMapping;
+        this.天干日柱 = 算命.mainGanFate;
         this.算天干(暫存天干命盤);
         this.算地支(暫存地支命盤);
       }
@@ -107,6 +109,7 @@ export class 算命服務器 {
     }
     this.流通(horoscopeResult, myFateSet, { bigFortune, yearFortune });
     horoscopeResult.計算日柱受剋(this.天干日柱);
+    horoscopeResult.計算最後評分分數(this.badPropertyMapping, this.天干日柱);
     this.計算流月(對象命盤);
   }
 
@@ -294,6 +297,26 @@ export class 算命服務器 {
       this.本命互相合(result, myFateSet, 已作用集);
       this.流通(result, myFateSet, data.大運流年流月);
       result.計算日柱受剋(this.天干日柱);
+      result.計算最後評分分數(this.badPropertyMapping, this.天干日柱, parentResult.antiWuHinCount);
+    }
+  }
+
+  private 計算流月加重減輕(parentResult: 命盤結果, result: 命盤結果) {
+    const 流年剋五行數量 = parentResult.antiWuHinCount;
+    const 流月剋五行數量 = result.antiWuHinCount;
+
+    if (!this.天干日柱) {
+      throw new Error('天干日柱必須有值');
+    }
+
+    const 天干日柱五行 = 五行轉換(this.天干日柱);
+
+    if (流年剋五行數量[天干日柱五行] > 流月剋五行數量[天干日柱五行]) {
+      // result.scores.map(score => score.value === '日主受剋' ? { value: '加重日主受剋', property: score.property } : score);
+    }
+
+    if (流年剋五行數量[天干日柱五行] < 流月剋五行數量[天干日柱五行]) {
+      // result.scores.map(score => score.value === '日主受剋' ? { value: '減輕日主受剋', property: score.property } : score);
     }
   }
 
@@ -596,6 +619,7 @@ export class 算命服務器 {
       if (myFateSet[i] === 被消資料.bigFortune || myFateSet[i] === 被消資料.yearFortune || myFateSet[i] === 被消資料.liuYue) {
         if (是否消剋) {
           result.reaction[this.年月日時住轉換(i)].anti = true;
+          result.antiWuHinCount[五行轉換(myFateSet[i])]++
         } else {
           result.reaction[this.年月日時住轉換(i)].match = true;
         }

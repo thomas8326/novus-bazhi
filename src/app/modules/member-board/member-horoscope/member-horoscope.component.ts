@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { CdkDragEnd, Point } from '@angular/cdk/drag-drop';
 
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { 五行 } from 'src/app/enums/五行.enum';
 import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
 import { map, switchMap } from 'rxjs/operators';
@@ -13,7 +12,6 @@ import { ExportPdfService, ExportStatus } from 'src/app/services/export-pdf/expo
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
 import { 算命服務器 } from 'src/app/services/算命/算命.service';
 import { ErrorMsg, SnackbarService } from 'src/app/services/snackbar/snackbar.service';
-import { 五行轉換 } from 'src/app/constants/constants';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 
 const MAX_DISTANCE = 93;
@@ -95,22 +93,6 @@ export class MemberHoroscopeComponent implements OnInit {
     } else {
       this.snackBarService.showWarning(`請輸入${this.minYear}到${this.maxYear}之間的數字`);
     }
-  }
-
-  badProperty(目標五行?: 五行, isZhi = false) {
-    if (!this.currentHoroscope?.badPropertyMapping || (isZhi && 目標五行 === 五行轉換(this.currentHoroscope.mainGanFate))) {
-      return '';
-    }
-
-    return 目標五行 ? `(破${this.currentHoroscope.badPropertyMapping[目標五行]})` : '';
-  }
-
-  convertLiuYueScores(data: { value: string; property?: 五行 }[], isZhi = false) {
-    if (!this.currentHoroscope?.badPropertyMapping) {
-      return '';
-    }
-
-    return data.map((score) => `${score.value} ${this.badProperty(score.property, isZhi)}`).join('\n');
   }
 
   onExportPDF() {
