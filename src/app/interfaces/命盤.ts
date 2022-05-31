@@ -290,8 +290,6 @@ export class 命盤結果 {
       }
     }
 
-    // this.updateScores(剋五行結果);
-
     return { 新五行結果, 評分結果 };
   }
 
