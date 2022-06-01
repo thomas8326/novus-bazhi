@@ -1,3 +1,5 @@
+@import './app/styles/animation.scss';
+
 :root {
   --match-color: #fffdce;
   --anti-color: #ec0000;
@@ -54,4 +56,8 @@ body {
 
 button {
   cursor: pointer;
+}
+
+.opacity-transparent {
+  opacity: 0;
 }

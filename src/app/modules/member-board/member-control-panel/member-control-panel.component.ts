@@ -17,6 +17,7 @@ export class MemberControlPanelComponent implements OnInit {
 
   @Output() add = new EventEmitter<void>();
   @Output() edit = new EventEmitter<void>();
+  @Output() editDetail = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
   @Output() export = new EventEmitter<void>();
   @Output() redirect = new EventEmitter<void>();
@@ -28,17 +29,25 @@ export class MemberControlPanelComponent implements OnInit {
   onAdd() {
     this.add.emit();
   }
+
   onEdit() {
     this.edit.emit();
   }
+
   onDelete() {
     const callback = () => this.delete.emit();
     this.openDialogService.openDeletedPrompt('a', callback);
   }
+
   onExport() {
     this.export.emit();
   }
+
   onRedirectTo() {
     this.redirect.emit();
+  }
+
+  onEditDetail() {
+    this.editDetail.emit();
   }
 }

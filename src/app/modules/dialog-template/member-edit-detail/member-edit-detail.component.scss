@@ -1,0 +1,54 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  padding: 15px;
+}
+
+.basic-info {
+  position: relative;
+  margin: 10px;
+  padding: 16px;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+
+  .title {
+    position: absolute;
+    top: -12px;
+    left: 12px;
+    padding: 0 12px;
+    background-color: white;
+  }
+
+  .readonly-row + .readonly-row {
+    margin-top: 6px;
+  }
+}
+
+.edit-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.readonly-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.condition {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  .mat-radio-button + .mat-radio-button {
+    margin-top: 6px;
+  }
+}
+
+.user-name {
+  font-weight: 700;
+}

@@ -1,6 +1,7 @@
 <div>
   <button mat-raised-button color="primary" *ngIf="showAddBtn" (click)="onAdd()">新增</button>
   <button mat-button color="primary" *ngIf="!showAddBtn && showEditBtn" (click)="onEdit()">編輯</button>
+  <button mat-button color="primary" *ngIf="!showAddBtn" (click)="onEditDetail()">編輯細項</button>
   <button mat-button color="primary" *ngIf="!showAddBtn" (click)="onDelete()">刪除</button>
   <button mat-button color="primary" *ngIf="showRedirectBtn" (click)="onRedirectTo()">命盤分析</button>
   <button mat-button color="primary" *ngIf="!showAddBtn && showExport" (click)="onExport()">匯出PDF</button>

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { OpenDialogService } from 'src/app/modules/dialog-template/open-dialog.service';
 import { FortunetellingType, 性別, 會員欄位 } from 'src/app/enums/會員.enum';
 import { Member } from 'src/app/interfaces/會員';
 import * as _moment from 'moment';
@@ -99,6 +100,7 @@ export class MemberTableComponent implements OnInit {
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
     private readonly memberService: MemberService,
+    private readonly openDialogService: OpenDialogService,
   ) {
   }
 
@@ -143,7 +145,7 @@ export class MemberTableComponent implements OnInit {
     if (this.memberForm.valid) {
       const updatedMember = new Member(this.memberForm.value);
       this.memberDataSource.data = this.memberDataSource.data.map((member) => (member.id === updatedMember.id ? updatedMember : member));
-      this.memberService.replace(updatedMember.id, updatedMember);
+      this.updateMember(updatedMember);
       this.isEditingStatus = false;
     }
   }
@@ -157,6 +159,10 @@ export class MemberTableComponent implements OnInit {
     this.setAddStatus(false);
     this.isEditingStatus = true;
     this.memberForm.patchValue(target);
+  }
+
+  onEditDetail(target: Member) {
+    this.openDialogService.openMemberEditDetailDialog(target, (member: Member) => this.updateMember(member));
   }
 
   onCancel() {
@@ -176,6 +182,10 @@ export class MemberTableComponent implements OnInit {
 
   onUpdateComment(id: string, text: string) {
     this.memberService.replace(id, { comment: text });
+  }
+
+  private updateMember(member: Member) {
+    this.memberService.replace(member.id, member);
   }
 
   private compareCreateTime(m1: Member, m2: Member) {

@@ -1,1 +1,46 @@
-<p>member-edit-detail works!</p>
+<h2 mat-dialog-title> 編輯詳細資訊 </h2>
+<div class="basic-info">
+  <div class="title">
+    <span class="user-name">{{ member.name }}</span
+    >基本資料
+  </div>
+  <div class="readonly-row">
+    <span>臉書名稱:</span>
+    <span>{{ member.facebookAccount || '無' }}</span>
+  </div>
+  <div class="readonly-row">
+    <span>性別:</span>
+    <span>{{ member.gender }}</span>
+  </div>
+  <div class="readonly-row">
+    <span>出生日期:</span>
+    <span>{{ member.dob | date: 'yyyy/MM/dd HH:mm' }}</span>
+  </div>
+</div>
+<form class="content" [formGroup]="form">
+  <div class="edit-row">
+    <mat-form-field appearance="outline">
+      <mat-label>手圍</mat-label>
+      <input matInput type="number" [formControlName]="Member.HandSize" />
+    </mat-form-field>
+  </div>
+  <div class="edit-row">
+    <mat-form-field appearance="outline">
+      <mat-label>工作職業</mat-label>
+      <input matInput [formControlName]="Member.Job" />
+    </mat-form-field>
+  </div>
+  <div class="edit-row">
+    <span>是否有狀況</span>
+    <mat-radio-group class="condition" [formControlName]="Member.HasCondition">
+      <mat-radio-button [value]="true">有</mat-radio-button>
+      <mat-radio-button [value]="false">無</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</form>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>取消</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button (click)="onUpdate()">更新</button>
+</mat-dialog-actions>
