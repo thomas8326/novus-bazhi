@@ -8,9 +8,10 @@ import { OpenDialogService } from 'src/app/modules/dialog-template/open-dialog.s
 
 import { DeletedPromptComponent } from './deleted-prompt/deleted-prompt.component';
 import { SettingDialogComponent } from './setting-dialog/setting-dialog.component';
+import { MemberEditDetailComponent } from './member-edit-detail/member-edit-detail.component';
 
 @NgModule({
-  declarations: [DeletedPromptComponent, SettingDialogComponent],
+  declarations: [DeletedPromptComponent, SettingDialogComponent, MemberEditDetailComponent],
   imports: [CommonModule, MatDialogModule, MatButtonModule, MatSlideToggleModule],
   providers: [OpenDialogService],
 })
