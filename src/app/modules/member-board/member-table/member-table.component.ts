@@ -5,13 +5,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { 性別, 會員欄位 } from 'src/app/enums/會員.enum';
+import { FortunetellingType, 性別, 會員欄位 } from 'src/app/enums/會員.enum';
 import { Member } from 'src/app/interfaces/會員';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { MemberService } from 'src/app/services/member/member.service';
 import { UntilDestroy } from '@ngneat/until-destroy';
+
 const moment = _rollupMoment || _moment;
+
+const SELECT_YEARS = (currentYear: number) => {
+  const years: number[] = [];
+  let startYear = currentYear - 5;
+  const endYear = currentYear + 20;
+
+  while (startYear <= endYear) {
+    years.push(startYear++);
+  }
+
+  return years
+}
 
 @UntilDestroy()
 @Component({
@@ -25,7 +38,7 @@ export class MemberTableComponent implements OnInit {
   set setIsAddingStatus(value: boolean) {
     if (value) {
       this.memberForm.reset();
-      this.memberForm.patchValue({ dob: moment() });
+      this.memberForm.patchValue({ dob: moment(), fortunetellingType: FortunetellingType.detail, atYear: new Date().getFullYear() });
       this.isEditingStatus = false;
     }
 
@@ -50,28 +63,34 @@ export class MemberTableComponent implements OnInit {
   isAddingStatus = false;
   isEditingStatus = false;
 
-  @ViewChild(MatSort, { static: false }) MatSort: MatSort | null = null;
   memberDataSource = new MatTableDataSource<Member>();
 
   memberForm = this.fb.group({
-    id: [''],
-    name: ['', Validators.required],
-    phone: [''],
-    dob: [moment(), Validators.required],
-    gender: ['', Validators.required],
-    comment: [''],
-    completed: [false],
+    [會員欄位.ID]: [''],
+    [會員欄位.Name]: ['', Validators.required],
+    [會員欄位.FacebookAccount]: [''],
+    [會員欄位.Gender]: ['', Validators.required],
+    [會員欄位.DateOfBirth]: [moment(), Validators.required],
+    [會員欄位.FortunetellingType]: [FortunetellingType.detail],
+    [會員欄位.AtYear]: [new Date().getFullYear()],
+    [會員欄位.CrystalStyle]: [''],
+    [會員欄位.Completed]: [false],
   });
 
-  readonly member = 會員欄位;
-  readonly memberGender = 性別;
+  readonly Member = 會員欄位;
+  readonly MemberGender = 性別;
+  readonly FortunetellingType = FortunetellingType;
+  readonly yearOptions = SELECT_YEARS(new Date().getFullYear());
+
   readonly displayedColumns: string[] = [
     會員欄位.Name,
-    會員欄位.Phone,
+    會員欄位.FacebookAccount,
     會員欄位.Gender,
     會員欄位.DateOfBirth,
+    會員欄位.FortunetellingType,
+    會員欄位.AtYear,
+    會員欄位.CrystalStyle,
     會員欄位.Completed,
-    會員欄位.Comment,
     'btnGroup',
   ];
 
@@ -81,7 +100,6 @@ export class MemberTableComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly memberService: MemberService,
   ) {
-
   }
 
   ngOnInit(): void {

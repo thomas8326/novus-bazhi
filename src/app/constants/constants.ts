@@ -142,3 +142,5 @@ export const 五行轉換 = (天干地支: 天干 | 地支) => {
       return 五行.水;
   }
 };
+
+export const MAX_YEAR_DISTANCE = 93;

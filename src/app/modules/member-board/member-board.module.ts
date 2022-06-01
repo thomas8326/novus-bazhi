@@ -14,6 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+
 
 import { DirectivesModule } from 'src/app/directives/directives.module';
 import { DialogTemplateModule } from 'src/app/modules/dialog-template/dialog-template.module';
@@ -53,6 +55,7 @@ import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.co
     ShardComponentsModule,
     MatSortModule,
     MatMenuModule,
+    MatSelectModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'zh-TW' }],
 })

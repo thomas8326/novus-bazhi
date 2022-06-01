@@ -5,22 +5,33 @@ import { v4 as uuidv4 } from 'uuid';
 export class Member {
   [會員欄位.ID]: string;
   [會員欄位.Name]: string;
-  [會員欄位.Phone]: string;
+  [會員欄位.FacebookAccount]: string;
   [會員欄位.DateOfBirth]: string;
   [會員欄位.Gender]: 性別;
-  [會員欄位.Completed]: boolean;
-  [會員欄位.Comment]: string;
   [會員欄位.CreateTime]: string;
+  [會員欄位.HandSize]: string;
+  [會員欄位.FortunetellingType]: string;
+  [會員欄位.AtYear]: string;
+  [會員欄位.Job]: string;
+  [會員欄位.HasCondition]: boolean;
+  [會員欄位.CrystalStyle]: string;
+  [會員欄位.Comment]: string;
+  [會員欄位.Completed]: boolean;
 
-  constructor(data: { id?: string; name: string; dob: string | Moment; gender: 性別; comment: string; phone: string }) {
-    this.id = data.id || uuidv4();
+  constructor(data: Member) {
+    this.id = data?.id || uuidv4();
     this.name = data.name;
-    this.phone = data.phone;
+    this.facebookAccount = data.facebookAccount;
     this.dob = this.convertISOString(data.dob);
     this.gender = data.gender;
     this.completed = false;
-    this.comment = data.comment || '';
+    this.comment = data?.comment || '';
     this.createTime = new Date().toISOString();
+    this.handSize = data.handSize || '';
+    this.fortunetellingType = data.fortunetellingType;
+    this.atYear = data.atYear;
+    this.job = data.job || '';
+    this.crystalStyle = data.crystalStyle;
   }
 
   isMale(): boolean {
