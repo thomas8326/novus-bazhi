@@ -13,8 +13,7 @@ import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
 import { 算命服務器 } from 'src/app/services/算命/算命.service';
 import { ErrorMsg, SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
-
-const MAX_DISTANCE = 93;
+import { MAX_YEAR_DISTANCE } from 'src/app/constants/constants';
 
 @UntilDestroy()
 @Component({
@@ -51,8 +50,9 @@ export class MemberHoroscopeComponent implements OnInit {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       if (member) {
         this.member = new Member(member);
+        this.currentYear = this.member.atYear;
         this.minYear = this.member.getDobDate().getFullYear();
-        this.maxYear = this.minYear + MAX_DISTANCE - 1;
+        this.maxYear = this.minYear + MAX_YEAR_DISTANCE - 1;
         this.命盤分析();
       }
     });

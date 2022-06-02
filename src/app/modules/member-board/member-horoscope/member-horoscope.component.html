@@ -15,136 +15,168 @@
     <app-loading *ngIf="exporting"></app-loading>
   </button>
   <div class="container" #pdfTemp>
-    <div class="panel-header">
-      <button mat-button (click)="onAddYear(-1)" [disabled]="currentYear <= minYear">
-        <mat-icon>keyboard_arrow_left</mat-icon>
-      </button>
-      <div class="title">
-        {{ member.name }}
-        <input class="input-year" [value]="currentYear" (change)="updateYear(input.value)" #input />
-      </div>
-      <button mat-button (click)="onAddYear(1)" [disabled]="currentYear >= maxYear">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-    </div>
     <div class="panel-content">
+      <div>
+        <div class="table-header">
+          <button mat-button (click)="onAddYear(-1)" [disabled]="currentYear <= minYear">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+          <div class="title">
+            {{ member.name }}
+            <input class="input-year" [value]="currentYear" (change)="updateYear(input.value)" #input />
+          </div>
+          <button mat-button (click)="onAddYear(1)" [disabled]="currentYear >= maxYear">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+
+        <table class="main-table">
+          <thead>
+            <tr>
+              <th>時</th>
+              <th>日</th>
+              <th>月</th>
+              <th>年</th>
+              <th class="no-border"></th>
+              <th>大運</th>
+              <th>流年</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="currentHoroscope">
+            <tr>
+              <ng-container *ngVar="currentHoroscope.horoscopeResult.gan.reaction as reaction">
+                <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.gan[0] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.gan[1] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.gan[2] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.gan[3] }}</td>
+                <td class="no-border"></td>
+                <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
+                  {{ currentHoroscope.bigFortune.gan ? currentHoroscope.bigFortune.gan : '未起運' }}
+                </td>
+                <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
+                  {{ currentHoroscope.yearFortune.gan }}
+                </td>
+              </ng-container>
+            </tr>
+            <tr>
+              <ng-container *ngVar="currentHoroscope.horoscopeResult.zhi.reaction as reaction">
+                <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
+                <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
+                <td class="no-border"></td>
+                <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
+                  {{ currentHoroscope.bigFortune.zhi ? currentHoroscope.bigFortune.zhi : '未起運' }}
+                </td>
+                <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
+                  {{ currentHoroscope.yearFortune.zhi }}
+                </td>
+              </ng-container>
+            </tr>
+            <tr class="margin-line"><td colspan="7"></td></tr>
+          </tbody>
+          <tfoot *ngIf="currentHoroscope">
+            <tr>
+              <td colspan="3">
+                <div class="result-board">
+                  <div class="score-board">
+                    <span>天干受剋: </span>
+                    <ul *ngIf="currentHoroscope.horoscopeResult.gan.scores.length; else none">
+                      <li *ngFor="let score of currentHoroscope.horoscopeResult.gan.scores">
+                        {{ score }}
+                      </li>
+                    </ul>
+                    <ng-template #none>
+                      <span>無</span>
+                    </ng-template>
+                  </div>
+                  <div class="yinyan-board">
+                    <div>
+                      天干陽流通: <br />
+                      {{ getYanScoreChanged(currentHoroscope.horoscopeResult.gan) | async }}
+                    </div>
+                    <div>
+                      天干陰陽流通: <br />{{ getYinYanScoreChanged(currentHoroscope.horoscopeResult.gan) | async }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td colspan="4">
+                <div class="result-board">
+                  <div class="score-board">
+                    <span>地支受剋: </span>
+                    <ul *ngIf="currentHoroscope.horoscopeResult.zhi.scores.length; else none">
+                      <li *ngFor="let score of currentHoroscope.horoscopeResult.zhi.scores">
+                        {{ score }}
+                      </li>
+                    </ul>
+                    <ng-template #none>
+                      <span>無</span>
+                    </ng-template>
+                  </div>
+                  <div class="yinyan-board">
+                    <div>
+                      地支陽流通: <br />
+                      {{ getYanScoreChanged(currentHoroscope.horoscopeResult.zhi) | async }}
+                    </div>
+                    <div>
+                      地支陰陽流通: <br />
+                      {{ getYinYanScoreChanged(currentHoroscope.horoscopeResult.zhi) | async }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
       <div class="side-info">
-        <div *ngFor="let property of currentHoroscope?.badPropertyList" class="side-row">
-          <div class="side-text">{{ property.key }}</div> {{ property.badProperty }}
+        <div class="bad-property-mapping">
+          <div *ngFor="let property of currentHoroscope?.badPropertyList" class="side-row">
+            <div class="side-text">{{ property.key }}</div>
+            <div class="side-value">{{ property.badProperty }}</div>
+          </div>
+          <hr />
+          <div class="side-row">
+            <div class="side-text">合</div>
+            <div class="side-value color-strip match"></div>
+          </div>
+          <div class="side-row">
+            <div class="side-text">剋</div>
+            <div class="side-value color-strip anti"></div>
+          </div>
+          <div class="side-row">
+            <div class="side-text">斷氣</div>
+            <div class="side-value color-strip cut"></div>
+          </div>
         </div>
-        <hr />
-        <div class="side-row">
-          <div class="side-text">合</div>
-          <div class="color-strip match"></div>
-        </div>
-        <div class="side-row">
-          <div class="side-text">剋</div>
-          <div class="color-strip anti"></div>
-        </div>
-        <div class="side-row">
-          <div class="side-text">斷氣</div>
-          <div class="color-strip cut"></div>
+        <div class="user-detail">
+          <div *ngIf="member.handSize" class="detail-row">
+            <span>手圍: </span>
+            <span>{{ member.handSize }}</span>
+          </div>
+          <div *ngIf="member.fortunetellingType" class="detail-row">
+            <span>精批或詳批: </span>
+            <span>{{ member.fortunetellingType }}</span>
+          </div>
+          <div class="detail-row">
+            <span>批算哪一年的運程: </span>
+            <span>{{ member.atYear || currentYear }}</span>
+          </div>
+          <div *ngIf="member.crystalStyle" class="detail-row">
+            <span>選擇的隔珠款式: </span>
+            <span>{{ member.crystalStyle }}</span>
+          </div>
+          <div class="detail-row">
+            <span>是否有狀況: </span>
+            <span>{{ member.hasCondition ? '有' : '無' }}</span>
+          </div>
+          <div *ngIf="member.job" class="detail-row">
+            <span>工作: </span>
+            <span>{{ member.job }}</span>
+          </div>
         </div>
       </div>
-      <table class="main-table">
-        <thead>
-          <tr>
-            <th>時</th>
-            <th>日</th>
-            <th>月</th>
-            <th>年</th>
-            <th class="no-border"></th>
-            <th>大運</th>
-            <th>流年</th>
-          </tr>
-        </thead>
-        <tbody *ngIf="currentHoroscope">
-          <tr>
-            <ng-container *ngVar="currentHoroscope.horoscopeResult.gan.reaction as reaction">
-              <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.gan[0] }}</td>
-              <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.gan[1] }}</td>
-              <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.gan[2] }}</td>
-              <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.gan[3] }}</td>
-              <td class="no-border"></td>
-              <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
-                {{ currentHoroscope.bigFortune.gan ? currentHoroscope.bigFortune.gan : '未起運' }}
-              </td>
-              <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
-                {{ currentHoroscope.yearFortune.gan }}
-              </td>
-            </ng-container>
-          </tr>
-          <tr>
-            <ng-container *ngVar="currentHoroscope.horoscopeResult.zhi.reaction as reaction">
-              <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
-              <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
-              <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
-              <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
-              <td class="no-border"></td>
-              <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
-                {{ currentHoroscope.bigFortune.zhi ? currentHoroscope.bigFortune.zhi : '未起運' }}
-              </td>
-              <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
-                {{ currentHoroscope.yearFortune.zhi }}
-              </td>
-            </ng-container>
-          </tr>
-          <tr class="margin-line"><td colspan="7"></td></tr>
-        </tbody>
-        <tfoot *ngIf="currentHoroscope">
-          <tr>
-            <td colspan="3">
-              <div class="result-board">
-                <div class="score-board">
-                  <span>天干受剋: </span>
-                  <ul *ngIf="currentHoroscope.horoscopeResult.gan.scores.length; else none">
-                    <li *ngFor="let score of currentHoroscope.horoscopeResult.gan.scores">
-                      {{ score }}
-                    </li>
-                  </ul>
-                  <ng-template #none>
-                    <span>無</span>
-                  </ng-template>
-                </div>
-                <div class="yinyan-board">
-                  <div>
-                    天干陽流通: <br />
-                    {{ getYanScoreChanged(currentHoroscope.horoscopeResult.gan) | async }}
-                  </div>
-                  <div>
-                    天干陰陽流通: <br />{{ getYinYanScoreChanged(currentHoroscope.horoscopeResult.gan) | async }}
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td colspan="4">
-              <div class="result-board">
-                <div class="score-board">
-                  <span>地支受剋: </span>
-                  <ul *ngIf="currentHoroscope.horoscopeResult.zhi.scores.length; else none">
-                    <li *ngFor="let score of currentHoroscope.horoscopeResult.zhi.scores">
-                      {{ score }}
-                    </li>
-                  </ul>
-                  <ng-template #none>
-                    <span>無</span>
-                  </ng-template>
-                </div>
-                <div class="yinyan-board">
-                  <div>
-                    地支陽流通: <br />
-                    {{ getYanScoreChanged(currentHoroscope.horoscopeResult.zhi) | async }}
-                  </div>
-                  <div>
-                    地支陰陽流通: <br />
-                    {{ getYinYanScoreChanged(currentHoroscope.horoscopeResult.zhi) | async }}
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
     </div>
     <div class="panel-liuyue">
       <table>

@@ -38,8 +38,7 @@ export class MemberTableComponent implements OnInit {
   @Input('isAddingStatus')
   set setIsAddingStatus(value: boolean) {
     if (value) {
-      this.memberForm.reset();
-      this.memberForm.patchValue({ dob: moment(), fortunetellingType: FortunetellingType.detail, atYear: new Date().getFullYear() });
+      this.resetForm();
       this.isEditingStatus = false;
     }
 
@@ -166,10 +165,9 @@ export class MemberTableComponent implements OnInit {
   }
 
   onCancel() {
-    this.setAddStatus(false);
     this.isEditingStatus = false;
-    this.memberForm.reset();
-    this.memberForm.patchValue({ dob: moment() });
+    this.setAddStatus(false);
+    this.resetForm();
   }
 
   onRedirect(target: Member) {
@@ -198,5 +196,10 @@ export class MemberTableComponent implements OnInit {
   private setAddStatus(status: boolean) {
     this.isAddingStatus = status;
     this.isAddingStatusChange.emit(status);
+  }
+
+  private resetForm() {
+    this.memberForm.reset();
+    this.memberForm.patchValue({ dob: moment(), fortunetellingType: FortunetellingType.detail, atYear: new Date().getFullYear() });
   }
 }

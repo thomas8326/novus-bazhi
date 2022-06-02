@@ -11,7 +11,7 @@ export class Member {
   [會員欄位.CreateTime]: string;
   [會員欄位.HandSize]: string;
   [會員欄位.FortunetellingType]: string;
-  [會員欄位.AtYear]: string;
+  [會員欄位.AtYear]: number;
   [會員欄位.Job]: string;
   [會員欄位.HasCondition]: boolean;
   [會員欄位.CrystalStyle]: string;
@@ -29,7 +29,7 @@ export class Member {
     this.createTime = new Date().toISOString();
     this.handSize = data.handSize || '';
     this.fortunetellingType = data.fortunetellingType;
-    this.atYear = data.atYear;
+    this.atYear = data.atYear || new Date().getFullYear();
     this.job = data.job || '';
     this.crystalStyle = data.crystalStyle;
   }
