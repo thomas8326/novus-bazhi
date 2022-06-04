@@ -67,17 +67,6 @@
       </mat-footer-cell>
     </ng-container>
 
-    <ng-container [matColumnDef]="Member.CrystalStyle">
-      <mat-header-cell *matHeaderCellDef>隔珠款式</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.crystalStyle }} </mat-cell>
-      <mat-footer-cell *matFooterCellDef class="footer-cell">
-        <mat-form-field appearance="fill">
-          <mat-label>樣式</mat-label>
-          <input matInput formControlName="crystalStyle" />
-        </mat-form-field>
-      </mat-footer-cell>
-    </ng-container>
-
     <ng-container [matColumnDef]="Member.Completed">
       <mat-header-cell *matHeaderCellDef mat-sort-header>已完成</mat-header-cell>
       <mat-cell *matCellDef="let element">

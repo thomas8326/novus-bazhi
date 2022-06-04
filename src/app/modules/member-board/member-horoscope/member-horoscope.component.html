@@ -132,22 +132,26 @@
       </div>
       <div class="side-info">
         <div class="bad-property-mapping">
-          <div *ngFor="let property of currentHoroscope?.badPropertyList" class="side-row">
-            <div class="side-text">{{ property.key }}</div>
-            <div class="side-value">{{ property.badProperty }}</div>
+          <div>
+            <div *ngFor="let property of currentHoroscope?.badPropertyList" class="side-row">
+              <div class="side-text">{{ property.key }}</div>
+              <div class="side-value">{{ property.badProperty }}</div>
+            </div>
           </div>
           <hr />
-          <div class="side-row">
-            <div class="side-text">合</div>
-            <div class="side-value color-strip match"></div>
-          </div>
-          <div class="side-row">
-            <div class="side-text">剋</div>
-            <div class="side-value color-strip anti"></div>
-          </div>
-          <div class="side-row">
-            <div class="side-text">斷氣</div>
-            <div class="side-value color-strip cut"></div>
+          <div>
+            <div class="side-row">
+              <div class="side-text">合</div>
+              <div class="side-value color-strip match"></div>
+            </div>
+            <div class="side-row">
+              <div class="side-text">剋</div>
+              <div class="side-value color-strip anti"></div>
+            </div>
+            <div class="side-row">
+              <div class="side-text">斷氣</div>
+              <div class="side-value color-strip cut"></div>
+            </div>
           </div>
         </div>
         <div class="user-detail">

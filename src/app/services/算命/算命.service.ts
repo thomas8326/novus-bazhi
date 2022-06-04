@@ -260,7 +260,10 @@ export class 算命服務器 {
         return { 大運流年流月: { bigFortune }, 被消: { yearFortune, liuYue: liuYueGanZhi } };
       }
       if (流月剋流年) {
-        if (bigFortune === yearFortune) result.reaction.bigFortune.anti = true;
+        if (bigFortune === yearFortune) {
+          result.reaction.bigFortune.anti = true;
+          result.antiWuHinCount[五行轉換(yearFortune)]++;
+        }
         result.reaction.yearFortune.anti = true;
         result.新增流年流月相剋評分(yearFortune, false);
         this.是否斷氣 = this.是否為天干; // 只有天干會斷氣
@@ -268,7 +271,10 @@ export class 算命服務器 {
         return { 大運流年流月: { bigFortune }, 被消: { yearFortune } };
       }
       if (流年剋流月) {
-        if (bigFortune === liuYueGanZhi) result.reaction.bigFortune.anti = true;
+        if (bigFortune === liuYueGanZhi) {
+          result.reaction.bigFortune.anti = true;
+          result.antiWuHinCount[五行轉換(liuYueGanZhi)]++;
+        }
         result.reaction.monthFortune.anti = true;
         result.新增流年流月相剋評分(liuYueGanZhi, false);
         消刻 = true;
@@ -298,25 +304,6 @@ export class 算命服務器 {
       this.流通(result, myFateSet, data.大運流年流月);
       result.計算日柱受剋(this.天干日柱);
       result.計算最後評分分數(this.badPropertyMapping, this.天干日柱, parentResult.antiWuHinCount);
-    }
-  }
-
-  private 計算流月加重減輕(parentResult: 命盤結果, result: 命盤結果) {
-    const 流年剋五行數量 = parentResult.antiWuHinCount;
-    const 流月剋五行數量 = result.antiWuHinCount;
-
-    if (!this.天干日柱) {
-      throw new Error('天干日柱必須有值');
-    }
-
-    const 天干日柱五行 = 五行轉換(this.天干日柱);
-
-    if (流年剋五行數量[天干日柱五行] > 流月剋五行數量[天干日柱五行]) {
-      // result.scores.map(score => score.value === '日主受剋' ? { value: '加重日主受剋', property: score.property } : score);
-    }
-
-    if (流年剋五行數量[天干日柱五行] < 流月剋五行數量[天干日柱五行]) {
-      // result.scores.map(score => score.value === '日主受剋' ? { value: '減輕日主受剋', property: score.property } : score);
     }
   }
 
@@ -619,7 +606,7 @@ export class 算命服務器 {
       if (myFateSet[i] === 被消資料.bigFortune || myFateSet[i] === 被消資料.yearFortune || myFateSet[i] === 被消資料.liuYue) {
         if (是否消剋) {
           result.reaction[this.年月日時住轉換(i)].anti = true;
-          result.antiWuHinCount[五行轉換(myFateSet[i])]++
+          result.antiWuHinCount[五行轉換(myFateSet[i])]++;
         } else {
           result.reaction[this.年月日時住轉換(i)].match = true;
         }

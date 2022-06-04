@@ -73,7 +73,6 @@ export class MemberTableComponent implements OnInit {
     [會員欄位.DateOfBirth]: [moment(), Validators.required],
     [會員欄位.FortunetellingType]: [FortunetellingType.detail],
     [會員欄位.AtYear]: [new Date().getFullYear()],
-    [會員欄位.CrystalStyle]: [''],
     [會員欄位.Completed]: [false],
   });
 
@@ -89,7 +88,6 @@ export class MemberTableComponent implements OnInit {
     會員欄位.DateOfBirth,
     會員欄位.FortunetellingType,
     會員欄位.AtYear,
-    會員欄位.CrystalStyle,
     會員欄位.Completed,
     'btnGroup',
   ];

@@ -31,7 +31,7 @@ export class Member {
     this.fortunetellingType = data.fortunetellingType;
     this.atYear = data.atYear || new Date().getFullYear();
     this.job = data.job || '';
-    this.crystalStyle = data.crystalStyle;
+    this.crystalStyle = data.crystalStyle || '';
   }
 
   isMale(): boolean {

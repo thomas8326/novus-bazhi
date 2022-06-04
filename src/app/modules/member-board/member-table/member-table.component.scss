@@ -34,6 +34,11 @@ mat-table {
     justify-content: center;
   }
 
+  mat-footer-row {
+    padding: 5px 0 8px;
+    border-top: 2px solid #dedede;
+  }
+
   mat-footer-cell {
     mat-form-field {
       width: 80%;
@@ -43,10 +48,6 @@ mat-table {
     button[mat-flat-button] {
       margin: 0 5px;
     }
-  }
-
-  mat-footer-row {
-    border-top: 2px solid #dedede;
   }
 
   .mat-column-select {
@@ -60,7 +61,7 @@ mat-table {
   }
 
   .mat-column-dob {
-    flex: 0 0 260px;
+    flex: 0 0 300px;
   }
 
   .mat-column-btnGroup {
