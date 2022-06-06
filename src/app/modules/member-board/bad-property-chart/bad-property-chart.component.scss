@@ -1,0 +1,36 @@
+$elementDiameter: 40px;
+
+:host {
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  width: calc(100% - $elementDiameter);
+  height: calc(100% - $elementDiameter);
+  border: 1px solid;
+  border-radius: 50%;
+  transform: rotate(180deg);
+}
+
+.bad-property-element {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: $elementDiameter;
+  height: $elementDiameter;
+  font-size: 10px;
+  background: white;
+  border: 1px solid;
+  border-radius: 50%;
+  transform: rotate(180deg);
+}
+
+.key {
+  font-weight: 600;
+}

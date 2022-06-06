@@ -1,0 +1,15 @@
+<div class="container" #chartContainer>
+  <div
+    *ngFor="let property of elements"
+    class="bad-property-element"
+    [ngStyle]="{
+      top: property.top - element.offsetHeight / 2 + 'px',
+      left: property.left - element.offsetWidth / 2 + 'px'
+    }"
+    #element
+  >
+    <!-- <div class="side-text">{{ property.key }}</div> -->
+    <div class="value">{{ property.item.badProperty }}</div>
+    <div class="key">{{ property.item.key }}</div>
+  </div>
+</div>
