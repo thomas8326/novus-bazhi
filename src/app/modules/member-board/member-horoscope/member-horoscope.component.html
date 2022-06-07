@@ -8,7 +8,7 @@
     (click)="onExportPDF()"
     [cdkDragFreeDragPosition]="pdfButtonPoint"
     (cdkDragStarted)="onCdkDragStart()"
-    (cdkDragEnded)="onCkdDragDropped($event, container, exportBtn._elementRef)"
+    (cdkDragEnded)="onCkdDragDropped($event, container)"
     #exportBtn
   >
     <mat-icon *ngIf="!exporting">picture_as_pdf</mat-icon>

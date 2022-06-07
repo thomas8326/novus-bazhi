@@ -108,19 +108,20 @@ export class MemberHoroscopeComponent implements OnInit {
     this.isDragging = true;
   }
 
-  onCkdDragDropped(button: CdkDragEnd<any>, container: HTMLDivElement, matButton: ElementRef) {
+  onCkdDragDropped(button: CdkDragEnd<any>, container: HTMLDivElement) {
     const buttonDropX = button.dropPoint.x;
-    const buttonDropY = button.distance.y;
+    const buttonDistanceY = this.pdfButtonPoint.y + button.distance.y;
+    const buttonDropY = buttonDistanceY + window.scrollY;
     const containerWidth = container.clientWidth;
+    const windowHeight = window.innerHeight - 210; // MainHeaderHeight + pageHeaderHeight + buttonHeight
 
-    if (buttonDropX > containerWidth / 2) {
-      this.pdfButtonPoint = { x: 0, y: this.pdfButtonPoint.y + buttonDropY };
-    } else {
-      this.pdfButtonPoint = {
-        x: -containerWidth + matButton.nativeElement.clientWidth,
-        y: this.pdfButtonPoint.y + buttonDropY,
-      };
-    }
+    let newX = buttonDropX > containerWidth / 2 ? containerWidth : 0;
+    let newY = buttonDropY < 0 ? 0 : buttonDropY > windowHeight ? windowHeight : buttonDistanceY;
+
+    this.pdfButtonPoint = {
+      x: newX,
+      y: newY,
+    };
   }
 
   getGanZhiResultClass(result: 已作用) {
