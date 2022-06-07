@@ -13,7 +13,7 @@
   </div>
 </header>
 
-<header class="page-header">
+<header *ngIf="!isLoginPage && isRendered" class="page-header">
   <button *ngIf="!isMainPage" mat-button (click)="onBack()"><mat-icon>keyboard_arrow_left</mat-icon></button>
   <h1>{{ title }}</h1>
 </header>
