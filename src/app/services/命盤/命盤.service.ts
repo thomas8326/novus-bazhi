@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { 天干對照表, 地支對照表 } from 'src/app/constants/constants';
 import { 命盤 } from 'src/app/interfaces/命盤';
-import { Lunar } from 'lunar-typescript';
+import { Solar } from 'lunar-typescript';
 import { 大運 } from 'src/app/interfaces/大運';
 
 @Injectable({
   providedIn: 'root',
 })
 export class 命盤服務器 {
-  創建基礎命盤(solar: Date, isMale?: boolean) {
-    const lunar = Lunar.fromDate(solar);
+  創建基礎命盤(dob: Date, isMale?: boolean) {
+    const lunar = Solar.fromDate(dob).getLunar();
     const 天干本命 = [
       天干對照表.get(lunar.getTimeGan())!,
       天干對照表.get(lunar.getDayGan())!,
@@ -58,8 +58,8 @@ export class 命盤服務器 {
     return 結果命盤;
   }
 
-  生成特定天干地支命盤(solar: Date, year: number, isMale?: boolean): 命盤 | null {
-    const 基礎命盤 = this.創建基礎命盤(solar, isMale);
+  生成特定天干地支命盤(dob: Date, year: number, isMale?: boolean): 命盤 | null {
+    const 基礎命盤 = this.創建基礎命盤(dob, isMale);
     const 大運列 = 基礎命盤.大運列;
 
     for (const 大運值 of 大運列) {
