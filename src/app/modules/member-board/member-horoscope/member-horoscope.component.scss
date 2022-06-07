@@ -10,6 +10,7 @@ app-bad-property-chart {
 
 .table-header {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -22,17 +23,18 @@ app-bad-property-chart {
     cursor: pointer;
   }
 
-  .title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 15px;
-  }
-
   .input-year {
     max-width: 60px;
     text-align: center;
     border-radius: 5px;
+  }
+
+  .title {
+    display: block;
+    margin-right: -2em;
+    font-size: 20px;
+    letter-spacing: 2em;
+    text-align: right;
   }
 }
 
@@ -165,7 +167,7 @@ tr:not(.margin-line) {
 
   .user-detail {
     width: 300px;
-    height: 200px;
+    height: 180px;
     margin: 2px 6px;
     padding: 10px;
     border: 4px double black;
@@ -198,6 +200,7 @@ tr:not(.margin-line) {
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      margin: 8px 0;
     }
 
     .side-text {
@@ -211,8 +214,9 @@ tr:not(.margin-line) {
   }
 
   .color-strip {
-    height: 8px;
-    border: 1px solid black;
+    height: 12px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
 
     &.match {
       background-color: var(--match-color);

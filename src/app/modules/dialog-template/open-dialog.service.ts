@@ -34,7 +34,6 @@ export class OpenDialogService {
       minWidth: '330px',
       height: '100vh',
       panelClass: ['animation_rightToLeft'],
-      backdropClass: ['opacity-transparent'],
       position: {
         right: '0px',
       },

@@ -18,16 +18,18 @@
     <div class="panel-content">
       <div>
         <div class="table-header">
-          <button mat-button (click)="onAddYear(-1)" [disabled]="currentYear <= minYear">
-            <mat-icon>keyboard_arrow_left</mat-icon>
-          </button>
           <div class="title">
             {{ member.name }}
-            <input class="input-year" [value]="currentYear" (change)="updateYear(input.value)" #input />
           </div>
-          <button mat-button (click)="onAddYear(1)" [disabled]="currentYear >= maxYear">
-            <mat-icon>keyboard_arrow_right</mat-icon>
-          </button>
+          <div class="control">
+            <button mat-button (click)="onAddYear(-1)" [disabled]="currentYear <= minYear">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <input class="input-year" [value]="currentYear" (change)="updateYear(input.value)" #input />
+            <button mat-button (click)="onAddYear(1)" [disabled]="currentYear >= maxYear">
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+          </div>
         </div>
 
         <table class="main-table">
