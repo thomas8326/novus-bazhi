@@ -138,10 +138,6 @@
             <app-bad-property-chart
               [badPropertyMappingList]="currentHoroscope.badPropertyList"
             ></app-bad-property-chart>
-            <!-- <div *ngFor="let property of currentHoroscope?.badPropertyList" class="side-row">
-              <div class="side-text">{{ property.key }}</div>
-              <div class="side-value">{{ property.badProperty }}</div>
-            </div> -->
           </div>
           <hr />
           <div class="accent-chart">
@@ -226,7 +222,9 @@
                         [ngTemplateOutletContext]="{ result: liuYue.ganResult }"
                       ></ng-container>
                     </mat-menu>
-                    <div [innerText]="liuYue.ganResult.scores"></div>
+                    <ul>
+                      <li *ngFor="let score of liuYue.ganResult.scores">{{ score }}</li>
+                    </ul>
                   </div>
                 </td>
               </ng-container>
@@ -254,7 +252,9 @@
                         [ngTemplateOutletContext]="{ result: liuYue.zhiResult }"
                       ></ng-container>
                     </mat-menu>
-                    <div [innerText]="liuYue.zhiResult.scores"></div>
+                    <ul>
+                      <li *ngFor="let score of liuYue.zhiResult.scores">{{ score }}</li>
+                    </ul>
                   </div>
                 </td>
               </ng-container>
