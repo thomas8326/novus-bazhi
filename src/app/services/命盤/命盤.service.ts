@@ -11,23 +11,24 @@ import { 大運 } from 'src/app/interfaces/大運';
 export class 命盤服務器 {
   創建基礎命盤(dob: Date, isMale?: boolean) {
     const lunar = Solar.fromDate(dob).getLunar();
+
     const 天干本命 = [
       天干對照表.get(lunar.getTimeGan())!,
-      天干對照表.get(lunar.getDayGan())!,
-      天干對照表.get(lunar.getMonthGan())!,
-      天干對照表.get(lunar.getYearGan())!,
+      天干對照表.get(lunar.getDayGanExact())!,
+      天干對照表.get(lunar.getMonthGanExact())!,
+      天干對照表.get(lunar.getYearGanExact())!,
     ];
 
     const 地支本命 = [
       地支對照表.get(lunar.getTimeZhi())!,
-      地支對照表.get(lunar.getDayZhi())!,
-      地支對照表.get(lunar.getMonthZhi())!,
-      地支對照表.get(lunar.getYearZhi())!,
+      地支對照表.get(lunar.getDayZhiExact())!,
+      地支對照表.get(lunar.getMonthZhiExact())!,
+      地支對照表.get(lunar.getYearZhiExact())!,
     ];
 
     const 大運列 = lunar
       .getEightChar()
-      .getYun(isMale ? 1 : 0)
+      .getYun(isMale ? 1 : 0, 1)
       .getDaYun()
       .map((dayun) => new 大運(dayun));
 
