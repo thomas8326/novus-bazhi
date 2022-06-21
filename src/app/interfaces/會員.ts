@@ -18,20 +18,20 @@ export class Member {
   [會員欄位.Comment]: string;
   [會員欄位.Completed]: boolean;
 
-  constructor(data: Member) {
+  constructor(data?: Member) {
     this.id = data?.id || uuidv4();
-    this.name = data.name;
-    this.facebookAccount = data.facebookAccount;
-    this.dob = this.convertISOString(data.dob);
-    this.gender = data.gender;
+    this.name = data?.name || '';
+    this.facebookAccount = data?.facebookAccount || '';
+    this.dob = data?.dob ? this.convertISOString(data.dob) : '';
+    this.gender = data?.gender || 性別.Male;
     this.completed = false;
     this.comment = data?.comment || '';
     this.createTime = new Date().toISOString();
-    this.handSize = data.handSize || '';
-    this.fortunetellingType = data.fortunetellingType;
-    this.atYear = data.atYear || new Date().getFullYear();
-    this.job = data.job || '';
-    this.crystalStyle = data.crystalStyle || '';
+    this.handSize = data?.handSize || '';
+    this.fortunetellingType = data?.fortunetellingType || '';
+    this.atYear = data?.atYear || new Date().getFullYear();
+    this.job = data?.job || '';
+    this.crystalStyle = data?.crystalStyle || '';
   }
 
   isMale(): boolean {

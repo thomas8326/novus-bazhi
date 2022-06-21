@@ -18,6 +18,10 @@
   <h1>{{ title }}</h1>
 </header>
 
+<div *ngIf="isLoading$ | async" class="global-loading">
+  <app-loading [bounceRadius]="50"></app-loading>
+</div>
+
 <main [class.full-screen]="isLoginPage">
   <router-outlet (activate)="onMainActivated(outlet.activatedRouteData)" #outlet="outlet"></router-outlet>
 </main>

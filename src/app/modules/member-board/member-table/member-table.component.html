@@ -1,3 +1,4 @@
+<input type="file" (change)="onChange(inputFile.files)" #inputFile />
 <form [formGroup]="memberForm" class="component-container">
   <mat-table matSort [dataSource]="memberDataSource" class="mat-elevation-z8 novus-scroll-bar">
     <ng-container [matColumnDef]="Member.Name">

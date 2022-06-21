@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { ExportPdfService } from 'src/app/services/export-pdf/export-pdf.service';
 import { OpenDialogService } from 'src/app/modules/dialog-template/open-dialog.service';
 import { FortunetellingType, 性別, 會員欄位 } from 'src/app/enums/會員.enum';
 import { Member } from 'src/app/interfaces/會員';
@@ -98,6 +99,7 @@ export class MemberTableComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly memberService: MemberService,
     private readonly openDialogService: OpenDialogService,
+    private readonly exportPdfService: ExportPdfService,
   ) {
   }
 
@@ -105,6 +107,10 @@ export class MemberTableComponent implements OnInit {
     this.memberService.get().subscribe((members) => {
       this.memberDataSource.data = members.sort(this.compareCreateTime);
     });
+  }
+
+  onChange(files: FileList | null) {
+    this.exportPdfService.importPdf(files).then(data => console.log(data));
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
