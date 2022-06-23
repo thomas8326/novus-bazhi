@@ -1,5 +1,95 @@
-app-member-control-panel {
-  margin: 10px 0;
+.gender {
+  display: flex;
+  flex-direction: column;
+
+  .mat-radio-button {
+    margin: 5px 0;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.comment {
+  width: 100%;
+  height: 100%;
+  max-height: 70px;
+  margin: 10px;
+  padding: 0 5px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+mat-table {
+  width: 100%;
+  max-height: 75vh;
+  overflow: auto;
+
+  mat-footer-cell,
+  mat-header-cell,
+  mat-cell {
+    justify-content: center;
+  }
+
+  mat-footer-row {
+    padding: 5px 0 8px;
+    border-top: 2px solid #dedede;
+  }
+
+  mat-footer-cell {
+    mat-form-field {
+      width: 80%;
+      padding-top: 1.34375em;
+    }
+
+    button[mat-flat-button] {
+      margin: 0 5px;
+    }
+  }
+
+  .mat-column-select {
+    flex: 0 0 60px;
+  }
+
+  .mat-column-fortunetellingType,
+  .mat-column-gender,
+  .mat-column-completed {
+    flex: 0 0 80px;
+  }
+
+  .mat-column-dob {
+    flex: 0 0 300px;
+  }
+
+  .mat-column-btnGroup {
+    flex: 0 0 25%;
+    justify-content: flex-end;
+  }
+}
+
+.mat-radio-group {
+  padding: 10px 0;
+}
+
+.insert-comment {
+  width: 100%;
+
+  textarea {
+    height: 100%;
+    max-height: 100px;
+  }
+}
+
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
+  font-weight: 700;
 }
 
 .control-panel {
@@ -9,4 +99,14 @@ app-member-control-panel {
   * + * {
     margin-left: 15px;
   }
+}
+
+label {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+input[type=file] {
+  display: none;
 }

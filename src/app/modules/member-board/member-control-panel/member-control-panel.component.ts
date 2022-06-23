@@ -16,6 +16,7 @@ export class MemberControlPanelComponent implements OnInit {
   @Input() showDeleteBtn = true;
 
   @Output() add = new EventEmitter<void>();
+  @Output() import = new EventEmitter<FileList>();
   @Output() edit = new EventEmitter<void>();
   @Output() editDetail = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
@@ -37,6 +38,13 @@ export class MemberControlPanelComponent implements OnInit {
   onDelete() {
     const callback = () => this.delete.emit();
     this.openDialogService.openDeletedPrompt('a', callback);
+  }
+
+  onImport(file: FileList) {
+    if (!file || file.length == 0) {
+      return;
+    }
+    this.import.emit();
   }
 
   onExport() {

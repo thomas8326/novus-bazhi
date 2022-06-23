@@ -91,3 +91,20 @@ mat-table {
   padding: 20px 0;
   font-weight: 700;
 }
+
+.control-panel {
+  display: flex;
+  align-items: center;
+
+  * + * {
+    margin-left: 15px;
+  }
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type=file] {
+  display: none;
+}

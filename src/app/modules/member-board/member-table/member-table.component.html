@@ -1,4 +1,15 @@
-<input type="file" (change)="onChange(inputFile.files)" #inputFile />
+<div class="control-panel">
+  <button mat-raised-button color="primary" (click)="onEnterAddMemberMode()">新增</button>
+  <button mat-raised-button color="primary">
+    <label for="file">匯入Excel</label>
+    <input id="file" type="file" (change)="onImportExcel(inputFile.files)" #inputFile />
+  </button>
+  <mat-form-field appearance="standard">
+    <mat-label>搜尋</mat-label>
+    <input matInput (keyup)="onFilter(input.value)" placeholder="請輸入要查找字串" #input />
+  </mat-form-field>
+</div>
+
 <form [formGroup]="memberForm" class="component-container">
   <mat-table matSort [dataSource]="memberDataSource" class="mat-elevation-z8 novus-scroll-bar">
     <ng-container [matColumnDef]="Member.Name">
@@ -89,7 +100,7 @@
           [showAddBtn]="false"
           [showRedirectBtn]="true"
           (redirect)="onRedirect(row)"
-          (edit)="onEditMember(row)"
+          (edit)="onEnterEditMemberMode(row)"
           (delete)="onDeleteMember(row)"
           (editDetail)="onEditDetail(row)"
         ></app-member-control-panel>
@@ -108,7 +119,7 @@
           mat-flat-button
           color="primary"
           *ngIf="isAddingStatus"
-          (click)="onAddMember()"
+          (click)="onAddMember(false)"
           [disabled]="memberForm.invalid"
         >
           新增
@@ -117,7 +128,7 @@
           mat-flat-button
           color="primary"
           *ngIf="isAddingStatus"
-          (click)="onAddNextMember()"
+          (click)="onAddMember(true)"
           [disabled]="memberForm.invalid"
         >
           新增下一筆

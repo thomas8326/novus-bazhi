@@ -24,7 +24,7 @@ export class ExportPdfService {
   private importStatus = new Subject<ExportStatus>();
   private exportStatus = new Subject<ExportStatus>();
 
-  importPdf(files: FileList | null): Promise<Member[]> {
+  importExcel(files: FileList | null): Promise<Member[]> {
     return new Promise((resolve, reject) => {
       if (!files || files?.length === 0) {
         return reject('檔案為空');
@@ -33,31 +33,33 @@ export class ExportPdfService {
       let data: object[];
       const isExcelFile = !!files[0].name.match(EXCEL_FILE);
 
-      if (isExcelFile) {
-        this.importStatus.next(ExportStatus.InProgress);
-        const reader: FileReader = new FileReader();
-        reader.onload = (e: any) => {
-          const bstr: string = e.target.result;
-          const workbook: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+      if (!isExcelFile) {
+        return reject("請匯入Excel檔案");
+      }
 
-          /* grab first sheet */
-          const firstSheetName: string = workbook.SheetNames[0];
-          const sheet: XLSX.WorkSheet = workbook.Sheets[firstSheetName];
+      this.importStatus.next(ExportStatus.InProgress);
+      const reader: FileReader = new FileReader();
+      reader.onload = (e: any) => {
+        const bstr: string = e.target.result;
+        const workbook: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
 
-          /* save data */
-          data = XLSX.utils.sheet_to_json(sheet);
+        /* grab first sheet */
+        const firstSheetName: string = workbook.SheetNames[0];
+        const sheet: XLSX.WorkSheet = workbook.Sheets[firstSheetName];
+
+        /* save data */
+        data = XLSX.utils.sheet_to_json(sheet);
+      }
+
+      reader.readAsBinaryString(files[0]);
+
+      reader.onloadend = () => {
+        const members: Member[] = [];
+        for (let member of data) {
+          members.push(this.excelKeyConverter(member));
         }
-
-        reader.readAsBinaryString(files[0]);
-
-        reader.onloadend = () => {
-          const members: Member[] = [];
-          for (let member of data) {
-            members.push(this.excelKeyConverter(member));
-          }
-          this.importStatus.next(ExportStatus.Completed);
-          resolve(members);
-        }
+        this.importStatus.next(ExportStatus.Completed);
+        resolve(members);
       }
     });
   }
@@ -108,7 +110,7 @@ export class ExportPdfService {
           member.gender = value;
           break;
         case ExcelColumn.DateOfBirth:
-          member.dob = value;
+          member.dob = this.transformExcelDate(value).toISOString();
           break;
         case ExcelColumn.FacebookAccount:
           member.facebookAccount = value;
@@ -133,5 +135,20 @@ export class ExportPdfService {
       }
     }
     return member;
+  }
+
+  private transformExcelDate(value: string) {
+    if (/上午/.test(value)) {
+      const newDate = new Date(value.replace('上午', ''));
+      if (newDate.getHours() === 12) {
+        newDate.setHours(newDate.getHours() - 12);
+      }
+      return newDate;
+    }
+    const newDate = new Date(value.replace('下午', ''));
+    if (newDate.getHours() < 12) {
+      newDate.setHours(newDate.getHours() + 12);
+    }
+    return newDate;
   }
 }
