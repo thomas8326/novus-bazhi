@@ -21,12 +21,12 @@
   <div class="edit-row">
     <mat-form-field appearance="outline">
       <mat-label>手圍</mat-label>
-      <input matInput type="number" [formControlName]="Member.HandSize" />
+      <input matInput type="text" [formControlName]="Member.HandSize" />
     </mat-form-field>
   </div>
   <div class="edit-row">
     <mat-form-field appearance="outline">
-      <mat-label>工作職業</mat-label>
+      <mat-label>工作職業與是否有狀況要跟Novus講</mat-label>
       <input matInput [formControlName]="Member.Job" />
     </mat-form-field>
   </div>
@@ -35,13 +35,6 @@
       <mat-label>隔珠款式</mat-label>
       <input matInput [formControlName]="Member.CrystalStyle" />
     </mat-form-field>
-  </div>
-  <div class="edit-row">
-    <span>是否有狀況</span>
-    <mat-radio-group class="condition" [formControlName]="Member.HasCondition">
-      <mat-radio-button [value]="true">有</mat-radio-button>
-      <mat-radio-button [value]="false">無</mat-radio-button>
-    </mat-radio-group>
   </div>
 </form>
 

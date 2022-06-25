@@ -17,7 +17,10 @@ export class MemberEditDetailComponent {
   Member = 會員欄位;
   form: FormGroup | null = null;
 
-  constructor(private readonly dialogRef: MatDialogRef<MemberEditDetailComponent>, private readonly fb: FormBuilder, @Inject(MAT_DIALOG_DATA) private readonly data: { member: Member }) {
+  constructor(
+    private readonly dialogRef: MatDialogRef<MemberEditDetailComponent>,
+    private readonly fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) private readonly data: { member: Member }) {
     this.member = data.member;
     this.initForm();
   }
@@ -35,7 +38,6 @@ export class MemberEditDetailComponent {
       [會員欄位.HandSize]: [this.member.handSize || ''],
       [會員欄位.Job]: [this.member.job || ''],
       [會員欄位.CrystalStyle]: [this.member.crystalStyle || ''],
-      [會員欄位.HasCondition]: [this.member.hasCondition || false],
     })
   }
 }

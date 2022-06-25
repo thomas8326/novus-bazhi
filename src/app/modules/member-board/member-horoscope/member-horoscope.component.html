@@ -172,12 +172,8 @@
             <span>選擇的隔珠款式: </span>
             <span>{{ member.crystalStyle }}</span>
           </div>
-          <div class="detail-row">
-            <span>是否有狀況: </span>
-            <span>{{ member.hasCondition ? '有' : '無' }}</span>
-          </div>
           <div *ngIf="member.job" class="detail-row">
-            <span>工作: </span>
+            <span>工作與是否有狀況要跟Novus講: </span>
             <span>{{ member.job }}</span>
           </div>
         </div>

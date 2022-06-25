@@ -22,6 +22,7 @@ export class 流年 {
 }
 
 export class 流月 {
+  chineseMonth: string;
   month: string;
   gan: 天干;
   zhi: 地支;
@@ -29,7 +30,9 @@ export class 流月 {
   zhiResult: 命盤結果;
 
   constructor(liuYue: LiuYue) {
-    this.month = liuYue.getMonthInChinese();
+    this.month = (liuYue.getIndex() + 1).toString();
+    this.chineseMonth = liuYue.getMonthInChinese()
+
     this.gan = 天干對照表.get(liuYue.getGanZhi().charAt(0))!;
     this.zhi = 地支對照表.get(liuYue.getGanZhi().charAt(1))!;
     this.ganResult = new 命盤結果(true);
