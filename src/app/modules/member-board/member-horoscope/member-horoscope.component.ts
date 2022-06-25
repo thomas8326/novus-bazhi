@@ -7,7 +7,6 @@ import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
 import { map, switchMap } from 'rxjs/operators';
 import { 命盤, 命盤結果, 已作用 } from 'src/app/interfaces/命盤';
-import { Subject } from 'rxjs';
 import { ExportPdfService, ExportStatus } from 'src/app/services/export-pdf/export-pdf.service';
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
 import { 算命服務器 } from 'src/app/services/算命/算命.service';
@@ -26,7 +25,6 @@ export class MemberHoroscopeComponent implements OnInit {
 
   member: Member | null = null;
   currentYear: number = new Date().getFullYear();
-  yearChangeSubject = new Subject();
   minYear: number = 1900;
   maxYear: number = 3000;
   currentHoroscope: 命盤 | null = null;
@@ -50,7 +48,6 @@ export class MemberHoroscopeComponent implements OnInit {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       if (member) {
         this.member = new Member(member);
-        this.currentYear = this.member.atYear;
         this.minYear = this.member.getDobDate().getFullYear();
         this.maxYear = this.minYear + MAX_YEAR_DISTANCE - 1;
         this.命盤分析();

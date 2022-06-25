@@ -55,15 +55,10 @@
       <mat-header-cell *matHeaderCellDef>精批或詳批</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.fortunetellingType }} </mat-cell>
       <mat-footer-cell *matFooterCellDef class="footer-cell">
-        <mat-radio-group
-          color="primary"
-          class="gender"
-          aria-label="Select an option"
-          formControlName="fortunetellingType"
-        >
-          <mat-radio-button [value]="FortunetellingType.meticulous">精批</mat-radio-button>
-          <mat-radio-button [value]="FortunetellingType.detail">詳批</mat-radio-button>
-        </mat-radio-group>
+        <mat-form-field appearance="fill">
+          <mat-label>精批或詳批</mat-label>
+          <input matInput formControlName="fortunetellingType" />
+        </mat-form-field>
       </mat-footer-cell>
     </ng-container>
 
@@ -72,12 +67,8 @@
       <mat-cell *matCellDef="let element"> {{ element.atYear }} </mat-cell>
       <mat-footer-cell *matFooterCellDef class="footer-cell">
         <mat-form-field appearance="fill">
-          <mat-label>批算年分</mat-label>
-          <mat-select formControlName="atYear">
-            <mat-option *ngFor="let year of yearOptions" [value]="year">
-              {{ year }}
-            </mat-option>
-          </mat-select>
+          <mat-label>精批或詳批</mat-label>
+          <input matInput formControlName="atYear" />
         </mat-form-field>
       </mat-footer-cell>
     </ng-container>

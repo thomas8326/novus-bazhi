@@ -23,7 +23,6 @@ import { ShardComponentsModule } from 'src/app/shard-components/shard-components
 
 import { MemberBoardComponent } from './member-board.component';
 import { MemberBoardRoutingModule } from './member-board-routing.module';
-import { MemberTableComponent } from './member-table/member-table.component';
 import { MemberControlPanelComponent } from './member-control-panel/member-control-panel.component';
 import { DobPickerComponent } from './dob-picker/dob-picker.component';
 import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.component';
@@ -32,7 +31,6 @@ import { BadPropertyChartComponent } from './bad-property-chart/bad-property-cha
 @NgModule({
   declarations: [
     MemberBoardComponent,
-    MemberTableComponent,
     MemberControlPanelComponent,
     DobPickerComponent,
     MemberHoroscopeComponent,
