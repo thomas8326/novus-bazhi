@@ -13,7 +13,6 @@ export class Member {
   [會員欄位.FortunetellingType]: string;
   [會員欄位.AtYear]: number;
   [會員欄位.Job]: string;
-  [會員欄位.HasCondition]: boolean;
   [會員欄位.CrystalStyle]: string;
   [會員欄位.Comment]: string;
   [會員欄位.Completed]: boolean;
