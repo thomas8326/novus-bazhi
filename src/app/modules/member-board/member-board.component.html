@@ -67,8 +67,12 @@
       <mat-cell *matCellDef="let element"> {{ element.atYear }} </mat-cell>
       <mat-footer-cell *matFooterCellDef class="footer-cell">
         <mat-form-field appearance="fill">
-          <mat-label>精批或詳批</mat-label>
-          <input matInput formControlName="atYear" />
+          <mat-label>批算年分</mat-label>
+          <mat-select formControlName="atYear">
+            <mat-option *ngFor="let year of yearOptions" [value]="year">
+              {{ year }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </mat-footer-cell>
     </ng-container>

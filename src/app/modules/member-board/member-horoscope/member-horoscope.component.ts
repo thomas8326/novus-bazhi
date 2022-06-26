@@ -48,6 +48,7 @@ export class MemberHoroscopeComponent implements OnInit {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       if (member) {
         this.member = new Member(member);
+        this.currentYear = isNaN(this.member.atYear) ? this.currentYear : this.member.atYear;
         this.minYear = this.member.getDobDate().getFullYear();
         this.maxYear = this.minYear + MAX_YEAR_DISTANCE - 1;
         this.命盤分析();
