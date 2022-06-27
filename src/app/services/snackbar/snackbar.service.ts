@@ -12,9 +12,9 @@ export class SnackbarService {
 
   constructor(private snackbar: MatSnackBar) { }
 
-  showWarning(errorMsg: ErrorMsg | string) {
+  showWarning(errorMsg: ErrorMsg | string, duration = 1200) {
     this.snackbar.open(errorMsg, '', {
-      duration: 1200,
+      duration: duration,
       horizontalPosition: 'end',
       verticalPosition: 'bottom',
     });

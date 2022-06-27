@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { Member } from 'src/app/interfaces/會員';
 import * as XLSX from 'xlsx';
 import { Observable } from 'rxjs/internal/Observable';
@@ -23,6 +24,8 @@ const EXCEL_FILE = /(.xls|.xlsx)/;
 export class ExportPdfService {
   private importStatus = new Subject<ExportStatus>();
   private exportStatus = new Subject<ExportStatus>();
+
+  constructor(private readonly snackbarService: SnackbarService) { }
 
   importExcel(files: FileList | null): Promise<Member[]> {
     return new Promise((resolve, reject) => {
@@ -130,25 +133,35 @@ export class ExportPdfService {
         case ExcelColumn.CrystalStyle:
           member.crystalStyle = value;
           break;
-        default:
+        default: {
+          this.snackbarService.showWarning('出現非預期的欄位: ' + key, 5000);
+          this.importStatus.next(ExportStatus.Completed);
           throw new Error('出現非預期的欄位: ' + key);
+        }
       }
     }
     return member;
   }
 
   private transformExcelDate(value: string) {
-    if (/上午/.test(value)) {
-      const newDate = new Date(value.replace('上午', ''));
-      if (newDate.getHours() === 12) {
-        newDate.setHours(newDate.getHours() - 12);
+    try {
+      if (/上午/.test(value)) {
+        const newDate = new Date(value.replace('上午', ''));
+        if (newDate.getHours() === 12) {
+          newDate.setHours(newDate.getHours() - 12);
+        }
+        return newDate;
+      }
+      const newDate = new Date(value.replace('下午', ''));
+      if (newDate.getHours() < 12) {
+        newDate.setHours(newDate.getHours() + 12);
       }
       return newDate;
+    } catch (e) {
+      this.snackbarService.showWarning('Excel出生年月日期格式有錯', 5000);
+      this.importStatus.next(ExportStatus.Completed);
+      throw new Error('Excel出生年月日期格式有錯');
     }
-    const newDate = new Date(value.replace('下午', ''));
-    if (newDate.getHours() < 12) {
-      newDate.setHours(newDate.getHours() + 12);
-    }
-    return newDate;
+
   }
 }
