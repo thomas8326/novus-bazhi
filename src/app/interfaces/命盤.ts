@@ -17,6 +17,7 @@ export class 命盤 {
   badPropertyMapping: BadProperty;
   mainGanFate: 天干;
   badPropertyList: { key: string, badProperty: string }[] = [];
+  chineseZodiac: string[] = [];
 
   constructor(data: {
     year: number;
@@ -24,6 +25,7 @@ export class 命盤 {
     bigFortune: { gan: 天干; zhi: 地支 };
     yearFortune: { gan: 天干; zhi: 地支 };
     monthFortune: 流月[];
+    chineseZodiac: string[];
   }) {
     this.year = data.year;
     this.myFateSet = data.myFateSet;
@@ -35,6 +37,7 @@ export class 命盤 {
     this.badPropertyMapping = badPropertyMapping;
     this.badPropertyList = badPropertyList;
     this.mainGanFate = data.myFateSet.gan[1];
+    this.chineseZodiac = data.chineseZodiac;
   }
 
   private 創造劫數對照表(天干日柱: 天干 | 地支) {

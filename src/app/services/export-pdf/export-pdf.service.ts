@@ -162,6 +162,5 @@ export class ExportPdfService {
       this.importStatus.next(ExportStatus.Completed);
       throw new Error('Excel出生年月日期格式有錯');
     }
-
   }
 }

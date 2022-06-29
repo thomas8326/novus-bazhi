@@ -156,6 +156,10 @@
           </div>
         </div>
         <div class="user-detail">
+          <div *ngIf="chineseZodiac" class="detail-row">
+            <span>生肖: </span>
+            <span>{{ chineseZodiac }}</span>
+          </div>
           <div *ngIf="member.handSize" class="detail-row">
             <span>手圍: </span>
             <span>{{ member.handSize }}</span>

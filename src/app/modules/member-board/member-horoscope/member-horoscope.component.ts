@@ -35,6 +35,7 @@ export class MemberHoroscopeComponent implements OnInit {
   exporting = false;
 
   hasWuXinHint = true;
+  chineseZodiac = '';
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -140,11 +141,16 @@ export class MemberHoroscopeComponent implements OnInit {
       this.currentYear,
       this.member.isMale(),
     );
+    this.chineseZodiac = this.chineseZodiacConverter(this.currentHoroscope?.chineseZodiac || []);
 
     if (this.currentHoroscope) {
       this.算命服務.算命([this.currentHoroscope]);
     } else {
       throw new Error('錯誤的年份或會員資料');
     }
+  }
+
+  private chineseZodiacConverter(生肖: string[]) {
+    return 生肖.join(',');
   }
 }
