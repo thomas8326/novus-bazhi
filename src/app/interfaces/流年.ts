@@ -30,7 +30,7 @@ export class 流月 {
   zhiResult: 命盤結果;
 
   constructor(liuYue: LiuYue) {
-    this.month = (liuYue.getIndex() + 1).toString();
+    this.month = liuYue.getIndex() + 2 > 12 ? '1' : (liuYue.getIndex() + 2).toString();
     this.chineseMonth = liuYue.getMonthInChinese()
 
     this.gan = 天干對照表.get(liuYue.getGanZhi().charAt(0))!;
