@@ -1,0 +1,9 @@
+<div class="container">
+  <div *ngFor="let scope of horoscopeList" class="horoscope-table" (click)="onRedirectToResult(scope.year)">
+    <div class="overlay"></div>
+    <div class="year">{{ scope.year }} <mat-icon *ngIf="scope.year === currentYear">star</mat-icon></div>
+    <div>
+      <app-horoscope-table [currentHoroscope]="scope"></app-horoscope-table>
+    </div>
+  </div>
+</div>

@@ -10,6 +10,32 @@ import { cn2tw } from 'cjk-conv';
   providedIn: 'root',
 })
 export class 命盤服務器 {
+  private readonly horoscopeSet = new Map<string, Map<number, 命盤>>();
+
+  取得命盤(memberId: string, year: number) {
+    return this.horoscopeSet.get(memberId)?.get(year) || null;
+  }
+
+  新增命盤(memberId: string, horoscopeList: 命盤[]) {
+    const map = this.horoscopeSet.get(memberId);
+    if (map) {
+      for (const scope of horoscopeList) {
+        map.set(scope.year, scope);
+      }
+
+      this.horoscopeSet.set(memberId, map);
+      return;
+    }
+
+    const newMap = new Map<number, 命盤>();
+    for (const scope of horoscopeList) {
+      newMap.set(scope.year, scope);
+    }
+
+    this.horoscopeSet.set(memberId, newMap);
+  }
+
+
   創建基礎命盤(dob: Date, isMale?: boolean) {
     const lunar = Solar.fromDate(dob).getLunar();
 

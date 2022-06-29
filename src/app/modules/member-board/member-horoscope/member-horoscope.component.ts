@@ -1,3 +1,4 @@
+import { take } from '@angular/fire/node_modules/rxjs';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CdkDragEnd, Point } from '@angular/cdk/drag-drop';
@@ -5,7 +6,7 @@ import { CdkDragEnd, Point } from '@angular/cdk/drag-drop';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Member } from 'src/app/interfaces/會員';
 import { MemberService } from 'src/app/services/member/member.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, } from 'rxjs/operators';
 import { 命盤, 命盤結果, 已作用 } from 'src/app/interfaces/命盤';
 import { ExportPdfService, ExportStatus } from 'src/app/services/export-pdf/export-pdf.service';
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
@@ -13,6 +14,7 @@ import { 算命服務器 } from 'src/app/services/算命/算命.service';
 import { ErrorMsg, SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { MAX_YEAR_DISTANCE } from 'src/app/constants/constants';
+import { combineLatest } from 'rxjs';
 
 @UntilDestroy()
 @Component({
@@ -46,16 +48,7 @@ export class MemberHoroscopeComponent implements OnInit {
     private readonly snackBarService: SnackbarService,
     private readonly localStorageService: LocalStorageService,
   ) {
-    this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
-      if (member) {
-        this.member = new Member(member);
-        this.currentYear = isNaN(this.member.atYear) ? this.currentYear : this.member.atYear;
-        this.minYear = this.member.getDobDate().getFullYear();
-        this.maxYear = this.minYear + MAX_YEAR_DISTANCE - 1;
-        this.命盤分析();
-      }
-    });
-
+    this.getMemberAndHoroscope();
     this.exportPdfService
       .getExportStatus()
       .pipe(untilDestroyed(this))
@@ -65,6 +58,40 @@ export class MemberHoroscopeComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  getMemberAndHoroscope() {
+    const getExistedMember = (id: string) => this.memberService.getCurrentMember(id);
+    const getMemberFromDb = (id: string) => this.memberService.getMember(id);
+
+
+    combineLatest([
+      this.activatedRoute.params,
+      this.activatedRoute.queryParams
+    ]).subscribe(([params, queryParams]) => {
+      const id = params.id;
+      const year = queryParams.year;
+
+      if (getExistedMember(id)) {
+        this.member = new Member(getExistedMember(id));
+        this.setYearData(this.member, year);
+        this.命盤分析();
+      } else {
+        getMemberFromDb(id).pipe(take(1)).subscribe(member => {
+          if (member) {
+            this.member = new Member(member);
+            this.setYearData(this.member, year);
+            this.命盤分析();
+          }
+        });
+      }
+    })
+  }
+
+  setYearData(member: Member, year: number) {
+    this.currentYear = Number(year);
+    this.minYear = member.getDobDate().getFullYear();
+    this.maxYear = this.minYear + MAX_YEAR_DISTANCE - 1;
+  }
 
   getYanScoreChanged(result: 命盤結果) {
     return this.localStorageService.getLocalStorageChanged$().pipe(map(() => (this.localStorageService.getHasWuXinHint() ? result.yanScore : result.noHintYanScore) || '無'));
@@ -133,6 +160,13 @@ export class MemberHoroscopeComponent implements OnInit {
 
   private 命盤分析() {
     if (!this.member) {
+      return;
+    }
+
+    const 尋找命盤 = this.命盤服務.取得命盤(this.member.id, this.currentYear)
+    if (尋找命盤) {
+      this.currentHoroscope = 尋找命盤;
+      this.chineseZodiac = this.chineseZodiacConverter(this.currentHoroscope?.chineseZodiac || []);
       return;
     }
 

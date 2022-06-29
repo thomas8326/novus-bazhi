@@ -27,6 +27,7 @@ import { MemberControlPanelComponent } from './member-control-panel/member-contr
 import { DobPickerComponent } from './dob-picker/dob-picker.component';
 import { MemberHoroscopeComponent } from './member-horoscope/member-horoscope.component';
 import { BadPropertyChartComponent } from './bad-property-chart/bad-property-chart.component';
+import { LiuNianPickerComponent } from './liu-nian-picker/liu-nian-picker.component';
 import { HoroscopeTableComponent } from './horoscope-table/horoscope-table.component';
 
 @NgModule({
@@ -36,6 +37,7 @@ import { HoroscopeTableComponent } from './horoscope-table/horoscope-table.compo
     DobPickerComponent,
     MemberHoroscopeComponent,
     BadPropertyChartComponent,
+    LiuNianPickerComponent,
     HoroscopeTableComponent,
   ],
   imports: [

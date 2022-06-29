@@ -9,7 +9,18 @@ const API_PATH = 'members';
   providedIn: 'root',
 })
 export class MemberService {
+
+  private selectMemberList = new Map<string, Member>();
+
   constructor(private readonly apiService: BaseApiService) { }
+
+  setSelectedMembers(member: Member) {
+    this.selectMemberList.set(member.id, member);
+  }
+
+  getCurrentMember(id: string) {
+    return this.selectMemberList.get(id);
+  }
 
   create(member: Member) {
     this.apiService.post(`${API_PATH}/${member.id}`, member);
