@@ -1,0 +1,99 @@
+<ng-container *ngIf="currentHoroscope">
+  <table class="main-table">
+    <thead>
+      <tr>
+        <th>時柱</th>
+        <th>日柱</th>
+        <th>月柱</th>
+        <th>年柱</th>
+        <th class="no-border"></th>
+        <th>大運</th>
+        <th>流年</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <ng-container *ngVar="currentHoroscope.horoscopeResult.gan.reaction as reaction">
+          <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.gan[0] }}</td>
+          <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.gan[1] }}</td>
+          <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.gan[2] }}</td>
+          <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.gan[3] }}</td>
+          <td class="no-border"></td>
+          <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
+            {{ currentHoroscope.bigFortune.gan ? currentHoroscope.bigFortune.gan : '未起運' }}
+          </td>
+          <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
+            {{ currentHoroscope.yearFortune.gan }}
+          </td>
+        </ng-container>
+      </tr>
+      <tr>
+        <ng-container *ngVar="currentHoroscope.horoscopeResult.zhi.reaction as reaction">
+          <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
+          <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
+          <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
+          <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.zhi[3] }}</td>
+          <td class="no-border"></td>
+          <td [ngClass]="getGanZhiResultClass(reaction.bigFortune)">
+            {{ currentHoroscope.bigFortune.zhi ? currentHoroscope.bigFortune.zhi : '未起運' }}
+          </td>
+          <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
+            {{ currentHoroscope.yearFortune.zhi }}
+          </td>
+        </ng-container>
+      </tr>
+      <tr class="margin-line"><td colspan="7"></td></tr>
+    </tbody>
+    <tfoot *ngIf="currentHoroscope">
+      <tr>
+        <td colspan="3">
+          <div class="result-board">
+            <div class="score-board">
+              <span>天干受剋: </span>
+              <ul *ngIf="currentHoroscope.horoscopeResult.gan.scores.length; else none">
+                <li *ngFor="let score of currentHoroscope.horoscopeResult.gan.scores">
+                  {{ score }}
+                </li>
+              </ul>
+              <ng-template #none>
+                <span>無</span>
+              </ng-template>
+            </div>
+            <div class="yinyan-board">
+              <div>
+                天干陽流通: <br />
+                {{ getYanScoreChanged(currentHoroscope.horoscopeResult.gan) | async }}
+              </div>
+              <div> 天干陰陽流通: <br />{{ getYinYanScoreChanged(currentHoroscope.horoscopeResult.gan) | async }} </div>
+            </div>
+          </div>
+        </td>
+        <td colspan="4">
+          <div class="result-board">
+            <div class="score-board">
+              <span>地支受剋: </span>
+              <ul *ngIf="currentHoroscope.horoscopeResult.zhi.scores.length; else none">
+                <li *ngFor="let score of currentHoroscope.horoscopeResult.zhi.scores">
+                  {{ score }}
+                </li>
+              </ul>
+              <ng-template #none>
+                <span>無</span>
+              </ng-template>
+            </div>
+            <div class="yinyan-board">
+              <div>
+                地支陽流通: <br />
+                {{ getYanScoreChanged(currentHoroscope.horoscopeResult.zhi) | async }}
+              </div>
+              <div>
+                地支陰陽流通: <br />
+                {{ getYinYanScoreChanged(currentHoroscope.horoscopeResult.zhi) | async }}
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</ng-container>
