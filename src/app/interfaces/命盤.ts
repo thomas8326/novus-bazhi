@@ -248,6 +248,8 @@ export class 命盤結果 {
       let 陰剋人力量 = 新五行結果[lastIndex - 1].陰力;
       let 陽被剋力量 = 新五行結果[lastIndex].陽力;
       let 陰被剋力量 = 新五行結果[lastIndex].陰力;
+      const 被剋有陽能救 = 新五行結果[lastIndex].陽陣.length;
+
       const 陽剋人減一 = () => {
         陽剋人力量--;
         新五行結果[lastIndex - 1].陽力--;
@@ -278,7 +280,7 @@ export class 命盤結果 {
         }
       }
 
-      while (陰剋人力量 > 0 && 陰被剋力量 > 0) {
+      while (陰剋人力量 > 0 && 陰被剋力量 > 0 && !被剋有陽能救) {
         const 剋五行 = 新五行結果[lastIndex].五行;
         this.antiWuHinCount[剋五行]++;
         陰剋人減一();
