@@ -1,4 +1,4 @@
-import { Data } from '@angular/router';
+import { Data, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { UserInfo } from '@angular/fire/auth';
@@ -29,7 +29,8 @@ export class AppComponent {
     private readonly authService: AuthService,
     private openDialogService: OpenDialogService,
     private readonly localStorage: LocalStorageService,
-    private readonly exportPdfService: ExportPdfService) {
+    private readonly exportPdfService: ExportPdfService,
+    private readonly router: Router) {
     this.userInfo$ = this.authService.getLoginUserName$();
     this.isLoading$ = this.getLoadingStatus$();
     this.localStorage.init();
@@ -56,5 +57,9 @@ export class AppComponent {
 
   onLogout() {
     this.authService.onSignOut();
+  }
+
+  onLogo() {
+    this.router.navigate(['/member-board']);
   }
 }
