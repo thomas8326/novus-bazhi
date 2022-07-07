@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { switchMap } from 'rxjs';
+import { switchMap, Observable } from 'rxjs';
 import { MAX_YEAR_DISTANCE } from 'src/app/constants/constants';
 import { 命盤 } from 'src/app/interfaces/命盤';
 import { Member } from 'src/app/interfaces/會員';
+import { ExportPdfService } from 'src/app/services/export-pdf/export-pdf.service';
 import { MemberService } from 'src/app/services/member/member.service';
 import { 命盤服務器 } from 'src/app/services/命盤/命盤.service';
 import { 算命服務器 } from 'src/app/services/算命/算命.service';
@@ -16,6 +18,8 @@ import { 算命服務器 } from 'src/app/services/算命/算命.service';
 })
 export class LiuNianPickerComponent {
 
+  @ViewChild('pdfContainer') pdfTemplate?: ElementRef;
+
   member: Member | null = null;
   currentYear: number = new Date().getFullYear();
   atYear = 0;
@@ -24,13 +28,19 @@ export class LiuNianPickerComponent {
   maxYear = 0;
   horoscopeList: 命盤[][] = [];
 
+  exporting$: Observable<boolean>;
+
   constructor(
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
     private readonly memberService: MemberService,
     private readonly 命盤服務: 命盤服務器,
-    private readonly 算命服務: 算命服務器
+    private readonly 算命服務: 算命服務器,
+    private readonly exportPdfService: ExportPdfService,
+    private readonly renderer2: Renderer2
   ) {
+    this.exporting$ = this.exportPdfService.getExporting();
+
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.memberService.getMember(id))).subscribe((member) => {
       if (member) {
         this.member = new Member(member);
@@ -94,6 +104,16 @@ export class LiuNianPickerComponent {
     }
     this.horoscopeList.push(horoscopes);
     this.命盤服務.新增命盤(this.member.id, horoscopes);
+  }
+
+  onExportPDF(pdfContainer: HTMLDivElement, button: MatButton, year: number) {
+    if (!pdfContainer || !this.member) {
+      return;
+    }
+
+    this.renderer2.setStyle(button._elementRef.nativeElement, "visibility", "hidden");
+    this.exportPdfService.exportPdf(this.member?.name, year, pdfContainer);
+    this.renderer2.setStyle(button._elementRef.nativeElement, "visibility", "visible");
   }
 
   private 命盤分析(member: Member, year: number) {

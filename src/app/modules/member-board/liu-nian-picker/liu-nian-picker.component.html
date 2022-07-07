@@ -1,23 +1,29 @@
 <div *ngIf="horoscopeList.length" class="container">
-  <button mat-button (click)="onPrevYear()" [disabled]="currentYear - 1 <= minYear">
+  <button mat-button class="action-button" (click)="onPrevYear()" [disabled]="currentYear - 1 <= minYear">
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
 
   <div class="table-container">
-    <div
-      *ngFor="let scope of horoscopeList[currentIndex]"
-      class="horoscope-table"
-      (click)="onRedirectToResult(scope.year)"
-    >
-      <div class="overlay"></div>
-      <div class="year">{{ scope.year }} <mat-icon *ngIf="scope.year === atYear">star</mat-icon></div>
-      <div>
+    <div *ngFor="let scope of horoscopeList[currentIndex]" class="horoscope-table" #pdfContainer>
+      <div class="header">
+        <div class="year">{{ scope.year }} <mat-icon *ngIf="scope.year === atYear">star</mat-icon></div>
+        <button
+          class="export-pdf"
+          mat-icon-button
+          (click)="onExportPDF(pdfContainer, exportPdf, scope.year)"
+          #exportPdf
+        >
+          <mat-icon>picture_as_pdf</mat-icon></button
+        >
+      </div>
+      <div class="table" (click)="onRedirectToResult(scope.year)">
+        <div class="overlay"></div>
         <app-horoscope-table [currentHoroscope]="scope"></app-horoscope-table>
       </div>
     </div>
   </div>
 
-  <button mat-button (click)="onNextYear()" [disabled]="currentYear + 1 >= maxYear">
+  <button mat-button class="action-button" (click)="onNextYear()" [disabled]="currentYear + 1 >= maxYear">
     <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
 </div>

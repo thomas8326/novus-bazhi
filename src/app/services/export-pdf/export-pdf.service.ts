@@ -6,7 +6,7 @@ import * as XLSX from 'xlsx';
 import { Observable } from 'rxjs/internal/Observable';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
-import { Subject } from 'rxjs';
+import { map, Subject } from 'rxjs';
 import { ExcelColumn } from 'src/app/enums/會員.enum';
 
 export enum ExportStatus {
@@ -70,6 +70,7 @@ export class ExportPdfService {
   exportPdf(member: string, year: number, element: HTMLElement): void {
     this.exportStatus.next(ExportStatus.InProgress);
     const pdfFileName = `${member}-${year}命盤運勢`;
+
     html2canvas(element).then((canvas) => {
       const image = canvas.toDataURL('image/png');
       let PDF = new jsPDF('p', 'px', 'a4');
@@ -95,6 +96,10 @@ export class ExportPdfService {
 
   getExportStatus(): Observable<ExportStatus> {
     return this.exportStatus;
+  }
+
+  getExporting(): Observable<boolean> {
+    return this.getExportStatus().pipe(map(status => status === ExportStatus.InProgress));
   }
 
   getImportStatus(): Observable<ExportStatus> {

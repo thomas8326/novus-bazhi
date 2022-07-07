@@ -4,7 +4,26 @@
   height: fit-content;
   margin: 20px 0;
   padding: 6px;
-  cursor: pointer;
+
+  .export-pdf {
+    cursor: pointer;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .year {
+      font-weight: 700;
+      font-size: 30px;
+    }
+  }
+
+  .table {
+    position: relative;
+    cursor: pointer;
+  }
 
   .overlay {
     position: absolute;
@@ -40,13 +59,7 @@
   align-items: center;
 }
 
-.year {
-  margin-bottom: 6px;
-  font-weight: 700;
-  font-size: 30px;
-}
-
-button {
+.action-button {
   display: flex;
   flex: 0 0 110px;
   align-items: center;
