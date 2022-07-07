@@ -16,6 +16,12 @@
 <header *ngIf="!isLoginPage && isRendered" class="page-header">
   <button *ngIf="!isMainPage" mat-button (click)="onBack()"><mat-icon>keyboard_arrow_left</mat-icon></button>
   <h1>{{ title }}</h1>
+  <div *ngIf="openPdfButton" class="control-btn">
+    <div class="vertical-line"></div>
+    <button class="export-pdf" color="primary" mat-icon-button (click)="onExportPdf()" #exportPdf>
+      <mat-icon>picture_as_pdf</mat-icon>
+    </button>
+  </div>
 </header>
 
 <div *ngIf="isLoading$ | async" class="global-loading">

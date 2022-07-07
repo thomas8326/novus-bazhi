@@ -20,6 +20,7 @@ export class AppComponent {
   isRendered = false;
   isMainPage = true;
   isLoginPage = false;
+  openPdfButton = false;
 
   userInfo$: Observable<UserInfo | null>;
   isLoading$: Observable<boolean>;
@@ -49,6 +50,7 @@ export class AppComponent {
     this.title = activateRoute.title;
     this.isMainPage = activateRoute.isMainPage;
     this.isLoginPage = activateRoute.isLoginPage;
+    this.openPdfButton = activateRoute.openPdf;
   }
 
   onBack() {
@@ -61,5 +63,9 @@ export class AppComponent {
 
   onLogo() {
     this.router.navigate(['/member-board']);
+  }
+
+  onExportPdf() {
+    this.exportPdfService.exportPdf();
   }
 }

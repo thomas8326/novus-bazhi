@@ -57,6 +57,12 @@ main.full-screen {
   align-items: center;
 }
 
+.control-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .vertical-line {
   width: 1px;
   height: 25px;

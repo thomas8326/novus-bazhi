@@ -1,19 +1,4 @@
 <div class="container drag-boundary" *ngIf="member" #container>
-  <button
-    mat-fab
-    cdkDrag
-    #cdkDrag="cdkDrag"
-    cdkDragBoundary=".drag-boundary"
-    class="export-pdf"
-    (click)="onExportPDF()"
-    [cdkDragFreeDragPosition]="pdfButtonPoint"
-    (cdkDragStarted)="onCdkDragStart()"
-    (cdkDragEnded)="onCkdDragDropped($event, container)"
-    #exportBtn
-  >
-    <mat-icon *ngIf="!exporting">picture_as_pdf</mat-icon>
-    <app-loading *ngIf="exporting"></app-loading>
-  </button>
   <div *ngIf="currentHoroscope" class="container" #pdfTemp>
     <div class="panel-content">
       <div>

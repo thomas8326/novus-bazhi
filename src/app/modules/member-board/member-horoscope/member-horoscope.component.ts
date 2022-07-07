@@ -1,7 +1,6 @@
 import { take } from '@angular/fire/node_modules/rxjs';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CdkDragEnd, Point } from '@angular/cdk/drag-drop';
 
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Member } from 'src/app/interfaces/會員';
@@ -23,7 +22,11 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./member-horoscope.component.scss'],
 })
 export class MemberHoroscopeComponent implements OnInit {
-  @ViewChild('pdfTemp') pdfTemplate?: ElementRef;
+  @ViewChild('pdfTemp') set setPdfTemplate(template: ElementRef | undefined) {
+    if (template) {
+      this.setupPdfTemplate(template);
+    }
+  }
 
   member: Member | null = null;
   currentYear: number = new Date().getFullYear();
@@ -31,9 +34,6 @@ export class MemberHoroscopeComponent implements OnInit {
   maxYear: number = 3000;
   currentHoroscope: 命盤 | null = null;
 
-  isDragging = false;
-
-  pdfButtonPoint: Point = { x: 0, y: 0 };
   exporting = false;
 
   hasWuXinHint = true;
@@ -121,41 +121,21 @@ export class MemberHoroscopeComponent implements OnInit {
     }
   }
 
-  onExportPDF() {
-    if (!this.pdfTemplate || !this.member || this.isDragging) {
-      this.isDragging = false;
-      return;
-    }
-
-    this.exportPdfService.exportPdf(this.member?.name, this.currentYear, this.pdfTemplate.nativeElement);
-  }
-
-  onCdkDragStart() {
-    this.isDragging = true;
-  }
-
-  onCkdDragDropped(button: CdkDragEnd<any>, container: HTMLDivElement) {
-    const buttonDropX = button.dropPoint.x;
-    const buttonDistanceY = this.pdfButtonPoint.y + button.distance.y;
-    const buttonDropY = buttonDistanceY + window.scrollY;
-    const containerWidth = container.clientWidth;
-    const windowHeight = window.innerHeight - 210; // MainHeaderHeight + pageHeaderHeight + buttonHeight
-
-    let newX = buttonDropX > containerWidth / 2 ? containerWidth : 0;
-    let newY = buttonDropY < 0 ? 0 : buttonDropY > windowHeight ? windowHeight : buttonDistanceY;
-
-    this.pdfButtonPoint = {
-      x: newX,
-      y: newY,
-    };
-  }
-
   getGanZhiResultClass(result: 已作用) {
     return {
       'combination': result.match,
       'restriction': result.anti,
       'interruption': result.cut
     }
+  }
+
+  private setupPdfTemplate(pdfTemplate: ElementRef) {
+    if (!pdfTemplate || !this.member) {
+      return;
+    }
+
+    const fileName = `${this.currentYear} ${this.member.name}`
+    this.exportPdfService.setExportPdfConfig(pdfTemplate.nativeElement, fileName);
   }
 
   private 命盤分析() {

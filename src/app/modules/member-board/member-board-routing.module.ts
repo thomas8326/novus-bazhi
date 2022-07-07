@@ -13,12 +13,12 @@ const routes: Routes = [
   },
   {
     path: 'horoscope/:id',
-    data: { title: '命盤' },
+    data: { title: '命盤', openPdf: true },
     component: LiuNianPickerComponent,
   },
   {
     path: 'horoscope/:id/result',
-    data: { title: '命盤結果' },
+    data: { title: '命盤結果', openPdf: true },
     component: MemberHoroscopeComponent,
   },
 ];

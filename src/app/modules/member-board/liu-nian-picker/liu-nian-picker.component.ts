@@ -1,5 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { switchMap, Observable } from 'rxjs';
@@ -18,7 +17,13 @@ import { 算命服務器 } from 'src/app/services/算命/算命.service';
 })
 export class LiuNianPickerComponent {
 
-  @ViewChild('pdfContainer') pdfTemplate?: ElementRef;
+  @ViewChild('pdfContainer') set setPdfTemplate(template: ElementRef | undefined) {
+    if (template) {
+      this.pdfTemplate = template;
+      this.setupPdfTemplate();
+    }
+  }
+
 
   member: Member | null = null;
   currentYear: number = new Date().getFullYear();
@@ -34,6 +39,8 @@ export class LiuNianPickerComponent {
 
   exporting$: Observable<boolean>;
 
+  pdfTemplate?: ElementRef;
+
   constructor(
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
@@ -41,7 +48,6 @@ export class LiuNianPickerComponent {
     private readonly 命盤服務: 命盤服務器,
     private readonly 算命服務: 算命服務器,
     private readonly exportPdfService: ExportPdfService,
-    private readonly renderer2: Renderer2
   ) {
     this.exporting$ = this.exportPdfService.getExporting();
 
@@ -104,18 +110,19 @@ export class LiuNianPickerComponent {
     }
   }
 
-  onExportPDF(pdfContainer: HTMLDivElement, button: MatButton, year: number) {
-    if (!pdfContainer || !this.member) {
+  displayHoroscopeList() {
+    return this.horoscopeList.filter((value, index) => index >= this.windowStart && index <= this.windowEnd);
+  }
+
+  private setupPdfTemplate() {
+    if (!this.pdfTemplate || !this.member) {
       return;
     }
 
-    this.renderer2.setStyle(button._elementRef.nativeElement, "visibility", "hidden");
-    this.exportPdfService.exportPdf(this.member?.name, year, pdfContainer);
-    this.renderer2.setStyle(button._elementRef.nativeElement, "visibility", "visible");
-  }
-
-  displayHoroscopeList() {
-    return this.horoscopeList.filter((value, index) => index >= this.windowStart && index <= this.windowEnd);
+    const firstYear = this.horoscopeList[this.windowStart].year;
+    const lastYear = this.horoscopeList[this.windowEnd].year;
+    const fileName = `${firstYear} - ${lastYear} ${this.member.name}`
+    this.exportPdfService.setExportPdfConfig(this.pdfTemplate.nativeElement, fileName);
   }
 
   private 命盤分析(member: Member, year: number) {

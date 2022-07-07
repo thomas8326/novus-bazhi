@@ -24,6 +24,8 @@ const EXCEL_FILE = /(.xls|.xlsx)/;
 export class ExportPdfService {
   private importStatus = new Subject<ExportStatus>();
   private exportStatus = new Subject<ExportStatus>();
+  private elementRef: HTMLElement | null = null;
+  private fileName = '';
 
   constructor(private readonly snackbarService: SnackbarService) { }
 
@@ -67,11 +69,21 @@ export class ExportPdfService {
     });
   }
 
-  exportPdf(member: string, year: number, element: HTMLElement): void {
-    this.exportStatus.next(ExportStatus.InProgress);
-    const pdfFileName = `${member}-${year}命盤運勢`;
+  setExportPdfConfig(element: HTMLElement, fileName: string) {
+    console.log(element);
+    this.elementRef = element;
+    this.fileName = fileName;
+  }
 
-    html2canvas(element).then((canvas) => {
+  exportPdf(): void {
+    if (!this.elementRef) {
+      throw new Error('未設定要轉換成PDF的模板');
+    }
+
+    this.exportStatus.next(ExportStatus.InProgress);
+    const pdfFileName = `${this.fileName}命盤運勢`;
+
+    html2canvas(this.elementRef).then((canvas) => {
       const image = canvas.toDataURL('image/png');
       let PDF = new jsPDF('p', 'px', 'a4');
 
