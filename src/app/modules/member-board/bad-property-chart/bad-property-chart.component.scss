@@ -13,7 +13,7 @@ $elementDiameter: 40px;
   height: calc(100% - $elementDiameter);
   border: 1px solid;
   border-radius: 50%;
-  transform: rotate(180deg);
+  transform: rotateX(180deg);
 }
 
 .bad-property-element {
@@ -28,7 +28,7 @@ $elementDiameter: 40px;
   background: white;
   border: 1px solid;
   border-radius: 50%;
-  transform: rotate(180deg);
+  transform: rotateX(180deg);
 }
 
 .key {
