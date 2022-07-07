@@ -23,10 +23,14 @@ export class LiuNianPickerComponent {
   member: Member | null = null;
   currentYear: number = new Date().getFullYear();
   atYear = 0;
-  currentIndex = 0;
+
+  windowStart = 0;
+  windowEnd = 0;
+  windowRange = 2;
+
   minYear = 0;
   maxYear = 0;
-  horoscopeList: 命盤[][] = [];
+  horoscopeList: 命盤[] = [];
 
   exporting$: Observable<boolean>;
 
@@ -46,12 +50,13 @@ export class LiuNianPickerComponent {
         this.member = new Member(member);
         this.currentYear = isNaN(this.member.atYear) ? this.currentYear : this.member.atYear;
         this.atYear = this.currentYear;
-        const horoscopes: 命盤[] = [];
         for (let i = this.currentYear - 1; i <= this.currentYear + 1; i++) {
-          horoscopes.push(this.命盤分析(this.member, i));
+          this.horoscopeList.push(this.命盤分析(this.member, i));
         }
-        this.horoscopeList.push(horoscopes);
-        this.命盤服務.新增命盤(this.member.id, horoscopes);
+        this.windowStart = 0;
+        this.windowEnd = this.horoscopeList.length - 1;
+
+        this.命盤服務.新增命盤(this.member.id, this.horoscopeList);
         this.memberService.setSelectedMembers(this.member);
         this.minYear = this.member.getDobDate().getFullYear();
         this.maxYear = this.minYear + MAX_YEAR_DISTANCE - 1;
@@ -70,20 +75,17 @@ export class LiuNianPickerComponent {
       return;
     }
 
-    this.currentIndex = this.currentIndex - 1;
-    this.currentYear = this.currentYear - 3;
+    const 第一個命盤 = this.horoscopeList[this.windowStart];
+    this.windowStart = this.windowStart - 1;
 
-    if (this.currentIndex >= 0) {
-      return;
+    if (this.windowStart < 0) {
+      this.windowStart = 0;
+      const 新命盤 = this.命盤分析(this.member, 第一個命盤.year - 1);
+      this.horoscopeList.unshift(新命盤);
+      this.命盤服務.新增命盤(this.member.id, [新命盤]);
     }
 
-    this.currentIndex = 0;
-    const horoscopes: 命盤[] = [];
-    for (let i = this.currentYear - 1; i <= this.currentYear + 1; i++) {
-      horoscopes.push(this.命盤分析(this.member, i));
-    }
-    this.horoscopeList.unshift(horoscopes);
-    this.命盤服務.新增命盤(this.member.id, horoscopes);
+    this.windowEnd = this.windowStart + this.windowRange;
   }
 
   onNextYear() {
@@ -91,19 +93,15 @@ export class LiuNianPickerComponent {
       return;
     }
 
-    this.currentIndex = this.currentIndex + 1;
-    this.currentYear = this.currentYear + 3;
+    const 最後一個命盤 = this.horoscopeList[this.windowEnd];
+    this.windowStart++;
+    this.windowEnd = this.windowStart + this.windowRange;
 
-    if (this.currentIndex < this.horoscopeList.length) {
-      return;
+    if (this.windowEnd >= this.horoscopeList.length) {
+      const 新命盤 = this.命盤分析(this.member, 最後一個命盤.year + 1);
+      this.horoscopeList.push(新命盤);
+      this.命盤服務.新增命盤(this.member.id, [新命盤]);
     }
-
-    const horoscopes: 命盤[] = [];
-    for (let i = this.currentYear - 1; i <= this.currentYear + 1; i++) {
-      horoscopes.push(this.命盤分析(this.member, i));
-    }
-    this.horoscopeList.push(horoscopes);
-    this.命盤服務.新增命盤(this.member.id, horoscopes);
   }
 
   onExportPDF(pdfContainer: HTMLDivElement, button: MatButton, year: number) {
@@ -114,6 +112,10 @@ export class LiuNianPickerComponent {
     this.renderer2.setStyle(button._elementRef.nativeElement, "visibility", "hidden");
     this.exportPdfService.exportPdf(this.member?.name, year, pdfContainer);
     this.renderer2.setStyle(button._elementRef.nativeElement, "visibility", "visible");
+  }
+
+  displayHoroscopeList() {
+    return this.horoscopeList.filter((value, index) => index >= this.windowStart && index <= this.windowEnd);
   }
 
   private 命盤分析(member: Member, year: number) {
