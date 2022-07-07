@@ -5,6 +5,7 @@
   --anti-color: #ec0000;
   --cut-color: #9dafc8;
   --novus-color: #b9ddea;
+  --day-gan: #fa2953;
 }
 
 html,
@@ -60,4 +61,9 @@ button {
 
 .opacity-transparent {
   opacity: 0;
+}
+
+.day-gan {
+  color: var(--day-gan);
+  font-weight: bold;
 }

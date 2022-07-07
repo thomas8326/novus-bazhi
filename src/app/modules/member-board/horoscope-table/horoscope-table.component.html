@@ -15,7 +15,9 @@
       <tr>
         <ng-container *ngVar="currentHoroscope.horoscopeResult.gan.reaction as reaction">
           <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.gan[0] }}</td>
-          <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.gan[1] }}</td>
+          <td [ngClass]="getGanZhiResultClass(reaction.day)" class="day-gan">{{
+            currentHoroscope.myFateSet.gan[1]
+          }}</td>
           <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.gan[2] }}</td>
           <td [ngClass]="getGanZhiResultClass(reaction.year)">{{ currentHoroscope.myFateSet.gan[3] }}</td>
           <td class="no-border"></td>
