@@ -238,7 +238,6 @@ export class 算命服務器 {
     // 當流月流年相同時，斷氣結束並且無作用返回
     if (this.是否斷氣 && yearFortune === liuYueGanZhi) {
       this.是否斷氣 = false;
-      return;
     }
 
     // 斷氣 => 流月大運本命相合
