@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { 天干對照表, 地支對照表 } from 'src/app/constants/constants';
 import { 命盤 } from 'src/app/interfaces/命盤';
-import { Solar } from 'lunar-typescript';
+import { EightChar, Solar } from 'lunar-typescript';
 import { 大運 } from 'src/app/interfaces/大運';
 import { cn2tw } from 'cjk-conv';
 
@@ -37,20 +37,22 @@ export class 命盤服務器 {
 
 
   創建基礎命盤(dob: Date, isMale?: boolean) {
-    const lunar = Solar.fromDate(dob).getLunar();
+    const solar = Solar.fromDate(dob)
+    const lunar = solar.getLunar();
+    const 八字 = EightChar.fromLunar(Solar.fromDate(dob).getLunar());
 
     const 天干本命 = [
-      天干對照表.get(lunar.getTimeGan())!,
-      天干對照表.get(lunar.getDayGan())!,
-      天干對照表.get(lunar.getMonthGan())!,
-      天干對照表.get(lunar.getYearGan())!,
+      天干對照表.get(八字.getTimeGan())!,
+      天干對照表.get(八字.getDayGan())!,
+      天干對照表.get(八字.getMonthGan())!,
+      天干對照表.get(八字.getYearGan())!,
     ];
 
     const 地支本命 = [
-      地支對照表.get(lunar.getTimeZhi())!,
-      地支對照表.get(lunar.getDayZhi())!,
-      地支對照表.get(lunar.getMonthZhi())!,
-      地支對照表.get(lunar.getYearZhi())!,
+      地支對照表.get(八字.getTimeZhi())!,
+      地支對照表.get(八字.getDayZhi())!,
+      地支對照表.get(八字.getMonthZhi())!,
+      地支對照表.get(八字.getYearZhi())!,
     ];
 
     const 大運列 = lunar
