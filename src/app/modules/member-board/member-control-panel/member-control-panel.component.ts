@@ -36,8 +36,7 @@ export class MemberControlPanelComponent implements OnInit {
   }
 
   onDelete() {
-    const callback = () => this.delete.emit();
-    this.openDialogService.openDeletedPrompt('a', callback);
+    this.delete.emit();
   }
 
   onImport(file: FileList) {

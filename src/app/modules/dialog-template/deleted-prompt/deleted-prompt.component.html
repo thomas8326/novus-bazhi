@@ -1,6 +1,9 @@
 <h2 mat-dialog-title>刪除資料</h2>
-<mat-dialog-content>
-  <p>刪除後該資料將會永久消失。<br />是否要刪除？</p>
+<mat-dialog-content class="novus-scroll-bar">
+  <p
+    >您正準備刪除<span class="name">{{ getUserName() }}</span
+    >。<br />是否確定要刪除？</p
+  >
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>取消</button>

@@ -1,5 +1,6 @@
 <div class="control-panel">
-  <button mat-raised-button color="primary" (click)="onEnterAddMemberMode()">新增</button>
+  <button *ngIf="selection.hasValue()" mat-raised-button color="primary" (click)="openDeleteDialog()">刪除</button>
+  <button *ngIf="!selection.hasValue()" mat-raised-button color="primary" (click)="onEnterAddMemberMode()">新增</button>
   <input id="file" type="file" (change)="onImportExcel(inputFile.files)" #inputFile />
   <button mat-raised-button color="primary" (click)="inputFile.click()">匯入Excel</button>
   <mat-form-field appearance="standard">
@@ -10,6 +11,26 @@
 
 <form [formGroup]="memberForm" class="component-container">
   <mat-table matSort [dataSource]="memberDataSource" class="mat-elevation-z8 novus-scroll-bar">
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? toggleAllRows() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+        >
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)"
+        >
+        </mat-checkbox>
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+
     <ng-container [matColumnDef]="Member.Name">
       <mat-header-cell *matHeaderCellDef>真實姓名</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
@@ -94,7 +115,7 @@
           [showRedirectBtn]="true"
           (redirect)="onRedirect(row)"
           (edit)="onEnterEditMemberMode(row)"
-          (delete)="onDeleteMember(row)"
+          (delete)="openDeleteDialog(row)"
           (editDetail)="onEditDetail(row)"
         ></app-member-control-panel>
       </mat-cell>

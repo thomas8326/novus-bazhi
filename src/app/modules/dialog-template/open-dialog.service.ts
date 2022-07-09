@@ -12,7 +12,7 @@ import { MemberEditDetailComponent } from './member-edit-detail/member-edit-deta
 export class OpenDialogService {
   constructor(public dialog: MatDialog) { }
 
-  openDeletedPrompt(username: string, callback: () => void) {
+  openDeletedPrompt(username: string | string[], callback: () => void) {
     const dialogRef = this.dialog.open(DeletedPromptComponent, { data: { username } });
     dialogRef.afterClosed().pipe(take(1)).subscribe((isDeleted) => {
       if (isDeleted) {

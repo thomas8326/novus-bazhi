@@ -7,7 +7,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./deleted-prompt.component.scss'],
 })
 export class DeletedPromptComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { username: string }) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { username: string | string[] }) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  getUserName() {
+    return typeof this.data.username === 'string' ? this.data.username : this.data.username.join(', ');
+  }
 }

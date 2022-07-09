@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
 
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { OpenDialogService } from 'src/app/modules/dialog-template/open-dialog.service';
@@ -35,6 +36,8 @@ const SELECT_YEARS = (currentYear: number) => {
   styleUrls: ['./member-board.component.scss'],
 })
 export class MemberBoardComponent implements OnInit {
+
+
   @ViewChild(MatSort, { static: false })
   set sort(value: MatSort) {
     if (this.memberDataSource) {
@@ -47,8 +50,8 @@ export class MemberBoardComponent implements OnInit {
 
   isAddingStatus = false;
   isEditingStatus = false;
-  searchText: string = '';
 
+  selection = new SelectionModel<Member>(true, []);
   memberDataSource = new MatTableDataSource<Member>();
 
   memberForm = this.fb.group({
@@ -68,6 +71,7 @@ export class MemberBoardComponent implements OnInit {
   readonly yearOptions = SELECT_YEARS(new Date().getFullYear());
 
   readonly displayedColumns: string[] = [
+    'select',
     會員欄位.Name,
     會員欄位.FacebookAccount,
     會員欄位.Gender,
@@ -86,7 +90,25 @@ export class MemberBoardComponent implements OnInit {
     private readonly openDialogService: OpenDialogService,
     private readonly exportPdfService: ExportPdfService,
     private readonly snackbarService: SnackbarService,
+    private readonly openDialog: OpenDialogService,
   ) {
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.memberDataSource.data.length;
+    return numSelected == numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.memberDataSource.data);
   }
 
   ngOnInit(): void {
@@ -96,7 +118,9 @@ export class MemberBoardComponent implements OnInit {
   }
 
   onFilter(value: string) {
-    this.searchText = value;
+    if (value) {
+      this.memberDataSource.filter = value.trim().toLowerCase();
+    }
   }
 
   onEnterAddMemberMode() {
@@ -137,11 +161,6 @@ export class MemberBoardComponent implements OnInit {
     }
   }
 
-  onDeleteMember(target: Member) {
-    this.memberDataSource.data = this.memberDataSource.data.filter((member) => member.id !== target.id);
-    this.memberService.delete(target.id);
-  }
-
   onEditDetail(target: Member) {
     this.openDialogService.openMemberEditDetailDialog(target, (member: Member) => this.updateMember(member));
   }
@@ -150,6 +169,23 @@ export class MemberBoardComponent implements OnInit {
     this.isEditingStatus = false;
     this.isAddingStatus = false;
     this.resetForm();
+  }
+
+  openDeleteDialog(member?: Member) {
+    const userName = member ? member.name : this.selection.selected.map(value => value.name);
+    const callback = member ? () => this.onDeleteMember(member) : () => this.onDeleteSelectionMember(this.selection.selected);
+    this.openDialog.openDeletedPrompt(userName, callback);
+  }
+
+  onDeleteMember(target: Member) {
+    this.memberService.delete(target.id);
+  }
+
+  onDeleteSelectionMember(selected: Member[]) {
+    for (const member of selected) {
+      this.memberService.delete(member.id);
+    }
+    this.selection.clear();
   }
 
   onRedirect(target: Member) {
