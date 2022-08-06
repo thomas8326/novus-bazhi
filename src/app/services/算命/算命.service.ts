@@ -147,7 +147,7 @@ export class 算命服務器 {
     }
 
     // 剩餘本命與大運流年流月作用
-    for (let i = 0; i < myFateSet.length; i++) {
+    for (let i = myFateSet.length - 1; i >= 0; i--) {
       const 本命已合 = this.是否已作用(result.reaction[this.年月日時住轉換(i)]);
 
       if (this.是否為天干日住(i) || 本命已合) {
