@@ -143,6 +143,12 @@ export class 命盤結果 {
     this.antiWuHinCount[流年流月五行]++;
   }
 
+  新增大運流月相剋評分(被剋對象: 天干 | 地支, 大運剋流月: boolean) {
+    const 大運流月五行 = 五行轉換(被剋對象);
+    this.scores.push(大運剋流月 ? '大運剋流月' : '流月剋大運');
+    this.antiWuHinCount[大運流月五行]++;
+  }
+
   計算日柱受剋(天干日柱: 天干 | null) {
     if (!天干日柱) {
       return;

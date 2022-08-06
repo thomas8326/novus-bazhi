@@ -248,9 +248,12 @@ export class 算命服務器 {
       const 流月剋流年 = this.流月剋流年(result, liuYueGanZhi, yearFortune);
       const 流年剋流月 = this.流年剋流月(result, yearFortune, liuYueGanZhi);
       const 大運流年合 = parentResult.reaction.bigFortune.match && parentResult.reaction.yearFortune.match;
+
       if (this.是否斷氣) {
-        result.reaction.yearFortune.cut = true;
-        return { 大運流年流月: { bigFortune, liuYue: liuYueGanZhi }, 被消: {} };
+        const 斷氣後作用 = this.斷氣後作用(result, bigFortune, liuYueGanZhi);
+        消刻 = 斷氣後作用.消刻;
+
+        return { 大運流年流月: 斷氣後作用.大運流年流月, 被消: 斷氣後作用.被消 };
       }
       if (流年流月合) {
         if (bigFortune === yearFortune || bigFortune === liuYueGanZhi) result.reaction.bigFortune.match = true;
@@ -304,6 +307,35 @@ export class 算命服務器 {
       result.計算日柱受剋(this.天干日柱);
       result.計算最後評分分數(this.badPropertyMapping, this.天干日柱, parentResult.antiWuHinCount);
     }
+  }
+
+  // 斷氣後大運流月能作用
+  private 斷氣後作用(result: 命盤結果, bigFortune: 天干 | 地支, liuYueGanZhi: 天干 | 地支) {
+    result.reaction.yearFortune.cut = true;
+    const 流月剋大運 = this.流月剋大運(result, liuYueGanZhi, bigFortune);
+    const 大運剋流月 = this.大運剋流月(result, bigFortune, liuYueGanZhi);
+    const 大運流月相合 = this.大運流月相合(result, bigFortune, liuYueGanZhi)
+    if (大運流月相合) {
+      result.reaction.bigFortune.match = true;
+      result.reaction.monthFortune.match = true;
+
+      return { 大運流年流月: {}, 被消: { bigFortune, liuYue: liuYueGanZhi }, 消刻: false };
+    }
+
+    if (流月剋大運) {
+      result.reaction.bigFortune.anti = true;
+      result.新增大運流月相剋評分(bigFortune, false);
+      return { 大運流年流月: {}, 被消: { bigFortune }, 消刻: true };
+    }
+
+    if (大運剋流月) {
+      result.reaction.monthFortune.anti = true;
+      result.新增大運流月相剋評分(liuYueGanZhi, true);
+      return { 大運流年流月: {}, 被消: { bigFortune }, 消刻: true };
+    }
+
+    return { 大運流年流月: { bigFortune, liuYue: liuYueGanZhi }, 被消: {}, 消刻: false };
+
   }
 
   private 陰或陽五行流通(天干地支: (天干 | 地支)[], 是否為陽 = true) {
@@ -563,6 +595,19 @@ export class 算命服務器 {
 
   private 流月剋流年(horoscopeResult: 命盤結果, liuYue: 天干 | 地支, yearFortune: 天干 | 地支) {
     return !horoscopeResult.reaction.yearFortune.anti && this.是否相刻(liuYue, yearFortune);
+  }
+
+  // 斷氣後大運會與流月作用
+  private 大運剋流月(horoscopeResult: 命盤結果, bigFortune: 天干 | 地支, liuYue: 天干 | 地支) {
+    return !horoscopeResult.reaction.monthFortune.anti && this.是否相刻(bigFortune, liuYue);
+  }
+
+  private 流月剋大運(horoscopeResult: 命盤結果, liuYue: 天干 | 地支, bigFortune: 天干 | 地支) {
+    return !horoscopeResult.reaction.bigFortune.anti && this.是否相刻(liuYue, bigFortune);
+  }
+
+  private 大運流月相合(result: 命盤結果, bigFortune: 天干 | 地支, liuYueGanZhi: 天干 | 地支) {
+    return !result.reaction.monthFortune.match && !result.reaction.bigFortune.match && this.是否相合(bigFortune, liuYueGanZhi);
   }
 
   private 大運流年相剋找人救(
