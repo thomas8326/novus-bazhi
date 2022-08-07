@@ -127,6 +127,17 @@ export class 命盤結果 {
     this.是否為天干 = 是否為天干;
   }
 
+  setData(result: 命盤結果) {
+    this.reaction = result.reaction;
+    this.scores = result.scores;
+    this.yanScore = result.yanScore;
+    this.noHintYanScore = result.noHintYanScore;
+    this.yinYanScore = result.yinYanScore;
+    this.noHintYinYanScore = result.noHintYinYanScore;
+    this.chineseDayRestriction = result.chineseDayRestriction;
+    this.antiWuHinCount = result.antiWuHinCount;
+  }
+
   getYinYanNoHintScore(score: string) {
     return score.replace(REGEX, '');
   }

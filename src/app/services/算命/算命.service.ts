@@ -85,6 +85,13 @@ export class 算命服務器 {
         horoscopeResult.reaction.yearFortune.anti = true;
         horoscopeResult.新增大運流年相剋評分(yearFortune, true);
         this.大運流年流月消相同本命(horoscopeResult, myFateSet, { yearFortune }, true);
+      } else {
+        const { 已作用集: 已作用集2 } = this.大運流年流月與本命作用(
+          horoscopeResult,
+          myFateSet,
+          { bigFortune, yearFortune },
+        );
+        this.本命互相合(horoscopeResult, myFateSet, 已作用集2);
       }
     } else if (this.流年剋大運(horoscopeResult, bigFortune, yearFortune)) {
       this.本命互相合(horoscopeResult, myFateSet);
@@ -101,6 +108,14 @@ export class 算命服務器 {
         horoscopeResult.reaction.bigFortune.anti = true;
         horoscopeResult.新增大運流年相剋評分(bigFortune, false);
         this.大運流年流月消相同本命(horoscopeResult, myFateSet, { bigFortune }, true);
+      } else {
+        this.本命互相合(horoscopeResult, myFateSet);
+        const { 已作用集: 已作用集2 } = this.大運流年流月與本命作用(
+          horoscopeResult,
+          myFateSet,
+          { bigFortune, yearFortune },
+        );
+        this.本命互相合(horoscopeResult, myFateSet, 已作用集2);
       }
     } else {
       this.本命互相合(horoscopeResult, myFateSet);
@@ -306,6 +321,8 @@ export class 算命服務器 {
       this.流通(result, myFateSet, data.大運流年流月);
       result.計算日柱受剋(this.天干日柱);
       result.計算最後評分分數(this.badPropertyMapping, this.天干日柱, parentResult.antiWuHinCount);
+    } else {
+      result.setData(JSON.parse(JSON.stringify(parentResult)));
     }
   }
 
