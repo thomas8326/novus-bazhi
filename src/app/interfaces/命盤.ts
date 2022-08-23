@@ -13,7 +13,7 @@ export class 命盤 {
   horoscopeResult: { gan: 命盤結果; zhi: 命盤結果 };
   bigFortune: { gan: 天干; zhi: 地支 };
   yearFortune: { gan: 天干; zhi: 地支 };
-  monthFortune: 流月[];
+  monthFortune: 流月命盤[];
   badPropertyMapping: BadProperty;
   mainGanFate: 天干;
   badPropertyList: { key: string, badProperty: string }[] = [];
@@ -31,7 +31,15 @@ export class 命盤 {
     this.myFateSet = data.myFateSet;
     this.bigFortune = data.bigFortune;
     this.yearFortune = data.yearFortune;
-    this.monthFortune = data.monthFortune;
+    this.monthFortune = data.monthFortune.map(fortune => new 流月命盤({
+      month: fortune.month,
+      chineseMonth: fortune.chineseMonth,
+      horoscopeResult: { gan: fortune.ganResult, zhi: fortune.zhiResult },
+      bigFortune: data.bigFortune,
+      yearFortune: data.yearFortune,
+      monthFortune: { gan: fortune.gan, zhi: fortune.zhi },
+      myFateSet: { gan: data.myFateSet.gan, zhi: data.myFateSet.zhi }
+    }));
     this.horoscopeResult = { gan: new 命盤結果(true), zhi: new 命盤結果(false) };
     const { badPropertyMapping, badPropertyList } = this.創造劫數對照表(data.myFateSet.gan[1]);
     this.badPropertyMapping = badPropertyMapping;
@@ -60,6 +68,34 @@ export class 命盤 {
       badPropertyList.push({ key: 天干日柱五行, badProperty: 劫數陣列[i] });
     }
     return { badPropertyMapping, badPropertyList };
+  }
+}
+
+export class 流月命盤 {
+  month: string;
+  chineseMonth: string;
+  horoscopeResult: { gan: 命盤結果; zhi: 命盤結果 };
+  myFateSet: { gan: 天干[]; zhi: 地支[] };
+  bigFortune: { gan: 天干; zhi: 地支 };
+  yearFortune: { gan: 天干; zhi: 地支 };
+  monthFortune: { gan: 天干; zhi: 地支 };
+
+  constructor(data: {
+    chineseMonth: string;
+    month: string;
+    myFateSet: { gan: 天干[]; zhi: 地支[] };
+    horoscopeResult: { gan: 命盤結果; zhi: 命盤結果 };
+    bigFortune: { gan: 天干; zhi: 地支 };
+    yearFortune: { gan: 天干; zhi: 地支 };
+    monthFortune: { gan: 天干; zhi: 地支 };
+  }) {
+    this.month = data.month;
+    this.chineseMonth = data.chineseMonth;
+    this.myFateSet = data.myFateSet;
+    this.bigFortune = data.bigFortune;
+    this.yearFortune = data.yearFortune;
+    this.monthFortune = data.monthFortune;
+    this.horoscopeResult = data.horoscopeResult;
   }
 }
 
@@ -142,6 +178,13 @@ export class 命盤結果 {
     return score.replace(REGEX, '');
   }
 
+  新增相剋評分(被剋對象: 天干 | 地支, text: string) {
+    const 大運流年五行 = 五行轉換(被剋對象);
+    this.scores.push(text);
+    this.antiWuHinCount[大運流年五行]++;
+  }
+
+
   新增大運流年相剋評分(被剋對象: 天干 | 地支, 大運剋流年: boolean) {
     const 大運流年五行 = 五行轉換(被剋對象);
     this.scores.push(大運剋流年 ? '大運剋流年' : '流年剋大運');
@@ -205,7 +248,7 @@ export class 命盤結果 {
       } else {
         const antiText = this.剋五行轉換器(key, value); // 雙剋土..etc
         const badPropertyText = this.badProperty(key as 五行, mapping, mainGanFate, extraText);
-        this.scores.push(`${antiText}${badPropertyText}`);
+        (antiText || badPropertyText) && this.scores.push(`${antiText}${badPropertyText}`);
       }
     }
 
@@ -394,20 +437,22 @@ export interface 五行陣列 {
 
 export interface 天干命盤 {
   year: number;
+  month?: string | number;
   horoscopeResult: 命盤結果;
   myFateSet: 天干[];
   bigFortune: 天干;
   yearFortune: 天干;
-  liuYue: 流月[];
+  monthFortune?: 天干;
 }
 
 export interface 地支命盤 {
   year: number;
+  month?: string | number;
   horoscopeResult: 命盤結果;
   myFateSet: 地支[];
   bigFortune: 地支;
   yearFortune: 地支;
-  liuYue: 流月[];
+  monthFortune?: 地支;
 }
 
 export interface BadProperty {

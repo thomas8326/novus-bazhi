@@ -88,7 +88,7 @@
         <tbody>
           <ng-container *ngFor="let liuYue of currentHoroscope.monthFortune; let last = last">
             <tr>
-              <ng-container *ngVar="liuYue.ganResult.reaction as reaction">
+              <ng-container *ngVar="liuYue.horoscopeResult.gan.reaction as reaction">
                 <td rowspan="2">{{ liuYue.month }}</td>
                 <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.gan[0] }}</td>
                 <td [ngClass]="getGanZhiResultClass(reaction.day)" class="day-gan">
@@ -102,24 +102,24 @@
                 <td [ngClass]="getGanZhiResultClass(reaction.yearFortune)">
                   {{ currentHoroscope.yearFortune.gan }}
                 </td>
-                <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)"> {{ liuYue.gan }} </td>
+                <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)"> {{ liuYue.monthFortune.gan }} </td>
                 <td>
                   <div class="menu-item" mat-menu-item [matMenuTriggerFor]="menu">
                     <mat-menu #menu="matMenu">
                       <ng-container
                         [ngTemplateOutlet]="yinYanResult"
-                        [ngTemplateOutletContext]="{ result: liuYue.ganResult }"
+                        [ngTemplateOutletContext]="{ result: liuYue.horoscopeResult.gan }"
                       ></ng-container>
                     </mat-menu>
                     <ul>
-                      <li *ngFor="let score of liuYue.ganResult.scores">{{ score }}</li>
+                      <li *ngFor="let score of liuYue.horoscopeResult.gan.scores">{{ score }}</li>
                     </ul>
                   </div>
                 </td>
               </ng-container>
             </tr>
             <tr>
-              <ng-container *ngVar="liuYue.zhiResult.reaction as reaction">
+              <ng-container *ngVar="liuYue.horoscopeResult.zhi.reaction as reaction">
                 <td [ngClass]="getGanZhiResultClass(reaction.time)">{{ currentHoroscope.myFateSet.zhi[0] }}</td>
                 <td [ngClass]="getGanZhiResultClass(reaction.day)">{{ currentHoroscope.myFateSet.zhi[1] }}</td>
                 <td [ngClass]="getGanZhiResultClass(reaction.month)">{{ currentHoroscope.myFateSet.zhi[2] }}</td>
@@ -131,18 +131,18 @@
                   {{ currentHoroscope.yearFortune.zhi }}
                 </td>
                 <td [ngClass]="getGanZhiResultClass(reaction.monthFortune)">
-                  {{ liuYue.zhi }}
+                  {{ liuYue.monthFortune.zhi }}
                 </td>
                 <td>
                   <div class="menu-item" mat-menu-item [matMenuTriggerFor]="menu">
                     <mat-menu #menu="matMenu">
                       <ng-container
                         [ngTemplateOutlet]="yinYanResult"
-                        [ngTemplateOutletContext]="{ result: liuYue.zhiResult }"
+                        [ngTemplateOutletContext]="{ result: liuYue.horoscopeResult.zhi }"
                       ></ng-container>
                     </mat-menu>
                     <ul>
-                      <li *ngFor="let score of liuYue.zhiResult.scores">{{ score }}</li>
+                      <li *ngFor="let score of liuYue.horoscopeResult.zhi.scores">{{ score }}</li>
                     </ul>
                   </div>
                 </td>

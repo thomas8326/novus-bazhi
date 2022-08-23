@@ -14,7 +14,8 @@ import { 五行 } from 'src/app/enums/五行.enum';
 import { 命盤結果屬性 } from 'src/app/enums/命盤.enum';
 import { 地支 } from 'src/app/enums/地支.enum';
 import { 天干 } from 'src/app/enums/天干.enum';
-import { BadProperty, 五行結果, 命盤, 命盤結果, 地支命盤, 天干命盤, 已作用 } from 'src/app/interfaces/命盤';
+import { BadProperty, 五行結果, 命盤, 命盤結果, 地支命盤, 天干命盤, 已作用, 流月命盤 } from 'src/app/interfaces/命盤';
+import { 算命盤作用 } from 'src/app/services/算命/算命盤作用';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +36,6 @@ export class 算命服務器 {
           myFateSet: 算命.myFateSet.gan,
           bigFortune: 算命.bigFortune.gan,
           yearFortune: 算命.yearFortune.gan,
-          liuYue: 算命.monthFortune,
         };
         const 暫存地支命盤 = {
           year: 算命.year,
@@ -43,12 +43,40 @@ export class 算命服務器 {
           myFateSet: 算命.myFateSet.zhi,
           bigFortune: 算命.bigFortune.zhi,
           yearFortune: 算命.yearFortune.zhi,
-          liuYue: 算命.monthFortune,
         };
         this.badPropertyMapping = 算命.badPropertyMapping;
         this.天干日柱 = 算命.mainGanFate;
         this.算天干(暫存天干命盤);
         this.算地支(暫存地支命盤);
+        this.算流月命盤(暫存天干命盤, 暫存地支命盤, 算命.monthFortune, 算命.year);
+      }
+    }
+  }
+
+  算流月命盤(天干父命盤: 天干命盤, 地支父命盤: 地支命盤, 目標命盤: 流月命盤[], year: number) {
+    this.是否斷氣 = false;
+    for (const 算命 of 目標命盤) {
+      if (算命.bigFortune.gan) {
+        const 暫存天干命盤: 天干命盤 = {
+          year: year,
+          month: 算命.month,
+          horoscopeResult: 算命.horoscopeResult.gan,
+          myFateSet: 算命.myFateSet.gan,
+          bigFortune: 算命.bigFortune.gan,
+          yearFortune: 算命.yearFortune.gan,
+          monthFortune: 算命.monthFortune.gan
+        };
+        const 暫存地支命盤: 地支命盤 = {
+          year: year,
+          month: 算命.month,
+          horoscopeResult: 算命.horoscopeResult.zhi,
+          myFateSet: 算命.myFateSet.zhi,
+          bigFortune: 算命.bigFortune.zhi,
+          yearFortune: 算命.yearFortune.zhi,
+          monthFortune: 算命.monthFortune.zhi
+        };
+        this.計算流月天干地支(天干父命盤, 暫存天干命盤, true);
+        this.計算流月天干地支(地支父命盤, 暫存地支命盤, false);
       }
     }
   }
@@ -66,66 +94,15 @@ export class 算命服務器 {
   private 開始計算命盤(對象命盤: 天干命盤 | 地支命盤) {
     const { bigFortune, yearFortune, myFateSet, horoscopeResult } = 對象命盤;
 
-    if (this.大運流年相合(horoscopeResult, yearFortune, bigFortune)) {
-      horoscopeResult.reaction.bigFortune.match = true;
-      horoscopeResult.reaction.yearFortune.match = true;
-      this.大運流年流月消相同本命(horoscopeResult, myFateSet, { bigFortune, yearFortune });
-    }
+    const 算作用 = new 算命盤作用(對象命盤, this.是否為天干);
+    算作用.大運流年相合();
+    算作用.流年剋大運();
+    算作用.大運剋流年();
+    算作用.通用計算();
 
-    if (this.大運剋流年(horoscopeResult, bigFortune, yearFortune)) {
-      this.本命互相合(horoscopeResult, myFateSet);
-      const { 救流年 } = this.大運流年相剋找人救(horoscopeResult, myFateSet, bigFortune, yearFortune);
-      const { 已作用集, 大運已作用, 流年已作用 } = this.大運流年流月與本命作用(horoscopeResult, myFateSet, {
-        bigFortune,
-        yearFortune,
-      });
-      this.本命互相合(horoscopeResult, myFateSet, 已作用集);
-
-      if (!大運已作用 && !流年已作用 && !救流年) {
-        horoscopeResult.reaction.yearFortune.anti = true;
-        horoscopeResult.新增大運流年相剋評分(yearFortune, true);
-        this.大運流年流月消相同本命(horoscopeResult, myFateSet, { yearFortune }, true);
-      } else {
-        const { 已作用集: 已作用集2 } = this.大運流年流月與本命作用(
-          horoscopeResult,
-          myFateSet,
-          { bigFortune, yearFortune },
-        );
-        this.本命互相合(horoscopeResult, myFateSet, 已作用集2);
-      }
-    } else if (this.流年剋大運(horoscopeResult, bigFortune, yearFortune)) {
-      this.本命互相合(horoscopeResult, myFateSet);
-      const { 救大運 } = this.大運流年相剋找人救(horoscopeResult, myFateSet, bigFortune, yearFortune);
-      const { 已作用集, 大運已作用, 流年已作用 } = this.大運流年流月與本命作用(
-        horoscopeResult,
-        myFateSet,
-        { bigFortune, yearFortune },
-        { bigFortune: 救大運, yearFortune: true },
-      );
-      this.本命互相合(horoscopeResult, myFateSet, 已作用集);
-
-      if (!大運已作用 && !流年已作用 && !救大運) {
-        horoscopeResult.reaction.bigFortune.anti = true;
-        horoscopeResult.新增大運流年相剋評分(bigFortune, false);
-        this.大運流年流月消相同本命(horoscopeResult, myFateSet, { bigFortune }, true);
-      } else {
-        this.本命互相合(horoscopeResult, myFateSet);
-        const { 已作用集: 已作用集2 } = this.大運流年流月與本命作用(
-          horoscopeResult,
-          myFateSet,
-          { bigFortune, yearFortune },
-        );
-        this.本命互相合(horoscopeResult, myFateSet, 已作用集2);
-      }
-    } else {
-      this.本命互相合(horoscopeResult, myFateSet);
-      const { 已作用集 } = this.大運流年流月與本命作用(horoscopeResult, myFateSet, { bigFortune, yearFortune });
-      this.本命互相合(horoscopeResult, myFateSet, 已作用集);
-    }
     this.流通(horoscopeResult, myFateSet, { bigFortune, yearFortune });
     horoscopeResult.計算日柱受剋(this.天干日柱);
     horoscopeResult.計算最後評分分數(this.badPropertyMapping, this.天干日柱);
-    this.計算流月(對象命盤);
   }
 
   //'辛', '戊', '壬', '丙' "壬" 戊
@@ -230,100 +207,120 @@ export class 算命服務器 {
     return prevIndexStack;
   }
 
-  private 計算流月(對象命盤: 天干命盤 | 地支命盤) {
-    const { bigFortune, yearFortune, myFateSet, horoscopeResult } = 對象命盤;
-    this.是否斷氣 = false;
-    for (let liuYue of 對象命盤.liuYue) {
-      const liuYueGanZhi = this.是否為天干 ? liuYue.gan : liuYue.zhi;
-      const liuYueGanZhiResult = this.是否為天干 ? liuYue.ganResult : liuYue.zhiResult;
-      this.計算流月天干地支(horoscopeResult, liuYueGanZhiResult, myFateSet, bigFortune, yearFortune, liuYueGanZhi);
-    }
-  }
+  // private 計算流月(對象命盤: 天干命盤 | 地支命盤) {
+  //   const { bigFortune, yearFortune, myFateSet, horoscopeResult } = 對象命盤;
+  //   this.是否斷氣 = false;
+  //   for (let liuYue of 對象命盤.liuYue) {
+  //     const liuYueGanZhi = this.是否為天干 ? liuYue.gan : liuYue.zhi;
+  //     const liuYueGanZhiResult = this.是否為天干 ? liuYue.ganResult : liuYue.zhiResult;
+  //     this.計算流月天干地支(horoscopeResult, liuYueGanZhiResult, myFateSet, bigFortune, yearFortune, liuYueGanZhi);
+  //   }
+  // }
 
   private 計算流月天干地支(
-    parentResult: 命盤結果,
-    result: 命盤結果,
-    myFateSet: (天干 | 地支)[],
-    bigFortune: 天干 | 地支,
-    yearFortune: 天干 | 地支,
-    liuYueGanZhi: 天干 | 地支,
+    父命盤: 天干命盤 | 地支命盤,
+    對象命盤: 天干命盤 | 地支命盤,
+    是否為天干: boolean,
   ) {
-    let 消刻 = false;
+    const { bigFortune, yearFortune, monthFortune, myFateSet, horoscopeResult } = 對象命盤;
+
+    const 設定斷氣 = () => 是否為天干 && (this.是否斷氣 = true);
 
     // 當流月流年相同時，斷氣結束並且無作用返回
-    if (this.是否斷氣 && yearFortune === liuYueGanZhi) {
+    if (是否為天干 && this.是否斷氣 && yearFortune === monthFortune) {
       this.是否斷氣 = false;
     }
+
+    const 算命盤 = new 算命盤作用(對象命盤, 是否為天干);
+    if (this.是否斷氣 && 是否為天干) {
+      算命盤.斷氣();
+      算命盤.大運流月相合();
+      算命盤.流月剋大運();
+      算命盤.大運剋流月();
+      算命盤.通用計算(true);
+    }
+
+    算命盤.流年流月相合();
+    算命盤.流月剋流年(設定斷氣);
+    算命盤.流年剋流月();
+    算命盤.大運流年相合();
+    算命盤.通用計算();
+    算命盤.大運流年被合走流月加入計算();
+
+
+    this.流通(horoscopeResult, myFateSet, { bigFortune, yearFortune });
+    horoscopeResult.計算日柱受剋(this.天干日柱);
+    horoscopeResult.計算最後評分分數(this.badPropertyMapping, this.天干日柱, 父命盤.horoscopeResult.antiWuHinCount);
 
     // 斷氣 => 流月大運本命相合
     // 流年流月相合 & 流月剋流年 => 大運+本命
     // 大運流年相合 => 流月+本命
-    const createData = () => {
-      const 流年流月合 = this.流年流月相合(result, yearFortune, liuYueGanZhi);
-      const 流月剋流年 = this.流月剋流年(result, liuYueGanZhi, yearFortune);
-      const 流年剋流月 = this.流年剋流月(result, yearFortune, liuYueGanZhi);
-      const 大運流年合 = parentResult.reaction.bigFortune.match && parentResult.reaction.yearFortune.match;
+    // const createData = () => {
+    //   const 流年流月合 = this.流年流月相合(horoscopeResult, yearFortune, liuYueGanZhi);
+    //   const 流月剋流年 = this.流月剋流年(horoscopeResult, liuYueGanZhi, yearFortune);
+    //   const 流年剋流月 = this.流年剋流月(horoscopeResult, yearFortune, liuYueGanZhi);
+    //   const 大運流年合 = parentResult.reaction.bigFortune.match && parentResult.reaction.yearFortune.match;
 
-      if (this.是否斷氣) {
-        const 斷氣後作用 = this.斷氣後作用(result, bigFortune, liuYueGanZhi);
-        消刻 = 斷氣後作用.消刻;
+    //   if (this.是否斷氣) {
+    //     const 斷氣後作用 = this.斷氣後作用(result, bigFortune, liuYueGanZhi);
+    //     消刻 = 斷氣後作用.消刻;
 
-        return { 大運流年流月: 斷氣後作用.大運流年流月, 被消: 斷氣後作用.被消 };
-      }
-      if (流年流月合) {
-        if (bigFortune === yearFortune || bigFortune === liuYueGanZhi) result.reaction.bigFortune.match = true;
-        result.reaction.yearFortune.match = true;
-        result.reaction.monthFortune.match = true;
-        return { 大運流年流月: { bigFortune }, 被消: { yearFortune, liuYue: liuYueGanZhi } };
-      }
-      if (流月剋流年) {
-        if (bigFortune === yearFortune) {
-          result.reaction.bigFortune.anti = true;
-          result.antiWuHinCount[五行轉換(yearFortune)]++;
-        }
-        result.reaction.yearFortune.anti = true;
-        result.新增流年流月相剋評分(yearFortune, false);
-        this.是否斷氣 = this.是否為天干; // 只有天干會斷氣
-        消刻 = true;
-        return { 大運流年流月: { bigFortune }, 被消: { yearFortune } };
-      }
-      if (流年剋流月) {
-        if (bigFortune === liuYueGanZhi) {
-          result.reaction.bigFortune.anti = true;
-          result.antiWuHinCount[五行轉換(liuYueGanZhi)]++;
-        }
-        result.reaction.monthFortune.anti = true;
-        result.新增流年流月相剋評分(liuYueGanZhi, false);
-        消刻 = true;
+    //     return { 大運流年流月: 斷氣後作用.大運流年流月, 被消: 斷氣後作用.被消 };
+    //   }
+    //   if (流年流月合) {
+    //     if (bigFortune === yearFortune || bigFortune === liuYueGanZhi) result.reaction.bigFortune.match = true;
+    //     result.reaction.yearFortune.match = true;
+    //     result.reaction.monthFortune.match = true;
+    //     return { 大運流年流月: { bigFortune }, 被消: { yearFortune, liuYue: liuYueGanZhi } };
+    //   }
+    //   if (流月剋流年) {
+    //     if (bigFortune === yearFortune) {
+    //       result.reaction.bigFortune.anti = true;
+    //       result.antiWuHinCount[五行轉換(yearFortune)]++;
+    //     }
+    //     result.reaction.yearFortune.anti = true;
+    //     result.新增流年流月相剋評分(yearFortune, false);
+    //     this.是否斷氣 = this.是否為天干; // 只有天干會斷氣
+    //     消刻 = true;
+    //     return { 大運流年流月: { bigFortune }, 被消: { yearFortune } };
+    //   }
+    //   if (流年剋流月) {
+    //     if (bigFortune === liuYueGanZhi) {
+    //       result.reaction.bigFortune.anti = true;
+    //       result.antiWuHinCount[五行轉換(liuYueGanZhi)]++;
+    //     }
+    //     result.reaction.monthFortune.anti = true;
+    //     result.新增流年流月相剋評分(liuYueGanZhi, false);
+    //     消刻 = true;
 
-        if (this.大運流年相合(result, bigFortune, yearFortune)) {
-          result.reaction.bigFortune.match = true;
-          result.reaction.yearFortune.match = true;
-          this.大運流年流月消相同本命(result, myFateSet, { bigFortune, yearFortune });
-        }
-        return { 大運流年流月: { bigFortune, yearFortune }, 被消: { liuYue: liuYueGanZhi } };
-      }
-      if (大運流年合) {
-        if (liuYueGanZhi === bigFortune || liuYueGanZhi === yearFortune) result.reaction.monthFortune.match = true;
-        result.reaction = JSON.parse(JSON.stringify(parentResult.reaction));
-        return { 大運流年流月: { liuYue: liuYueGanZhi }, 被消: {} };
-      }
+    //     if (this.大運流年相合(result, bigFortune, yearFortune)) {
+    //       result.reaction.bigFortune.match = true;
+    //       result.reaction.yearFortune.match = true;
+    //       this.大運流年流月消相同本命(result, myFateSet, { bigFortune, yearFortune });
+    //     }
+    //     return { 大運流年流月: { bigFortune, yearFortune }, 被消: { liuYue: liuYueGanZhi } };
+    //   }
+    //   if (大運流年合) {
+    //     if (liuYueGanZhi === bigFortune || liuYueGanZhi === yearFortune) result.reaction.monthFortune.match = true;
+    //     result.reaction = JSON.parse(JSON.stringify(parentResult.reaction));
+    //     return { 大運流年流月: { liuYue: liuYueGanZhi }, 被消: {} };
+    //   }
 
-      return null;
-    };
-    const data = createData();
+    //   return null;
+    // };
+    // const data = createData();
 
-    if (data) {
-      this.大運流年流月消相同本命(result, myFateSet, data.被消, 消刻);
-      this.本命互相合(result, myFateSet);
-      const { 已作用集 } = this.大運流年流月與本命作用(result, myFateSet, data.大運流年流月);
-      this.本命互相合(result, myFateSet, 已作用集);
-      this.流通(result, myFateSet, data.大運流年流月);
-      result.計算日柱受剋(this.天干日柱);
-      result.計算最後評分分數(this.badPropertyMapping, this.天干日柱, parentResult.antiWuHinCount);
-    } else {
-      result.setData(JSON.parse(JSON.stringify(parentResult)));
-    }
+    // if (data) {
+    //   this.大運流年流月消相同本命(result, myFateSet, data.被消, 消刻);
+    //   this.本命互相合(result, myFateSet);
+    //   const { 已作用集 } = this.大運流年流月與本命作用(result, myFateSet, data.大運流年流月);
+    //   this.本命互相合(result, myFateSet, 已作用集);
+    //   this.流通(result, myFateSet, data.大運流年流月);
+    //   result.計算日柱受剋(this.天干日柱);
+    //   result.計算最後評分分數(this.badPropertyMapping, this.天干日柱, parentResult.antiWuHinCount);
+    // } else {
+    //   result.setData(JSON.parse(JSON.stringify(parentResult)));
+    // }
   }
 
   // 斷氣後大運流月能作用
@@ -687,21 +684,21 @@ export class 算命服務器 {
     return 不是陰剋陽作用主體 && 五行相刻對照表.get(作用主體五行) === 被作用目標五行;
   }
 
-  private 是否能救(本命: 天干 | 地支, 作用主體: 天干 | 地支, 被作用目標: 天干 | 地支) {
+  private 是否能救(本命: 天干 | 地支, 剋人: 天干 | 地支, 被剋: 天干 | 地支) {
     const 本命五行 = 五行轉換(本命);
-    const 作用五行 = 五行轉換(作用主體);
-    const 被作用五行 = 五行轉換(被作用目標);
-    const 作用主體刻被作用主體 = 五行相刻對照表.get(作用五行) === 被作用五行;
-    const 不是陰剋陽作用主體 = !this.是否陰作用陽(本命, 作用主體);
-    const 不是陰救陽被作用目標 = !this.是否陰作用陽(本命, 被作用目標);
-    const 不是同五行陽救陽 = 本命五行 !== 被作用五行;
+    const 剋人五行 = 五行轉換(剋人);
+    const 被剋五行 = 五行轉換(被剋);
+    const 作用主體刻被作用主體 = 五行相刻對照表.get(剋人五行) === 被剋五行;
+    const 不是陰剋陽作用主體 = !this.是否陰作用陽(本命, 剋人);
+    const 不是陰救陽被作用目標 = !this.是否陰作用陽(本命, 被剋);
+    const 不是同五行陽救陽 = 本命五行 !== 被剋五行;
 
     return (
       不是陰剋陽作用主體 &&
       不是陰救陽被作用目標 &&
       不是同五行陽救陽 &&
       作用主體刻被作用主體 &&
-      五行互救對照表.get(本命五行)?.find((data) => data === 被作用五行)
+      五行互救對照表.get(本命五行)?.find((data) => data === 被剋五行)
     );
   }
 
