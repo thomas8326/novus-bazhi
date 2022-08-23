@@ -240,8 +240,7 @@ export class 算命盤作用 {
     }
 
     大運流年被合走流月加入計算() {
-        const 大運流年已合走 = this.屬性已合(命盤結果屬性.bigFortune) && this.屬性已合(命盤結果屬性.yearFortune);
-        if (!大運流年已合走) {
+        if (!this.大運流年是否被合走()) {
             return;
         }
 
@@ -258,6 +257,10 @@ export class 算命盤作用 {
                 this.命盤.horoscopeResult.reaction.monthFortune.match = true;
             }
         }
+    }
+
+    大運流年是否被合走() {
+        return this.屬性已合(命盤結果屬性.bigFortune) && this.屬性已合(命盤結果屬性.yearFortune);
     }
 
     private 本命互相合() {

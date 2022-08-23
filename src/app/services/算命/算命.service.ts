@@ -222,9 +222,10 @@ export class 算命服務器 {
     對象命盤: 天干命盤 | 地支命盤,
     是否為天干: boolean,
   ) {
+    this.是否為天干 = 是否為天干;
     const { bigFortune, yearFortune, monthFortune, myFateSet, horoscopeResult } = 對象命盤;
-
     const 設定斷氣 = () => 是否為天干 && (this.是否斷氣 = true);
+
 
     // 當流月流年相同時，斷氣結束並且無作用返回
     if (是否為天干 && this.是否斷氣 && yearFortune === monthFortune) {
@@ -247,8 +248,8 @@ export class 算命服務器 {
     算命盤.通用計算();
     算命盤.大運流年被合走流月加入計算();
 
-
-    this.流通(horoscopeResult, myFateSet, { bigFortune, yearFortune });
+    const 流通計算 = 算命盤.大運流年是否被合走() ? { bigFortune, yearFortune, liuYue: monthFortune } : { bigFortune, yearFortune }
+    this.流通(horoscopeResult, myFateSet, 流通計算);
     horoscopeResult.計算日柱受剋(this.天干日柱);
     horoscopeResult.計算最後評分分數(this.badPropertyMapping, this.天干日柱, 父命盤.horoscopeResult.antiWuHinCount);
 
