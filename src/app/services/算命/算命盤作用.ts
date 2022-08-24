@@ -259,7 +259,11 @@ export class 算命盤作用 {
         }
     }
 
-    大運流年是否被合走() {
+    流月是否加入計算() {
+        return this.大運流年是否被合走() || this.命盤.horoscopeResult.reaction.yearFortune.cut
+    }
+
+    private 大運流年是否被合走() {
         return this.屬性已合(命盤結果屬性.bigFortune) && this.屬性已合(命盤結果屬性.yearFortune);
     }
 
