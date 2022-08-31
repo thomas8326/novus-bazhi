@@ -14,6 +14,7 @@ import { default as _rollupMoment } from 'moment';
 import { MemberService } from 'src/app/services/member/member.service';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { ExportPdfService } from 'src/app/services/export-pdf/export-pdf.service';
+import { isNil } from 'src/app/utilties/utilties';
 
 const moment = _rollupMoment || _moment;
 
@@ -202,8 +203,8 @@ export class MemberBoardComponent implements OnInit {
     this.memberService.replace(id, { comment: text });
   }
 
-  getGoldenInRingText(golden: boolean | undefined) {
-    if (golden === undefined) return "";
+  getGoldenInRingText(golden: boolean | null | undefined) {
+    if (isNil(golden)) return "";
     return golden ? "金飾穿在手鍊上" : "金飾取下另外放";
   }
 
