@@ -98,6 +98,22 @@
       </mat-footer-cell>
     </ng-container>
 
+    <ng-container [matColumnDef]="Member.GoldenInRing">
+      <mat-header-cell *matHeaderCellDef>贈送的金飾穿在手鍊上</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ getGoldenInRingText(element.goldenInRing) }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef>
+        <mat-radio-group
+          color="primary"
+          class="gender"
+          aria-label="Select an option"
+          [formControlName]="Member.GoldenInRing"
+        >
+          <mat-radio-button [value]="true">金飾穿在手鍊上</mat-radio-button>
+          <mat-radio-button [value]="false">金飾取下另外放</mat-radio-button>
+        </mat-radio-group></mat-footer-cell
+      >
+    </ng-container>
+
     <ng-container [matColumnDef]="Member.Completed">
       <mat-header-cell *matHeaderCellDef mat-sort-header>已完成</mat-header-cell>
       <mat-cell *matCellDef="let element">

@@ -150,6 +150,9 @@ export class ExportPdfService {
         case ExcelColumn.CrystalStyle:
           member.crystalStyle = value;
           break;
+        case ExcelColumn.GoldenInRing:
+          member.goldenInRing = value === '金飾穿在手鍊上';
+          break;
         default: {
           this.snackbarService.showWarning('出現非預期的欄位: ' + key, 5000);
           this.importStatus.next(ExportStatus.Completed);

@@ -33,3 +33,7 @@ export function 命盤結果屬性轉換(i: 命盤結果屬性) {
     }
 }
 
+export function isNil(value: any): value is undefined | null {
+    return value === undefined || value === null;
+}
+

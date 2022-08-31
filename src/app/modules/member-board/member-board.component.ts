@@ -62,6 +62,7 @@ export class MemberBoardComponent implements OnInit {
     [會員欄位.DateOfBirth]: [moment(), Validators.required],
     [會員欄位.FortunetellingType]: [FortunetellingType.detail],
     [會員欄位.AtYear]: [new Date().getFullYear()],
+    [會員欄位.GoldenInRing]: [null],
     [會員欄位.Completed]: [false],
   });
 
@@ -78,6 +79,7 @@ export class MemberBoardComponent implements OnInit {
     會員欄位.DateOfBirth,
     會員欄位.FortunetellingType,
     會員欄位.AtYear,
+    會員欄位.GoldenInRing,
     會員欄位.Completed,
     'btnGroup',
   ];
@@ -132,7 +134,7 @@ export class MemberBoardComponent implements OnInit {
   onEnterEditMemberMode(target: Member) {
     this.isEditingStatus = true;
     this.isAddingStatus = false;
-    this.memberForm.patchValue(target);
+    this.memberForm.patchValue(new Member(target));
   }
 
   onImportExcel(files: FileList | null) {
@@ -198,6 +200,11 @@ export class MemberBoardComponent implements OnInit {
 
   onUpdateComment(id: string, text: string) {
     this.memberService.replace(id, { comment: text });
+  }
+
+  getGoldenInRingText(golden: boolean | undefined) {
+    if (golden === undefined) return "";
+    return golden ? "金飾穿在手鍊上" : "金飾取下另外放";
   }
 
   private updateMember(member: Member) {

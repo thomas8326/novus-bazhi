@@ -1,6 +1,8 @@
 import { Moment } from 'moment';
 import { 性別, 會員欄位 } from 'src/app/enums/會員.enum';
+import { isNil } from 'src/app/utilties/utilties';
 import { v4 as uuidv4 } from 'uuid';
+
 
 export class Member {
   [會員欄位.ID]: string;
@@ -16,6 +18,7 @@ export class Member {
   [會員欄位.CrystalStyle]: string;
   [會員欄位.Comment]: string;
   [會員欄位.Completed]: boolean;
+  [會員欄位.GoldenInRing]: boolean | null;
 
   constructor(data?: Member) {
     this.id = data?.id || uuidv4();
@@ -31,6 +34,7 @@ export class Member {
     this.atYear = data?.atYear || new Date().getFullYear();
     this.job = data?.job || '';
     this.crystalStyle = data?.crystalStyle || '';
+    this.goldenInRing = isNil(data?.goldenInRing) ? null : data?.goldenInRing || false;
   }
 
   isMale(): boolean {

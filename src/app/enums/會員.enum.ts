@@ -15,6 +15,7 @@ export enum 會員欄位 {
   Comment = 'comment',
   CreateTime = 'createTime',
   Phone = 'phone',
+  GoldenInRing = 'goldenInRing',
 }
 
 export enum ExcelColumn {
@@ -27,6 +28,7 @@ export enum ExcelColumn {
   AtYear = '選擇批算哪一年的運程',
   Job = '請問您的『工作職業』以及『是否有狀況』要跟Novus說',
   CrystalStyle = '選擇的『隔珠』款式',
+  GoldenInRing = '贈送的金飾是否要穿在手鍊上'
 }
 
 export enum 性別 {
