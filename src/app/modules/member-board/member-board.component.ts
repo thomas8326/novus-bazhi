@@ -121,9 +121,7 @@ export class MemberBoardComponent implements OnInit {
   }
 
   onFilter(value: string) {
-    if (value) {
-      this.memberDataSource.filter = value.trim().toLowerCase();
-    }
+    this.memberDataSource.filter = value.trim().toLowerCase();
   }
 
   onEnterAddMemberMode() {
