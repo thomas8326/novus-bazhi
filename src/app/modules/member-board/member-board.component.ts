@@ -110,7 +110,7 @@ export class MemberBoardComponent implements OnInit {
       this.selection.clear();
       return;
     }
-
+    this.selection.clear();
     this.selection.select(...this.memberDataSource.data);
   }
 
