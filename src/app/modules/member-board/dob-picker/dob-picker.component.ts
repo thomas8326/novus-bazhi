@@ -68,7 +68,7 @@ export class DobPickerComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(time: string) {
-    this.date.setValue(moment.locale(time, ['YYYY/MM/DD HH:mm']));
+    this.date.setValue(moment(time));
   }
 
   get currentHour() {
