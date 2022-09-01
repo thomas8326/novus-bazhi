@@ -149,7 +149,7 @@ export class MemberBoardComponent implements OnInit {
     if (this.memberForm.valid) {
       this.addMember(this.memberForm.value);
       this.isAddingStatus = isAddNext;
-      this.memberForm.reset();
+      this.resetForm();
     }
   }
 
