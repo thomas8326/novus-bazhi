@@ -23,6 +23,14 @@ export class 算命服務器 {
   private badPropertyMapping: BadProperty | null = null;
   private 是否斷氣 = false;
 
+  設定天干日柱(gan: 天干) {
+    this.天干日柱 = gan;
+  }
+
+  設定劫數對照表(property: BadProperty) {
+    this.badPropertyMapping = property;
+  }
+
   算命(目標命盤: 命盤[]) {
     for (const 算命 of 目標命盤) {
       // 未起運無大運
@@ -41,8 +49,8 @@ export class 算命服務器 {
           bigFortune: 算命.bigFortune.zhi,
           yearFortune: 算命.yearFortune.zhi,
         };
-        this.badPropertyMapping = 算命.badPropertyMapping;
-        this.天干日柱 = 算命.mainGanFate;
+        this.設定劫數對照表(算命.badPropertyMapping);
+        this.設定天干日柱(算命.mainGanFate);
         this.算天干(暫存天干命盤);
         this.算地支(暫存地支命盤);
         this.算流月命盤(暫存天干命盤, 暫存地支命盤, 算命.monthFortune, 算命.year);
@@ -295,6 +303,7 @@ export class 算命服務器 {
       return { 陽結果, 新陰: 陰 };
     }
 
+    const firstElement = 陽結果[0];
     const lastElement = 陽結果[陽結果.length - 1];
     const 新陰陣列: (天干 | 地支)[] = [];
 
@@ -307,7 +316,9 @@ export class 算命服務器 {
       }
 
       for (let i = 0; i < 陰.length; i++) {
-        if (最後元素相剋五行 === 五行轉換(陰[i]) && lastElement.陽力 > 五行陰結果.陰力) {
+        const 陰五行相生元素 = 五行相生對照表.get(五行轉換(陰[i]))!;
+
+        if (最後元素相剋五行 === 五行轉換(陰[i]) && lastElement.陽力 > 五行陰結果.陰力 && 陰五行相生元素 !== firstElement.五行) {
           五行陰結果.陰陣.push(陰[i]);
           五行陰結果.陰力++;
         } else {
