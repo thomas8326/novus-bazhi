@@ -105,7 +105,8 @@ export class 算命服務器 {
     算作用.大運剋流年();
     算作用.通用計算();
 
-    this.流通(horoscopeResult, myFateSet, { bigFortune, yearFortune });
+
+    this.流通(horoscopeResult, myFateSet, { bigFortune, yearFortune }, 算作用.大運流年流月無法剋人);
     horoscopeResult.計算日柱受剋(this.天干日柱);
     horoscopeResult.計算最後評分分數(this.badPropertyMapping, this.天干日柱);
   }
@@ -115,14 +116,17 @@ export class 算命服務器 {
     horoscopeResult: 命盤結果,
     myFateSet: (天干 | 地支)[],
     data: { bigFortune?: 天干 | 地支; yearFortune?: 天干 | 地支; liuYue?: 天干 | 地支 },
+    無法剋人: 天干 | 地支 | null,
   ) {
     const { 陽, 陰 } = this.先分陰陽(horoscopeResult, myFateSet, data);
-    const 陽流通陣列 = this.陰或陽五行流通(陽);
+    const 陽流通陣列 = this.陰或陽五行流通(陽, true, 無法剋人);
     const { 陽結果, 新陰 } = this.陽剋陰(陽流通陣列, 陰);
 
-    const 批陽結果 = horoscopeResult.先批陽(陽結果);
+    const 陽五行結果表 = horoscopeResult.先批陽(陽結果);
 
-    const 流通陣列 = this.五行結果流通(批陽結果, 新陰!);
+    const 陰五行結果表 = this.陰或陽五行流通(新陰, false, 無法剋人);
+
+    const 流通陣列 = this.五行結果流通(陽五行結果表, 陰五行結果表);
 
     return horoscopeResult.再流通(流通陣列);
   }
@@ -158,12 +162,12 @@ export class 算命服務器 {
     算命盤.大運流年被合走流月加入計算();
 
     const 流通計算 = 算命盤.流月是否加入計算() ? { bigFortune, yearFortune, liuYue: monthFortune } : { bigFortune, yearFortune }
-    this.流通(horoscopeResult, myFateSet, 流通計算);
+    this.流通(horoscopeResult, myFateSet, 流通計算, 算命盤.大運流年流月無法剋人);
     horoscopeResult.計算日柱受剋(this.天干日柱);
     horoscopeResult.計算最後評分分數(this.badPropertyMapping, this.天干日柱, 父命盤.horoscopeResult.antiWuHinCount);
   }
 
-  private 陰或陽五行流通(天干地支: (天干 | 地支)[], 是否為陽 = true) {
+  private 陰或陽五行流通(天干地支: (天干 | 地支)[], 是否為陽: boolean, 無法剋人: 天干 | 地支 | null) {
     const 五行結果表: 五行結果[] = [
       { 五行: 五行.金, 生剋: '生', 陽陣: [], 陽力: 0, 陰陣: [], 陰力: 0 },
       { 五行: 五行.水, 生剋: '生', 陽陣: [], 陽力: 0, 陰陣: [], 陰力: 0 },
@@ -185,7 +189,13 @@ export class 算命服務器 {
         value.陰陣 = value.陰陣.concat(結果);
         value.陰力 += 結果.length;
       }
+
+      if (無法剋人 && 五行轉換(無法剋人) === value.五行 && 天干地支.includes(無法剋人)) {
+        是否為陽 ? value.陽力-- : value.陰力--;
+      }
     });
+
+
 
     let result: 五行結果[] = [];
     let 暫存五行結果: 五行結果[] = [];
@@ -225,16 +235,15 @@ export class 算命服務器 {
   }
 
   // TODO: Refactor
-  private 五行結果流通(五行結果表: 五行結果[], 陰: (天干 | 地支)[]) {
-    if (!陰.length) {
-      return 五行結果表;
+  private 五行結果流通(陽五行結果表: 五行結果[], 陰五行結果表: 五行結果[]) {
+    if (!陰五行結果表.length) {
+      return 陽五行結果表;
     }
 
-    const 陰流通陣列 = this.陰或陽五行流通(陰, false);
     const data =
-      五行結果表.length > 陰流通陣列.length
-        ? { primary: 五行結果表, secondary: 陰流通陣列 }
-        : { primary: 陰流通陣列, secondary: 五行結果表 };
+      陽五行結果表.length > 陰五行結果表.length
+        ? { primary: 陽五行結果表, secondary: 陰五行結果表 }
+        : { primary: 陰五行結果表, secondary: 陽五行結果表 };
 
     let 結果索引 = 0;
     let retry = 1;

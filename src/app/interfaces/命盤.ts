@@ -41,34 +41,34 @@ export class 命盤 {
       myFateSet: { gan: data.myFateSet.gan, zhi: data.myFateSet.zhi }
     }));
     this.horoscopeResult = { gan: new 命盤結果(true), zhi: new 命盤結果(false) };
-    const { badPropertyMapping, badPropertyList } = this.創造劫數對照表(data.myFateSet.gan[1]);
+    const { badPropertyMapping, badPropertyList } = 創造劫數對照表(data.myFateSet.gan[1]);
     this.badPropertyMapping = badPropertyMapping;
     this.badPropertyList = badPropertyList;
     this.mainGanFate = data.myFateSet.gan[1];
     this.chineseZodiac = data.chineseZodiac;
   }
+}
 
-  private 創造劫數對照表(天干日柱: 天干 | 地支) {
-    const badPropertyMapping: BadProperty = {
-      [五行.金]: '',
-      [五行.木]: '',
-      [五行.水]: '',
-      [五行.火]: '',
-      [五行.土]: '',
-    };
-    const badPropertyList: { key: 五行, badProperty: string }[] = [];
-    const 劫數陣列 = ['比劫', '食傷', '財', '官', '印'];
-    let 天干日柱五行 = 五行轉換(天干日柱);
-    badPropertyMapping[天干日柱五行] = 劫數陣列[0];
-    badPropertyList.push({ key: 天干日柱五行, badProperty: 劫數陣列[0] });
+export function 創造劫數對照表(天干日柱: 天干 | 地支) {
+  const badPropertyMapping: BadProperty = {
+    [五行.金]: '',
+    [五行.木]: '',
+    [五行.水]: '',
+    [五行.火]: '',
+    [五行.土]: '',
+  };
+  const badPropertyList: { key: 五行, badProperty: string }[] = [];
+  const 劫數陣列 = ['比劫', '食傷', '財', '官', '印'];
+  let 天干日柱五行 = 五行轉換(天干日柱);
+  badPropertyMapping[天干日柱五行] = 劫數陣列[0];
+  badPropertyList.push({ key: 天干日柱五行, badProperty: 劫數陣列[0] });
 
-    for (let i = 1; i < 劫數陣列.length; i++) {
-      天干日柱五行 = 五行相生對照表.get(天干日柱五行)!;
-      badPropertyMapping[天干日柱五行] = 劫數陣列[i];
-      badPropertyList.push({ key: 天干日柱五行, badProperty: 劫數陣列[i] });
-    }
-    return { badPropertyMapping, badPropertyList };
+  for (let i = 1; i < 劫數陣列.length; i++) {
+    天干日柱五行 = 五行相生對照表.get(天干日柱五行)!;
+    badPropertyMapping[天干日柱五行] = 劫數陣列[i];
+    badPropertyList.push({ key: 天干日柱五行, badProperty: 劫數陣列[i] });
   }
+  return { badPropertyMapping, badPropertyList };
 }
 
 export class 流月命盤 {

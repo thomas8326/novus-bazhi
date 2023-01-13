@@ -10,6 +10,8 @@ export class 算命盤作用 {
     是否為天干: boolean;
     private 作用狀態 = false;
 
+    大運流年流月無法剋人: 天干 | 地支 | null = null
+
     constructor(命盤: 天干命盤 | 地支命盤, 是否為天干 = false) {
         this.命盤 = 命盤;
         this.是否為天干 = 是否為天干;
@@ -88,6 +90,7 @@ export class 算命盤作用 {
             ) {
                 this.本命互相合();
                 this.命盤.horoscopeResult.reaction.bigFortune.anti = true;
+                this.大運流年流月無法剋人 = this.命盤.yearFortune;
                 this.命盤.horoscopeResult.新增相剋評分(this.命盤.bigFortune, '流年剋大運');
                 this.消相同天干地支([this.命盤.bigFortune], 'anti');
             } else {
@@ -111,6 +114,7 @@ export class 算命盤作用 {
             ) {
                 this.本命互相合();
                 this.命盤.horoscopeResult.reaction.yearFortune.anti = true;
+                this.大運流年流月無法剋人 = this.命盤.bigFortune;
                 this.命盤.horoscopeResult.新增相剋評分(this.命盤.yearFortune, '大運剋流年');
                 this.消相同天干地支([this.命盤.yearFortune], 'anti');
             } else {
@@ -402,11 +406,16 @@ export class 算命盤作用 {
         const 不是陰剋陽作用主體 = !this.是否陰作用陽(本命, 剋人);
         const 不是陰救陽被作用目標 = !this.是否陰作用陽(本命, 被剋);
 
+        const 被剋為陰 = 陰列.find((陰屬性) => 被剋 === 陰屬性);
+        const 救人為陽 = 陽列.find((陽屬性) => 本命 === 陽屬性);
+        const 救人與被剋同屬性 = 本命五行 === 被剋五行;
+        const 被剋後自己的陽可救 = 被剋為陰 && 救人為陽 && 救人與被剋同屬性;
+
         return (
             不是陰剋陽作用主體 &&
             不是陰救陽被作用目標 &&
             作用主體刻被作用主體 &&
-            五行互救對照表.get(本命五行)?.find((data) => data === 被剋五行)
+            (五行互救對照表.get(本命五行)?.find((data) => data === 被剋五行) || 被剋後自己的陽可救)
         );
     }
 
