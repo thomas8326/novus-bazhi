@@ -196,6 +196,7 @@ export class 算命盤作用 {
             ) {
                 this.本命互相合();
                 this.命盤.horoscopeResult.reaction.monthFortune.anti = true;
+                this.大運流年流月無法剋人 = this.命盤.bigFortune;
                 this.命盤.horoscopeResult.新增相剋評分(this.命盤.monthFortune, '大運剋流月');
                 this.消相同天干地支([this.命盤.monthFortune], 'anti');
             } else {
@@ -223,6 +224,7 @@ export class 算命盤作用 {
             ) {
                 this.本命互相合();
                 this.命盤.horoscopeResult.reaction.bigFortune.anti = true;
+                this.大運流年流月無法剋人 = this.命盤.monthFortune;
                 this.命盤.horoscopeResult.新增相剋評分(this.命盤.bigFortune, '流月剋大運');
                 this.消相同天干地支([this.命盤.bigFortune], 'anti');
             } else {
