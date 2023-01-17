@@ -10,8 +10,6 @@ export class 算命盤作用 {
     是否為天干: boolean;
     private 作用狀態 = false;
 
-    大運流年流月無法剋人: 天干 | 地支 | null = null
-
     constructor(命盤: 天干命盤 | 地支命盤, 是否為天干 = false) {
         this.命盤 = 命盤;
         this.是否為天干 = 是否為天干;
@@ -90,7 +88,6 @@ export class 算命盤作用 {
             ) {
                 this.本命互相合();
                 this.命盤.horoscopeResult.reaction.bigFortune.anti = true;
-                this.大運流年流月無法剋人 = this.命盤.yearFortune;
                 this.命盤.horoscopeResult.新增相剋評分(this.命盤.bigFortune, '流年剋大運');
                 this.消相同天干地支([this.命盤.bigFortune], 'anti');
             } else {
@@ -114,7 +111,6 @@ export class 算命盤作用 {
             ) {
                 this.本命互相合();
                 this.命盤.horoscopeResult.reaction.yearFortune.anti = true;
-                this.大運流年流月無法剋人 = this.命盤.bigFortune;
                 this.命盤.horoscopeResult.新增相剋評分(this.命盤.yearFortune, '大運剋流年');
                 this.消相同天干地支([this.命盤.yearFortune], 'anti');
             } else {
@@ -196,7 +192,6 @@ export class 算命盤作用 {
             ) {
                 this.本命互相合();
                 this.命盤.horoscopeResult.reaction.monthFortune.anti = true;
-                this.大運流年流月無法剋人 = this.命盤.bigFortune;
                 this.命盤.horoscopeResult.新增相剋評分(this.命盤.monthFortune, '大運剋流月');
                 this.消相同天干地支([this.命盤.monthFortune], 'anti');
             } else {
@@ -224,7 +219,6 @@ export class 算命盤作用 {
             ) {
                 this.本命互相合();
                 this.命盤.horoscopeResult.reaction.bigFortune.anti = true;
-                this.大運流年流月無法剋人 = this.命盤.monthFortune;
                 this.命盤.horoscopeResult.新增相剋評分(this.命盤.bigFortune, '流月剋大運');
                 this.消相同天干地支([this.命盤.bigFortune], 'anti');
             } else {
